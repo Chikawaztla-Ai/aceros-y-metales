@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Hardening — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+  :root { --negro:#0D1117; --panel:#161B22; --borde:#21262D; --primary:#162839; --primary-c:#2c3e50; --acento:#f78b30; --plata:#8B949E; --blanco:#E6EDF3; --verde:#3FB950; --azul:#58A6FF; --rojo:#FF7B72; --amarillo:#E3B341; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--negro); color:var(--blanco); font-family:'Inter',sans-serif; font-size:14px; line-height:1.7; }
+  header { background:var(--panel); border-bottom:1px solid var(--borde); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+  .header-logo { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--plata); }
+  .header-logo span { color:var(--rojo); font-weight:700; }
+  .badge { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px; border:1px solid; color:var(--rojo); border-color:rgba(255,123,114,0.3); background:rgba(255,123,114,0.08); }
+  .portada { background:var(--primary-c); padding:64px 56px 72px; position:relative; }
+  .portada::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:var(--rojo); }
+  .portada-tag { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--rojo); margin-bottom:24px; }
+  .portada h1 { font-family:'Montserrat',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:800; line-height:1; color:#fff; margin-bottom:16px; }
+  .portada h1 em { font-style:normal; color:var(--rojo); }
+  .contenido { max-width:960px; margin:0 auto; padding:0 48px; }
+  .seccion { padding:48px 0; border-bottom:1px solid var(--borde); }
+  .seccion:last-child { border-bottom:none; }
+  .sec-label { display:inline-block; font-family:'JetBrains Mono',monospace; background:rgba(255,123,114,0.1); color:var(--rojo); font-size:9px; font-weight:700; letter-spacing:4px; text-transform:uppercase; padding:4px 10px; border-radius:3px; border:1px solid rgba(255,123,114,0.25); margin-bottom:16px; }
+  h2 { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:#fff; margin-bottom:12px; }
+  h3 { font-family:'Montserrat',sans-serif; font-size:17px; font-weight:700; color:var(--blanco); margin-top:28px; margin-bottom:10px; }
+  p { color:var(--plata); margin-bottom:12px; max-width:700px; }
+  .intro { font-size:15px; }
+  .code-block { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:18px 22px; margin-top:14px; margin-bottom:14px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:var(--blanco); overflow-x:auto; white-space:pre; }
+  .c { color:var(--plata); } .k { color:var(--azul); } .v { color:var(--verde); } .a { color:var(--acento); } .r { color:var(--rojo); } .y { color:var(--amarillo); }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+  @media(max-width:700px){ .grid-2{ grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:16px 20px; }
+  .card h4 { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; margin-bottom:8px; }
+  .card-r h4 { color:var(--rojo); }
+  .card-v h4 { color:var(--verde); }
+  .card p { font-size:12px; color:var(--plata); margin:0; max-width:100%; }
+  .card code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--azul); background:rgba(88,166,255,0.08); padding:1px 5px; border-radius:3px; }
+
+  .threat { margin-top:16px; border:1px solid var(--borde); border-radius:6px; overflow:hidden; }
+  .threat-header { display:grid; grid-template-columns:auto 1fr auto; gap:12px; padding:14px 20px; border-bottom:1px solid var(--borde); align-items:center; }
+  .threat-sev { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; padding:3px 10px; border-radius:3px; text-transform:uppercase; }
+  .sev-crit { background:rgba(255,123,114,0.15); color:var(--rojo); border:1px solid rgba(255,123,114,0.3); }
+  .sev-high { background:rgba(247,139,48,0.15); color:var(--acento); border:1px solid rgba(247,139,48,0.3); }
+  .sev-med { background:rgba(227,179,65,0.15); color:var(--amarillo); border:1px solid rgba(227,179,65,0.3); }
+  .threat-name { font-size:14px; font-weight:700; color:var(--blanco); }
+  .threat-body { padding:14px 20px; }
+  .threat-body p { font-size:13px; margin-bottom:8px; max-width:100%; }
+  .threat-body strong { color:var(--blanco); }
+
+  .checklist { margin-top:20px; border:1px solid var(--borde); border-radius:6px; overflow:hidden; }
+  .check-item { display:flex; gap:12px; padding:12px 20px; border-bottom:1px solid rgba(255,255,255,0.04); align-items:start; }
+  .check-item:last-child { border-bottom:none; }
+  .check-box { width:16px; height:16px; border:1.5px solid var(--borde); border-radius:3px; margin-top:2px; flex-shrink:0; }
+  .check-text { font-size:13px; color:var(--plata); }
+  .check-text strong { color:var(--blanco); }
+
+  footer { background:var(--primary-c); padding:18px 48px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-top:4px solid var(--rojo); }
+  footer span { font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">aceros<span>ymetalesurgentes</span>.com · Security</div>
+  <span class="badge">HARDENING</span>
+</header>
+
+<div class="portada">
+  <div class="portada-tag">Security Hardening Guide</div>
+  <h1>Guía de<br><em>Seguridad</em></h1>
+</div>
+
+<div class="contenido">
+
+  <!-- 01 THREAT MODEL -->
+  <div class="seccion">
+    <span class="sec-label">01 — Modelo de Amenazas</span>
+    <h2>Vectores de ataque y mitigación</h2>
+    <p class="intro">Clasificados por severidad. Cada amenaza tiene su contramedida implementada en código.</p>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-crit">CRÍTICO</span><span class="threat-name">Inyección SQL</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un atacante envía SQL malicioso a través de los filtros del catálogo, barra de búsqueda o formularios.</p>
+        <p><strong>Mitigación:</strong> Supabase usa queries parametrizados por defecto — <code>supabase.from('products').select().eq('grade', input)</code> nunca concatena strings. Zod valida todos los inputs antes de tocar la DB. Las Edge Functions usan el cliente de Supabase, nunca SQL directo.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-crit">CRÍTICO</span><span class="threat-name">Bypass de pagos / manipulación de precios</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un atacante modifica el precio en el frontend (DevTools) antes de enviar el pedido, o fabrica un webhook de MP con un monto falso.</p>
+        <p><strong>Mitigación:</strong></p>
+        <p>1. El precio NUNCA viene del frontend. <code>/api/pagos/crear</code> consulta el precio en Supabase y calcula el total server-side.</p>
+        <p>2. El webhook de MP valida la firma HMAC con <code>x-signature</code> + el secret de la app. Si no coincide, se rechaza con 401.</p>
+        <p>3. Después de recibir el webhook, se vuelve a consultar la API de MP para confirmar el monto pagado vs. el total de la orden.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-crit">CRÍTICO</span><span class="threat-name">Acceso no autorizado a datos de otros clientes</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un cliente autenticado intenta ver pedidos o cotizaciones de otro cliente cambiando el ID en la URL.</p>
+        <p><strong>Mitigación:</strong> RLS (Row Level Security) en Supabase. Cada tabla tiene policies que verifican <code>customer_id = auth.uid()</code>. Aunque alguien manipule la URL o la API, Supabase no devuelve datos ajenos. Esto se verifica a nivel de base de datos, no de aplicación.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-high">ALTO</span><span class="threat-name">XSS (Cross-Site Scripting)</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un atacante inyecta JavaScript malicioso en campos como "notas" de cotización, nombre de empresa o blog.</p>
+        <p><strong>Mitigación:</strong> React escapa HTML por defecto (JSX). Nunca usar <code>dangerouslySetInnerHTML</code> con datos de usuario. Sanitizar con DOMPurify los campos de texto libre antes de guardar. CSP header bloquea scripts inline no autorizados.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-high">ALTO</span><span class="threat-name">CSRF (Cross-Site Request Forgery)</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un sitio malicioso hace que el navegador del admin ejecute acciones en el dashboard sin su conocimiento.</p>
+        <p><strong>Mitigación:</strong> Supabase Auth usa cookies HttpOnly + SameSite=Lax. Las API Routes verifican el token de sesión en cada request mutante (POST/PUT/DELETE). Cloudflare añade protección adicional.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-high">ALTO</span><span class="threat-name">Brute force en login</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un atacante intenta miles de combinaciones de contraseña contra la página de login.</p>
+        <p><strong>Mitigación:</strong> Supabase Auth tiene rate limiting nativo (100 requests/15 min por IP). Cloudflare Bot Management añade otra capa. Después de 5 intentos fallidos, se requiere esperar 60 segundos. Contraseñas mínimo 8 caracteres.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-high">ALTO</span><span class="threat-name">Abuso de la API de búsqueda IA</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un atacante o bot hace miles de requests a <code>/api/buscar</code>, generando costos altos en OpenAI.</p>
+        <p><strong>Mitigación:</strong> Rate limit de 20 req/min por IP en esta ruta. Si se excede, fallback silencioso a búsqueda SQL (ILIKE). Monitorear costos diarios de OpenAI con alerta si excede $5 USD/día.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-med">MEDIO</span><span class="threat-name">Spam en cotizaciones</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Bots envían cientos de cotizaciones falsas, saturando el email del admin.</p>
+        <p><strong>Mitigación:</strong> Rate limit de 5 cotizaciones por IP por hora. Honeypot field invisible en el formulario (si se llena, es bot). Cloudflare Turnstile (CAPTCHA invisible) como última línea.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-med">MEDIO</span><span class="threat-name">Upload de archivos maliciosos</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Un usuario sube un archivo .exe disfrazado de PDF en el formulario de cotización.</p>
+        <p><strong>Mitigación:</strong> Validar MIME type server-side (solo <code>application/pdf</code> y extensiones DWG/DXF). Limitar tamaño a 10MB. Supabase Storage no ejecuta archivos — solo los almacena. Los archivos se sirven con <code>Content-Disposition: attachment</code>.</p>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="threat-header"><span class="threat-sev sev-med">MEDIO</span><span class="threat-name">DDoS</span></div>
+      <div class="threat-body">
+        <p><strong>Vector:</strong> Flood de requests para tumbar el sitio.</p>
+        <p><strong>Mitigación:</strong> Cloudflare está al frente — absorbe DDoS antes de llegar a Vercel. Vercel Edge tiene auto-scaling. Supabase tiene connection pooling con PgBouncer. No hay servidor que tumbar — todo es serverless.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 HEADERS -->
+  <div class="seccion">
+    <span class="sec-label">02 — Security Headers</span>
+    <h2>Headers HTTP de protección</h2>
+
+    <div class="code-block">
+<span class="c">// next.config.js</span>
+
+<span class="k">const</span> securityHeaders = [
+  {
+    key: <span class="v">'X-DNS-Prefetch-Control'</span>,
+    value: <span class="v">'on'</span>
+  },
+  {
+    key: <span class="v">'Strict-Transport-Security'</span>,
+    value: <span class="v">'max-age=63072000; includeSubDomains; preload'</span>
+    <span class="c">// HSTS: forzar HTTPS por 2 años</span>
+  },
+  {
+    key: <span class="v">'X-Frame-Options'</span>,
+    value: <span class="v">'DENY'</span>
+    <span class="c">// Prevenir clickjacking — nadie puede meter el sitio en un iframe</span>
+  },
+  {
+    key: <span class="v">'X-Content-Type-Options'</span>,
+    value: <span class="v">'nosniff'</span>
+    <span class="c">// Prevenir MIME sniffing</span>
+  },
+  {
+    key: <span class="v">'Referrer-Policy'</span>,
+    value: <span class="v">'strict-origin-when-cross-origin'</span>
+  },
+  {
+    key: <span class="v">'Permissions-Policy'</span>,
+    value: <span class="v">'camera=(), microphone=(), geolocation=()'</span>
+    <span class="c">// No necesitamos cámara, mic ni geo</span>
+  },
+  {
+    key: <span class="v">'Content-Security-Policy'</span>,
+    value: [
+      <span class="v">"default-src 'self'"</span>,
+      <span class="v">"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://sdk.mercadopago.com"</span>,
+      <span class="v">"style-src 'self' 'unsafe-inline' https://fonts.googleapis.com"</span>,
+      <span class="v">"font-src 'self' https://fonts.gstatic.com"</span>,
+      <span class="v">"img-src 'self' data: https://*.supabase.co https://www.google-analytics.com"</span>,
+      <span class="v">"connect-src 'self' https://*.supabase.co https://api.mercadopago.com https://api.openai.com"</span>,
+      <span class="v">"frame-src https://www.mercadopago.com.mx"</span>,
+    ].join(<span class="v">'; '</span>)
+  }
+];
+
+module.exports = {
+  <span class="k">async headers</span>() {
+    <span class="k">return</span> [{ source: <span class="v">'/:path*'</span>, headers: securityHeaders }];
+  }
+};
+</div>
+  </div>
+
+  <!-- 03 ENV VARS -->
+  <div class="seccion">
+    <span class="sec-label">03 — Manejo de Secrets</span>
+    <h2>Variables de entorno y secretos</h2>
+
+    <div class="grid-2">
+      <div class="card card-r"><h4>NUNCA exponer al cliente</h4><p><code>SUPABASE_SERVICE_ROLE_KEY</code> — acceso total sin RLS. Solo en API Routes server-side. <code>MP_ACCESS_TOKEN</code> — token de Mercado Pago. <code>OPENAI_API_KEY</code> — costos ilimitados. <code>RESEND_API_KEY</code> — envío de emails.</p></div>
+      <div class="card card-v"><h4>OK exponer al cliente (NEXT_PUBLIC_)</h4><p><code>NEXT_PUBLIC_SUPABASE_URL</code> y <code>ANON_KEY</code> — seguros porque RLS controla el acceso. <code>NEXT_PUBLIC_GA4_ID</code>, <code>META_PIXEL_ID</code>, <code>CLARITY_ID</code> — analytics. <code>NEXT_PUBLIC_WA_NUMBER</code> — WhatsApp.</p></div>
+    </div>
+
+    <div class="code-block">
+<span class="c">// Reglas de variables de entorno:</span>
+
+<span class="r">1. NUNCA commitear .env.local a Git</span>
+   → .gitignore ya lo excluye
+
+<span class="r">2. NUNCA usar SUPABASE_SERVICE_ROLE_KEY en Client Components</span>
+   → Solo importar en archivos bajo /api/ o funciones server-side
+
+<span class="r">3. Rotar keys cada 90 días</span>
+   → Supabase: Settings → API → Regenerar
+   → MP: Panel de desarrollador → Credenciales
+
+<span class="v">4. Entornos separados en Vercel</span>
+   → Development: keys de sandbox de MP + Supabase de dev
+   → Preview: mismo que dev
+   → Production: keys de producción reales
+
+<span class="v">5. Backup de keys</span>
+   → Guardar en 1Password o similar, NUNCA en Notion, email o chat
+</div>
+  </div>
+
+  <!-- 04 CLOUDFLARE -->
+  <div class="seccion">
+    <span class="sec-label">04 — Cloudflare Config</span>
+    <h2>Configuración de seguridad en Cloudflare</h2>
+
+    <div class="grid-2">
+      <div class="card card-v"><h4>SSL/TLS</h4><p>Modo: <code>Full (Strict)</code>. Vercel tiene su propio certificado, Cloudflare valida contra él. HTTPS forzado.</p></div>
+      <div class="card card-v"><h4>Firewall Rules</h4><p>Bloquear requests de países sin clientes (activar si hay abuso). Rate limit: 100 req/10s por IP global.</p></div>
+      <div class="card card-v"><h4>Bot Management</h4><p>Bot Fight Mode: ON. Challenge requests sospechosos con Turnstile. Permitir bots buenos (Googlebot, Bingbot).</p></div>
+      <div class="card card-v"><h4>Caching</h4><p>Cache de assets estáticos (imágenes, CSS, JS). Bypass cache en API routes y páginas SSR. Purge automático en deploy.</p></div>
+    </div>
+  </div>
+
+  <!-- 05 SUPABASE -->
+  <div class="seccion">
+    <span class="sec-label">05 — Hardening de Supabase</span>
+    <h2>Configuración segura de la base de datos</h2>
+
+    <div class="code-block">
+<span class="c">-- 1. RLS OBLIGATORIO en todas las tablas</span>
+<span class="y">ALTER TABLE</span> products <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> orders <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> order_items <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> customers <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> companies <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> quotes <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> wishlist_items <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> promotions <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> volume_prices <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> product_embeddings <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+<span class="y">ALTER TABLE</span> email_queue <span class="y">ENABLE ROW LEVEL SECURITY</span>;
+
+<span class="c">-- 2. Revocar acceso público al schema</span>
+<span class="y">REVOKE ALL ON ALL TABLES IN SCHEMA</span> public <span class="y">FROM</span> anon;
+<span class="y">REVOKE ALL ON ALL TABLES IN SCHEMA</span> public <span class="y">FROM</span> authenticated;
+
+<span class="c">-- 3. Otorgar solo lo necesario vía policies (ya definidas en Backend Schema)</span>
+<span class="c">-- Principio: DENY ALL por defecto, ALLOW solo lo explícito</span>
+
+<span class="c">-- 4. Desactivar signup público si no se necesita</span>
+<span class="c">-- Supabase Dashboard → Auth → Settings → Disable Sign Up</span>
+<span class="c">-- (Solo si el registro será controlado por el admin)</span>
+</div>
+
+    <div class="grid-2">
+      <div class="card card-v"><h4>Storage policies</h4><p>Buckets privados por defecto. Solo <code>product-images</code> y <code>product-docs</code> son públicos (lectura). Uploads requieren auth + MIME validation.</p></div>
+      <div class="card card-v"><h4>Connection pooling</h4><p>PgBouncer activado en Supabase. Pool mode: Transaction. Límite de conexiones: 50 (suficiente para MVP). Monitorear en dashboard.</p></div>
+    </div>
+  </div>
+
+  <!-- 06 VALIDACIÓN -->
+  <div class="seccion">
+    <span class="sec-label">06 — Validación de Inputs</span>
+    <h2>Schemas Zod para cada endpoint</h2>
+
+    <div class="code-block">
+<span class="c">// lib/validations.ts — schemas centralizados</span>
+
+<span class="k">import</span> { z } <span class="k">from</span> <span class="v">'zod'</span>;
+
+<span class="k">export const</span> <span class="a">createOrderSchema</span> = z.object({
+  items: z.array(z.object({
+    productId: z.string().uuid(),
+    unitType: z.enum([<span class="v">'metro'</span>, <span class="v">'kilo'</span>, <span class="v">'pieza'</span>]),
+    quantity: z.number().positive().max(<span class="a">10000</span>),
+  })).min(1).max(50),
+  paymentMethod: z.enum([<span class="v">'mercadopago'</span>, <span class="v">'transferencia'</span>]),
+  shippingAddress: z.object({
+    street: z.string().min(3).max(200),
+    city: z.string().min(2).max(100),
+    state: z.string().min(2).max(100),
+    zip: z.string().regex(<span class="v">/^\d{5}$/</span>),    <span class="c">// CP mexicano = 5 dígitos</span>
+  }).optional(),
+  billingName: z.string().max(200).optional(),
+  billingRfc: z.string().regex(<span class="v">/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/</span>).optional(),
+  needsCfdi: z.boolean().default(false),
+  promotionCode: z.string().max(50).optional(),
+  notes: z.string().max(500).optional(),
+});
+
+<span class="k">export const</span> <span class="a">createQuoteSchema</span> = z.object({
+  contactName: z.string().min(2).max(100),
+  contactEmail: z.string().email(),
+  contactPhone: z.string().regex(<span class="v">/^\+?\d{10,15}$/</span>),
+  company: z.string().max(200).optional(),
+  items: z.array(z.object({
+    material: z.string().max(100),
+    grade: z.string().max(50),
+    quantity: z.number().positive(),
+    unit: z.string().max(20),
+    notes: z.string().max(500).optional(),
+  })).min(1).max(20),
+  notes: z.string().max(1000).optional(),
+});
+
+<span class="k">export const</span> <span class="a">searchSchema</span> = z.object({
+  query: z.string().min(2).max(200).trim(),
+});
+</div>
+  </div>
+
+  <!-- 07 MONITORING -->
+  <div class="seccion">
+    <span class="sec-label">07 — Monitoreo de Seguridad</span>
+    <h2>Qué vigilar en producción</h2>
+
+    <div class="grid-2">
+      <div class="card card-r"><h4>Alertas inmediatas</h4><p>Webhook de MP rechazado (firma inválida). Rate limit excedido en <code>/api/buscar</code>. Error 500 en <code>/api/pagos</code>. Login fallido > 10 veces en 5 min desde misma IP.</p></div>
+      <div class="card card-v"><h4>Revisión semanal</h4><p>Logs de Vercel: buscar 401/403/500 inusuales. Supabase: queries lentas (> 500ms). Cloudflare: IPs bloqueadas y ataques mitigados. OpenAI: costo diario vs. promedio.</p></div>
+    </div>
+
+    <div class="code-block">
+<span class="c">// Logging de eventos de seguridad en API Routes</span>
+
+<span class="k">function</span> <span class="a">logSecurityEvent</span>(event: string, details: Record&lt;string, any&gt;) {
+  console.error(<span class="v">`[SECURITY] ${event}`</span>, {
+    ...details,
+    timestamp: <span class="k">new</span> Date().toISOString(),
+    ip: req.headers.get(<span class="v">'x-forwarded-for'</span>),
+    userAgent: req.headers.get(<span class="v">'user-agent'</span>),
+  });
+}
+
+<span class="c">// Eventos a loggear:</span>
+logSecurityEvent(<span class="r">'WEBHOOK_INVALID_SIGNATURE'</span>, { paymentId });
+logSecurityEvent(<span class="r">'RATE_LIMIT_EXCEEDED'</span>, { route, ip });
+logSecurityEvent(<span class="r">'RLS_BYPASS_ATTEMPT'</span>, { userId, resourceId });
+logSecurityEvent(<span class="r">'INVALID_FILE_UPLOAD'</span>, { mimeType, fileName });
+logSecurityEvent(<span class="r">'PRICE_MISMATCH'</span>, { expected, received, orderId });
+</div>
+  </div>
+
+  <!-- 08 CHECKLIST -->
+  <div class="seccion">
+    <span class="sec-label">08 — Checklist Pre-Launch</span>
+    <h2>Verificar antes de ir a producción</h2>
+
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>RLS activado</strong> en todas las tablas de Supabase. Probar con anon key que NO devuelve datos sin autenticación.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Webhook de MP valida firma</strong> — probar con firma falsa, debe devolver 401.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Precios calculados server-side</strong> — cambiar precio en DevTools y verificar que el total en el backend no cambia.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>HTTPS forzado</strong> — http:// redirige a https://. HSTS header presente.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Cloudflare SSL en Full (Strict)</strong> — verificar en dashboard de Cloudflare.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>.env.local no está en Git</strong> — verificar con <code>git log --all --full-history -- .env*</code></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>SERVICE_ROLE_KEY no se usa en Client Components</strong> — buscar en código fuente.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Rate limits configurados</strong> en /api/buscar (20/min), /api/cotizaciones (5/min), /login (10/5min).</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Validación Zod</strong> en todas las API routes POST/PUT — probar con payloads vacíos, XSS y SQL injection.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Upload files</strong> — intentar subir .exe, verificar que se rechaza. Verificar límite de 10MB.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Security headers</strong> — verificar con securityheaders.com → debe dar A o A+.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Cloudflare Bot Fight Mode</strong> — activado en dashboard.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Passwords</strong> — mínimo 8 caracteres configurado en Supabase Auth.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Middleware de auth</strong> — intentar acceder a /admin sin sesión → debe redirigir a /login.</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>RLS cross-check</strong> — loguearse como cliente A, intentar acceder a pedido de cliente B vía API → debe devolver vacío.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Security Hardening Guide v1.0 — acerosymetalesurgentes.com · Julio 2026</span>
+  <span>Juan Azael Pinales Regis</span>
+</footer>
+</body>
+</html>
