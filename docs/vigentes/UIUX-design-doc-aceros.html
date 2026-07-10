@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI/UX Design Doc — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+  :root { --negro:#0D1117; --panel:#161B22; --borde:#21262D; --primary:#162839; --primary-c:#2c3e50; --acento:#f78b30; --plata:#8B949E; --blanco:#E6EDF3; --verde:#3FB950; --azul:#58A6FF; --rojo:#FF7B72; --amarillo:#E3B341; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--negro); color:var(--blanco); font-family:'Inter',sans-serif; font-size:14px; line-height:1.7; }
+  header { background:var(--panel); border-bottom:1px solid var(--borde); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+  .header-logo { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--plata); }
+  .header-logo span { color:var(--acento); font-weight:700; }
+  .badge { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px; border:1px solid; color:var(--acento); border-color:rgba(247,139,48,0.3); background:rgba(247,139,48,0.08); }
+  .portada { background:var(--primary-c); padding:64px 56px 72px; position:relative; }
+  .portada::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:var(--acento); }
+  .portada-tag { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--acento); margin-bottom:24px; }
+  .portada h1 { font-family:'Montserrat',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:800; line-height:1; color:#fff; margin-bottom:16px; }
+  .portada h1 em { font-style:normal; color:var(--acento); }
+  .contenido { max-width:960px; margin:0 auto; padding:0 48px; }
+  .seccion { padding:48px 0; border-bottom:1px solid var(--borde); }
+  .seccion:last-child { border-bottom:none; }
+  .sec-label { display:inline-block; font-family:'JetBrains Mono',monospace; background:rgba(247,139,48,0.1); color:var(--acento); font-size:9px; font-weight:700; letter-spacing:4px; text-transform:uppercase; padding:4px 10px; border-radius:3px; border:1px solid rgba(247,139,48,0.25); margin-bottom:16px; }
+  h2 { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:#fff; margin-bottom:12px; }
+  h3 { font-family:'Montserrat',sans-serif; font-size:17px; font-weight:700; color:var(--blanco); margin-top:28px; margin-bottom:10px; }
+  p { color:var(--plata); margin-bottom:12px; max-width:700px; }
+  .intro { font-size:15px; color:var(--plata); max-width:700px; }
+  .code-block { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:18px 22px; margin-top:14px; margin-bottom:14px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:var(--blanco); overflow-x:auto; white-space:pre; }
+  .c { color:var(--plata); } .k { color:var(--azul); } .v { color:var(--verde); } .a { color:var(--acento); } .r { color:var(--rojo); }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:16px; }
+  @media(max-width:700px){ .grid-2,.grid-3{ grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:16px 20px; }
+  .card h4 { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--acento); margin-bottom:8px; }
+  .card p { font-size:12px; color:var(--plata); margin:0; max-width:100%; }
+  .card code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--azul); background:rgba(88,166,255,0.08); padding:1px 5px; border-radius:3px; }
+  .tabla-wrap { margin-top:16px; border:1px solid var(--borde); border-radius:6px; overflow:hidden; }
+  table { width:100%; border-collapse:collapse; }
+  .thead td { padding:10px 18px; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; background:var(--primary-c); color:var(--acento); }
+  tbody tr { border-bottom:1px solid rgba(255,255,255,0.04); }
+  tbody tr:last-child { border-bottom:none; }
+  tbody td { padding:10px 18px; font-size:13px; color:var(--plata); vertical-align:top; }
+  .tn { font-weight:600; color:var(--blanco) !important; }
+  .tk { font-family:'JetBrains Mono',monospace; font-weight:600; color:var(--azul) !important; }
+  .tv { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--verde) !important; }
+  .warn { margin-top:14px; background:rgba(227,179,65,0.06); border:1px solid rgba(227,179,65,0.2); border-left:3px solid var(--amarillo); border-radius:0 6px 6px 0; padding:12px 16px; }
+  .warn p { font-size:12px; color:var(--amarillo); margin:0; max-width:100%; }
+  footer { background:var(--primary-c); padding:18px 48px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-top:4px solid var(--acento); }
+  footer span { font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">aceros<span>ymetalesurgentes</span>.com · UI/UX</div>
+  <span class="badge">v1.0</span>
+</header>
+
+<div class="portada">
+  <div class="portada-tag">UI/UX Design Document</div>
+  <h1>Diseño de<br><em>Experiencia</em><br>de Usuario</h1>
+</div>
+
+<div class="contenido">
+
+  <!-- 01 PRINCIPIOS -->
+  <div class="seccion">
+    <span class="sec-label">01 — Principios de Diseño</span>
+    <h2>5 reglas que guían toda decisión visual</h2>
+
+    <div class="grid-3">
+      <div class="card"><h4>1. Industrial, no decorativo</h4><p>El diseño transmite confianza técnica. Nada de gradientes, sombras dramáticas ni ilustraciones genéricas. Los datos hablan solos.</p></div>
+      <div class="card"><h4>2. Dato visible > clic extra</h4><p>Si un precio, stock o peso se puede mostrar sin abrir un modal, se muestra. Menos clics = más conversiones.</p></div>
+      <div class="card"><h4>3. Mobile-capable, desktop-first</h4><p>Los compradores B2B usan escritorio. El sitio es responsive, pero la experiencia de escritorio se prioriza.</p></div>
+      <div class="card"><h4>4. Confianza por transparencia</h4><p>Mostrar stock real, pesos calculados, equivalencias internacionales. El comprador técnico valora la exactitud.</p></div>
+      <div class="card"><h4>5. Conversión sin fricción</h4><p>Cada pantalla tiene un CTA claro. Nunca más de 2 opciones: "Agregar al carrito" o "Solicitar cotización".</p></div>
+    </div>
+  </div>
+
+  <!-- 02 RESPONSIVE -->
+  <div class="seccion">
+    <span class="sec-label">02 — Breakpoints y Responsive</span>
+    <h2>Diseño adaptativo por dispositivo</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Breakpoint</td><td>Dispositivo</td><td>Layout</td><td>Cambios clave</td></tr>
+          <tr><td class="tk">≥ 1280px</td><td class="tn">Desktop</td><td class="tv">12 columnas</td><td>Layout completo: sidebar + contenido + panel sticky. Grids 3-4 columnas de cards.</td></tr>
+          <tr><td class="tk">768–1279px</td><td class="tn">Tablet</td><td class="tv">8 columnas</td><td>Sidebar colapsa en drawer. Grids 2 columnas. Panel de compra debajo del contenido en vez de sticky.</td></tr>
+          <tr><td class="tk">≤ 767px</td><td class="tn">Mobile</td><td class="tv">4 columnas</td><td>Nav hamburger. Grids 1 columna. Calculadora ocupa ancho completo. Filtros en bottom sheet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Comportamiento por pantalla en mobile</h3>
+    <div class="grid-2">
+      <div class="card"><h4>Catálogo</h4><p>Filtros en bottom sheet con botón flotante "Filtrar (3)". Grid de productos 1 columna. Calculadora lateral se mueve arriba del listado.</p></div>
+      <div class="card"><h4>Producto</h4><p>Panel de compra fijo al fondo (bottom bar) con precio + botón "Agregar". Galería en swipe horizontal. Tabla de specs con scroll horizontal.</p></div>
+      <div class="card"><h4>Checkout</h4><p>Resumen colapsable arriba del formulario (expandible con tap). Formulario single-column. Teclado numérico para campos de teléfono y CP.</p></div>
+      <div class="card"><h4>Dashboard</h4><p>Sidebar se convierte en bottom nav con 5 íconos. Tabla de pedidos con scroll horizontal. KPIs en grid 2x2.</p></div>
+    </div>
+  </div>
+
+  <!-- 03 ESTADOS -->
+  <div class="seccion">
+    <span class="sec-label">03 — Estados de Componentes</span>
+    <h2>Cada componente tiene 6 estados</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Estado</td><td>Visual</td><td>Ejemplo</td></tr>
+          <tr><td class="tn">Default</td><td class="tv">Estado base</td><td>Botón naranja con texto blanco, borde de card gris</td></tr>
+          <tr><td class="tn">Hover</td><td class="tv">brightness-110 + shadow</td><td>Card eleva sombra, botón se ilumina, link cambia color a naranja</td></tr>
+          <tr><td class="tn">Active / Pressed</td><td class="tv">scale-95</td><td>Botón se encoge brevemente al hacer clic</td></tr>
+          <tr><td class="tn">Focus</td><td class="tv">ring-2 ring-primary</td><td>Borde azul visible para navegación por teclado (accesibilidad)</td></tr>
+          <tr><td class="tn">Disabled</td><td class="tv">opacity-50 cursor-not-allowed</td><td>Botón "Confirmar pedido" cuando faltan campos requeridos</td></tr>
+          <tr><td class="tn">Loading</td><td class="tv">spinner + texto</td><td>"Procesando pago..." con spinner, botón deshabilitado</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Estados vacíos y de error</h3>
+    <div class="grid-2">
+      <div class="card"><h4>Carrito vacío</h4><p>Ícono <code>shopping_cart</code> grande + "Tu carrito está vacío" + CTA "Explorar catálogo". Sin tabla ni resumen.</p></div>
+      <div class="card"><h4>Sin resultados de búsqueda</h4><p>"No encontramos materiales para [query]" + sugerencias: "¿Quisiste decir 4140?" + "Solicitar cotización personalizada".</p></div>
+      <div class="card"><h4>Error de pago</h4><p>Ícono <code>error</code> rojo + "El pago no pudo procesarse" + opciones: "Reintentar" o "Pagar por transferencia". NUNCA un error genérico.</p></div>
+      <div class="card"><h4>Producto sin stock</h4><p>Badge "Agotado" en rojo. Botón cambia a "Notificarme cuando esté disponible" (captura email). Quitar botón de carrito.</p></div>
+    </div>
+  </div>
+
+  <!-- 04 NAVEGACIÓN -->
+  <div class="seccion">
+    <span class="sec-label">04 — Arquitectura de Información</span>
+    <h2>Mapa del sitio y navegación</h2>
+
+    <div class="code-block">
+<span class="a">acerosymetalesurgentes.com</span>
+│
+├── <span class="k">/</span>                          <span class="c">Homepage</span>
+├── <span class="k">/catalogo</span>                  <span class="c">Catálogo con filtros</span>
+│   └── <span class="k">/catalogo/[slug]</span>       <span class="c">Ficha de producto</span>
+├── <span class="k">/cotizacion</span>                <span class="c">Formulario de cotización</span>
+├── <span class="k">/carrito</span>                   <span class="c">Carrito de compras</span>
+├── <span class="k">/checkout</span>                  <span class="c">Proceso de pago (header simplificado)</span>
+├── <span class="k">/confirmacion</span>              <span class="c">Pedido confirmado</span>
+├── <span class="k">/blog</span>                     <span class="c">Listado de artículos</span>
+│   └── <span class="k">/blog/[slug]</span>          <span class="c">Artículo individual</span>
+├── <span class="k">/nosotros</span>                  <span class="c">Sobre la empresa</span>
+│
+├── <span class="v">/login</span>                    <span class="c">Iniciar sesión</span>
+├── <span class="v">/registro</span>                  <span class="c">Crear cuenta</span>
+│
+├── <span class="k">/portal</span>                   <span class="c">🔒 Portal de clientes</span>
+│   ├── <span class="k">/portal/pedidos</span>       <span class="c">Mis pedidos</span>
+│   ├── <span class="k">/portal/cotizaciones</span>  <span class="c">Mis cotizaciones</span>
+│   ├── <span class="k">/portal/precios</span>       <span class="c">Lista de precios especiales</span>
+│   ├── <span class="k">/portal/facturas</span>      <span class="c">Mis facturas (V3)</span>
+│   └── <span class="k">/portal/cuenta</span>        <span class="c">Datos de empresa</span>
+│
+└── <span class="r">/admin</span>                    <span class="c">🔒 Dashboard administrativo</span>
+    ├── <span class="r">/admin/pedidos</span>        <span class="c">Gestión de pedidos</span>
+    ├── <span class="r">/admin/inventario</span>     <span class="c">Control de stock</span>
+    ├── <span class="r">/admin/cotizaciones</span>   <span class="c">Cotizaciones recibidas</span>
+    ├── <span class="r">/admin/clientes</span>       <span class="c">Base de clientes</span>
+    ├── <span class="r">/admin/blog</span>           <span class="c">Editor de artículos</span>
+    └── <span class="r">/admin/config</span>         <span class="c">Configuración general</span>
+</div>
+
+    <h3>Reglas de navegación</h3>
+    <div class="grid-2">
+      <div class="card"><h4>Header principal (6 pantallas)</h4><p>Nav: Catálogo · Cotización · Blog · Nosotros. Derecha: Búsqueda + Calculadora + Carrito (con badge) + Cuenta. Sticky en scroll.</p></div>
+      <div class="card"><h4>Header simplificado (Checkout)</h4><p>Solo logo centrado + "Pago 100% seguro". Sin nav — reducir distracciones. Botón "← Volver al carrito" discreto.</p></div>
+      <div class="card"><h4>Sidebar admin (Dashboard)</h4><p>Fixed izquierda, dark (#162839). 8 items con íconos. Activo = border-left naranja. Colapsa en mobile a bottom nav.</p></div>
+      <div class="card"><h4>Sidebar portal (Cliente)</h4><p>Fixed izquierda, claro (#f7f9fb). 6 items. Activo = bg azul claro. Colapsa en mobile a drawer.</p></div>
+    </div>
+  </div>
+
+  <!-- 05 INTERACCIONES -->
+  <div class="seccion">
+    <span class="sec-label">05 — Micro-interacciones</span>
+    <h2>Animaciones y feedback</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Acción</td><td>Feedback</td><td>Duración</td></tr>
+          <tr><td class="tn">Agregar al carrito</td><td>Toast "Agregado ✓" + badge del carrito anima (bounce). Toast desaparece en 3s.</td><td class="tv">300ms</td></tr>
+          <tr><td class="tn">Cambiar cantidad en carrito</td><td>Precio y peso se recalculan en tiempo real. Número anima con count-up.</td><td class="tv">150ms</td></tr>
+          <tr><td class="tn">Calcular peso</td><td>Resultado aparece con animación count-up de 0 al valor final.</td><td class="tv">500ms</td></tr>
+          <tr><td class="tn">Enviar cotización</td><td>Botón cambia a spinner → "Enviando..." → "✓ Cotización enviada" con confetti sutil.</td><td class="tv">loading</td></tr>
+          <tr><td class="tn">Aplicar código descuento</td><td>Si válido: línea verde "−$XXX" aparece con slide-down. Si inválido: shake del input + mensaje rojo.</td><td class="tv">200ms</td></tr>
+          <tr><td class="tn">Hover en card de producto</td><td>Card sube (shadow-lg) + imagen hace zoom sutil (scale 1.05). Ícono carrito cambia a naranja.</td><td class="tv">200ms</td></tr>
+          <tr><td class="tn">Scroll en artículo de blog</td><td>Tabla de contenidos: item activo se resalta con text-on-tertiary-container según la sección visible.</td><td class="tv">—</td></tr>
+          <tr><td class="tn">Tab Metro/Kilo/Pieza</td><td>Tab activo desliza borde inferior con transition. Precio y campos se actualizan.</td><td class="tv">150ms</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warn">
+      <p><strong>Regla general:</strong> Animaciones solo para feedback funcional, nunca decorativas. Duración máxima 300ms para interacciones directas. Respetar <code>prefers-reduced-motion</code> — desactivar animaciones si el usuario lo solicita.</p>
+    </div>
+  </div>
+
+  <!-- 06 ACCESIBILIDAD -->
+  <div class="seccion">
+    <span class="sec-label">06 — Accesibilidad (WCAG 2.1 AA)</span>
+    <h2>Requisitos mínimos</h2>
+
+    <div class="grid-2">
+      <div class="card"><h4>Contraste</h4><p>Texto normal: ratio ≥ 4.5:1. Texto grande (≥18px bold): ratio ≥ 3:1. Verificar con el fondo Steel Blue + naranja. El sistema ya cumple — validado en Stitch.</p></div>
+      <div class="card"><h4>Navegación por teclado</h4><p>Tab order lógico en formularios. Focus visible (ring-2) en todos los interactivos. Skip to content link oculto.</p></div>
+      <div class="card"><h4>Screen readers</h4><p>Alt text en imágenes de productos. <code>aria-label</code> en botones de ícono (carrito, búsqueda). <code>role="alert"</code> en toasts y errores.</p></div>
+      <div class="card"><h4>Formularios</h4><p>Labels visibles en todos los inputs. Errores asociados con <code>aria-describedby</code>. Autocompletado habilitado (<code>autocomplete="email"</code> etc).</p></div>
+      <div class="card"><h4>Touch targets</h4><p>Mínimo 44x44px en mobile para botones y links. Spacing suficiente entre targets adyacentes (≥8px).</p></div>
+      <div class="card"><h4>Semántica HTML</h4><p><code>nav</code>, <code>main</code>, <code>article</code>, <code>aside</code>, <code>footer</code>. Headings en orden (h1 → h2 → h3). Una sola <code>h1</code> por página.</p></div>
+    </div>
+  </div>
+
+  <!-- 07 TIPOGRAFÍA FUNCIONAL -->
+  <div class="seccion">
+    <span class="sec-label">07 — Jerarquía Tipográfica Funcional</span>
+    <h2>Qué fuente se usa y dónde</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Rol</td><td>Fuente</td><td>Peso/Tamaño</td><td>Dónde se usa</td></tr>
+          <tr><td class="tn">Display</td><td class="tk">Montserrat</td><td class="tv">800 / 48px</td><td>Hero de homepage, títulos de sección grandes</td></tr>
+          <tr><td class="tn">Headline</td><td class="tk">Montserrat</td><td class="tv">700 / 32px</td><td>Títulos de página, nombres de sección</td></tr>
+          <tr><td class="tn">Subheadline</td><td class="tk">Montserrat</td><td class="tv">600 / 24px</td><td>Subtítulos, nombres de categoría</td></tr>
+          <tr><td class="tn">Body</td><td class="tk">Inter</td><td class="tv">400 / 16px</td><td>Texto de párrafo, descripciones</td></tr>
+          <tr><td class="tn">Label</td><td class="tk">Inter</td><td class="tv">600 / 14px</td><td>Labels de formulario, nav links, botones</td></tr>
+          <tr><td class="tn">Eyebrow</td><td class="tk">Inter</td><td class="tv">600 / 10-11px</td><td>Categorías, eyebrow labels, uppercase con tracking</td></tr>
+          <tr><td class="tn">Mono Data</td><td class="tk">Inter</td><td class="tv">500 / 13px</td><td>SKUs, precios, pesos, medidas, IDs de pedido, CLABE</td></tr>
+          <tr><td class="tn">Blog reading</td><td class="tk">Inter</td><td class="tv">400 / 18px</td><td>Cuerpo de artículos — line-height 1.8 para lectura cómoda</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 08 PATRONES DE CONVERSIÓN -->
+  <div class="seccion">
+    <span class="sec-label">08 — Patrones de Conversión</span>
+    <h2>Cómo cada pantalla empuja al usuario a actuar</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Pantalla</td><td>CTA Primario</td><td>CTA Secundario</td><td>Trigger de urgencia</td></tr>
+          <tr><td class="tn">Homepage</td><td class="tv">Ver Catálogo</td><td>Solicitar Cotización</td><td>Sección "Más Solicitados" — implica que se agotan</td></tr>
+          <tr><td class="tn">Catálogo</td><td class="tv">Ver Producto</td><td>Agregar al Carrito (rápido)</td><td>Badge "En Stock" verde — muestra disponibilidad real</td></tr>
+          <tr><td class="tn">Producto</td><td class="tv">Agregar al Carrito</td><td>Solicitar Cotización</td><td>Peso calculado en tiempo real — el usuario ya "tiene" el dato</td></tr>
+          <tr><td class="tn">Carrito</td><td class="tv">Proceder al Pago</td><td>Solicitar Cotización del pedido</td><td>Total visible con peso y IVA — sin sorpresas</td></tr>
+          <tr><td class="tn">Checkout</td><td class="tv">Confirmar Pedido</td><td>—</td><td>Resumen oscuro sticky — siempre visible el total</td></tr>
+          <tr><td class="tn">Blog</td><td class="tv">Ver en Catálogo</td><td>Calculadora integrada</td><td>CTA al final del artículo — momento de máxima intención</td></tr>
+          <tr><td class="tn">Cotización</td><td class="tv">Enviar Cotización</td><td>WhatsApp directo</td><td>Upload de PDF/DWG — el usuario ya tiene su spec lista</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Regla del "doble CTA"</h3>
+    <p>Cada pantalla de producto ofrece exactamente 2 caminos: <strong>"Comprar ahora"</strong> (carrito → checkout → pago) y <strong>"Cotizar"</strong> (formulario → email/WhatsApp). El comprador B2B que necesita aprobación interna siempre tiene la opción de cotización sin tener que abandonar el flujo.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>UI/UX Design Doc v1.0 — acerosymetalesurgentes.com · Julio 2026</span>
+  <span>Juan Azael Pinales Regis</span>
+</footer>
+</body>
+</html>

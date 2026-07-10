@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Implementación — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+  :root { --negro:#0D1117; --panel:#161B22; --borde:#21262D; --primary:#162839; --primary-c:#2c3e50; --acento:#f78b30; --plata:#8B949E; --blanco:#E6EDF3; --verde:#3FB950; --azul:#58A6FF; --rojo:#FF7B72; --amarillo:#E3B341; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--negro); color:var(--blanco); font-family:'Inter',sans-serif; font-size:14px; line-height:1.7; }
+  header { background:var(--panel); border-bottom:1px solid var(--borde); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+  .header-logo { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--plata); }
+  .header-logo span { color:var(--acento); font-weight:700; }
+  .badge { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px; border:1px solid; color:var(--amarillo); border-color:rgba(227,179,65,0.3); background:rgba(227,179,65,0.08); }
+  .portada { background:var(--primary-c); padding:64px 56px 72px; position:relative; }
+  .portada::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:var(--acento); }
+  .portada-tag { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--acento); margin-bottom:24px; }
+  .portada h1 { font-family:'Montserrat',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:800; line-height:1; color:#fff; margin-bottom:16px; }
+  .portada h1 em { font-style:normal; color:var(--acento); }
+  .contenido { max-width:960px; margin:0 auto; padding:0 48px; }
+  .seccion { padding:48px 0; border-bottom:1px solid var(--borde); }
+  .seccion:last-child { border-bottom:none; }
+  .sec-label { display:inline-block; font-family:'JetBrains Mono',monospace; background:rgba(247,139,48,0.1); color:var(--acento); font-size:9px; font-weight:700; letter-spacing:4px; text-transform:uppercase; padding:4px 10px; border-radius:3px; border:1px solid rgba(247,139,48,0.25); margin-bottom:16px; }
+  h2 { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:#fff; margin-bottom:12px; }
+  p { color:var(--plata); margin-bottom:12px; max-width:700px; }
+
+  .week { margin-top:24px; background:var(--panel); border:1px solid var(--borde); border-radius:6px; overflow:hidden; }
+  .week-header { display:flex; justify-content:space-between; align-items:center; padding:14px 20px; border-bottom:1px solid var(--borde); }
+  .week-label { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--acento); }
+  .week-title { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--blanco); }
+  .week-tag { font-family:'JetBrains Mono',monospace; font-size:10px; padding:2px 8px; border-radius:10px; }
+  .t-setup { color:var(--azul); border:1px solid rgba(88,166,255,0.3); background:rgba(88,166,255,0.08); }
+  .t-front { color:var(--verde); border:1px solid rgba(63,185,80,0.3); background:rgba(63,185,80,0.08); }
+  .t-back { color:var(--acento); border:1px solid rgba(247,139,48,0.3); background:rgba(247,139,48,0.08); }
+  .t-seo { color:var(--amarillo); border:1px solid rgba(227,179,65,0.3); background:rgba(227,179,65,0.08); }
+  .t-qa { color:var(--rojo); border:1px solid rgba(255,123,114,0.3); background:rgba(255,123,114,0.08); }
+
+  .tasks { padding:0; }
+  .task { display:grid; grid-template-columns:24px 1fr auto; gap:12px; padding:10px 20px; border-bottom:1px solid rgba(255,255,255,0.04); align-items:start; }
+  .task:last-child { border-bottom:none; }
+  .task-check { width:16px; height:16px; border:1.5px solid var(--borde); border-radius:3px; margin-top:3px; }
+  .task-name { font-size:13px; color:var(--plata); }
+  .task-name strong { color:var(--blanco); }
+  .task-name code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--azul); background:rgba(88,166,255,0.08); padding:1px 5px; border-radius:3px; }
+  .task-time { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--plata); white-space:nowrap; }
+
+  .milestone { margin-top:20px; background:rgba(247,139,48,0.06); border:1px solid rgba(247,139,48,0.2); border-left:3px solid var(--acento); border-radius:0 6px 6px 0; padding:14px 18px; }
+  .milestone strong { color:var(--acento); display:block; font-size:13px; margin-bottom:4px; }
+  .milestone p { font-size:12px; color:var(--plata); margin:0; max-width:100%; }
+
+  footer { background:var(--primary-c); padding:18px 48px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-top:4px solid var(--acento); }
+  footer span { font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">aceros<span>ymetalesurgentes</span>.com · Implementation</div>
+  <span class="badge">30-45 días</span>
+</header>
+
+<div class="portada">
+  <div class="portada-tag">Implementation Plan</div>
+  <h1>Plan de<br><em>Implementación</em></h1>
+</div>
+
+<div class="contenido">
+
+  <div class="seccion">
+    <span class="sec-label">MVP — 6 Semanas</span>
+    <h2>Semana por semana con tareas y entregables</h2>
+    <p>Cada semana tiene un entregable verificable. El cliente puede ver el avance en el preview de Vercel.</p>
+
+    <!-- SEMANA 1 -->
+    <div class="week">
+      <div class="week-header">
+        <div><span class="week-label">SEMANA 1</span><span class="week-title" style="margin-left:12px">Setup y Fundamentos</span></div>
+        <span class="week-tag t-setup">SETUP</span>
+      </div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Init Next.js 15</strong> con TypeScript, Tailwind, shadcn/ui. Estructura de directorios del PRD.</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Crear proyecto Supabase</strong> — ejecutar migrations SQL del Backend Schema.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Configurar Supabase Auth</strong> — email/password, roles admin/customer, middleware de Next.js.</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Deploy inicial en Vercel</strong> — conectar repo GitHub, configurar dominio + Cloudflare DNS.</div><div class="task-time">2h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Configurar variables de entorno</strong> en Vercel (dev/preview/prod) según .env.local del PRD.</div><div class="task-time">1h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Componentes base</strong> — Header, Footer, Layout público, Layout admin, Layout portal.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Seed data</strong> — cargar 10 categorías + 20-30 productos del catálogo aprobado en Supabase.</div><div class="task-time">3h</div></div>
+      </div>
+    </div>
+    <div class="milestone"><strong>Entregable semana 1:</strong><p>Sitio en vivo en acerosymetalesurgentes.com con header/footer, base de datos con datos reales y auth funcionando.</p></div>
+
+    <!-- SEMANA 2 -->
+    <div class="week">
+      <div class="week-header">
+        <div><span class="week-label">SEMANA 2</span><span class="week-title" style="margin-left:12px">Catálogo y Producto</span></div>
+        <span class="week-tag t-front">FRONTEND</span>
+      </div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Homepage</strong> — hero, categorías, productos destacados, barra de confianza. ISR 1h.</div><div class="task-time">6h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Catálogo</strong> — grid de productos, filtros (categoría, grado, unidad), paginación, búsqueda SQL.</div><div class="task-time">8h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Ficha de producto</strong> — galería, specs, equivalencias, descarga PDF/DWG. ISR 30min.</div><div class="task-time">6h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Calculadora de peso</strong> — <code>useWeightCalc()</code> hook + componente reutilizable. Unit tests.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>SEO metadata</strong> — <code>generateMetadata()</code> dinámico en producto y catálogo. JSON-LD Product.</div><div class="task-time">2h</div></div>
+      </div>
+    </div>
+    <div class="milestone"><strong>Entregable semana 2:</strong><p>Catálogo navegable con filtros, fichas de producto con calculadora de peso funcionando. El cliente puede navegar el catálogo real.</p></div>
+
+    <!-- SEMANA 3 -->
+    <div class="week">
+      <div class="week-header">
+        <div><span class="week-label">SEMANA 3</span><span class="week-title" style="margin-left:12px">Carrito, Checkout y Pagos</span></div>
+        <span class="week-tag t-back">BACKEND</span>
+      </div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Zustand store</strong> — carrito con persistencia localStorage, acciones add/remove/update/clear.</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Página de carrito</strong> — lista de items, ajustar cantidades, peso total, resumen.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Checkout</strong> — formulario 3 secciones (facturación/envío/pago), validación Zod.</div><div class="task-time">6h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Mercado Pago</strong> — <code>POST /api/pagos/crear</code> + webhook + verificación de firma.</div><div class="task-time">6h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Transferencia bancaria</strong> — flujo pending_transfer, datos bancarios, confirmación admin.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Edge Function</strong> — cancel-expired-transfers (cron 1h, timeout 48h).</div><div class="task-time">2h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Confirmación de pedido</strong> — pantalla + email con Resend + react-email template.</div><div class="task-time">3h</div></div>
+      </div>
+    </div>
+    <div class="milestone"><strong>Entregable semana 3:</strong><p>Flujo de compra completo end-to-end: agregar al carrito → checkout → pago (MP o transferencia) → confirmación. Probado con tarjeta de test de MP.</p></div>
+
+    <!-- SEMANA 4 -->
+    <div class="week">
+      <div class="week-header">
+        <div><span class="week-label">SEMANA 4</span><span class="week-title" style="margin-left:12px">Cotizaciones, Wishlist, Promos</span></div>
+        <span class="week-tag t-back">BACKEND</span>
+      </div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Cotizaciones</strong> — formulario multi-material, upload PDF/DWG a Storage, generar PDF con @react-pdf.</div><div class="task-time">6h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Email cotización</strong> — al admin con PDF adjunto + link WhatsApp. Al cliente con confirmación.</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Wishlist</strong> — API routes + UI (corazón en cards de producto + página de wishlist en portal).</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Promociones</strong> — CRUD admin + validación de cupones en checkout + descuento aplicado.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Buscador inteligente</strong> — OpenAI embeddings, indexar productos, <code>match_products()</code>, componente SmartSearch.</div><div class="task-time">6h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Botón carrito→cotización</strong> — convertir items del carrito en cotización formal.</div><div class="task-time">2h</div></div>
+      </div>
+    </div>
+    <div class="milestone"><strong>Entregable semana 4:</strong><p>Cotizaciones funcionando end-to-end. Buscador IA funcionando ("varilla 3/8" devuelve resultados relevantes). Promociones aplicables en checkout.</p></div>
+
+    <!-- SEMANA 5 -->
+    <div class="week">
+      <div class="week-header">
+        <div><span class="week-label">SEMANA 5</span><span class="week-title" style="margin-left:12px">Dashboard Admin + Portal Cliente</span></div>
+        <span class="week-tag t-front">FRONTEND</span>
+      </div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Dashboard</strong> — KPIs (ventas, pedidos, cotizaciones, clientes nuevos), gráfica de ventas.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Admin pedidos</strong> — lista con filtros, detalle, cambiar status, confirmar transferencia.</div><div class="task-time">5h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Admin inventario</strong> — tabla de stock, edición manual, alertas de stock bajo, importar CSV.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Admin cotizaciones</strong> — lista pendientes, ver detalle + PDF/DWG, responder.</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Admin clientes</strong> — lista, cambiar tier, ver historial de pedidos.</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Portal cliente</strong> — mis pedidos, mis cotizaciones, datos de empresa, nivel y descuento.</div><div class="task-time">5h</div></div>
+      </div>
+    </div>
+    <div class="milestone"><strong>Entregable semana 5:</strong><p>Dashboard admin y portal del cliente completos. El admin puede gestionar pedidos, inventario y cotizaciones. El cliente puede ver su historial.</p></div>
+
+    <!-- SEMANA 6 -->
+    <div class="week">
+      <div class="week-header">
+        <div><span class="week-label">SEMANA 6</span><span class="week-title" style="margin-left:12px">SEO, Blog, QA y Go-Live</span></div>
+        <span class="week-tag t-qa">QA + LAUNCH</span>
+      </div>
+      <div class="tasks">
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Blog</strong> — listado + artículo individual + admin editor + tabla de contenidos + CTA conversión.</div><div class="task-time">5h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>3 artículos iniciales</strong> — redactar y publicar 3 artículos SEO (4140, 6061, inoxidable 304).</div><div class="task-time">3h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>SEO técnico</strong> — sitemap.ts dinámico, robots.txt, JSON-LD, OpenGraph images.</div><div class="task-time">2h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Analytics</strong> — GA4 + Meta Pixel + Microsoft Clarity + eventos de conversión.</div><div class="task-time">2h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Google Business Profile</strong> — crear/optimizar perfil, fotos, horario, link al sitio.</div><div class="task-time">2h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Search Console</strong> — verificar propiedad, enviar sitemap, monitorear indexación.</div><div class="task-time">1h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>QA completo</strong> — 10 flujos del checklist del PRD, Lighthouse, responsive, cross-browser.</div><div class="task-time">6h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Fixes finales</strong> — correcciones de QA, ajustes de diseño, polish.</div><div class="task-time">4h</div></div>
+        <div class="task"><div class="task-check"></div><div class="task-name"><strong>Go-live</strong> — merge final a main, verificar producción, notificar al cliente.</div><div class="task-time">1h</div></div>
+      </div>
+    </div>
+    <div class="milestone"><strong>🚀 GO-LIVE</strong><p>Sitio en producción en acerosymetalesurgentes.com. Blog con 3 artículos. Analytics configurado. Google Business activo. Todos los flujos probados y funcionando.</p></div>
+
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">Resumen de Horas</span>
+    <h2>Estimación total del MVP</h2>
+
+    <div class="week" style="margin-top:0">
+      <div class="tasks">
+        <div class="task"><div></div><div class="task-name"><strong>Semana 1</strong> — Setup y Fundamentos</div><div class="task-time">20h</div></div>
+        <div class="task"><div></div><div class="task-name"><strong>Semana 2</strong> — Catálogo y Producto</div><div class="task-time">26h</div></div>
+        <div class="task"><div></div><div class="task-name"><strong>Semana 3</strong> — Carrito, Checkout y Pagos</div><div class="task-time">28h</div></div>
+        <div class="task"><div></div><div class="task-name"><strong>Semana 4</strong> — Cotizaciones, Wishlist, IA</div><div class="task-time">24h</div></div>
+        <div class="task"><div></div><div class="task-name"><strong>Semana 5</strong> — Dashboard + Portal</div><div class="task-time">24h</div></div>
+        <div class="task"><div></div><div class="task-name"><strong>Semana 6</strong> — SEO, Blog, QA, Launch</div><div class="task-time">26h</div></div>
+        <div class="task" style="border-top:2px solid var(--acento); padding-top:12px"><div></div><div class="task-name" style="color:var(--acento); font-weight:700">TOTAL MVP</div><div class="task-time" style="color:var(--acento); font-weight:700">~148h</div></div>
+      </div>
+    </div>
+
+    <p style="margin-top:16px">A ritmo de ~25h/semana = 6 semanas. A ritmo de ~35h/semana = 4-5 semanas. Incluye buffer para imprevistos.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>Implementation Plan v1.0 — acerosymetalesurgentes.com · Julio 2026</span>
+  <span>Juan Azael Pinales Regis</span>
+</footer>
+</body>
+</html>

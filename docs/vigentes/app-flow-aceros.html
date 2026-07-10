@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Flow — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+  :root { --negro:#0D1117; --panel:#161B22; --borde:#21262D; --primary:#162839; --primary-c:#2c3e50; --acento:#f78b30; --plata:#8B949E; --blanco:#E6EDF3; --verde:#3FB950; --azul:#58A6FF; --rojo:#FF7B72; --amarillo:#E3B341; --cyan:#79C0FF; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--negro); color:var(--blanco); font-family:'Inter',sans-serif; font-size:14px; line-height:1.7; }
+  header { background:var(--panel); border-bottom:1px solid var(--borde); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+  .header-logo { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--plata); }
+  .header-logo span { color:var(--acento); font-weight:700; }
+  .badge { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px; border:1px solid; color:var(--acento); border-color:rgba(247,139,48,0.3); background:rgba(247,139,48,0.08); }
+  .portada { background:var(--primary-c); padding:64px 56px 72px; position:relative; }
+  .portada::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:var(--acento); }
+  .portada-tag { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--acento); margin-bottom:24px; }
+  .portada h1 { font-family:'Montserrat',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:800; line-height:1; color:#fff; margin-bottom:16px; }
+  .portada h1 em { font-style:normal; color:var(--acento); }
+  .contenido { max-width:960px; margin:0 auto; padding:0 48px; }
+  .seccion { padding:48px 0; border-bottom:1px solid var(--borde); }
+  .seccion:last-child { border-bottom:none; }
+  .sec-label { display:inline-block; font-family:'JetBrains Mono',monospace; background:rgba(247,139,48,0.1); color:var(--acento); font-size:9px; font-weight:700; letter-spacing:4px; text-transform:uppercase; padding:4px 10px; border-radius:3px; border:1px solid rgba(247,139,48,0.25); margin-bottom:16px; }
+  h2 { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:#fff; margin-bottom:12px; }
+  h3 { font-family:'Montserrat',sans-serif; font-size:17px; font-weight:700; color:var(--blanco); margin-top:28px; margin-bottom:10px; }
+  p { color:var(--plata); margin-bottom:12px; max-width:700px; }
+  .code-block { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:20px 24px; margin-top:14px; margin-bottom:14px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.7; color:var(--blanco); overflow-x:auto; white-space:pre; }
+  .c { color:var(--plata); } .k { color:var(--azul); } .v { color:var(--verde); } .a { color:var(--acento); } .r { color:var(--rojo); } .y { color:var(--amarillo); } .cy { color:var(--cyan); }
+  footer { background:var(--primary-c); padding:18px 48px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-top:4px solid var(--acento); }
+  footer span { font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">aceros<span>ymetalesurgentes</span>.com · App Flow</div>
+  <span class="badge">v1.0</span>
+</header>
+
+<div class="portada">
+  <div class="portada-tag">Application Flow Document</div>
+  <h1>Flujos de<br><em>Usuario</em></h1>
+</div>
+
+<div class="contenido">
+
+  <div class="seccion">
+    <span class="sec-label">01 — Flujo Principal de Compra</span>
+    <h2>Happy path: búsqueda → pago → confirmación</h2>
+
+    <div class="code-block">
+<span class="a">COMPRADOR B2B — Flujo de compra con Mercado Pago</span>
+
+  <span class="k">Homepage</span>
+      │
+      ├── Busca "4140" en barra de búsqueda
+      │   └── <span class="cy">Buscador IA</span> interpreta → muestra resultados
+      │
+      ├── O navega: Catálogo → Filtro por categoría
+      │
+      ▼
+  <span class="k">Catálogo</span> (filtros activos)
+      │
+      ├── Ve card de producto → click
+      ▼
+  <span class="k">Producto Individual</span>
+      │
+      ├── Lee ficha técnica
+      ├── Selecciona unidad: <span class="v">Metro</span> / Kilo / Pieza
+      ├── Ingresa dimensiones en calculadora → ve peso estimado
+      ├── Ajusta cantidad
+      │
+      ├──────────────────────── <span class="a">"AGREGAR AL CARRITO"</span>
+      │                         Toast: "Agregado ✓"
+      │                         Badge carrito: +1
+      │
+      ├── Agrega más productos (regresa a catálogo)
+      │
+      ▼
+  <span class="k">Carrito</span>
+      │
+      ├── Revisa items, ajusta cantidades
+      ├── Ve peso total y subtotal
+      ├── (Opcional) Aplica código de descuento
+      │
+      ├──────────────────────── <span class="a">"PROCEDER AL PAGO"</span>
+      ▼
+  <span class="k">Checkout</span>
+      │
+      ├── Sección 1: Datos de facturación (nombre, RFC, email, tel)
+      │   └── ☐ "Requiero factura CFDI" → campos extras
+      │
+      ├── Sección 2: Dirección de entrega
+      │   └── ○ Envío a domicilio / ○ Recoger en sucursal
+      │
+      ├── Sección 3: Método de pago
+      │   └── <span class="v">● Mercado Pago</span> (tarjeta/OXXO/SPEI)
+      │
+      ├──────────────────────── <span class="a">"CONFIRMAR PEDIDO — $X,XXX"</span>
+      │
+      ├── Redirect a Mercado Pago
+      ├── Usuario paga
+      ├── Redirect de vuelta
+      ▼
+  <span class="v">Confirmación</span>
+      │
+      ├── ✓ Pedido #URG-8903 confirmado
+      ├── Email enviado con detalle
+      └── "Ver mi pedido" → Portal / "Seguir comprando" → Catálogo
+</div>
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">02 — Flujo de Transferencia</span>
+    <h2>Compra con pago por transferencia bancaria</h2>
+
+    <div class="code-block">
+<span class="a">COMPRADOR — Flujo con Transferencia</span>
+
+  <span class="k">Checkout</span> → Sección 3: Método de pago
+      │
+      └── <span class="y">● Transferencia Bancaria</span>
+          │
+          ├──────────────────── <span class="a">"CONFIRMAR PEDIDO"</span>
+          ▼
+      <span class="y">Pantalla de datos bancarios</span>
+          │
+          ├── Muestra: CLABE, Banco, Beneficiario, Referencia (#URG-8903)
+          ├── "Tu pedido se confirma al recibir el comprobante"
+          ├── "Válido por 48 horas"
+          ├── Email enviado al cliente con mismos datos
+          ├── Email enviado al admin: "Nuevo pedido pendiente de transferencia"
+          │
+          ═══ El cliente hace la transferencia en su banco ═══
+          │
+          ▼
+      <span class="r">Dashboard Admin</span>
+          │
+          ├── Admin ve pedido con status "Pendiente de transferencia" (amarillo)
+          ├── Verifica pago en estado de cuenta
+          │
+          ├──────────────────── <span class="a">"CONFIRMAR PAGO"</span>
+          │
+          ├── Status cambia a "Pagado" (verde)
+          ├── Stock se descuenta
+          ├── Email al cliente: "Tu pago fue confirmado"
+          └── Pedido pasa a "En proceso"
+
+      <span class="c">Si no se confirma en 48h:</span>
+          │
+          ├── <span class="r">Cron job cancela automáticamente</span>
+          ├── Stock se restaura
+          └── Email al cliente: "Tu pedido fue cancelado por falta de pago"
+</div>
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">03 — Flujo de Cotización</span>
+    <h2>Para el comprador que necesita aprobación interna</h2>
+
+    <div class="code-block">
+<span class="a">COMPRADOR B2B — Solicitar cotización</span>
+
+  <span class="c">Entrada 1: Desde la página de cotización</span>
+  <span class="k">/cotizacion</span>
+      │
+      ├── Llena: Nombre, empresa, email, teléfono, RFC
+      ├── Agrega materiales: (Material + Grado + Cantidad + Unidad) × N
+      ├── (Opcional) Adjunta PDF o DWG
+      ├── (Opcional) Notas adicionales
+      │
+      ├──────────────────── <span class="a">"ENVIAR COTIZACIÓN"</span>
+      ▼
+
+  <span class="c">Entrada 2: Desde el carrito</span>
+  <span class="k">/carrito</span>
+      │
+      ├──────────────────── <span class="a">"SOLICITAR COTIZACIÓN DE ESTE PEDIDO"</span>
+      ├── Convierte los items del carrito en items de cotización
+      ▼
+
+  <span class="v">Sistema</span>
+      │
+      ├── Guarda cotización en DB (status: pending)
+      ├── Genera PDF con @react-pdf/renderer
+      ├── Sube PDF a Supabase Storage
+      ├── Email al admin con PDF adjunto (Resend)
+      ├── Link WhatsApp al admin: "Nueva cotización de [empresa]"
+      ├── Email al cliente: "Recibimos tu cotización #COT-XXX"
+      │
+      ▼
+  <span class="r">Dashboard Admin</span>
+      │
+      ├── Ve cotización en lista de pendientes
+      ├── Revisa materiales y cantidades
+      ├── Responde con precios y disponibilidad
+      │
+      ├──────────────────── <span class="a">"RESPONDER COTIZACIÓN"</span>
+      │
+      ├── Email al cliente con la respuesta
+      └── Status: pending → responded → closed/converted
+</div>
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">04 — Flujos de Registro y Auth</span>
+    <h2>Registro, login y acceso a áreas protegidas</h2>
+
+    <div class="code-block">
+<span class="a">REGISTRO DE CLIENTE</span>
+
+  <span class="k">/registro</span>
+      │
+      ├── Email + Contraseña + Nombre + Teléfono
+      ├── (Opcional) Datos de empresa: Razón social + RFC
+      │
+      ├──────────────────── <span class="a">"CREAR CUENTA"</span>
+      │
+      ├── Supabase Auth crea usuario (role: customer)
+      ├── Si tiene empresa → INSERT en companies + customers
+      ├── Email de verificación (Supabase Auth)
+      ├── Redirect a /portal
+      │
+      ▼
+  <span class="v">/portal</span> — acceso inmediato
+
+
+<span class="a">LOGIN</span>
+
+  <span class="k">/login</span>
+      │
+      ├── Email + Contraseña
+      │   ├── ✓ → Redirect a /portal (customer) o /admin (admin)
+      │   └── ✗ → "Email o contraseña incorrectos" (genérico por seguridad)
+      │
+      └── "¿Olvidaste tu contraseña?" → Magic link por email
+
+
+<span class="a">ACCESO A RUTAS PROTEGIDAS</span>
+
+  Usuario no autenticado intenta acceder a /portal o /admin
+      │
+      ├── Middleware detecta falta de sesión
+      ├── Redirect a /login?redirect=/portal/pedidos
+      ├── Después del login → redirect automático a la URL original
+      │
+  Usuario autenticado con rol incorrecto (customer intenta /admin)
+      │
+      ├── Middleware detecta rol incorrecto
+      └── Redirect a /403 → "No tienes permisos"
+</div>
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">05 — Flujo del Admin</span>
+    <h2>Operaciones diarias del administrador</h2>
+
+    <div class="code-block">
+<span class="r">DASHBOARD ADMIN — Operación diaria</span>
+
+  <span class="r">/admin</span> (Dashboard)
+      │
+      ├── Ve KPIs: Ventas hoy / Pedidos pendientes / Cotizaciones sin responder / Clientes nuevos
+      │
+      ├── <span class="a">Pedidos</span> → /admin/pedidos
+      │   ├── Lista con filtros: Pendiente / En proceso / Entregado / Cancelado
+      │   ├── Click en pedido → detalle con items, cliente, pago, dirección
+      │   ├── Cambiar status: Pendiente → En proceso → Enviado → Entregado
+      │   └── Confirmar pago de transferencia
+      │
+      ├── <span class="a">Cotizaciones</span> → /admin/cotizaciones
+      │   ├── Lista de cotizaciones pendientes con countdown
+      │   ├── Click → ver materiales solicitados + PDF/DWG adjunto
+      │   └── Responder con precios y disponibilidad
+      │
+      ├── <span class="a">Inventario</span> → /admin/inventario
+      │   ├── Tabla de productos con stock actual
+      │   ├── Alertas de stock bajo (rojo si &lt; umbral)
+      │   ├── Editar stock manualmente
+      │   └── Importar stock desde CSV
+      │
+      ├── <span class="a">Clientes</span> → /admin/clientes
+      │   ├── Lista de clientes con tier (Standard/Silver/Gold)
+      │   ├── Cambiar tier → cambia descuento automáticamente
+      │   └── Ver historial de pedidos del cliente
+      │
+      ├── <span class="a">Blog</span> → /admin/blog
+      │   ├── Lista de artículos (borrador / publicado)
+      │   ├── Editor de texto con markdown
+      │   └── Publicar → regenera ISR
+      │
+      └── <span class="a">Reportes</span> → /admin/reportes
+          ├── Ventas por período (gráfica de barras)
+          ├── Ventas por categoría
+          ├── Top clientes por volumen
+          └── Exportar a CSV
+</div>
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">06 — Flujo SEO / Entrada Orgánica</span>
+    <h2>Cómo llega el usuario por Google</h2>
+
+    <div class="code-block">
+<span class="cy">Google</span>: "comprar acero 4140 CDMX"
+    │
+    ├── Resultado 1: <span class="v">acerosymetalesurgentes.com/catalogo/acero-4140-barra-redonda</span>
+    │   └── Meta: "Acero 4140 Barra Redonda · En Stock · Compra por metro o kilo"
+    │
+    ├── Resultado 2: <span class="v">acerosymetalesurgentes.com/blog/acero-4140-propiedades</span>
+    │   └── Meta: "Acero 4140: Propiedades, aplicaciones y equivalencias"
+    │
+    ▼
+  <span class="k">Ficha de producto</span> o <span class="k">Artículo de blog</span>
+    │
+    ├── Si producto → calculadora + "Agregar al carrito" + "Cotizar"
+    ├── Si blog → lectura → CTA "¿Necesita este material?" → link a producto
+    │
+    ▼
+  <span class="v">Conversión</span>: carrito, cotización o WhatsApp
+
+
+<span class="cy">Google Maps</span>: "distribuidor de acero cerca de mí"
+    │
+    ├── Google Business Profile → dirección, teléfono, horario, fotos
+    ├── Link al sitio web
+    └── Botón de WhatsApp directo
+</div>
+  </div>
+
+</div>
+
+<footer>
+  <span>App Flow v1.0 — acerosymetalesurgentes.com · Julio 2026</span>
+  <span>Juan Azael Pinales Regis</span>
+</footer>
+</body>
+</html>

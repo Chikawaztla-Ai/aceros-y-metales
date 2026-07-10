@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backend Schema — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+  :root { --negro:#0D1117; --panel:#161B22; --borde:#21262D; --primary:#162839; --primary-c:#2c3e50; --acento:#f78b30; --plata:#8B949E; --blanco:#E6EDF3; --verde:#3FB950; --azul:#58A6FF; --rojo:#FF7B72; --amarillo:#E3B341; --cyan:#79C0FF; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--negro); color:var(--blanco); font-family:'Inter',sans-serif; font-size:14px; line-height:1.7; }
+  header { background:var(--panel); border-bottom:1px solid var(--borde); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+  .header-logo { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--plata); }
+  .header-logo span { color:var(--acento); font-weight:700; }
+  .badge { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px; border:1px solid; color:var(--verde); border-color:rgba(63,185,80,0.3); background:rgba(63,185,80,0.08); }
+  .portada { background:var(--primary-c); padding:64px 56px 72px; position:relative; }
+  .portada::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:var(--acento); }
+  .portada-tag { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--acento); margin-bottom:24px; }
+  .portada h1 { font-family:'Montserrat',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:800; line-height:1; color:#fff; margin-bottom:16px; }
+  .portada h1 em { font-style:normal; color:var(--acento); }
+  .contenido { max-width:960px; margin:0 auto; padding:0 48px; }
+  .seccion { padding:48px 0; border-bottom:1px solid var(--borde); }
+  .seccion:last-child { border-bottom:none; }
+  .sec-label { display:inline-block; font-family:'JetBrains Mono',monospace; background:rgba(247,139,48,0.1); color:var(--acento); font-size:9px; font-weight:700; letter-spacing:4px; text-transform:uppercase; padding:4px 10px; border-radius:3px; border:1px solid rgba(247,139,48,0.25); margin-bottom:16px; }
+  h2 { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:#fff; margin-bottom:12px; }
+  h3 { font-family:'Montserrat',sans-serif; font-size:17px; font-weight:700; color:var(--blanco); margin-top:28px; margin-bottom:10px; }
+  p { color:var(--plata); margin-bottom:12px; max-width:700px; }
+  .code-block { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:20px 24px; margin-top:14px; margin-bottom:14px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.7; color:var(--blanco); overflow-x:auto; white-space:pre; }
+  .c { color:var(--plata); } .k { color:var(--azul); } .v { color:var(--verde); } .a { color:var(--acento); } .r { color:var(--rojo); } .y { color:var(--amarillo); } .cy { color:var(--cyan); }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+  @media(max-width:700px){ .grid-2{ grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:16px 20px; }
+  .card h4 { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--acento); margin-bottom:8px; }
+  .card p { font-size:12px; color:var(--plata); margin:0; max-width:100%; }
+  .card code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--azul); background:rgba(88,166,255,0.08); padding:1px 5px; border-radius:3px; }
+  footer { background:var(--primary-c); padding:18px 48px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-top:4px solid var(--acento); }
+  footer span { font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">aceros<span>ymetalesurgentes</span>.com · Backend Schema</div>
+  <span class="badge">Supabase PostgreSQL</span>
+</header>
+
+<div class="portada">
+  <div class="portada-tag">Backend Schema Document</div>
+  <h1>Esquema de<br><em>Backend</em></h1>
+</div>
+
+<div class="contenido">
+
+  <div class="seccion">
+    <span class="sec-label">01 — Diagrama ER</span>
+    <h2>Entity-Relationship completo</h2>
+
+    <div class="code-block">
+<span class="c">╔══════════════════════════════════════════════════════════════════════════╗</span>
+<span class="c">║</span>                    <span class="a">DIAGRAMA ENTIDAD-RELACIÓN</span>                            <span class="c">║</span>
+<span class="c">╚══════════════════════════════════════════════════════════════════════════╝</span>
+
+                         <span class="k">auth.users</span>
+                         (Supabase Auth)
+                              │
+                    ┌─────────┴──────────┐
+                    │                    │
+               <span class="v">customers</span>          <span class="c">(role=admin)</span>
+                    │
+              ┌─────┼─────────┬──────────────┐
+              │     │         │              │
+         <span class="v">companies</span>  │    <span class="v">wishlist_items</span>   │
+              │     │         │              │
+              │     │    ┌────┘              │
+              │     │    │                   │
+              │  <span class="v">orders</span>  │            <span class="v">quotes</span>
+              │     │    │                   │
+              │     │    │              <span class="c">(items en jsonb)</span>
+              │  <span class="v">order_items</span>
+              │     │
+              │     │
+         <span class="k">products</span> ◄──────────────────────┐
+              │                              │
+       ┌──────┼──────┐               <span class="v">product_embeddings</span>
+       │      │      │                  (pgvector)
+  <span class="v">categories</span>  │  <span class="v">volume_prices</span>
+              │
+        <span class="v">promotions</span>
+         (standalone)
+
+
+<span class="a">RELACIONES:</span>
+  customers.user_id       → auth.users.id         <span class="c">(1:1)</span>
+  customers.company_id    → companies.id           <span class="c">(N:1) nullable</span>
+  orders.customer_id      → customers.id           <span class="c">(N:1)</span>
+  order_items.order_id    → orders.id              <span class="c">(N:1) CASCADE</span>
+  order_items.product_id  → products.id            <span class="c">(N:1)</span>
+  products.category_id    → categories.id          <span class="c">(N:1)</span>
+  volume_prices.product_id→ products.id            <span class="c">(N:1)</span>
+  wishlist_items.customer_id → customers.id        <span class="c">(N:1)</span>
+  wishlist_items.product_id  → products.id         <span class="c">(N:1)</span>
+  product_embeddings.product_id → products.id      <span class="c">(1:1)</span>
+  quotes.customer_id      → customers.id           <span class="c">(N:1) nullable</span>
+  promotions.category_id  → categories.id          <span class="c">(N:1) nullable</span>
+</div>
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">02 — SQL Completo</span>
+    <h2>Migrations de Supabase</h2>
+
+    <div class="code-block">
+<span class="c">-- ============================================================</span>
+<span class="c">-- 00_extensions.sql</span>
+<span class="c">-- ============================================================</span>
+
+<span class="y">CREATE EXTENSION IF NOT EXISTS</span> <span class="v">"uuid-ossp"</span>;
+<span class="y">CREATE EXTENSION IF NOT EXISTS</span> <span class="v">"vector"</span>;     <span class="c">-- pgvector para búsqueda IA</span>
+
+
+<span class="c">-- ============================================================</span>
+<span class="c">-- 01_categories.sql</span>
+<span class="c">-- ============================================================</span>
+
+<span class="y">CREATE TABLE</span> <span class="k">categories</span> (
+  <span class="v">id</span>          uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">name</span>        text <span class="y">NOT NULL</span>,              <span class="c">-- "Aceros Comerciales"</span>
+  <span class="v">slug</span>        text <span class="y">UNIQUE NOT NULL</span>,       <span class="c">-- "aceros-comerciales"</span>
+  <span class="v">description</span> text,
+  <span class="v">commission_pct</span> numeric <span class="y">DEFAULT</span> 0,     <span class="c">-- 3%, 2%, 5%</span>
+  <span class="v">sort_order</span>  int <span class="y">DEFAULT</span> 0,
+  <span class="v">active</span>      boolean <span class="y">DEFAULT</span> true,
+  <span class="v">created_at</span>  timestamptz <span class="y">DEFAULT</span> now()
+);
+
+<span class="y">INSERT INTO</span> categories (name, slug, commission_pct, sort_order) <span class="y">VALUES</span>
+  (<span class="v">'Aceros Comerciales'</span>,    <span class="v">'aceros-comerciales'</span>,    3, 1),
+  (<span class="v">'Aceros Especiales'</span>,     <span class="v">'aceros-especiales'</span>,     3, 2),
+  (<span class="v">'Aluminio'</span>,              <span class="v">'aluminio'</span>,              2, 3),
+  (<span class="v">'Cobre'</span>,                 <span class="v">'cobre'</span>,                 2, 4),
+  (<span class="v">'Bronce'</span>,                <span class="v">'bronce'</span>,                2, 5),
+  (<span class="v">'Latón'</span>,                 <span class="v">'laton'</span>,                 2, 6),
+  (<span class="v">'Maquinaria'</span>,            <span class="v">'maquinaria'</span>,            5, 7),
+  (<span class="v">'Herramientas'</span>,          <span class="v">'herramientas'</span>,          5, 8),
+  (<span class="v">'Consumibles'</span>,           <span class="v">'consumibles'</span>,           5, 9),
+  (<span class="v">'Promociones'</span>,           <span class="v">'promociones'</span>,           0, 10);
+
+
+<span class="c">-- ============================================================</span>
+<span class="c">-- 02_products.sql</span>
+<span class="c">-- ============================================================</span>
+
+<span class="y">CREATE TABLE</span> <span class="k">products</span> (
+  <span class="v">id</span>            uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">sku</span>           text <span class="y">UNIQUE NOT NULL</span>,       <span class="c">-- "4140-025"</span>
+  <span class="v">name</span>          text <span class="y">NOT NULL</span>,
+  <span class="v">slug</span>          text <span class="y">UNIQUE NOT NULL</span>,
+  <span class="v">category_id</span>   uuid <span class="y">REFERENCES</span> categories(id),
+  <span class="v">aisi_grade</span>    text,                       <span class="c">-- "4140", "D2", "304"</span>
+  <span class="v">description</span>   text,
+  <span class="v">unit_types</span>    text[] <span class="y">DEFAULT</span> <span class="v">'{metro,kilo,pieza}'</span>,
+  <span class="v">base_price</span>    numeric <span class="y">NOT NULL</span>,
+  <span class="v">density</span>       numeric,                    <span class="c">-- kg/m³ para calculadora</span>
+  <span class="v">stock_qty</span>     numeric <span class="y">DEFAULT</span> 0,
+  <span class="v">stock_min</span>     numeric <span class="y">DEFAULT</span> 10,          <span class="c">-- umbral alerta</span>
+  <span class="v">pdf_url</span>       text,
+  <span class="v">dwg_url</span>       text,
+  <span class="v">images</span>        text[],                     <span class="c">-- array de URLs Storage</span>
+  <span class="v">specs</span>         jsonb <span class="y">DEFAULT</span> <span class="v">'{}'</span>,         <span class="c">-- composición, dureza, etc</span>
+  <span class="v">equivalences</span>  jsonb <span class="y">DEFAULT</span> <span class="v">'{}'</span>,         <span class="c">-- DIN, JIS, BS</span>
+  <span class="v">applications</span>  text,                       <span class="c">-- texto para embeddings</span>
+  <span class="v">featured</span>      boolean <span class="y">DEFAULT</span> false,
+  <span class="v">active</span>        boolean <span class="y">DEFAULT</span> true,
+  <span class="v">created_at</span>    timestamptz <span class="y">DEFAULT</span> now(),
+  <span class="v">updated_at</span>    timestamptz <span class="y">DEFAULT</span> now()
+);
+
+<span class="c">-- Índices para performance</span>
+<span class="y">CREATE INDEX</span> idx_products_category <span class="y">ON</span> products(category_id);
+<span class="y">CREATE INDEX</span> idx_products_grade <span class="y">ON</span> products(aisi_grade);
+<span class="y">CREATE INDEX</span> idx_products_slug <span class="y">ON</span> products(slug);
+<span class="y">CREATE INDEX</span> idx_products_active <span class="y">ON</span> products(active) <span class="y">WHERE</span> active = true;
+<span class="y">CREATE INDEX</span> idx_products_featured <span class="y">ON</span> products(featured) <span class="y">WHERE</span> featured = true;
+
+
+<span class="c">-- ============================================================</span>
+<span class="c">-- 03_companies_customers.sql</span>
+<span class="c">-- ============================================================</span>
+
+<span class="y">CREATE TABLE</span> <span class="k">companies</span> (
+  <span class="v">id</span>            uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">name</span>          text <span class="y">NOT NULL</span>,
+  <span class="v">rfc</span>           text <span class="y">UNIQUE</span>,
+  <span class="v">industry</span>      text,
+  <span class="v">tier</span>          text <span class="y">DEFAULT</span> <span class="v">'standard'</span>,    <span class="c">-- standard/silver/gold</span>
+  <span class="v">discount_pct</span>  numeric <span class="y">DEFAULT</span> 0,
+  <span class="v">credit_limit</span>  numeric <span class="y">DEFAULT</span> 0,
+  <span class="v">credit_used</span>   numeric <span class="y">DEFAULT</span> 0,
+  <span class="v">address</span>       jsonb,
+  <span class="v">active</span>        boolean <span class="y">DEFAULT</span> true,
+  <span class="v">created_at</span>    timestamptz <span class="y">DEFAULT</span> now()
+);
+
+<span class="y">CREATE TABLE</span> <span class="k">customers</span> (
+  <span class="v">id</span>            uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">user_id</span>       uuid <span class="y">UNIQUE REFERENCES</span> auth.users(id),
+  <span class="v">company_id</span>    uuid <span class="y">REFERENCES</span> companies(id),
+  <span class="v">full_name</span>     text <span class="y">NOT NULL</span>,
+  <span class="v">email</span>         text <span class="y">NOT NULL</span>,
+  <span class="v">phone</span>         text,
+  <span class="v">created_at</span>    timestamptz <span class="y">DEFAULT</span> now()
+);
+
+
+<span class="c">-- ============================================================</span>
+<span class="c">-- 04_orders.sql</span>
+<span class="c">-- ============================================================</span>
+
+<span class="y">CREATE TABLE</span> <span class="k">orders</span> (
+  <span class="v">id</span>              uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">order_number</span>    text <span class="y">UNIQUE NOT NULL</span>,     <span class="c">-- "URG-8903"</span>
+  <span class="v">customer_id</span>     uuid <span class="y">REFERENCES</span> customers(id),
+  <span class="v">status</span>          text <span class="y">DEFAULT</span> <span class="v">'pending'</span>,
+    <span class="c">-- pending → paid → processing → shipped → delivered</span>
+    <span class="c">-- pending_transfer → paid (o cancelled si timeout 48h)</span>
+  <span class="v">payment_method</span>  text,                     <span class="c">-- mercadopago / transferencia</span>
+  <span class="v">mp_payment_id</span>   text,
+  <span class="v">subtotal</span>        numeric <span class="y">NOT NULL</span>,
+  <span class="v">discount</span>        numeric <span class="y">DEFAULT</span> 0,
+  <span class="v">tax</span>             numeric <span class="y">NOT NULL</span>,          <span class="c">-- IVA 16%</span>
+  <span class="v">shipping</span>        numeric <span class="y">DEFAULT</span> 0,
+  <span class="v">total</span>           numeric <span class="y">NOT NULL</span>,
+  <span class="v">promotion_id</span>    uuid <span class="y">REFERENCES</span> promotions(id),
+  <span class="v">shipping_address</span> jsonb,
+  <span class="v">billing_rfc</span>     text,
+  <span class="v">billing_name</span>    text,
+  <span class="v">needs_cfdi</span>      boolean <span class="y">DEFAULT</span> false,
+  <span class="v">notes</span>           text,
+  <span class="v">cancelled_reason</span> text,
+  <span class="v">created_at</span>      timestamptz <span class="y">DEFAULT</span> now(),
+  <span class="v">updated_at</span>      timestamptz <span class="y">DEFAULT</span> now()
+);
+
+<span class="y">CREATE TABLE</span> <span class="k">order_items</span> (
+  <span class="v">id</span>            uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">order_id</span>      uuid <span class="y">REFERENCES</span> orders(id) <span class="y">ON DELETE CASCADE</span>,
+  <span class="v">product_id</span>    uuid <span class="y">REFERENCES</span> products(id),
+  <span class="v">sku</span>           text,
+  <span class="v">name</span>          text,                       <span class="c">-- snapshot del nombre</span>
+  <span class="v">unit_type</span>     text,                       <span class="c">-- metro/kilo/pieza</span>
+  <span class="v">quantity</span>      numeric <span class="y">NOT NULL</span>,
+  <span class="v">unit_price</span>    numeric <span class="y">NOT NULL</span>,
+  <span class="v">weight_kg</span>     numeric,
+  <span class="v">subtotal</span>      numeric <span class="y">NOT NULL</span>,
+  <span class="v">cut_specs</span>     jsonb                       <span class="c">-- null si no hay corte</span>
+);
+
+<span class="y">CREATE INDEX</span> idx_orders_customer <span class="y">ON</span> orders(customer_id);
+<span class="y">CREATE INDEX</span> idx_orders_status <span class="y">ON</span> orders(status);
+<span class="y">CREATE INDEX</span> idx_orders_created <span class="y">ON</span> orders(created_at <span class="y">DESC</span>);
+
+<span class="c">-- Auto-generar order_number secuencial</span>
+<span class="y">CREATE SEQUENCE</span> order_number_seq <span class="y">START</span> 8900;
+<span class="y">CREATE OR REPLACE FUNCTION</span> generate_order_number()
+<span class="y">RETURNS TRIGGER AS</span> $$
+<span class="y">BEGIN</span>
+  NEW.order_number := <span class="v">'URG-'</span> || nextval(<span class="v">'order_number_seq'</span>);
+  <span class="y">RETURN</span> NEW;
+<span class="y">END</span>;
+$$ <span class="y">LANGUAGE</span> plpgsql;
+
+<span class="y">CREATE TRIGGER</span> set_order_number
+  <span class="y">BEFORE INSERT ON</span> orders
+  <span class="y">FOR EACH ROW EXECUTE</span> generate_order_number();
+
+
+<span class="c">-- ============================================================</span>
+<span class="c">-- 05_quotes.sql</span>
+<span class="c">-- ============================================================</span>
+
+<span class="y">CREATE TABLE</span> <span class="k">quotes</span> (
+  <span class="v">id</span>            uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">quote_number</span>  text <span class="y">UNIQUE NOT NULL</span>,
+  <span class="v">customer_id</span>   uuid <span class="y">REFERENCES</span> customers(id), <span class="c">-- null si anónimo</span>
+  <span class="v">contact_name</span>  text <span class="y">NOT NULL</span>,
+  <span class="v">contact_email</span> text <span class="y">NOT NULL</span>,
+  <span class="v">contact_phone</span> text,
+  <span class="v">company</span>       text,
+  <span class="v">status</span>        text <span class="y">DEFAULT</span> <span class="v">'pending'</span>,     <span class="c">-- pending/responded/closed/converted</span>
+  <span class="v">items</span>         jsonb <span class="y">NOT NULL</span>,              <span class="c">-- [{material, grade, qty, unit, notes}]</span>
+  <span class="v">pdf_url</span>       text,                       <span class="c">-- PDF generado</span>
+  <span class="v">dwg_url</span>       text,                       <span class="c">-- archivo adjunto del cliente</span>
+  <span class="v">notes</span>         text,
+  <span class="v">admin_response</span> text,
+  <span class="v">created_at</span>    timestamptz <span class="y">DEFAULT</span> now(),
+  <span class="v">responded_at</span>  timestamptz
+);
+
+
+<span class="c">-- ============================================================</span>
+<span class="c">-- 06_extras.sql (wishlist, promotions, embeddings, email_queue)</span>
+<span class="c">-- ============================================================</span>
+
+<span class="y">CREATE TABLE</span> <span class="k">wishlist_items</span> (
+  <span class="v">id</span>          uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">customer_id</span> uuid <span class="y">REFERENCES</span> customers(id) <span class="y">ON DELETE CASCADE</span>,
+  <span class="v">product_id</span>  uuid <span class="y">REFERENCES</span> products(id) <span class="y">ON DELETE CASCADE</span>,
+  <span class="v">created_at</span>  timestamptz <span class="y">DEFAULT</span> now(),
+  <span class="y">UNIQUE</span>(customer_id, product_id)
+);
+
+<span class="y">CREATE TABLE</span> <span class="k">promotions</span> (
+  <span class="v">id</span>          uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">code</span>        text <span class="y">UNIQUE</span>,                <span class="c">-- null si no es cupón</span>
+  <span class="v">name</span>        text <span class="y">NOT NULL</span>,
+  <span class="v">type</span>        text <span class="y">NOT NULL</span>,              <span class="c">-- pct / fixed / free_shipping</span>
+  <span class="v">value</span>       numeric <span class="y">NOT NULL</span>,
+  <span class="v">category_id</span> uuid <span class="y">REFERENCES</span> categories(id), <span class="c">-- null = todo</span>
+  <span class="v">min_amount</span>  numeric <span class="y">DEFAULT</span> 0,
+  <span class="v">max_uses</span>    int,
+  <span class="v">used_count</span>  int <span class="y">DEFAULT</span> 0,
+  <span class="v">starts_at</span>   timestamptz,
+  <span class="v">ends_at</span>     timestamptz,
+  <span class="v">active</span>      boolean <span class="y">DEFAULT</span> true
+);
+
+<span class="y">CREATE TABLE</span> <span class="k">volume_prices</span> (
+  <span class="v">id</span>          uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">product_id</span>  uuid <span class="y">REFERENCES</span> products(id) <span class="y">ON DELETE CASCADE</span>,
+  <span class="v">tier</span>        text,                       <span class="c">-- silver/gold/custom</span>
+  <span class="v">min_qty</span>     numeric <span class="y">NOT NULL</span>,
+  <span class="v">price</span>       numeric <span class="y">NOT NULL</span>,
+  <span class="v">unit_type</span>   text
+);
+
+<span class="y">CREATE TABLE</span> <span class="k">product_embeddings</span> (
+  <span class="v">id</span>          uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">product_id</span>  uuid <span class="y">UNIQUE REFERENCES</span> products(id) <span class="y">ON DELETE CASCADE</span>,
+  <span class="v">embedding</span>   vector(1536) <span class="y">NOT NULL</span>,      <span class="c">-- OpenAI text-embedding-3-small</span>
+  <span class="v">content</span>     text <span class="y">NOT NULL</span>,              <span class="c">-- texto fuente del embedding</span>
+  <span class="v">updated_at</span>  timestamptz <span class="y">DEFAULT</span> now()
+);
+
+<span class="c">-- Índice para búsqueda vectorial rápida</span>
+<span class="y">CREATE INDEX</span> idx_embeddings_vector
+  <span class="y">ON</span> product_embeddings
+  <span class="y">USING</span> ivfflat (embedding vector_cosine_ops)
+  <span class="y">WITH</span> (lists = 100);
+
+<span class="y">CREATE TABLE</span> <span class="k">email_queue</span> (
+  <span class="v">id</span>          uuid <span class="y">PRIMARY KEY DEFAULT</span> uuid_generate_v4(),
+  <span class="v">to_email</span>    text <span class="y">NOT NULL</span>,
+  <span class="v">template</span>    text <span class="y">NOT NULL</span>,              <span class="c">-- order-confirmed, quote-received, etc</span>
+  <span class="v">data</span>        jsonb <span class="y">NOT NULL</span>,
+  <span class="v">status</span>      text <span class="y">DEFAULT</span> <span class="v">'pending'</span>,     <span class="c">-- pending/sent/failed</span>
+  <span class="v">retry_count</span> int <span class="y">DEFAULT</span> 0,
+  <span class="v">error</span>       text,
+  <span class="v">created_at</span>  timestamptz <span class="y">DEFAULT</span> now(),
+  <span class="v">sent_at</span>     timestamptz
+);
+
+
+<span class="c">-- ============================================================</span>
+<span class="c">-- 07_functions.sql</span>
+<span class="c">-- ============================================================</span>
+
+<span class="c">-- Búsqueda semántica por similitud de vectores</span>
+<span class="y">CREATE OR REPLACE FUNCTION</span> match_products(
+  query_embedding vector(1536),
+  match_threshold float <span class="y">DEFAULT</span> 0.3,
+  match_count int <span class="y">DEFAULT</span> 10
+)
+<span class="y">RETURNS TABLE</span> (
+  id uuid,
+  sku text,
+  name text,
+  slug text,
+  aisi_grade text,
+  base_price numeric,
+  similarity float
+) <span class="y">AS</span> $$
+  <span class="y">SELECT</span>
+    p.id, p.sku, p.name, p.slug, p.aisi_grade, p.base_price,
+    1 - (pe.embedding <=> query_embedding) <span class="y">AS</span> similarity
+  <span class="y">FROM</span> product_embeddings pe
+  <span class="y">JOIN</span> products p <span class="y">ON</span> p.id = pe.product_id
+  <span class="y">WHERE</span> p.active = true
+    <span class="y">AND</span> 1 - (pe.embedding <=> query_embedding) > match_threshold
+  <span class="y">ORDER BY</span> similarity <span class="y">DESC</span>
+  <span class="y">LIMIT</span> match_count;
+$$ <span class="y">LANGUAGE</span> sql <span class="y">STABLE</span>;
+
+<span class="c">-- Trigger para actualizar updated_at</span>
+<span class="y">CREATE OR REPLACE FUNCTION</span> update_updated_at()
+<span class="y">RETURNS TRIGGER AS</span> $$
+<span class="y">BEGIN</span>
+  NEW.updated_at = now();
+  <span class="y">RETURN</span> NEW;
+<span class="y">END</span>;
+$$ <span class="y">LANGUAGE</span> plpgsql;
+
+<span class="y">CREATE TRIGGER</span> products_updated_at <span class="y">BEFORE UPDATE ON</span> products
+  <span class="y">FOR EACH ROW EXECUTE</span> update_updated_at();
+
+<span class="y">CREATE TRIGGER</span> orders_updated_at <span class="y">BEFORE UPDATE ON</span> orders
+  <span class="y">FOR EACH ROW EXECUTE</span> update_updated_at();
+</div>
+  </div>
+
+  <div class="seccion">
+    <span class="sec-label">03 — Supabase Storage</span>
+    <h2>Buckets y políticas de archivos</h2>
+
+    <div class="grid-2">
+      <div class="card"><h4>product-images</h4><p>Público. Fotos de productos subidas por el admin. Max 5MB por imagen. Formatos: jpg, png, webp.</p></div>
+      <div class="card"><h4>product-docs</h4><p>Público. Fichas técnicas PDF y planos DWG. Max 10MB por archivo.</p></div>
+      <div class="card"><h4>quote-attachments</h4><p>Privado. Archivos PDF/DWG que el cliente adjunta en cotizaciones. Acceso: admin + dueño de la cotización.</p></div>
+      <div class="card"><h4>generated-pdfs</h4><p>Privado. PDFs generados por el sistema (cotizaciones, fichas). Acceso: admin + destinatario.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Backend Schema v1.0 — acerosymetalesurgentes.com · Julio 2026</span>
+  <span>Juan Azael Pinales Regis</span>
+</footer>
+</body>
+</html>
