@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog Técnico | Aceros y Metales Urgentes</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#43474c",
+                    "tertiary-container": "#612f00",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-primary-fixed-variant": "#36485b",
+                    "on-tertiary-fixed": "#301400",
+                    "primary-fixed-dim": "#b5c8df",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "primary-container": "#2c3e50",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-container": "#cce2fc",
+                    "primary": "#162839",
+                    "on-secondary-container": "#50657b",
+                    "surface-container-high": "#e6e8ea",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "on-primary-fixed": "#091d2e",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#d1e4fb",
+                    "outline-variant": "#c4c6cd",
+                    "inverse-surface": "#2d3133",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#051d30",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b5c8df",
+                    "tertiary": "#411d00",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-container": "#f78b30",
+                    "surface-dim": "#d8dadc",
+                    "on-surface": "#191c1e",
+                    "surface": "#f7f9fb",
+                    "tertiary-fixed": "#ffdcc5",
+                    "surface-tint": "#4e6073",
+                    "inverse-on-surface": "#eff1f3",
+                    "background": "#f7f9fb",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#74777d",
+                    "secondary": "#4b6076",
+                    "on-primary-container": "#96a9be",
+                    "on-secondary-fixed-variant": "#34495e",
+                    "on-background": "#191c1e",
+                    "secondary-fixed": "#cfe5ff",
+                    "secondary-fixed-dim": "#b3c9e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "mono-data": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .bento-hover:hover {
+            box-shadow: 0px 4px 12px rgba(44, 62, 80, 0.08);
+            transform: translateY(-2px);
+            transition: all 0.2s ease-in-out;
+        }
+        .zebra-table tr:nth-child(even) {
+            background-color: #f7f9fb;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="text-headline-md font-headline-md font-bold text-primary uppercase tracking-tight">
+                Aceros y Metales Urgentes
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-secondary font-medium hover:text-primary transition-colors" href="#">Aceros</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors" href="#">Aluminio</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors" href="#">No Ferrosos</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors" href="#">Maquinaria</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2 border border-outline-variant rounded">
+<span class="material-symbols-outlined text-outline mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-40" placeholder="Search resources..." type="text"/>
+</div>
+<button class="bg-on-tertiary-container text-white px-6 py-2 font-bold uppercase text-label-md hover:bg-tertiary-container transition-colors">
+                    WhatsApp CTA
+                </button>
+<span class="material-symbols-outlined text-primary text-2xl cursor-pointer">account_circle</span>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="bg-surface-container-low py-16 md:py-24">
+<div class="max-w-container-max mx-auto px-margin-desktop text-center">
+<p class="text-on-tertiary-container font-label-md uppercase mb-4">Centro de Recursos</p>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Blog Técnico</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                Guías, aplicaciones y comparativas de materiales para tu proyecto. Información estratégica para la industria metalmecánica.
+            </p>
+<div class="max-w-xl mx-auto relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 border border-outline-variant rounded bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none shadow-sm" placeholder="Buscar por material, norma o aplicación..." type="text"/>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-16 flex flex-col md:flex-row gap-gutter">
+<!-- Blog Grid (2/3) -->
+<div class="w-full md:w-2/3">
+<!-- Featured Article -->
+<article class="group mb-12 bg-white border border-outline-variant overflow-hidden bento-hover cursor-pointer">
+<div class="aspect-video relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A high-contrast cinematic shot of industrial steel bars stacked in a warehouse with blue-tinted overhead lighting. The textures of the cold-rolled steel 1018 and hot-rolled 1045 are visible. The composition is professional and structuralist, using deep shadows and sharp highlights of vivid orange from nearby safety equipment to create a technical yet premium industrial atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAijI4XAqRiUA21PMmSbGd2LK8bSeUnmsFfJOXr8_kKXphzy6BRYo61gnzX2E5SkSzs6uEKjMrMl3TUjruCMMlEf7GxtvyQGm6LAtso280zScOBkIPwg313Zw_Helya_gm3RP2VKP-O3bKgujoz59Mm4bL7mxW_LXZY7V_Hj-cz3DvtDOEFBvTkNmqN_Xz_dkdrlu1IcUy9wgq5yCKq1uSoFRRIB0IMDlbdbDTQwA_jx9F7tpZ1Bk9t')"></div>
+<div class="absolute top-6 left-6 bg-on-tertiary-container text-white px-4 py-1 font-label-md uppercase">
+                        Comparativas
+                    </div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-4 mb-4 text-outline font-mono-data uppercase tracking-wider">
+<span>12 OCT 2023</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span>8 MIN READ</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4 group-hover:text-on-tertiary-container transition-colors">
+                        Diferencias clave entre Acero 1018 y 1045
+                    </h2>
+<p class="text-on-surface-variant font-body-md mb-6 line-clamp-3">
+                        Entender la composición química y las propiedades mecánicas de estos dos grados de acero al carbono es fundamental para la selección correcta en aplicaciones de maquinado y construcción estructural. Analizamos dureza, soldabilidad y resistencia.
+                    </p>
+<div class="flex items-center text-primary font-bold uppercase text-label-md group-hover:translate-x-2 transition-transform">
+                        Leer artículo completo <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Regular Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Article 1 -->
+<article class="bg-white border border-outline-variant bento-hover cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close-up macro photography of industrial aluminum extrusion profiles with a clean metallic finish. The lighting is bright and technical, emphasizing the geometric precision of the metal. Hints of safety orange are reflected on the polished surfaces, maintaining the brand's industrial modernist aesthetic with a focus on high-trust reliability." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDWN6XMB1Zbo7F06bm4HSo41n9E9SP1jLxv8vvTcJchzJV2BVNPCDB2XYErWxEJr_oaTDb7AHuDyaYR3seBw43LpP53tvDNTH4R0WEHD63Ap2pmuS6mBrfx115YrBZ0SzUKexuU8RhC_J6bqKQDgOmnd6XsAEEpupmTKctRbQ-x1UMcJVbLe8EandvmRMPw0zjGSRSn4VnOGj5aNMgG3XRow3afGkr93N8QVqGk1bboAiEvcTrn5hcz')"></div>
+</div>
+<div class="p-6">
+<span class="text-on-tertiary-container font-label-md uppercase block mb-2">Guías de Compra</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-3 leading-tight">Guía de selección de Aluminio 6061-T6</h3>
+<p class="text-on-surface-variant font-body-md mb-4 line-clamp-2">Todo lo que necesitas saber sobre la aleación más versátil de la industria.</p>
+<span class="font-mono-data text-outline">MAR 15, 2024</span>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="bg-white border border-outline-variant bento-hover cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="Interior of a heavy-duty industrial workshop showing massive metal machinery parts. A professional technician is inspecting a gear component. The atmosphere is unyielding and efficient, with a blue and gray color palette punctuated by sharp orange highlights on safety signage and equipment controls." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjjNmAo6s_rSEBm-3_yexqqtqy1i9eqOVlY44qPm1jXyojQQkMw68BDH18XwrPCTLSTDhzSZzprGPBVd6Vct1gbQXA8T9HgPWjmW5fm9IobGSsVfz1EPlfEah4KJuOW5xzS7ZgJPeNdsTr7bz8hmSv2Q3_eghNkwrlNbiwZeAtpbocMaubXUXZAzOjfN49xmGkOMzukrof3DdfTYkyP_x2Ni-XNRjnhFj4yLaDiXuWCy6v_9Qss4kH')"></div>
+</div>
+<div class="p-6">
+<span class="text-on-tertiary-container font-label-md uppercase block mb-2">Aplicaciones</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-3 leading-tight">Uso de Bronce en bujes de alta carga</h3>
+<p class="text-on-surface-variant font-body-md mb-4 line-clamp-2">Por qué el bronce SAE 64 sigue siendo el estándar en aplicaciones antifricción.</p>
+<span class="font-mono-data text-outline">FEB 28, 2024</span>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="bg-white border border-outline-variant bento-hover cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="Technical schematic drawing overlaid on a blurred background of a steel warehouse. The schematic shows measurements and tolerances for metal beams. The lighting is bright and airy, suggesting a modern corporate industrial environment where technical data is prioritized and clearly presented." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEF_B9JGnI31DaOZQ0o8VtDo6A-dshADfmZEmBf2n8hfUFkCykYSr4smi93PHSfyRwQrHJcmgyyl91N56GyzwTrKG4OwmLb0cJ9w0s6NcOxbYMNpK_XtWkgDMSIJKTmvZ0jEky__z61zIA2kJ0syCfZ1AQX-MFBo6wUrKjcepvDLsZgz1VDSItkWhVjPNxOgcZVWbkWqtI9KHVc-PmEgtoIgWWTetTrYOGr1_9j5xgkwbgTyTyRnjJ')"></div>
+</div>
+<div class="p-6">
+<span class="text-on-tertiary-container font-label-md uppercase block mb-2">Normativas</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-3 leading-tight">Interpretación de normas ASTM y AISI</h3>
+<p class="text-on-surface-variant font-body-md mb-4 line-clamp-2">Desmitificando los códigos de materiales para una compra sin errores.</p>
+<span class="font-mono-data text-outline">FEB 10, 2024</span>
+</div>
+</article>
+<!-- Article 4 -->
+<article class="bg-white border border-outline-variant bento-hover cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="Wide angle view of a modern metal processing facility with pristine floors and organized racks of stainless steel sheets. The scene captures structural integrity and high-capacity logistics. The color palette is dominated by steel blue and graphite gray with strategic safety orange accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBDFq44fPAoPEtupy9lrEyZfMgTGT_78Ry2vLxHD-ekwsToj6IESEDL1NjTIk712srlOFWUGZ2bLEI7R1WR8atB19OeFCj2cW9KrPLIEuMLyCtkq0C5-zk8tSYpHRDrwW6gcfBvQ3vtP5cxumsqD3TpUAfQ8p-wwd9P8qbyzt1SDJQudGmXic5tIwh83W86uajUdJ98h1aERA1wAZQzWfNTo_vc4lCLNrsaicPQG8wQHhvLK3zv47gd')"></div>
+</div>
+<div class="p-6">
+<span class="text-on-tertiary-container font-label-md uppercase block mb-2">Certificaciones</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-3 leading-tight">Certificados de Molino: Qué revisar</h3>
+<p class="text-on-surface-variant font-body-md mb-4 line-clamp-2">La importancia de la trazabilidad en materiales críticos para la industria.</p>
+<span class="font-mono-data text-outline">JAN 22, 2024</span>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center gap-2">
+<button class="w-12 h-12 flex items-center justify-center border border-outline-variant bg-white text-primary font-bold hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center border border-primary bg-primary text-white font-bold">1</button>
+<button class="w-12 h-12 flex items-center justify-center border border-outline-variant bg-white text-primary font-bold hover:bg-surface-container transition-colors">2</button>
+<button class="w-12 h-12 flex items-center justify-center border border-outline-variant bg-white text-primary font-bold hover:bg-surface-container transition-colors">3</button>
+<button class="w-12 h-12 flex items-center justify-center border border-outline-variant bg-white text-primary font-bold hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Sidebar (1/3) -->
+<aside class="w-full md:w-1/3">
+<div class="sticky top-24 space-y-8">
+<!-- Categories -->
+<section class="bg-white border border-outline-variant p-8">
+<h4 class="font-headline-md text-headline-md text-primary mb-6 flex items-center">
+<span class="material-symbols-outlined mr-3">category</span> Categorías
+                    </h4>
+<ul class="space-y-4">
+<li class="flex justify-between items-center group cursor-pointer">
+<span class="text-on-surface-variant font-medium group-hover:text-primary transition-colors">Guías de Compra</span>
+<span class="bg-surface-container px-3 py-1 text-xs font-bold text-primary">8</span>
+</li>
+<li class="flex justify-between items-center group cursor-pointer">
+<span class="text-on-surface-variant font-medium group-hover:text-primary transition-colors">Aplicaciones Industriales</span>
+<span class="bg-surface-container px-3 py-1 text-xs font-bold text-primary">12</span>
+</li>
+<li class="flex justify-between items-center group cursor-pointer">
+<span class="text-on-surface-variant font-medium group-hover:text-primary transition-colors">Comparativa de Metales</span>
+<span class="bg-surface-container px-3 py-1 text-xs font-bold text-primary">15</span>
+</li>
+<li class="flex justify-between items-center group cursor-pointer">
+<span class="text-on-surface-variant font-medium group-hover:text-primary transition-colors">Normas y Calidad</span>
+<span class="bg-surface-container px-3 py-1 text-xs font-bold text-primary">6</span>
+</li>
+<li class="flex justify-between items-center group cursor-pointer">
+<span class="text-on-surface-variant font-medium group-hover:text-primary transition-colors">Casos de Éxito</span>
+<span class="bg-surface-container px-3 py-1 text-xs font-bold text-primary">4</span>
+</li>
+</ul>
+</section>
+<!-- Top Articles -->
+<section class="bg-white border border-outline-variant p-8">
+<h4 class="font-headline-md text-headline-md text-primary mb-6">Artículos Destacados</h4>
+<div class="space-y-6">
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-surface-container flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Technical close-up of a high-strength bolt and nut assembly on a steel structure. The metallic textures are crisp, and the lighting highlights the precision threads. The visual style is rooted in structuralist industrial design." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh4yT6wSBLQIo6nso_btPCOEI1QHzhCmW_qSr_TTiLFZHlLKPHcuc96MxSaFg_s1hoDBEbe_V5jfB3ZY2BByLa3tK2rCG1hHdngFI1KL7Oy_tVYIoKEad6WAjMacyBorGkKVSLLMAHtNlAW3nv_D97X5Y5-WlCt_vai3IndZLDMu1gdgLA9xNl5blEKW1dZC9DgzqNegY9Q9_hE3jhvfhCjgrm4BevM4sevwrgWUYKMqHVZ8o0fkYu')"></div>
+</div>
+<div>
+<h5 class="text-sm font-bold leading-tight group-hover:text-on-tertiary-container transition-colors">Resistencia a la tracción en Tornillería G8</h5>
+<span class="font-mono-data text-[11px] text-outline">5 MIN READ</span>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-surface-container flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Golden-hued brass rounds arranged neatly. The soft warm reflection of the brass contrasts with the cool steel blue of the background. The lighting is focused and professional." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDC7vDT-_BMlyFU6oDiFMu2TJZloQdNy7s25AryYjsCjvd4AbxvGwzCS1rEuiAGQtHqJO2qp8nu60HLerCVnfYKly0l06394ZHW53KsuQl17-6khuOP-pnOz5CyPnJg3tYH6_WPHsY_y6u2y44LmYvcXeFJoPRiorc0GPB6AOeGvNSbwwnLX4VxrE9e0I-oOcZFY1n3V1fDkb_ayOfgRsKha_L3AQO-K9yhq6wEidq0ry1uu4Vd10Q8')"></div>
+</div>
+<div>
+<h5 class="text-sm font-bold leading-tight group-hover:text-on-tertiary-container transition-colors">Propiedades del Latón 360 Maquinable</h5>
+<span class="font-mono-data text-[11px] text-outline">4 MIN READ</span>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-20 h-20 bg-surface-container flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Reflective stainless steel sheet metal stacked horizontally. The mirror-like finish creates interesting industrial reflections. The composition emphasizes clean lines and mass." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3orQGdJWe97rvdxtHIPQKN67beXtT0qUu6D-SFQdpp7aUVOBV10k5biaSIg-imnw2Pt1GRoiGaRNsjNNJU1xsCqMpLNBR6kkcL422K6yzX350Schgv1WKn5T3DGRtzjvtidkSAjuLP7frwwYls-yQki00rcVHwoI8Uiqq90eSzvuz9RxZKSU2X7aGC2nnKsHd19W2feYgIYWuX1CDMzQ69pFLvz0-k83GdT4dFsdHgYJDmc_TLwTK')"></div>
+</div>
+<div>
+<h5 class="text-sm font-bold leading-tight group-hover:text-on-tertiary-container transition-colors">Inoxidable 304 vs 316: Cuál elegir</h5>
+<span class="font-mono-data text-[11px] text-outline">10 MIN READ</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quote CTA -->
+<section class="bg-primary p-10 text-white flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-on-tertiary-container text-5xl mb-6">request_quote</span>
+<h4 class="font-headline-md text-headline-md mb-4">¿Necesitas una cotización urgente?</h4>
+<p class="font-body-md mb-8 opacity-80">Enviamos materiales a todo el país con entrega inmediata.</p>
+<button class="w-full bg-on-tertiary-container text-white py-4 font-bold uppercase tracking-widest text-label-md hover:bg-tertiary-container transition-all active:scale-95">
+                        Solicitar Cotización
+                    </button>
+</section>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container border-t-4 border-tertiary-container mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 w-full max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="text-headline-md font-headline-md font-bold text-on-primary uppercase mb-6">
+                    Aceros y Metales Urgentes
+                </div>
+<p class="text-on-primary-container text-sm leading-relaxed mb-6">
+                    Soluciones estructurales y materiales industriales con disponibilidad inmediata y calidad certificada.
+                </p>
+</div>
+<div>
+<h5 class="text-on-primary font-bold mb-6 uppercase text-label-md">Materiales</h5>
+<ul class="space-y-4">
+<li><a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Placa de Acero</a></li>
+<li><a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Barras de Bronce</a></li>
+<li><a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Perfiles de Aluminio</a></li>
+<li><a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Acero Inoxidable</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-on-primary font-bold mb-6 uppercase text-label-md">Recursos</h5>
+<ul class="space-y-4">
+<li><a class="text-tertiary-fixed-dim underline" href="#">Blog Técnico</a></li>
+<li><a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Certificaciones</a></li>
+<li><a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Guías de Pesos</a></li>
+<li><a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Calculadora de Acero</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-on-primary font-bold mb-6 uppercase text-label-md">Contacto</h5>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-primary-container">
+<span class="material-symbols-outlined text-sm">mail</span> sales@acerosurgentes.com
+                    </li>
+<li class="flex items-center gap-3 text-on-primary-container">
+<span class="material-symbols-outlined text-sm">phone</span> +52 (55) 1234 5678
+                    </li>
+<li class="flex items-center gap-3 text-on-primary-container">
+<span class="material-symbols-outlined text-sm">location_on</span> Zona Industrial, CP 02300, CDMX
+                    </li>
+</ul>
+</div>
+</div>
+<div class="border-t border-on-primary-container/10 py-8 px-margin-desktop text-center">
+<p class="text-on-primary-container text-xs opacity-60">© 2024 Aceros y Metales Urgentes. Industrial Structuralist Design.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for hover states on regular articles
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = '#f78b30'; // Safety Orange on hover
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '#c4c6cd'; // Restore Graphite Gray
+            });
+        });
+    </script>
+</body></html>

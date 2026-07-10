@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Productos – Aceros y Metales Urgentes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --negro:    #0D1117;
+    --panel:    #161B22;
+    --borde:    #21262D;
+    --acento:   #C8991A;
+    --acento-cl:#F5C842;
+    --plata:    #8B949E;
+    --blanco:   #E6EDF3;
+    --verde:    #3FB950;
+    --azul:     #58A6FF;
+    --morado:   #BC8CFF;
+    --rojo:     #FF7B72;
+    --naranja:  #FFA657;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--borde);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--plata);
+  }
+  .logo span { color: var(--acento-cl); font-weight: 700; }
+
+  .header-stats {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  .header-stats b { color: var(--acento-cl); }
+
+  /* BÚSQUEDA */
+  .busqueda-wrap {
+    padding: 24px 40px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--borde);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .busqueda-wrap input {
+    background: var(--negro);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 14px;
+    color: var(--blanco);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    width: 280px;
+    outline: none;
+    transition: border-color .15s;
+  }
+
+  .busqueda-wrap input:focus { border-color: var(--acento); }
+  .busqueda-wrap input::placeholder { color: var(--plata); }
+
+  .filtro-btn {
+    background: var(--negro);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 14px;
+    color: var(--plata);
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all .15s;
+  }
+
+  .filtro-btn:hover, .filtro-btn.activo {
+    border-color: var(--acento);
+    color: var(--acento-cl);
+    background: rgba(200,153,26,0.08);
+  }
+
+  .total-result {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  .total-result span { color: var(--verde); font-weight: 700; }
+
+  /* CONTENIDO */
+  .contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 40px 80px;
+  }
+
+  /* CATEGORÍA */
+  .categoria {
+    margin-bottom: 48px;
+  }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .cat-icono {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cat-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: var(--blanco);
+  }
+
+  .cat-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    color: var(--plata);
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-left: auto;
+  }
+
+  /* TABLA DE PRODUCTOS */
+  .tabla-wrap {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead tr { background: rgba(255,255,255,0.03); }
+  thead th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--plata);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background .1s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.025); }
+
+  tbody td {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--plata);
+    vertical-align: top;
+  }
+
+  .td-clave {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--acento-cl) !important;
+    white-space: nowrap;
+  }
+
+  .td-nombre {
+    font-weight: 600;
+    color: var(--blanco) !important;
+  }
+
+  .td-equiv {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+
+  .equiv-tag {
+    display: inline-block;
+    background: rgba(88,166,255,0.1);
+    color: var(--azul);
+    border: 1px solid rgba(88,166,255,0.2);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-size: 10px;
+    margin: 1px 2px;
+  }
+  .td-uso { font-size: 12px; color: var(--plata); max-width: 240px; }
+
+  /* NOTAS DE EQUIVALENCIA */
+  .nota-equiv {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(200,153,26,0.06);
+    border: 1px solid rgba(200,153,26,0.2);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  .nota-equiv strong { color: var(--acento-cl); }
+
+  /* FOOTER */
+  footer {
+    background: var(--panel);
+    border-top: 1px solid var(--borde);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  footer span { font-size: 11px; color: var(--plata); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">aceros<span>ymetalesurgentes</span>.com · Catálogo Interno v1.0</div>
+  <div class="header-stats">
+    <span>Fuentes: <b>6</b> proveedores</span>
+    <span>Productos: <b id="total-prod">—</b></span>
+    <span>Categorías: <b>7</b></span>
+  </div>
+</header>
+
+<div class="busqueda-wrap">
+  <input type="text" id="buscador" placeholder="Buscar por clave, nombre o equivalencia..." oninput="filtrar()">
+  <button class="filtro-btn activo" onclick="filtrarCat(this,'todos')">Todos</button>
+  <button class="filtro-btn" onclick="filtrarCat(this,'herramienta')">Grado Herramienta</button>
+  <button class="filtro-btn" onclick="filtrarCat(this,'maquinaria')">Grado Maquinaria</button>
+  <button class="filtro-btn" onclick="filtrarCat(this,'inoxidable')">Inoxidable</button>
+  <button class="filtro-btn" onclick="filtrarCat(this,'aluminio')">Aluminio</button>
+  <button class="filtro-btn" onclick="filtrarCat(this,'no-ferrosos')">No Ferrosos</button>
+  <button class="filtro-btn" onclick="filtrarCat(this,'plasticos')">Plásticos</button>
+  <div class="total-result">Mostrando <span id="total-visible">—</span> productos</div>
+</div>
+
+<div class="contenido">
+
+  <!-- ══ GRADO HERRAMIENTA ══ -->
+  <div class="categoria" data-cat="herramienta">
+    <div class="cat-header">
+      <div class="cat-icono" style="background:rgba(255,123,114,0.15)">🔧</div>
+      <div class="cat-titulo">Aceros Grado Herramienta</div>
+      <div class="cat-count">Trabajo en frío · caliente · moldes · alta velocidad</div>
+    </div>
+
+    <div class="nota-equiv">
+      <strong>Equivalencias importantes:</strong> &nbsp;
+      SW55 = O1 &nbsp;|&nbsp; Col ROL = 1018 &nbsp;|&nbsp; Las claves varían por proveedor pero la designación AISI es universal
+    </div>
+
+    <br>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Clave AISI</th>
+            <th>Nombre / Clave local</th>
+            <th>Equivalencias otros proveedores</th>
+            <th>Aplicación principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TRABAJO EN FRÍO -->
+          <tr>
+            <td colspan="5" style="background:rgba(255,123,114,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rojo); padding:8px 16px; font-weight:700;">Trabajo en Frío</td>
+          </tr>
+          <tr>
+            <td class="td-clave">O1</td>
+            <td class="td-nombre">Acero al aceite<br><span style="font-size:11px;color:var(--plata)">SW55 · Carburo · Aceite</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA O1</span>
+              <span class="equiv-tag">Fortuna O1</span>
+              <span class="equiv-tag">Palmexico O1</span>
+              <span class="equiv-tag">Socorro O1</span>
+              <span style="color:var(--acento-cl)">⚠ En algunos proveedores se llama SW55 o simplemente "aceite"</span>
+            </td>
+            <td class="td-uso">Punzones, dados, moldes para plástico, cuchillas. Templado en aceite.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">D2</td>
+            <td class="td-nombre">Acero al cromo<br><span style="font-size:11px;color:var(--plata)">D2 · Cr12Mo</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA D2</span>
+              <span class="equiv-tag">Fortuna D2</span>
+              <span class="equiv-tag">Palmexico D2</span>
+              <span class="equiv-tag">Socorro D2</span>
+              <span class="equiv-tag">Serviacero D2</span>
+            </td>
+            <td class="td-uso">Troqueles, punzones de larga vida, rodillos. Alta resistencia al desgaste.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">A2</td>
+            <td class="td-nombre">Acero al aire<br><span style="font-size:11px;color:var(--plata)">A2</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA A2</span>
+              <span class="equiv-tag">Fortuna A2</span>
+              <span class="equiv-tag">Socorro A2</span>
+            </td>
+            <td class="td-uso">Troqueles, calibradores. Menor distorsión que D2 al templar.</td>
+          </tr>
+          <!-- TRABAJO EN CALIENTE -->
+          <tr>
+            <td colspan="5" style="background:rgba(255,166,87,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--naranja); padding:8px 16px; font-weight:700;">Trabajo en Caliente</td>
+          </tr>
+          <tr>
+            <td class="td-clave">H13</td>
+            <td class="td-nombre">Acero para trabajo en caliente<br><span style="font-size:11px;color:var(--plata)">H13 · SKD61</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA H13</span>
+              <span class="equiv-tag">Fortuna H13</span>
+              <span class="equiv-tag">Palmexico H13</span>
+              <span class="equiv-tag">Serviacero H13</span>
+            </td>
+            <td class="td-uso">Dados de forja, moldes de inyección de aluminio, troqueles en caliente.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">S7</td>
+            <td class="td-nombre">Acero de impacto<br><span style="font-size:11px;color:var(--plata)">S7</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA S7</span>
+              <span class="equiv-tag">Fortuna S7</span>
+              <span class="equiv-tag">Palmexico S7</span>
+            </td>
+            <td class="td-uso">Cinceles, punzones de impacto, herramientas neumáticas.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">S1</td>
+            <td class="td-nombre">Acero de impacto S1<br><span style="font-size:11px;color:var(--plata)">S1</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA S1</span>
+              <span class="equiv-tag">Palmexico S1</span>
+            </td>
+            <td class="td-uso">Herramientas de impacto, cinceles, punzones manuales.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">L6</td>
+            <td class="td-nombre">Acero L6<br><span style="font-size:11px;color:var(--plata)">L6 · 6F3</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA L6</span>
+              <span class="equiv-tag">SISA 6F3</span>
+              <span class="equiv-tag">Fortuna L6</span>
+            </td>
+            <td class="td-uso">Matrices, punzones, navajas industriales.</td>
+          </tr>
+          <!-- MOLDES PLÁSTICO -->
+          <tr>
+            <td colspan="5" style="background:rgba(188,140,255,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--morado); padding:8px 16px; font-weight:700;">Para Moldes de Plástico</td>
+          </tr>
+          <tr>
+            <td class="td-clave">P20</td>
+            <td class="td-nombre">Acero para moldes<br><span style="font-size:11px;color:var(--plata)">P20</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA P20</span>
+              <span class="equiv-tag">Fortuna P20</span>
+              <span class="equiv-tag">Palmexico P20</span>
+              <span class="equiv-tag">Serviacero P20</span>
+            </td>
+            <td class="td-uso">Moldes para inyección de plástico. Se entrega pretratado (~30 HRC).</td>
+          </tr>
+          <tr>
+            <td class="td-clave">P20+Ni</td>
+            <td class="td-nombre">P20 con Níquel<br><span style="font-size:11px;color:var(--plata)">P20+Ni · 718</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA P20+Ni</span>
+              <span class="equiv-tag">Fortuna P20+Ni</span>
+            </td>
+            <td class="td-uso">Moldes grandes de plástico. Mayor dureza y maquinabilidad que P20.</td>
+          </tr>
+          <!-- ALTA VELOCIDAD -->
+          <tr>
+            <td colspan="5" style="background:rgba(63,185,80,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--verde); padding:8px 16px; font-weight:700;">Alta Velocidad (HSS)</td>
+          </tr>
+          <tr>
+            <td class="td-clave">M2</td>
+            <td class="td-nombre">Acero rápido M2<br><span style="font-size:11px;color:var(--plata)">M2 · HSS · HS6-5-2</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA M2</span>
+              <span class="equiv-tag">Fortuna M2</span>
+              <span class="equiv-tag">Palmexico M2</span>
+            </td>
+            <td class="td-uso">Brocas, fresas, machuelos, insertos de corte.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">M42</td>
+            <td class="td-nombre">Acero rápido cobalto<br><span style="font-size:11px;color:var(--plata)">M42 · HSS-Co</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA M42</span>
+              <span class="equiv-tag">Fortuna M42</span>
+            </td>
+            <td class="td-uso">Corte de materiales difíciles: acero inox, titanio, inconel.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">W1</td>
+            <td class="td-nombre">Acero al agua<br><span style="font-size:11px;color:var(--plata)">W1 · Carbon Tool</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA W1</span>
+              <span class="equiv-tag">Palmexico W1P</span>
+            </td>
+            <td class="td-uso">Cuchillas, cinceles, herramientas de baja producción. Templado en agua.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ GRADO MAQUINARIA ══ -->
+  <div class="categoria" data-cat="maquinaria">
+    <div class="cat-header">
+      <div class="cat-icono" style="background:rgba(88,166,255,0.15)">⚙️</div>
+      <div class="cat-titulo">Aceros Grado Maquinaria</div>
+      <div class="cat-count">Al carbono · baja aleación · fácil maquinado</div>
+    </div>
+
+    <div class="nota-equiv">
+      <strong>Equivalencia clave:</strong> Col ROL = 1018 (acero rolado en frío). También puede llamarse "colroll", "CR", "cold rolled" o simplemente "1018 CF" según el proveedor.
+    </div>
+
+    <br>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Clave AISI</th>
+            <th>Nombre / Clave local</th>
+            <th>Equivalencias otros proveedores</th>
+            <th>Aplicación principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" style="background:rgba(88,166,255,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--azul); padding:8px 16px; font-weight:700;">Al Carbono</td>
+          </tr>
+          <tr>
+            <td class="td-clave">1018</td>
+            <td class="td-nombre">Acero al carbono bajo<br><span style="font-size:11px;color:var(--acento-cl)">⭐ Col ROL · Cold Roll · CR · Colroll</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 1018</span>
+              <span class="equiv-tag">Palmexico 1018</span>
+              <span class="equiv-tag">SISA 1018</span>
+              <span class="equiv-tag">Socorro 1018</span>
+            </td>
+            <td class="td-uso">Piezas de maquinado general, ejes, pasadores, tornillos.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">1045</td>
+            <td class="td-nombre">Acero carbono medio<br><span style="font-size:11px;color:var(--plata)">1045 · C45</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 1045</span>
+              <span class="equiv-tag">Palmexico 1045</span>
+              <span class="equiv-tag">Serviacero 1045</span>
+            </td>
+            <td class="td-uso">Ejes de transmisión, engranajes, piezas que requieren mayor dureza.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">A36</td>
+            <td class="td-nombre">Acero estructural<br><span style="font-size:11px;color:var(--plata)">A36 · Gr36</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Palmexico A36</span>
+              <span class="equiv-tag">Serviacero A36</span>
+            </td>
+            <td class="td-uso">Construcción, estructuras metálicas, bases y soportes industriales.</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="background:rgba(88,166,255,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--azul); padding:8px 16px; font-weight:700;">Alta Maquinabilidad</td>
+          </tr>
+          <tr>
+            <td class="td-clave">12L14</td>
+            <td class="td-nombre">Acero resulfurado con plomo<br><span style="font-size:11px;color:var(--plata)">12L14 · 1215L</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 12L14</span>
+              <span class="equiv-tag">Serviacero 12L14</span>
+            </td>
+            <td class="td-uso">Piezas de alta producción en torno automático. Máxima maquinabilidad.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">1215</td>
+            <td class="td-nombre">Acero resulfurado sin plomo<br><span style="font-size:11px;color:var(--plata)">1215</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 1215</span>
+            </td>
+            <td class="td-uso">Similar a 12L14 sin plomo. Para piezas en contacto con alimentos.</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="background:rgba(88,166,255,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--azul); padding:8px 16px; font-weight:700;">Baja Aleación (Grado Maquinaria)</td>
+          </tr>
+          <tr>
+            <td class="td-clave">4140</td>
+            <td class="td-nombre">Cromo-Molibdeno<br><span style="font-size:11px;color:var(--plata)">4140 · 42CrMo4 · 4140R · 4140T</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA 4140R/T</span>
+              <span class="equiv-tag">Fortuna 4140</span>
+              <span class="equiv-tag">Palmexico 4140</span>
+              <span class="equiv-tag">Socorro 4140</span>
+            </td>
+            <td class="td-uso">Ejes, flechas, piñones, pernos de alta resistencia. El más vendido de baja aleación.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">4340</td>
+            <td class="td-nombre">Níquel-Cromo-Molibdeno<br><span style="font-size:11px;color:var(--plata)">4340 · 4340R · 4340T</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA 4340R/T</span>
+              <span class="equiv-tag">Fortuna 4340</span>
+            </td>
+            <td class="td-uso">Piezas de muy alta resistencia: ejes de transmisión, cigüeñales, partes aeronáuticas.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">8620</td>
+            <td class="td-nombre">Acero cementable<br><span style="font-size:11px;color:var(--plata)">8620</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA 8620</span>
+              <span class="equiv-tag">Fortuna 8620</span>
+              <span class="equiv-tag">Serviacero 8620</span>
+            </td>
+            <td class="td-uso">Engranajes, levas, piezas que requieren núcleo tenaz y superficie dura.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">9840</td>
+            <td class="td-nombre">Acero baja aleación 9840<br><span style="font-size:11px;color:var(--plata)">9840 · 9840R</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA 9840R</span>
+              <span class="equiv-tag">Fortuna 9840</span>
+              <span class="equiv-tag">Serviacero 9840</span>
+            </td>
+            <td class="td-uso">Alternativa al 4140 para piezas de maquinaria pesada.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ ACERO INOXIDABLE ══ -->
+  <div class="categoria" data-cat="inoxidable">
+    <div class="cat-header">
+      <div class="cat-icono" style="background:rgba(63,185,80,0.15)">🔩</div>
+      <div class="cat-titulo">Acero Inoxidable</div>
+      <div class="cat-count">Austenítico · ferrítico · martensítico</div>
+    </div>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Clave AISI</th>
+            <th>Nombre / Familia</th>
+            <th>Equivalencias otros proveedores</th>
+            <th>Aplicación principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" style="background:rgba(63,185,80,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--verde); padding:8px 16px; font-weight:700;">Austenítico — El más común</td>
+          </tr>
+          <tr>
+            <td class="td-clave">304</td>
+            <td class="td-nombre">Inox 304<br><span style="font-size:11px;color:var(--plata)">304 · 18/8 · AISI 304</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma 304</span>
+              <span class="equiv-tag">Socorro 304</span>
+              <span class="equiv-tag">Fortuna 304</span>
+              <span class="equiv-tag">Palmexico 304</span>
+              <span class="equiv-tag">Serviacero 304</span>
+            </td>
+            <td class="td-uso">Industria alimentaria, hospitalaria, equipo de cocina, decoración.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">304L</td>
+            <td class="td-nombre">Inox 304L (bajo carbono)<br><span style="font-size:11px;color:var(--plata)">304L</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Palmexico 304L</span>
+              <span class="equiv-tag">Fortuna 304L</span>
+            </td>
+            <td class="td-uso">Soldadura sin tratamiento térmico posterior. Químico/petroquímico.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">316</td>
+            <td class="td-nombre">Inox 316 (con Molibdeno)<br><span style="font-size:11px;color:var(--plata)">316 · 316L</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma 316</span>
+              <span class="equiv-tag">Socorro 316</span>
+              <span class="equiv-tag">Palmexico 316</span>
+              <span class="equiv-tag">Serviacero 316</span>
+            </td>
+            <td class="td-uso">Ambientes marinos, ácidos, farmacéutico. Mayor resistencia a corrosión que 304.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">310</td>
+            <td class="td-nombre">Inox 310 (alta temperatura)<br><span style="font-size:11px;color:var(--plata)">310 · 310S</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 310</span>
+              <span class="equiv-tag">Serviacero 310</span>
+            </td>
+            <td class="td-uso">Hornos, tratamiento térmico, aplicaciones hasta 1100°C.</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="background:rgba(63,185,80,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--verde); padding:8px 16px; font-weight:700;">Martensítico — Tratable térmicamente</td>
+          </tr>
+          <tr>
+            <td class="td-clave">410</td>
+            <td class="td-nombre">Inox 410<br><span style="font-size:11px;color:var(--plata)">410</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 410</span>
+              <span class="equiv-tag">Palmexico 410</span>
+              <span class="equiv-tag">Socorro 410</span>
+            </td>
+            <td class="td-uso">Cubiertos, piezas mecánicas que requieren templado. Magnético.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">416</td>
+            <td class="td-nombre">Inox 416 (maquinable)<br><span style="font-size:11px;color:var(--plata)">416 · 416 PSQ</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 416</span>
+              <span class="equiv-tag">Palmexico 416</span>
+            </td>
+            <td class="td-uso">Piezas de maquinado: tornillos, válvulas, ejes. Mejor maquinabilidad de inoxidables.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">420</td>
+            <td class="td-nombre">Inox 420<br><span style="font-size:11px;color:var(--plata)">420 · 420 ESR</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA 420 ESR</span>
+              <span class="equiv-tag">Fortuna 420</span>
+              <span class="equiv-tag">Palmexico 420</span>
+            </td>
+            <td class="td-uso">Cuchillería industrial, moldes de plástico que requieren resistencia a corrosión.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">440C</td>
+            <td class="td-nombre">Inox 440C (máxima dureza)<br><span style="font-size:11px;color:var(--plata)">440C</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">SISA 440C</span>
+              <span class="equiv-tag">Fortuna 440</span>
+            </td>
+            <td class="td-uso">Rodamientos, instrumentos quirúrgicos, cuchillos de alta gama.</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="background:rgba(63,185,80,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--verde); padding:8px 16px; font-weight:700;">Ferrítico</td>
+          </tr>
+          <tr>
+            <td class="td-clave">430</td>
+            <td class="td-nombre">Inox 430<br><span style="font-size:11px;color:var(--plata)">430</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 430</span>
+              <span class="equiv-tag">Palmexico 430</span>
+            </td>
+            <td class="td-uso">Electrodomésticos, decoración, partes sin requerimiento de soldadura.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ ALUMINIO ══ -->
+  <div class="categoria" data-cat="aluminio">
+    <div class="cat-header">
+      <div class="cat-icono" style="background:rgba(88,166,255,0.15)">🔵</div>
+      <div class="cat-titulo">Aluminio</div>
+      <div class="cat-count">Series 2000 · 6000 · 7000</div>
+    </div>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Aleación</th>
+            <th>Nombre / Características</th>
+            <th>Disponible en</th>
+            <th>Aplicación principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-clave">6061</td>
+            <td class="td-nombre">El más común<br><span style="font-size:11px;color:var(--plata)">6061-T6 · Al-Mg-Si</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma</span>
+              <span class="equiv-tag">Socorro</span>
+              <span class="equiv-tag">Fortuna</span>
+              <span class="equiv-tag">Serviacero</span>
+            </td>
+            <td class="td-uso">Maquinado general, estructuras, aeroespacial, automotriz.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">6063</td>
+            <td class="td-nombre">Aluminio de perfiles<br><span style="font-size:11px;color:var(--plata)">6063-T5 / T6</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Socorro</span>
+              <span class="equiv-tag">La Paloma</span>
+            </td>
+            <td class="td-uso">Ventanas, marcos, perfiles arquitectónicos. Mejor acabado superficial que 6061.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">2024</td>
+            <td class="td-nombre">Aluminio aeronáutico<br><span style="font-size:11px;color:var(--plata)">2024-T3 / T4</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 2024</span>
+              <span class="equiv-tag">Serviacero 2024</span>
+            </td>
+            <td class="td-uso">Aeronáutica, estructuras de alta resistencia. No se suelda fácilmente.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">7075</td>
+            <td class="td-nombre">Aluminio de máxima resistencia<br><span style="font-size:11px;color:var(--plata)">7075-T6 · Al-Zn</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 7075</span>
+              <span class="equiv-tag">La Paloma 7075</span>
+            </td>
+            <td class="td-uso">Moldes de aluminio, aeroespacial, armas deportivas. Resistencia similar al acero suave.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">2011</td>
+            <td class="td-nombre">Aluminio de tornería<br><span style="font-size:11px;color:var(--plata)">2011 · Free Machining</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Fortuna 2011</span>
+            </td>
+            <td class="td-uso">Piezas de torno automático, accesorios, conectores. Máxima maquinabilidad en aluminio.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ NO FERROSOS ══ -->
+  <div class="categoria" data-cat="no-ferrosos">
+    <div class="cat-header">
+      <div class="cat-icono" style="background:rgba(255,166,87,0.15)">🟡</div>
+      <div class="cat-titulo">No Ferrosos</div>
+      <div class="cat-count">Bronce · Latón · Cobre</div>
+    </div>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Material / Aleación</th>
+            <th>Nombre / Grado</th>
+            <th>Disponible en</th>
+            <th>Aplicación principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" style="background:rgba(255,166,87,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--naranja); padding:8px 16px; font-weight:700;">Bronce</td>
+          </tr>
+          <tr>
+            <td class="td-clave">SAE 660</td>
+            <td class="td-nombre">Bronce fosforoso / rodamiento<br><span style="font-size:11px;color:var(--plata)">SAE 660 · C93200 · SAE 64</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma SAE 660</span>
+              <span class="equiv-tag">Socorro bronce</span>
+              <span class="equiv-tag">Serviacero bronce</span>
+            </td>
+            <td class="td-uso">Bujes, cojinetes, rodamientos. Alta resistencia al desgaste y baja fricción.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">SAE 62</td>
+            <td class="td-nombre">Bronce al estaño<br><span style="font-size:11px;color:var(--plata)">SAE 62 · C90300</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma SAE 62</span>
+            </td>
+            <td class="td-uso">Bujes de presión, válvulas, accesorios hidráulicos.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">Prelubricado</td>
+            <td class="td-nombre">Bronce autolubricado<br><span style="font-size:11px;color:var(--plata)">Oilite · Sinterizado</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">Socorro prelubricado</span>
+              <span class="equiv-tag">La Paloma</span>
+            </td>
+            <td class="td-uso">Maquinaria donde no se puede lubricar frecuentemente.</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="background:rgba(255,166,87,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--naranja); padding:8px 16px; font-weight:700;">Latón</td>
+          </tr>
+          <tr>
+            <td class="td-clave">C36000</td>
+            <td class="td-nombre">Latón de maquinado<br><span style="font-size:11px;color:var(--plata)">360 · Latón Amarillo</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma latón 360</span>
+              <span class="equiv-tag">Socorro latón</span>
+              <span class="equiv-tag">Fortuna C36000</span>
+            </td>
+            <td class="td-uso">Tornillería, accesorios eléctricos, válvulas, partes decorativas.</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="background:rgba(255,166,87,0.06); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--naranja); padding:8px 16px; font-weight:700;">Cobre</td>
+          </tr>
+          <tr>
+            <td class="td-clave">C110</td>
+            <td class="td-nombre">Cobre electrolítico<br><span style="font-size:11px;color:var(--plata)">Cobre 110 · ETP</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma cobre</span>
+              <span class="equiv-tag">Socorro cobre</span>
+            </td>
+            <td class="td-uso">Conductores eléctricos, busbars, intercambiadores de calor.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ PLÁSTICOS ══ -->
+  <div class="categoria" data-cat="plasticos">
+    <div class="cat-header">
+      <div class="cat-icono" style="background:rgba(188,140,255,0.15)">🟣</div>
+      <div class="cat-titulo">Plásticos de Ingeniería</div>
+      <div class="cat-count">Nylamid · Acetal · PTFE · HDPE · PVC</div>
+    </div>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Nombres comerciales</th>
+            <th>Disponible en</th>
+            <th>Aplicación principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-clave">Nylamid</td>
+            <td class="td-nombre">Nylon / PA6<br><span style="font-size:11px;color:var(--plata)">Nylamid · Nylomaq · Nylatron</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma Nylomaq</span>
+              <span class="equiv-tag">Socorro Nylamid</span>
+              <span class="equiv-tag">Palmexico Nylamid</span>
+              <span class="equiv-tag">Serviacero Nylamid</span>
+            </td>
+            <td class="td-uso">Bujes, engranajes, ruedas, guías. Ligero, silencioso, autolubricante.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">Acetal</td>
+            <td class="td-nombre">Poliacetal / POM<br><span style="font-size:11px;color:var(--plata)">Acetal · Delrin · Acetron GP</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma acetal</span>
+              <span class="equiv-tag">Socorro Acetron GP</span>
+            </td>
+            <td class="td-uso">Piezas de precisión, engranajes, bujes. Mayor rigidez que Nylamid.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">PTFE</td>
+            <td class="td-nombre">Teflón<br><span style="font-size:11px;color:var(--plata)">PTFE · Teflón</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma PTFE</span>
+              <span class="equiv-tag">Socorro Teflón</span>
+            </td>
+            <td class="td-uso">Sellos, juntas, guías de baja fricción. Resiste ácidos y altas temperaturas.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">HDPE</td>
+            <td class="td-nombre">Polietileno alta densidad<br><span style="font-size:11px;color:var(--plata)">HDPE · PEAD · Polymaq · Tivar</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma Polymaq</span>
+              <span class="equiv-tag">Socorro Tivar</span>
+            </td>
+            <td class="td-uso">Tablas de corte, tolvas, guías de cadena. Alta resistencia química.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">Celorón</td>
+            <td class="td-nombre">Baquelita / Celorón<br><span style="font-size:11px;color:var(--plata)">Celorón · Baquelita · Micarta</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma celorón</span>
+              <span class="equiv-tag">Socorro Celoron</span>
+            </td>
+            <td class="td-uso">Aislamiento eléctrico, plantillas, guías. Alta resistencia mecánica.</td>
+          </tr>
+          <tr>
+            <td class="td-clave">PVC</td>
+            <td class="td-nombre">PVC rígido<br><span style="font-size:11px;color:var(--plata)">PVC · Cloruro de Polivinilo</span></td>
+            <td class="td-equiv">
+              <span class="equiv-tag">La Paloma PVC</span>
+            </td>
+            <td class="td-uso">Tanques, ductos, piezas de proceso químico. Resistente a ácidos.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Catálogo Interno v1.0 · Aceros y Metales Urgentes · Fuentes: Serviacero, Fortuna, Palmexico, SISA, La Paloma, El Socorro</span>
+  <span>Juan Azael Pinales Regis · azaelecommerce@gmail.com</span>
+</footer>
+
+<script>
+  // Contar productos
+  const totalProds = document.querySelectorAll('tbody tr:not([colspan])').length;
+  document.getElementById('total-prod').textContent = totalProds;
+  document.getElementById('total-visible').textContent = totalProds;
+
+  let catActiva = 'todos';
+
+  function filtrar() {
+    const q = document.getElementById('buscador').value.toLowerCase();
+    let visible = 0;
+
+    document.querySelectorAll('.categoria').forEach(cat => {
+      const catId = cat.dataset.cat;
+      const mostrarCat = catActiva === 'todos' || catActiva === catId;
+
+      if (!mostrarCat) {
+        cat.style.display = 'none';
+        return;
+      }
+
+      cat.style.display = '';
+
+      cat.querySelectorAll('tbody tr').forEach(row => {
+        if (row.querySelector('[colspan]')) return;
+        const texto = row.textContent.toLowerCase();
+        const coincide = !q || texto.includes(q);
+        row.style.display = coincide ? '' : 'none';
+        if (coincide) visible++;
+      });
+    });
+
+    document.getElementById('total-visible').textContent = visible;
+  }
+
+  function filtrarCat(btn, cat) {
+    document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+    btn.classList.add('activo');
+    catActiva = cat;
+    filtrar();
+  }
+</script>
+
+</body>
+</html>

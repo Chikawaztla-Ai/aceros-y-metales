@@ -1,0 +1,391 @@
+<html class="light" lang="es"><head></head><body class="bg-surface text-on-surface font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed flex flex-col min-h-screen">```html
+
+
+
+    <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal de Clientes | ACEROS Y METALES URGENTES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cfe5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#34495e",
+                        "on-primary-fixed-variant": "#36485b",
+                        "primary-container": "#2c3e50",
+                        "inverse-primary": "#b5c8df",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed": "#091d2e",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#4e6073",
+                        "primary-fixed-dim": "#b5c8df",
+                        "secondary-container": "#cce2fc",
+                        "on-tertiary-container": "#f78b30",
+                        "on-tertiary-fixed": "#301400",
+                        "primary": "#162839",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-surface": "#2d3133",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#051d30",
+                        "secondary": "#4b6076",
+                        "on-surface": "#191c1e",
+                        "on-secondary-container": "#50657b",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline": "#74777d",
+                        "secondary-fixed-dim": "#b3c9e2",
+                        "surface-dim": "#d8dadc",
+                        "outline-variant": "#c4c6cd",
+                        "on-primary-container": "#96a9be",
+                        "tertiary-container": "#612f00",
+                        "surface": "#f7f9fb",
+                        "primary-fixed": "#d1e4fb",
+                        "on-surface-variant": "#43474c",
+                        "surface-container-low": "#f2f4f6",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-background": "#191c1e",
+                        "tertiary-fixed": "#ffdcc5",
+                        "tertiary": "#411d00",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "mono-data": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-indicator {
+            position: relative;
+        }
+        .active-tab-indicator::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background-color: #2c3e50;
+            border-radius: 0 4px 4px 0;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2c3e50;
+        }
+    </style>
+<!-- Top Navigation Bar (from COMPONENTS_25) -->
+<header class="bg-primary shadow-sm border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto w-full">
+<div class="flex items-center gap-gutter">
+<span class="font-headline-md text-headline-md font-bold text-on-primary tracking-tighter">METALS_IND</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-primary-container opacity-80 hover:text-on-tertiary-container transition-colors font-body-md" href="#">Steels</a>
+<a class="text-on-primary-container opacity-80 hover:text-on-tertiary-container transition-colors font-body-md" href="#">Aluminum</a>
+<a class="text-on-primary-container opacity-80 hover:text-on-tertiary-container transition-colors font-body-md" href="#">Non-ferrous</a>
+<a class="text-on-primary-container opacity-80 hover:text-on-tertiary-container transition-colors font-body-md" href="#">Machinery</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-on-tertiary-container text-on-tertiary px-6 py-2 rounded-lg font-label-md hover:opacity-90 transition-all active:scale-95">Quote Engine</button>
+<div class="flex items-center gap-2 text-on-primary">
+<span class="material-symbols-outlined cursor-pointer hover:text-on-tertiary-container" data-icon="calculate">calculate</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-on-tertiary-container" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Side Navigation Bar (from COMPONENTS_25) -->
+<aside class="w-64 bg-surface border-r border-outline-variant flex flex-col p-4 fixed h-[calc(100vh-72px)] overflow-y-auto">
+<div class="mb-8 px-2">
+<h2 class="font-headline-sm text-headline-sm text-primary">Industrial Portal</h2>
+<p class="text-body-md text-on-surface-variant text-sm">Steel Distribution Hub</p>
+</div>
+<nav class="flex flex-col gap-1 flex-1">
+<a class="bg-secondary-fixed text-on-secondary-fixed font-bold rounded-lg flex items-center gap-4 px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Mis pedidos</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg flex items-center gap-4 px-4 py-3 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="description">request_quote</span>
+<span class="font-label-md">Mis cotizaciones</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg flex items-center gap-4 px-4 py-3 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="calculate">list_alt</span>
+<span class="font-label-md">Lista de precios</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg flex items-center gap-4 px-4 py-3 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="engineering">receipt_long</span>
+<span class="font-label-md">Facturas</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg flex items-center gap-4 px-4 py-3 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="settings">manage_accounts</span>
+<span class="font-label-md">Mis Datos</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md uppercase tracking-wider hover:opacity-90 transition-all">Request Quote</button>
+<div class="flex items-center gap-3 mt-6 px-2">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold">JD</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-on-surface truncate">Juan Delgado</p>
+<p class="text-xs text-on-surface-variant truncate">Logística S.A.</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 px-margin-desktop py-12 max-w-container-max mx-auto w-full">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-10 border-b border-outline-variant pb-6">
+<div>
+<h1 class="font-headline-lg text-primary uppercase">MIS PEDIDOS</h1>
+<p class="font-body-md text-on-surface-variant mt-2">Historial completo de compras y estatus de materiales</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md w-72 focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" placeholder="Buscar pedido..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-6 py-2 bg-secondary text-on-secondary font-label-md rounded-lg hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        EXPORTAR
+                    </button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Orders Area -->
+<div class="col-span-12 lg:col-span-9 space-y-6">
+<!-- Status Tabs -->
+<div class="flex border-b border-outline-variant gap-8">
+<button class="pb-3 px-1 border-b-2 border-primary text-primary font-label-md uppercase transition-all">Todos</button>
+<button class="pb-3 px-1 border-b-2 border-transparent text-on-surface-variant font-label-md hover:text-primary uppercase transition-all">Pendientes</button>
+<button class="pb-3 px-1 border-b-2 border-transparent text-on-surface-variant font-label-md hover:text-primary uppercase transition-all">En tránsito</button>
+<button class="pb-3 px-1 border-b-2 border-transparent text-on-surface-variant font-label-md hover:text-primary uppercase transition-all">Entregados</button>
+</div>
+<!-- Orders Table -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary-container text-on-primary font-label-md">
+<th class="px-6 py-4 border-r border-outline"># PEDIDO</th>
+<th class="px-6 py-4 border-r border-outline">FECHA</th>
+<th class="px-6 py-4 border-r border-outline">MATERIALES</th>
+<th class="px-6 py-4 border-r border-outline text-right">TOTAL</th>
+<th class="px-6 py-4 border-r border-outline text-center">ESTADO</th>
+<th class="px-6 py-4 text-center">ACCIONES</th>
+</tr>
+</thead>
+<tbody class="font-body-md">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-5 font-mono-data text-primary underline cursor-pointer">ORD-88291</td>
+<td class="px-6 py-5 text-on-surface">12 OCT 2023</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold">Placa A-36 (12 unidades)</span>
+<span class="text-xs text-on-surface-variant">Viga IPR 10" x 20'</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-mono-data font-bold text-primary">$42,500.00</td>
+<td class="px-6 py-5 text-center">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded font-label-md text-[11px] uppercase border border-outline-variant">En Tránsito</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center gap-4">
+<button class="text-on-surface hover:text-on-tertiary-container transition-colors" title="Ver detalle">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+<button class="text-on-surface hover:text-on-tertiary-container transition-colors" title="Repetir pedido">
+<span class="material-symbols-outlined" data-icon="replay">replay</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="bg-surface-container-low border-b border-outline-variant hover:bg-surface-container transition-colors">
+<td class="px-6 py-5 font-mono-data text-primary underline cursor-pointer">ORD-87990</td>
+<td class="px-6 py-5 text-on-surface">05 OCT 2023</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-semibold">Ángulo Estructural 2" (50 unidades)</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right font-mono-data font-bold text-primary">$18,220.50</td>
+<td class="px-6 py-5 text-center">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded font-label-md text-[11px] uppercase border border-green-200">Entregado</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center gap-4">
+<button class="text-on-surface hover:text-on-tertiary-container transition-colors" title="Ver detalle">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+<button class="text-on-surface hover:text-on-tertiary-container transition-colors" title="Repetir pedido">
+<span class="material-symbols-outlined" data-icon="replay">replay</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="p-4 flex items-center justify-between bg-surface-container-low border-t border-outline-variant">
+<span class="font-mono-data text-on-surface-variant text-xs">Mostrando 2 de 128 pedidos</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-all font-label-md">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar (Account Summary) -->
+<div class="col-span-12 lg:col-span-3">
+<div class="sticky top-24 space-y-6">
+<!-- Preferred Client Card - Restyled for Industrial Precision -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<span class="material-symbols-outlined text-on-tertiary-container text-[32px]" data-icon="verified">verified</span>
+<span class="px-3 py-1 bg-on-tertiary-container text-on-tertiary font-label-md text-[10px] rounded uppercase tracking-wider">
+                                    Cliente Preferente
+                                </span>
+</div>
+<h3 class="font-headline-md text-primary mb-2 leading-tight">TU NIVEL: ORO</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6">Disfrutas de beneficios exclusivos y tiempos de entrega prioritarios.</p>
+<div class="bg-surface-container p-4 rounded border border-outline-variant mb-6">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-xs text-on-surface-variant uppercase">DESCUENTO VIGENTE:</span>
+<span class="font-headline-md text-on-tertiary-container">12%</span>
+</div>
+<p class="font-body-md font-bold text-primary text-sm">En todo el catálogo de materiales.</p>
+</div>
+<button class="w-full py-3 bg-primary text-on-primary font-label-md uppercase tracking-wider rounded hover:bg-opacity-90 transition-all active:scale-95">
+                                Solicitar nueva cotización
+                            </button>
+</div>
+<!-- Quick Stats -->
+<div class="space-y-4">
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg">
+<p class="font-label-md text-on-surface-variant uppercase text-[10px] mb-1">Crédito Disponible</p>
+<p class="font-headline-md text-primary">$245,000.00</p>
+<div class="w-full h-2 bg-surface-container mt-3 rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-on-tertiary-container"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg">
+<p class="font-label-md text-on-surface-variant uppercase text-[10px] mb-1">Entregas del Mes</p>
+<p class="font-headline-md text-primary">14</p>
+</div>
+</div>
+<!-- Support Card -->
+<div class="p-4 border border-dashed border-outline rounded-lg flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="support_agent">support_agent</span>
+<div>
+<p class="font-label-md text-on-surface text-xs">Asesor Asignado:</p>
+<p class="font-body-md font-bold text-primary">Ing. Ricardo Mendoza</p>
+<a class="font-mono-data text-xs text-on-tertiary-container underline hover:no-underline" href="mailto:soporte@acerosmex.com">Contactar soporte</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer (from COMPONENTS_25) -->
+<footer class="bg-primary text-on-primary w-full mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+<div>
+<span class="font-headline-md text-headline-md text-on-primary">METALS_IND</span>
+<p class="font-body-md text-on-primary-container opacity-70 mt-4">© 2024 Industrial Metals Corp. Certified ISO 9001:2015</p>
+</div>
+<div>
+<h4 class="font-label-md mb-4 uppercase tracking-widest text-on-tertiary-container">Quick Links</h4>
+<ul class="flex flex-col gap-2 font-body-md text-on-primary-container opacity-70">
+<li><a class="hover:underline decoration-on-tertiary-container" href="#">Steels Catalog</a></li>
+<li><a class="hover:underline decoration-on-tertiary-container" href="#">Aluminum Guide</a></li>
+<li><a class="hover:underline decoration-on-tertiary-container" href="#">Quote Calculator</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md mb-4 uppercase tracking-widest text-on-tertiary-container">Resources</h4>
+<ul class="flex flex-col gap-2 font-body-md text-on-primary-container opacity-70">
+<li><a class="hover:underline decoration-on-tertiary-container" href="#">Certifications</a></li>
+<li><a class="hover:underline decoration-on-tertiary-container" href="#">Technical Resources</a></li>
+<li><a class="hover:underline decoration-on-tertiary-container" href="#">Material Safety</a></li>
+<li><a class="hover:underline decoration-on-tertiary-container" href="#">Shipping Logistics</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md mb-4 uppercase tracking-widest text-on-tertiary-container">Global Presence</h4>
+<p class="font-body-md text-on-primary-container opacity-70">Distribution hubs in 12 countries. 24/7 technical support for industrial partners.</p>
+</div>
+</div>
+</footer>
+<!-- Background Subtle Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.02] z-[-1]" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
+<script>
+        // Micro-interaction for hover states on buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.</script></body></html>

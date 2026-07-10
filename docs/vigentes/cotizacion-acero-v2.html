@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotización – Sitio Web Aceros y Metales Urgentes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --negro:     #0F1923;
+    --acero:     #1E3448;
+    --acero-med: #2C4A63;
+    --acento:    #C8991A;
+    --acento-cl: #F5C842;
+    --gris-osc:  #3A3A3A;
+    --gris-med:  #6B7280;
+    --gris-cl:   #D1D5DB;
+    --gris-bg:   #F3F4F6;
+    --blanco:    #FFFFFF;
+    --verde:     #16A34A;
+    --rojo:      #DC2626;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--blanco);
+    color: var(--negro);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ══════════════════════════════
+     PORTADA  — fondo acero oscuro
+  ══════════════════════════════ */
+  .portada {
+    background: var(--acero);
+    color: var(--blanco);
+    padding: 64px 56px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portada::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--acento) 0%, var(--acento-cl) 100%);
+  }
+
+  .portada-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--acento-cl);
+    margin-bottom: 28px;
+  }
+
+  .portada h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 9vw, 100px);
+    line-height: 0.9;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  .portada h1 em {
+    font-style: normal;
+    color: var(--acento-cl);
+  }
+
+  .portada-desc {
+    font-size: 16px;
+    color: #A8BFCF;
+    max-width: 520px;
+    margin-bottom: 56px;
+    line-height: 1.6;
+  }
+
+  .portada-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .meta {
+    padding: 16px 28px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .meta:last-child { border-right: none; }
+
+  .meta label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #7A9DB5;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .meta span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  /* ══════════════════════════════
+     SECCIONES  — fondo blanco
+  ══════════════════════════════ */
+  .contenido {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .seccion {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--gris-cl);
+  }
+
+  .seccion:last-child { border-bottom: none; }
+
+  .sec-label {
+    display: inline-block;
+    background: var(--acero);
+    color: var(--acento-cl);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(34px, 5vw, 52px);
+    color: var(--negro);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .intro {
+    font-size: 15px;
+    color: var(--gris-med);
+    max-width: 640px;
+    margin-bottom: 0;
+  }
+
+  /* ══════════════════════════════
+     ENTREGABLES
+  ══════════════════════════════ */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 36px;
+  }
+
+  @media(max-width:600px){ .grid-2{ grid-template-columns:1fr; } }
+
+  .item-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 6px;
+    background: var(--blanco);
+    font-size: 13px;
+    color: var(--gris-osc);
+    font-weight: 500;
+    transition: border-color .15s, background .15s;
+  }
+
+  .item-check:hover {
+    border-color: var(--acento);
+    background: #FFFBEB;
+  }
+
+  .ic { color: var(--verde); font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ══════════════════════════════
+     FASES
+  ══════════════════════════════ */
+  .fases { margin-top: 36px; }
+
+  .fase {
+    display: grid;
+    grid-template-columns: 64px 1fr 80px;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--gris-cl);
+    align-items: start;
+  }
+
+  .fase:last-child { border-bottom: none; }
+
+  .fase-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--acento);
+    line-height: 1;
+  }
+
+  .fase h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--negro);
+    margin-bottom: 4px;
+  }
+
+  .fase p {
+    font-size: 13px;
+    color: var(--gris-med);
+    margin: 0;
+  }
+
+  .fase-sem {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--acero);
+    background: var(--gris-bg);
+    border: 1px solid var(--gris-cl);
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 4px;
+    white-space: nowrap;
+  }
+
+  /* ══════════════════════════════
+     TABLA DE COSTOS
+  ══════════════════════════════ */
+  .tabla-wrap {
+    margin-top: 36px;
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  .thead-grupo td {
+    padding: 10px 20px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--acero);
+    color: var(--acento-cl);
+    border-bottom: none;
+  }
+
+  tbody tr { border-bottom: 1px solid var(--gris-cl); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--gris-bg); }
+
+  tbody td {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: var(--gris-osc);
+  }
+
+  .col-nombre { font-weight: 600; color: var(--negro) !important; }
+  .col-desc   { font-size: 12px !important; color: var(--gris-med) !important; }
+  .col-precio { text-align: right; font-weight: 700; color: var(--negro) !important; white-space: nowrap; }
+
+  .fila-sub td {
+    background: var(--gris-bg);
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--gris-osc) !important;
+    padding: 12px 20px !important;
+    border-top: 1.5px solid var(--gris-cl);
+  }
+
+  .fila-sub .col-precio {
+    font-size: 15px !important;
+    color: var(--acero) !important;
+  }
+
+  .fila-total td {
+    background: var(--acero);
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    padding: 20px !important;
+    border-top: 3px solid var(--acento);
+  }
+
+  .fila-total .col-precio {
+    color: var(--acento-cl) !important;
+    font-size: 20px !important;
+  }
+
+  .fila-mes td {
+    background: #FFFBEB;
+    color: var(--gris-med) !important;
+    font-size: 13px !important;
+    padding: 12px 20px !important;
+    border-top: 1px solid #FDE68A;
+  }
+
+  .fila-mes .col-precio {
+    color: var(--acento) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+  }
+
+  .tag-op {
+    display: inline-block;
+    background: #F3F4F6;
+    color: var(--gris-med);
+    border: 1px solid var(--gris-cl);
+    border-radius: 3px;
+    padding: 1px 7px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .nota-box {
+    margin-top: 20px;
+    background: #FFFBEB;
+    border: 1.5px solid #FDE68A;
+    border-left: 4px solid var(--acento);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+  }
+
+  .nota-box p {
+    font-size: 13px;
+    color: var(--gris-osc);
+    margin-bottom: 6px;
+  }
+
+  .nota-box p:last-child { margin-bottom: 0; }
+  .nota-box strong { color: var(--negro); }
+
+  /* ══════════════════════════════
+     OPCIONES DE PAGO
+  ══════════════════════════════ */
+  .grid-pago {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  @media(max-width:640px){ .grid-pago{ grid-template-columns:1fr; } }
+
+  .pago {
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 8px;
+    padding: 24px 20px;
+    background: var(--blanco);
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .pago:hover { border-color: var(--acento); box-shadow: 0 4px 16px rgba(200,153,26,.12); }
+
+  .pago.star {
+    border-color: var(--acento);
+    background: #FFFBEB;
+    box-shadow: 0 4px 20px rgba(200,153,26,.18);
+  }
+
+  .pago-et {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 8px;
+  }
+
+  .pago h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--negro);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .pago p {
+    font-size: 13px;
+    color: var(--gris-med);
+    margin: 0;
+  }
+
+  /* ══════════════════════════════
+     CIERRE
+  ══════════════════════════════ */
+  .cierre {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cierre::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--acento) 0%, var(--acento-cl) 100%);
+  }
+
+  .cierre .sec-label {
+    background: rgba(255,255,255,0.08);
+    color: var(--acento-cl);
+    margin-bottom: 20px;
+  }
+
+  .cierre h2 { color: #FFFFFF; margin-bottom: 12px; }
+
+  .cierre p {
+    color: #8FA3B1;
+    max-width: 600px;
+    margin-bottom: 10px;
+  }
+
+  .cierre .firma {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .firma-item { color: #8FA3B1; font-weight: 400; }
+  .firma-item strong { color: #FFFFFF; font-weight: 700; display: block; }
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  footer {
+    background: var(--acero);
+    padding: 20px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  footer span { font-size: 11px; color: #7A9DB5; }
+  .f-conf { letter-spacing: 3px; text-transform: uppercase; color: #4A6A82 !important; }
+</style>
+</head>
+<body>
+
+<!-- ═══════ PORTADA ═══════ -->
+<div class="portada">
+  <div class="portada-tag">Cotización de Proyecto · Desarrollo Web</div>
+  <h1>Sitio Web<br>Aceros y<br><em>Metales Urgentes</em></h1>
+  <p class="portada-desc">
+    Plataforma industrial a medida: Next.js + TypeScript + Tailwind + shadcn/ui + Supabase + Mercado Pago + Resend.
+    Preparada para miles de SKUs, clientes empresariales y crecimiento sin límite.
+  </p>
+  <div class="portada-grid">
+    <div class="meta">
+      <label>Preparado por</label>
+      <span>Tu Nombre</span>
+    </div>
+    <div class="meta">
+      <label>Para</label>
+      <span>Aceros y Metales Urgentes</span>
+    </div>
+    <div class="meta">
+      <label>Fecha</label>
+      <span>Junio 2026</span>
+    </div>
+    <div class="meta">
+      <label>Vigencia</label>
+      <span>30 días</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ CONTENIDO ═══════ -->
+<div class="contenido">
+
+  <!-- 01 ENTREGABLES -->
+  <div class="seccion">
+    <span class="sec-label">01 — Alcance</span>
+    <h2>Qué incluye el proyecto</h2>
+    <p class="intro">Un sitio orientado a vender, no solo a existir. Cada módulo tiene una función concreta dentro del canal de ventas digital.</p>
+
+    <div class="grid-2">
+      <div class="item-check"><span class="ic">✓</span> Diseño UI industrial (Next.js + Tailwind + shadcn/ui)</div>
+      <div class="item-check"><span class="ic">✓</span> Catálogo preparado para miles de SKUs</div>
+      <div class="item-check"><span class="ic">✓</span> Compra por metro lineal</div>
+      <div class="item-check"><span class="ic">✓</span> Compra por kilogramo</div>
+      <div class="item-check"><span class="ic">✓</span> Compra por pieza</div>
+      <div class="item-check"><span class="ic">✓</span> Calculadora de peso (metro → kg y viceversa)</div>
+      <div class="item-check"><span class="ic">✓</span> Fichas técnicas en PDF + carga de archivos DWG</div>
+      <div class="item-check"><span class="ic">✓</span> Módulo de cotizaciones con PDF generado</div>
+      <div class="item-check"><span class="ic">✓</span> Notificación por WhatsApp + email (Resend)</div>
+      <div class="item-check"><span class="ic">✓</span> Blog SEO con arquitectura desde el inicio</div>
+      <div class="item-check"><span class="ic">✓</span> E-commerce con Mercado Pago (tarjeta/OXXO/SPEI)</div>
+      <div class="item-check"><span class="ic">✓</span> Portal de clientes empresariales</div>
+      <div class="item-check"><span class="ic">✓</span> Precios especiales por volumen por cliente</div>
+      <div class="item-check"><span class="ic">✓</span> Dashboard administrativo completo</div>
+      <div class="item-check"><span class="ic">✓</span> Gestión de inventario en tiempo real</div>
+      <div class="item-check"><span class="ic">✓</span> Panel de pedidos con estados y seguimiento</div>
+      <div class="item-check"><span class="ic">✓</span> Base de datos Supabase (PostgreSQL escalable)</div>
+      <div class="item-check"><span class="ic">✓</span> SEO on-page (5 páginas clave)</div>
+      <div class="item-check"><span class="ic">✓</span> Alta en Google Search Console + Analytics</div>
+      <div class="item-check"><span class="ic">✓</span> Google Business Profile configurado</div>
+      <div class="item-check"><span class="ic">✓</span> Diseño responsive (móvil + escritorio + tablet)</div>
+      <div class="item-check"><span class="ic">✓</span> TypeScript + arquitectura limpia y escalable</div>
+      <div class="item-check"><span class="ic">✓</span> Capacitación + 30 días de soporte</div>
+      <div class="item-check" style="border-color:#FDE68A; background:#FFFBEB"><span style="color:#C8991A">◷</span> <span style="color:#92400E"><strong>Fase 2:</strong> Facturación CFDI 4.0 con PAC (post lanzamiento)</span></div>
+    </div>
+  </div>
+
+  <!-- 02 FASES -->
+  <div class="seccion">
+    <span class="sec-label">02 — Plan de Trabajo</span>
+    <h2>Fases del proyecto</h2>
+    <p class="intro">Cinco fases con entregables claros. El cliente aprueba cada etapa antes de avanzar a la siguiente.</p>
+
+    <div class="fases">
+      <div class="fase">
+        <div class="fase-n">01</div>
+        <div>
+          <h3>Descubrimiento y Estrategia</h3>
+          <p>Reunión inicial, levantamiento de información, mapa de contenidos, palabras clave SEO objetivo y análisis de competencia digital.</p>
+        </div>
+        <div class="fase-sem">Sem 1</div>
+      </div>
+      <div class="fase">
+        <div class="fase-n">02</div>
+        <div>
+          <h3>Diseño UI / Prototipo</h3>
+          <p>2 propuestas de diseño visual para las páginas principales. Se aprueba antes de programar.</p>
+        </div>
+        <div class="fase-sem">Sem 2–3</div>
+      </div>
+      <div class="fase">
+        <div class="fase-n">03</div>
+        <div>
+          <h3>Desarrollo Web</h3>
+          <p>Next.js + Supabase + TypeScript: catálogo industrial, compra por metro/kilo, solicitud de cortes, cotizador, portal de clientes, precios por volumen y pasarelas Stripe + Mercado Pago.</p>
+        </div>
+        <div class="fase-sem">Sem 3–8</div>
+      </div>
+      <div class="fase">
+        <div class="fase-n">04</div>
+        <div>
+          <h3>SEO y Configuración</h3>
+          <p>On-page, velocidad, metadatos, schema de productos, Search Console, Analytics y Google Business.</p>
+        </div>
+        <div class="fase-sem">Sem 6–7</div>
+      </div>
+      <div class="fase">
+        <div class="fase-n">05</div>
+        <div>
+          <h3>Lanzamiento y Entrega</h3>
+          <p>Revisión final, correcciones, lanzamiento en producción, capacitación y activación del soporte.</p>
+        </div>
+        <div class="fase-sem">Sem 8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 COSTOS -->
+  <div class="seccion">
+    <span class="sec-label">03 — Inversión</span>
+    <h2>Desglose de costos</h2>
+    <p class="intro">Dos partes: desarrollo inicial (pago único) y servicio mensual continuo que mantiene y hace crecer el canal.</p>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+
+          <!-- DESARROLLO -->
+          <tr class="thead-grupo">
+            <td colspan="3">Fase 1 — Desarrollo Inicial · Pago Único</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Diseño UI industrial (Next.js + Tailwind + shadcn/ui)</td>
+            <td class="col-desc">2 propuestas de diseño, sistema de componentes shadcn/ui, responsive, identidad del sector</td>
+            <td class="col-precio">$8,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Setup Next.js + TypeScript + Supabase</td>
+            <td class="col-desc">Arquitectura base, PostgreSQL, autenticación, RLS, variables de entorno, estructura escalable</td>
+            <td class="col-precio">$10,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Catálogo industrial (miles de SKUs)</td>
+            <td class="col-desc">Compra por metro / kilo / pieza, fichas técnicas PDF, carga de archivos DWG, filtros avanzados</td>
+            <td class="col-precio">$12,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Calculadora de peso</td>
+            <td class="col-desc">Conversión metro → kg y viceversa por material, calibre y perfil. Integrada en la ficha de producto</td>
+            <td class="col-precio">$3,500</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Módulo de cotizaciones</td>
+            <td class="col-desc">Generación de PDF de cotización, notificación por email (Resend) y WhatsApp, historial de cotizaciones</td>
+            <td class="col-precio">$7,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">E-commerce + Mercado Pago</td>
+            <td class="col-desc">Carrito, checkout, tarjeta / OXXO / SPEI / transferencia. Webhooks y conciliación de órdenes</td>
+            <td class="col-precio">$8,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Portal de clientes empresariales</td>
+            <td class="col-desc">Registro empresarial, historial de pedidos y cotizaciones, precios especiales por volumen por cliente</td>
+            <td class="col-precio">$9,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Dashboard administrativo</td>
+            <td class="col-desc">Panel de pedidos, gestión de inventario en tiempo real, gestión de clientes, reportes de ventas</td>
+            <td class="col-precio">$10,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Blog SEO</td>
+            <td class="col-desc">Sección blog, 3 artículos iniciales optimizados, categorías, etiquetas y schema markup</td>
+            <td class="col-precio">$4,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">SEO On-Page + Search Console + Analytics</td>
+            <td class="col-desc">5 páginas clave, metadatos, Core Web Vitals, sitemap, Google Search Console y GA4</td>
+            <td class="col-precio">$4,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Google Business Profile</td>
+            <td class="col-desc">Alta/optimización del perfil en Google Maps, fotos, categorías y horarios</td>
+            <td class="col-precio">$1,500</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Capacitación + soporte 30 días</td>
+            <td class="col-desc">1 sesión de capacitación (admin, catálogo, pedidos) + soporte por correo/WhatsApp</td>
+            <td class="col-precio">$2,000</td>
+          </tr>
+
+          <tr class="fila-sub">
+            <td colspan="2" style="text-align:right;">Subtotal Fase 1</td>
+            <td class="col-precio">$79,000 MXN</td>
+          </tr>
+
+          <!-- FASE 2 -->
+          <tr class="thead-grupo">
+            <td colspan="3">Fase 2 — Post Lanzamiento (cotización independiente)</td>
+          </tr>
+          <tr style="opacity:0.7">
+            <td class="col-nombre">Facturación CFDI 4.0 con PAC</td>
+            <td class="col-desc">Integración con PAC certificado SAT, generación de XML timbrado, cancelación, portal de facturas</td>
+            <td class="col-precio">$8,000–$12,000</td>
+          </tr>
+
+          <!-- MENSUAL -->
+          <tr class="thead-grupo">
+            <td colspan="3">Servicio Mensual — Recurrente</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Mantenimiento y actualizaciones</td>
+            <td class="col-desc">Dependencias Next.js, Supabase, seguridad, backups, actualizaciones de contenido y catálogo</td>
+            <td class="col-precio">$2,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">SEO continuo</td>
+            <td class="col-desc">1 artículo mensual optimizado, monitoreo de posiciones, ajustes técnicos</td>
+            <td class="col-precio">$2,500</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Reporte mensual de resultados</td>
+            <td class="col-desc">Tráfico, leads, pedidos atribuibles al canal digital y métricas de conversión</td>
+            <td class="col-precio">$300</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Infraestructura Supabase</td>
+            <td class="col-desc">Plan Pro de Supabase según volumen de SKUs y tráfico</td>
+            <td class="col-precio">$600</td>
+          </tr>
+
+          <tr class="fila-sub">
+            <td colspan="2" style="text-align:right;">Subtotal mensual</td>
+            <td class="col-precio">$5,400 MXN/mes</td>
+          </tr>
+
+          <!-- TOTAL -->
+          <tr class="fila-total">
+            <td colspan="2">INVERSIÓN FASE 1 — TOTAL</td>
+            <td class="col-precio">$79,000 MXN</td>
+          </tr>
+          <tr class="fila-mes">
+            <td colspan="2" style="text-align:right; color:#92400E !important; font-weight:600 !important;">+ Servicio mensual desde</td>
+            <td class="col-precio">$5,400 MXN/mes</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="nota-box">
+      <p><strong>No incluye:</strong> fotografía profesional de productos, redacción de fichas técnicas si el cliente no las proporciona, campañas de publicidad pagada.</p>
+      <p><strong>Dominio y hosting:</strong> El dominio acerosymetalesurgentes.com y el hosting ya fueron adquiridos y pagados por el cliente — listos para el deploy.</p>
+      <p><strong>Stack Fase 1:</strong> Next.js + TypeScript + Tailwind + shadcn/ui + Supabase + Mercado Pago + Resend. Arquitectura limpia, escalable y preparada para miles de SKUs.</p>
+      <p><strong>Fase 2 (post lanzamiento):</strong> Facturación CFDI 4.0 con PAC — se cotiza por separado una vez que la plataforma esté operando.</p>
+      <p><strong>Precios sin IVA.</strong> Cotización válida por 30 días a partir de la fecha de emisión.</p>
+    </div>
+  </div>
+
+  <!-- 04 PAGOS -->
+  <div class="seccion">
+    <span class="sec-label">04 — Formas de Pago</span>
+    <h2>¿Cómo quieren pagarlo?</h2>
+    <p class="intro">Tres esquemas para el desarrollo inicial. El servicio mensual se factura el día 1 de cada mes.</p>
+
+    <div class="grid-pago">
+      <div class="pago">
+        <div class="pago-et">Opción A</div>
+        <h3>50 / 50</h3>
+        <p>$39,500 al inicio del proyecto · $39,500 en la entrega final.</p>
+      </div>
+      <div class="pago star">
+        <div class="pago-et">⭐ Opción B — Recomendada</div>
+        <h3>40 / 30 / 30</h3>
+        <p>$31,600 al inicio · $23,700 al aprobar diseño · $23,700 al lanzar.</p>
+      </div>
+      <div class="pago">
+        <div class="pago-et">Opción C</div>
+        <h3>Diferido</h3>
+        <p>El desarrollo se descuenta de las primeras comisiones generadas por el canal. Sin desembolso inicial.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /contenido -->
+
+<!-- ═══════ CIERRE ═══════ -->
+<div class="cierre">
+  <div style="max-width:860px; margin:0 auto; padding:0 8px;">
+    <span class="sec-label">05 — Próximo Paso</span>
+    <h2>Listos para arrancar</h2>
+    <p>Para iniciar solo se necesita aprobación por escrito, primer pago y una reunión de arranque de 60 minutos para definir contenidos y accesos.</p>
+    <p>Cualquier funcionalidad adicional no listada se cotiza por separado antes de incorporarse al proyecto.</p>
+
+    <div class="firma">
+      <div class="firma-item">
+        <strong>Juan Azael Pinales Regis</strong>
+        Desarrollador Web
+      </div>
+      <div class="firma-item">
+        <strong>azaelecommerce@gmail.com</strong>
+        Correo
+      </div>
+      <div class="firma-item">
+        <strong>+52 55 1923 2398</strong>
+        WhatsApp / Teléfono
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Cotización – Sitio Web Aceros y Metales Urgentes · Junio 2026</span>
+  <span class="f-conf">Documento Confidencial</span>
+</footer>
+
+</body>
+</html>

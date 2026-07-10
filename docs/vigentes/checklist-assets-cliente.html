@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist de Assets — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+  :root { --primary:#162839; --primary-c:#2c3e50; --acento:#f78b30; --gris:#43474c; --gris-cl:#c4c6cd; --bg:#f7f9fb; --blanco:#fff; --verde:#16A34A; --rojo:#ba1a1a; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--primary); font-family:'Inter',sans-serif; font-size:14px; line-height:1.7; }
+
+  .header { background:var(--primary-c); color:#fff; padding:40px 48px; border-bottom:4px solid var(--acento); }
+  .header h1 { font-family:'Montserrat',sans-serif; font-size:32px; font-weight:800; margin-bottom:6px; }
+  .header p { color:rgba(255,255,255,0.6); font-size:14px; }
+
+  .contenido { max-width:800px; margin:0 auto; padding:40px 48px; }
+
+  .intro { font-size:15px; color:var(--gris); margin-bottom:32px; max-width:650px; }
+  .intro strong { color:var(--primary); }
+
+  .grupo { margin-bottom:36px; }
+  .grupo-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--acento); }
+  .grupo-num { background:var(--acento); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; }
+  .grupo-titulo { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; color:var(--primary); }
+
+  .item { display:grid; grid-template-columns:24px 1fr auto; gap:12px; padding:12px 0; border-bottom:1px solid #e5e7eb; align-items:start; }
+  .item:last-child { border-bottom:none; }
+
+  .checkbox { width:18px; height:18px; border:2px solid var(--gris-cl); border-radius:3px; margin-top:2px; flex-shrink:0; }
+  .item-texto { font-size:13.5px; color:var(--gris); }
+  .item-texto strong { color:var(--primary); display:block; margin-bottom:2px; }
+  .item-texto em { font-style:normal; color:var(--acento); font-weight:600; font-size:12px; }
+
+  .prioridad { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:2px 8px; border-radius:10px; white-space:nowrap; height:fit-content; margin-top:2px; }
+  .p-alta { background:#fef3c7; color:#92400e; border:1px solid #fde68a; }
+  .p-media { background:#dbeafe; color:#1e40af; border:1px solid #bfdbfe; }
+  .p-baja { background:#f3f4f6; color:#6b7280; border:1px solid #e5e7eb; }
+
+  .nota { margin-top:28px; background:#fff8f3; border:1.5px solid #fdd8b4; border-left:4px solid var(--acento); border-radius:0 6px 6px 0; padding:16px 20px; }
+  .nota p { font-size:13px; color:var(--gris); margin-bottom:4px; }
+  .nota p:last-child { margin:0; }
+  .nota strong { color:var(--primary); }
+
+  footer { background:var(--primary-c); padding:18px 48px; border-top:4px solid var(--acento); text-align:center; }
+  footer span { font-size:11px; color:rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Checklist de Assets</h1>
+  <p>Lo que necesitamos del cliente para arrancar el desarrollo — acerosymetalesurgentes.com</p>
+</div>
+
+<div class="contenido">
+  <p class="intro">Este checklist lista todo el material que el cliente debe entregar antes o durante las primeras 2 semanas del proyecto. <strong>Sin estos assets no se puede avanzar con el catálogo ni con el diseño final.</strong> Lo ideal es recibirlos antes del kickoff.</p>
+
+  <!-- GRUPO 1 -->
+  <div class="grupo">
+    <div class="grupo-header"><div class="grupo-num">1</div><div class="grupo-titulo">Marca e identidad</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Logo en formato vectorial</strong>Archivo .SVG, .AI o .EPS. Si no tienen vectorial, el PNG más grande que tengan (mínimo 1000px de ancho, fondo transparente).</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Colores de marca</strong>Si tienen un manual de marca o paleta de colores definida. Si no, nosotros proponemos basándonos en el logo.</div><span class="prioridad p-media">Media</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Eslogan o tagline</strong>Si tienen uno que usen en tarjetas, membretes o publicidad. <em>Opcional</em></div><span class="prioridad p-baja">Baja</span></div>
+  </div>
+
+  <!-- GRUPO 2 -->
+  <div class="grupo">
+    <div class="grupo-header"><div class="grupo-num">2</div><div class="grupo-titulo">Catálogo y productos</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Lista completa de productos con precios</strong>Excel, CSV o PDF con: nombre del material, grado/clave, presentación (barra, placa, solera...), unidad de venta (metro, kilo, pieza) y precio base.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Fichas técnicas PDF</strong>Las que tengan disponibles de sus proveedores. Si no tienen todas, nosotros las generamos con datos del catálogo.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Fotos de productos y bodega</strong>Fotos reales del material (barras, placas, perfiles), del almacén y del equipo de trabajo. Mínimo 10-15 fotos. Con celular está bien si hay buena luz.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Archivos DWG / planos técnicos</strong>Si tienen planos de productos o cortes en AutoCAD. Se ofrecen como descarga en la ficha de producto.</div><span class="prioridad p-media">Media</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Catálogos de proveedores</strong>PDFs de Serviacero, La Paloma, Fortuna u otros distribuidores que manejen. Sirven para cruzar equivalencias y completar specs.</div><span class="prioridad p-media">Media</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Tabla de precios por volumen</strong>Si manejan precios diferenciados por cantidad (ej: +100 kg = -5%), necesitamos la tabla por material o categoría.</div><span class="prioridad p-media">Media</span></div>
+  </div>
+
+  <!-- GRUPO 3 -->
+  <div class="grupo">
+    <div class="grupo-header"><div class="grupo-num">3</div><div class="grupo-titulo">Información del negocio</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Datos fiscales completos</strong>Razón social, RFC, dirección fiscal y régimen fiscal. Para facturación y para el pie de página del sitio.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Dirección(es) de sucursal / bodega</strong>Para Google Business Profile y para la opción "Recoger en sucursal" del checkout.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Teléfono(s) y WhatsApp de atención</strong>El número que aparecerá en el sitio y al que llegarán las cotizaciones por WhatsApp.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Email de contacto comercial</strong>El correo donde recibirán notificaciones de pedidos y cotizaciones.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Horario de atención</strong>Para Google Business Profile y para el footer del sitio.</div><span class="prioridad p-media">Media</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Redes sociales</strong>Facebook, Instagram, LinkedIn — las que tengan activas. Si no tienen, se recomienda crear al menos Facebook.</div><span class="prioridad p-baja">Baja</span></div>
+  </div>
+
+  <!-- GRUPO 4 -->
+  <div class="grupo">
+    <div class="grupo-header"><div class="grupo-num">4</div><div class="grupo-titulo">Pagos y facturación</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Cuenta de Mercado Pago</strong>Acceso o creación de cuenta empresarial en Mercado Pago. Se necesitan las credenciales de integración (Access Token y Public Key).</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Datos bancarios para transferencia</strong>Banco, CLABE interbancaria, nombre del beneficiario y referencia. Se muestran al cliente que elige pagar por transferencia.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>PAC para CFDI (Fase 2)</strong>Si ya tienen proveedor de facturación electrónica (Facturama, SW Sapien, etc). Si no, lo recomendamos en V3. <em>No bloquea el MVP.</em></div><span class="prioridad p-baja">Baja</span></div>
+  </div>
+
+  <!-- GRUPO 5 -->
+  <div class="grupo">
+    <div class="grupo-header"><div class="grupo-num">5</div><div class="grupo-titulo">Accesos técnicos</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Acceso al panel de Hostinger</strong>Para configurar el dominio acerosymetalesurgentes.com y apuntar los DNS a Vercel.</div><span class="prioridad p-alta">Alta</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Acceso a Google Business Profile</strong>Si ya tienen perfil en Google Maps. Si no, lo creamos desde cero en Fase 4.</div><span class="prioridad p-media">Media</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Acceso a redes sociales</strong>Si quieren que configuremos el Meta Pixel para campañas de Facebook/Instagram.</div><span class="prioridad p-media">Media</span></div>
+  </div>
+
+  <!-- GRUPO 6 -->
+  <div class="grupo">
+    <div class="grupo-header"><div class="grupo-num">6</div><div class="grupo-titulo">Contenido y SEO</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Texto "Acerca de nosotros"</strong>Historia de la empresa, años de experiencia, diferenciadores. Si no lo tienen escrito, lo redactamos en una entrevista de 15 min.</div><span class="prioridad p-media">Media</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Testimoniales de clientes</strong>Si tienen clientes satisfechos que puedan dar un quote. Nombre + empresa + comentario corto.</div><span class="prioridad p-baja">Baja</span></div>
+    <div class="item"><div class="checkbox"></div><div class="item-texto"><strong>Lista de clientes principales</strong>Nombres de empresas o industrias que atienden — para la sección de confianza del homepage. <em>Solo con permiso del cliente.</em></div><span class="prioridad p-baja">Baja</span></div>
+  </div>
+
+  <div class="nota">
+    <p><strong>¿Cuándo se necesita todo?</strong></p>
+    <p>Los items marcados como <strong>Alta</strong> se necesitan antes del kickoff o durante la Semana 1. Los de <strong>Media</strong> pueden llegar en las primeras 2 semanas. Los de <strong>Baja</strong> se pueden agregar después del lanzamiento sin problema.</p>
+    <p><strong>Formato de entrega:</strong> Google Drive compartido, WeTransfer o USB. Lo que sea más cómodo para el cliente.</p>
+  </div>
+</div>
+
+<footer><span>Checklist de Assets — acerosymetalesurgentes.com · Julio 2026</span></footer>
+</body>
+</html>

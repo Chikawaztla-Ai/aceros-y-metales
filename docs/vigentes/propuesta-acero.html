@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Comercial – Canal Digital de Ventas</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --negro: #0A0A0A;
+    --acero: #1C2B3A;
+    --acero-medio: #2E4057;
+    --plata: #8FA3B1;
+    --acento: #E8C547;
+    --blanco: #F5F5F5;
+    --texto: #CBD5E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--texto);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── PORTADA ── */
+  .portada {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 48px;
+    position: relative;
+    overflow: hidden;
+    background: var(--acero);
+  }
+
+  .portada::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.015) 60px,
+        rgba(255,255,255,0.015) 61px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.015) 60px,
+        rgba(255,255,255,0.015) 61px
+      );
+  }
+
+  .portada-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .portada h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.92;
+    color: var(--blanco);
+    letter-spacing: 1px;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .portada h1 span {
+    color: var(--acento);
+  }
+
+  .portada-sub {
+    font-size: 16px;
+    color: var(--plata);
+    max-width: 480px;
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .portada-linea {
+    width: 64px;
+    height: 3px;
+    background: var(--acento);
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .portada-meta {
+    display: flex;
+    gap: 48px;
+    position: relative;
+  }
+
+  .meta-item label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--plata);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .meta-item span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blanco);
+  }
+
+  /* ── SECCIONES ── */
+  section {
+    padding: 80px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .sec-tag {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--blanco);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  p {
+    color: var(--texto);
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  /* ── DIVISOR ── */
+  .divisor {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 0;
+  }
+
+  /* ── CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .card {
+    background: var(--acero);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: var(--acento); }
+
+  .card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--acento);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blanco);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--plata);
+    margin: 0;
+  }
+
+  /* ── TABLA ── */
+  .tabla-wrap {
+    margin-top: 40px;
+    overflow-x: auto;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead tr {
+    background: var(--acero);
+  }
+
+  thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--plata);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+  tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--texto);
+    white-space: nowrap;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--blanco);
+  }
+
+  .highlight-row {
+    background: rgba(232, 197, 71, 0.06) !important;
+  }
+
+  .highlight-row td { color: var(--blanco) !important; }
+
+  .badge-verde {
+    display: inline-block;
+    background: rgba(72, 199, 116, 0.12);
+    color: #48C774;
+    border: 1px solid rgba(72, 199, 116, 0.25);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .badge-amarillo {
+    display: inline-block;
+    background: rgba(232, 197, 71, 0.12);
+    color: var(--acento);
+    border: 1px solid rgba(232, 197, 71, 0.25);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* ── TÉRMINOS ── */
+  .terminos {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .termino {
+    display: flex;
+    gap: 24px;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: flex-start;
+  }
+
+  .termino:last-child { border-bottom: none; }
+
+  .termino-icono {
+    font-size: 20px;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  .termino-body label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blanco);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .termino-body span {
+    font-size: 13px;
+    color: var(--plata);
+  }
+
+  /* ── BLOQUE DESTACADO ── */
+  .bloque-acento {
+    background: var(--acento);
+    color: var(--negro);
+    padding: 40px 48px;
+    margin: 0;
+  }
+
+  .bloque-acento h2 {
+    color: var(--negro);
+    margin-bottom: 12px;
+  }
+
+  .bloque-acento p {
+    color: rgba(10,10,10,0.75);
+    font-size: 15px;
+    max-width: 640px;
+  }
+
+  .bloque-acento .firma {
+    margin-top: 32px;
+    font-weight: 700;
+    color: var(--negro);
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--acero);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer span {
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  footer .confidencial {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(143,163,177,0.5);
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .portada { min-height: auto; page-break-after: always; }
+    section { padding: 40px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="portada">
+  <div class="portada-tag">Propuesta Comercial Confidencial</div>
+  <h1>Canal Digital<br>de <span>Ventas</span><br>para Acero</h1>
+  <div class="portada-linea"></div>
+  <p class="portada-sub">Desarrollo, posicionamiento y operación del sitio web como canal activo de generación de ventas, bajo esquema de comisión por resultados.</p>
+  <div class="portada-meta">
+    <div class="meta-item">
+      <label>Preparado por</label>
+      <span>Juan Azael Pinales Regis</span>
+    </div>
+    <div class="meta-item">
+      <label>Fecha</label>
+      <span>Junio 2026</span>
+    </div>
+    <div class="meta-item">
+      <label>Versión</label>
+      <span>1.0</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divisor">
+
+<!-- INTRODUCCIÓN -->
+<section>
+  <div class="sec-tag">01 — Contexto</div>
+  <h2>¿De qué trata esta propuesta?</h2>
+  <p>Esta propuesta plantea un modelo de colaboración donde yo desarrollo, lanzo y administro el sitio web de su empresa como un canal activo de ventas, no como un sitio de presencia estática.</p>
+  <p>A diferencia de contratar un desarrollador web tradicional, este esquema alinea mis incentivos con los suyos: <strong style="color:#F5F5F5">yo gano cuando ustedes venden</strong>. El sitio se convierte en una herramienta que trabaja 24/7 generando cotizaciones, leads calificados y pedidos.</p>
+  <p>El mercado del acero en México opera mayoritariamente por relaciones y teléfono. Un canal digital bien ejecutado representa una ventaja competitiva real frente a distribuidores que aún no tienen presencia digital profesional.</p>
+</section>
+
+<hr class="divisor">
+
+<!-- QUÉ INCLUYE -->
+<section>
+  <div class="sec-tag">02 — Alcance</div>
+  <h2>Lo que incluye el servicio</h2>
+  <p>El canal digital abarca desde el diseño hasta la operación continua. No es una entrega única — es un activo en crecimiento.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">01</div>
+      <h3>Diseño y Desarrollo</h3>
+      <p>Sitio web profesional orientado a conversión: catálogo de productos, formulario de cotización, WhatsApp integrado, ficha de empresa.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <h3>SEO y Posicionamiento</h3>
+      <p>Optimización para búsquedas como "comprar acero en [ciudad]", "distribuidor de varilla", "acero para construcción México".</p>
+    </div>
+    <div class="card">
+      <div class="card-num">03</div>
+      <h3>Gestión de Leads</h3>
+      <p>Sistema para capturar, registrar y dar seguimiento a cada solicitud de cotización generada por el canal digital.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">04</div>
+      <h3>Mantenimiento Mensual</h3>
+      <p>Actualizaciones de precios, productos nuevos, contenido, seguridad del sitio y reportes de tráfico y leads mensuales.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">05</div>
+      <h3>Redes Sociales (opcional)</h3>
+      <p>Gestión de perfil de empresa en Google y presencia básica en redes para amplificar el alcance del canal.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">06</div>
+      <h3>Reportes de Resultados</h3>
+      <p>Reporte mensual de leads generados, pedidos atribuibles al canal y estimado de comisión acumulada.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divisor">
+
+<!-- MODELO DE NEGOCIO -->
+<section>
+  <div class="sec-tag">03 — Modelo Económico</div>
+  <h2>Cómo funciona la comisión</h2>
+  <p>Propongo un esquema híbrido que protege ambas partes: una cuota fija que cubre el costo de operación del canal, más una comisión variable atada directamente a los resultados.</p>
+
+  <div class="tabla-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Monto / %</th>
+          <th>Frecuencia</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cuota fija de administración</td>
+          <td>$3,000 – $5,000 MXN</td>
+          <td>Mensual</td>
+          <td>Cubre hosting, mantenimiento y reportes</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Comisión por venta cerrada</td>
+          <td><strong>2% – 3%</strong> sobre venta</td>
+          <td>Por pedido</td>
+          <td>Solo ventas atribuibles al canal digital</td>
+        </tr>
+        <tr>
+          <td>Desarrollo inicial del sitio</td>
+          <td>A convenir</td>
+          <td>Una sola vez</td>
+          <td>O diferido en los primeros 3 meses</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:24px; font-size:13px; color: var(--plata);">
+    ⚠️ La comisión aplica sobre ventas en las que el primer contacto provino del sitio web (formulario, WhatsApp del sitio, llamada desde la ficha de Google). El periodo de atribución es de 30 días desde el primer contacto.
+  </p>
+</section>
+
+<hr class="divisor">
+
+<!-- PROYECCIÓN -->
+<section>
+  <div class="sec-tag">04 — Proyección</div>
+  <h2>Estimado de ingresos mensuales</h2>
+  <p>Estos números son proyecciones basadas en el comportamiento típico de empresas de distribución de acero con clientes mixtos (constructoras, ferreterías, industria). Los resultados reales dependen del volumen de la empresa y la inversión en posicionamiento.</p>
+
+  <p style="font-size:13px; color:var(--acento); font-weight:600; margin-top:32px;">Mes 1 — Lanzamiento (depende casi 100% de la cartera de clientes actual; SEO y Ads aún no aportan)</p>
+  <div class="tabla-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Escenario</th>
+          <th>Pedidos mes 1</th>
+          <th>Fuente principal</th>
+          <th>Venta total</th>
+          <th>Comisión 3%</th>
+          <th>+ Cuota fija</th>
+          <th>Total mes 1</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🔵 Conservador</td>
+          <td>1 pedido</td>
+          <td>Aviso a cartera</td>
+          <td>$80,000 MXN</td>
+          <td>$2,400</td>
+          <td>$3,000</td>
+          <td><span class="badge-amarillo">$5,400</span></td>
+        </tr>
+        <tr class="highlight-row">
+          <td>🟡 Moderado</td>
+          <td>2–3 pedidos</td>
+          <td>Cartera + 1ros clics Ads</td>
+          <td>$200,000–$300,000</td>
+          <td>$6,000–$9,000</td>
+          <td>$3,000</td>
+          <td><span class="badge-verde">$9,000–$12,000</span></td>
+        </tr>
+        <tr>
+          <td>🟢 Optimista</td>
+          <td>4+ pedidos</td>
+          <td>Cartera + Ads activo</td>
+          <td>$400,000+</td>
+          <td>$12,000+</td>
+          <td>$3,000</td>
+          <td><span class="badge-verde">$15,000+</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:13px; color:var(--acento); font-weight:600; margin-top:40px;">Mes 3–4 en adelante — Canal madurando (SEO empieza a aportar, Ads optimizado)</p>
+  <div class="tabla-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Escenario</th>
+          <th>Pedidos/mes via web</th>
+          <th>Ticket promedio</th>
+          <th>Venta total web</th>
+          <th>Comisión 2%</th>
+          <th>Comisión 3%</th>
+          <th>+ Cuota fija</th>
+          <th>Total estimado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🔵 Conservador</td>
+          <td>3 pedidos</td>
+          <td>$80,000 MXN</td>
+          <td>$240,000 MXN</td>
+          <td>$4,800</td>
+          <td>$7,200</td>
+          <td>$3,000</td>
+          <td><span class="badge-amarillo">$7,800 – $10,200</span></td>
+        </tr>
+        <tr class="highlight-row">
+          <td>🟡 Moderado</td>
+          <td>6 pedidos</td>
+          <td>$120,000 MXN</td>
+          <td>$720,000 MXN</td>
+          <td>$14,400</td>
+          <td>$21,600</td>
+          <td>$3,000</td>
+          <td><span class="badge-verde">$17,400 – $24,600</span></td>
+        </tr>
+        <tr>
+          <td>🟢 Optimista</td>
+          <td>10 pedidos</td>
+          <td>$150,000 MXN</td>
+          <td>$1,500,000 MXN</td>
+          <td>$30,000</td>
+          <td>$45,000</td>
+          <td>$3,000</td>
+          <td><span class="badge-verde">$33,000 – $48,000</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:16px; font-size:12px; color:var(--plata);">* Cifras en pesos mexicanos. El mes 1 depende principalmente del esfuerzo de la clienta en avisar a su cartera de clientes actual. El escenario moderado/optimista de meses posteriores se considera alcanzable a partir del mes 3–4 con SEO y Ads ya optimizados.</p>
+</section>
+
+<hr class="divisor">
+
+<!-- TÉRMINOS CLAVE -->
+<section>
+  <div class="sec-tag">05 — Términos del Acuerdo</div>
+  <h2>Condiciones que propongo</h2>
+  <p>Para que el canal funcione correctamente y ambas partes estén protegidas, propongo los siguientes términos mínimos:</p>
+
+  <div class="terminos">
+    <div class="termino">
+      <div class="termino-icono">📅</div>
+      <div class="termino-body">
+        <label>Duración mínima del contrato</label>
+        <span>6 meses. El posicionamiento orgánico requiere tiempo; los resultados reales se ven a partir del mes 3. Un contrato corto no permite madurar el canal.</span>
+      </div>
+    </div>
+    <div class="termino">
+      <div class="termino-icono">🎯</div>
+      <div class="termino-body">
+        <label>Atribución de ventas</label>
+        <span>Toda venta cuyo primer contacto provenga del canal digital (formulario web, WhatsApp del sitio, Google Maps/perfil) dentro de los 30 días previos al cierre se considera atribuible y genera comisión.</span>
+      </div>
+    </div>
+    <div class="termino">
+      <div class="termino-icono">📊</div>
+      <div class="termino-body">
+        <label>Transparencia en pedidos</label>
+        <span>La empresa comparte mensualmente el registro de pedidos atribuidos al canal digital (número de pedido, monto, fecha) para calcular correctamente la comisión.</span>
+      </div>
+    </div>
+    <div class="termino">
+      <div class="termino-icono">💳</div>
+      <div class="termino-body">
+        <label>Pago de comisión</label>
+        <span>La comisión se paga dentro de los primeros 5 días hábiles del mes siguiente, una vez confirmados los pedidos cerrados del mes anterior.</span>
+      </div>
+    </div>
+    <div class="termino">
+      <div class="termino-icono">🔒</div>
+      <div class="termino-body">
+        <label>Propiedad del sitio</label>
+        <span>El dominio y hosting estarán a nombre de la empresa. Al término del contrato, el sitio queda en su poder sin costo adicional.</span>
+      </div>
+    </div>
+    <div class="termino">
+      <div class="termino-icono">📢</div>
+      <div class="termino-body">
+        <label>Exclusividad de canal</label>
+        <span>Durante la vigencia del contrato, este es el canal digital oficial de la empresa. No se contratará a otro proveedor para el mismo fin sin notificación previa.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<div class="bloque-acento">
+  <div style="max-width:900px; margin:0 auto;">
+    <div style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:rgba(10,10,10,0.5); margin-bottom:12px; font-weight:600;">06 — Próximo Paso</div>
+    <h2>¿Empezamos?</h2>
+    <p>Esta propuesta está abierta a ajustes. Si algún término no encaja con la operación de su empresa, lo conversamos. El objetivo es llegar a un acuerdo que funcione para ambas partes desde el primer mes.</p>
+    <p style="margin-top:8px;">Propongo una reunión de 30 minutos para revisar juntos los términos, resolver dudas y definir el inicio del proyecto.</p>
+    <div class="firma">
+      Juan Azael Pinales Regis &nbsp;·&nbsp; azaelecommerce@gmail.com &nbsp;·&nbsp; +52 55 1923 2398
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Propuesta Comercial — Canal Digital de Ventas para Acero &nbsp;·&nbsp; Junio 2026</span>
+  <span class="confidencial">Documento Confidencial</span>
+</footer>
+
+</body>
+</html>

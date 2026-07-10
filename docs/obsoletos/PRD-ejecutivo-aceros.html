@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD Ejecutivo — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --primary:    #162839;
+    --primary-c:  #2c3e50;
+    --acento:     #f78b30;
+    --acento-d:   #612f00;
+    --gris-osc:   #43474c;
+    --gris-med:   #74777d;
+    --gris-cl:    #c4c6cd;
+    --gris-bg:    #f2f4f6;
+    --blanco:     #ffffff;
+    --surface:    #f7f9fb;
+    --verde:      #16A34A;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--surface);
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* PORTADA */
+  .portada {
+    background: var(--primary-c);
+    color: var(--blanco);
+    padding: 72px 56px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portada::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(247,139,48,0.08) 0%, transparent 60%);
+  }
+
+  .portada::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--acento);
+  }
+
+  .portada-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .portada h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .portada h1 em { font-style: normal; color: var(--acento); }
+
+  .portada-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .portada-meta {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    overflow: hidden;
+    width: fit-content;
+    position: relative;
+  }
+
+  .meta { padding: 14px 24px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .meta:last-child { border-right: none; }
+  .meta label { display:block; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:4px; }
+  .meta span { font-size:13px; font-weight:700; color:#fff; }
+
+  /* CONTENIDO */
+  .contenido { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+
+  .seccion { padding: 60px 0; border-bottom: 1px solid var(--gris-cl); }
+  .seccion:last-child { border-bottom: none; }
+
+  .sec-label {
+    display: inline-block;
+    background: var(--primary-c);
+    color: var(--acento);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .intro { font-size: 16px; color: var(--gris-osc); max-width: 680px; margin-bottom: 0; }
+
+  p { color: var(--gris-osc); margin-bottom: 14px; max-width: 700px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* OBJETIVO BOX */
+  .objetivo-box {
+    margin-top: 32px;
+    background: var(--primary-c);
+    color: #fff;
+    padding: 32px 36px;
+    border-radius: 6px;
+    border-left: 4px solid var(--acento);
+  }
+
+  .objetivo-box p { color: rgba(255,255,255,0.8); max-width: 100%; margin-bottom: 8px; }
+  .objetivo-box p:last-child { margin: 0; }
+  .objetivo-box strong { color: #fff; }
+
+  /* MÓDULOS GRID */
+  .modulos-grid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media(max-width:640px){ .modulos-grid{ grid-template-columns:1fr; } }
+
+  .modulo {
+    background: var(--blanco);
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 6px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: border-color .15s;
+  }
+
+  .modulo:hover { border-color: var(--acento); }
+
+  .modulo-icono {
+    width: 36px; height: 36px;
+    background: var(--gris-bg);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .modulo h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .modulo p { font-size: 12.5px; color: var(--gris-med); margin: 0; max-width: 100%; }
+
+  /* FASES */
+  .fases { margin-top: 36px; position: relative; padding-left: 32px; }
+
+  .fases::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: var(--gris-cl);
+  }
+
+  .fase {
+    position: relative;
+    padding-bottom: 28px;
+  }
+
+  .fase:last-child { padding-bottom: 0; }
+
+  .fase::before {
+    content: '';
+    position: absolute;
+    left: -32px; top: 4px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--acento);
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--acento);
+  }
+
+  .fase-semana {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 4px;
+  }
+
+  .fase h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .fase p { font-size: 13px; color: var(--gris-osc); margin: 0; max-width: 620px; }
+
+  /* TABLA */
+  .tabla-wrap {
+    margin-top: 32px;
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  .thead-grupo td {
+    padding: 10px 18px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--primary-c);
+    color: var(--acento);
+  }
+
+  tbody tr { border-bottom: 1px solid var(--gris-cl); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--gris-bg); }
+
+  tbody td { padding: 14px 18px; font-size: 13.5px; color: var(--gris-osc); }
+  .col-item { font-weight: 600; color: var(--primary) !important; }
+  .col-r { text-align: right; font-weight: 700; color: var(--primary) !important; white-space: nowrap; }
+
+  .fila-total td {
+    background: var(--primary-c);
+    color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    padding: 18px !important;
+    border-top: 3px solid var(--acento);
+  }
+
+  .fila-total .col-r { color: var(--acento) !important; font-size: 18px !important; }
+
+  /* TÉRMINOS */
+  .terminos { margin-top: 32px; border: 1.5px solid var(--gris-cl); border-radius: 6px; overflow: hidden; }
+
+  .termino {
+    display: flex;
+    gap: 16px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--gris-cl);
+    align-items: flex-start;
+  }
+
+  .termino:last-child { border-bottom: none; }
+  .termino-ico { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .termino label { display:block; font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3px; }
+  .termino span { font-size:13px; color:var(--gris-osc); }
+
+  /* PANTALLAS */
+  .pantallas { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media(max-width:640px){ .pantallas{ grid-template-columns:1fr; } }
+
+  .pantalla {
+    background: var(--blanco);
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+
+  .pantalla .p-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--acento);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .pantalla h3 { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+  .pantalla p { font-size: 12px; color: var(--gris-med); margin: 0; }
+
+  /* NOTA */
+  .nota-box {
+    margin-top: 20px;
+    background: #fff8f3;
+    border: 1.5px solid #fdd8b4;
+    border-left: 4px solid var(--acento);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+  }
+
+  .nota-box p { font-size: 13px; color: var(--gris-osc); margin-bottom: 6px; max-width: 100%; }
+  .nota-box p:last-child { margin: 0; }
+  .nota-box strong { color: var(--primary); }
+
+  /* CIERRE */
+  .cierre {
+    background: var(--primary);
+    color: #fff;
+    padding: 56px;
+    position: relative;
+  }
+
+  .cierre::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--acento);
+  }
+
+  .cierre .sec-label { background: rgba(255,255,255,0.08); color: var(--acento); }
+  .cierre h2 { color: #fff; margin-bottom: 12px; }
+  .cierre p { color: rgba(255,255,255,0.65); max-width: 600px; }
+
+  .firma {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .firma-item { font-size: 13px; color: rgba(255,255,255,0.6); }
+  .firma-item strong { display: block; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+
+  footer {
+    background: var(--primary-c);
+    padding: 18px 56px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 4px solid var(--acento);
+  }
+
+  footer span { font-size: 11px; color: rgba(255,255,255,0.4); }
+  .f-conf { letter-spacing: 3px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="portada">
+  <div class="portada-tag">Documento de Requerimientos de Producto</div>
+  <h1>acerosymetales<br><em>urgentes</em>.com</h1>
+  <p class="portada-desc">
+    Plataforma de ventas industrial B2B — catálogo técnico, cotizaciones, e-commerce y portal de clientes empresariales.
+  </p>
+  <div class="portada-meta">
+    <div class="meta"><label>Proyecto</label><span>Aceros y Metales Urgentes</span></div>
+    <div class="meta"><label>Versión</label><span>1.0</span></div>
+    <div class="meta"><label>Fecha</label><span>Julio 2026</span></div>
+    <div class="meta"><label>Desarrollador</label><span>Juan Azael Pinales Regis</span></div>
+  </div>
+</div>
+
+<div class="contenido">
+
+  <!-- 01 OBJETIVO -->
+  <div class="seccion">
+    <span class="sec-label">01 — Objetivo</span>
+    <h2>¿Qué estamos construyendo y por qué?</h2>
+    <p class="intro">acerosymetalesurgentes.com es el canal de ventas digital de la empresa — no solo un sitio de presencia, sino una plataforma que genera cotizaciones, procesa pedidos y atiende a clientes empresariales las 24 horas.</p>
+
+    <div class="objetivo-box">
+      <p><strong>Objetivo principal:</strong> Convertir el sitio web en el canal de ventas más eficiente de la empresa, capturando clientes que buscan acero y metales en línea y convirtiendo visitas en cotizaciones y pedidos reales.</p>
+      <p><strong>Problema que resuelve:</strong> Actualmente las cotizaciones se gestionan por teléfono y WhatsApp, lo que limita el horario de atención y la capacidad de escalar. La plataforma automatiza este proceso y lo hace disponible 24/7.</p>
+      <p><strong>Resultado esperado a 6 meses:</strong> Canal digital generando leads y pedidos de forma constante, con visibilidad clara de cada venta atribuible al sitio.</p>
+    </div>
+  </div>
+
+  <!-- 02 USUARIOS -->
+  <div class="seccion">
+    <span class="sec-label">02 — Usuarios</span>
+    <h2>¿Para quién es la plataforma?</h2>
+    <p class="intro">La plataforma sirve a tres tipos de usuario con necesidades distintas.</p>
+
+    <div class="tabla-wrap" style="margin-top:32px;">
+      <table>
+        <tbody>
+          <tr class="thead-grupo"><td colspan="3">Perfiles de usuario</td></tr>
+          <tr>
+            <td class="col-item">Comprador B2B</td>
+            <td>Gerente de compras, taller de maquinado, constructora. Busca material específico por clave o grado, cotiza volúmenes y necesita factura CFDI.</td>
+            <td class="col-r" style="color:var(--verde) !important; font-size:12px !important;">Principal</td>
+          </tr>
+          <tr>
+            <td class="col-item">Comprador ocasional</td>
+            <td>Técnico o maestro de taller que busca una pieza específica. Compra por unidad, metro o kilo. Puede pagar en línea con OXXO o tarjeta.</td>
+            <td class="col-r" style="color:var(--gris-med) !important; font-size:12px !important;">Secundario</td>
+          </tr>
+          <tr>
+            <td class="col-item">Administrador</td>
+            <td>El equipo interno de Aceros y Metales Urgentes. Gestiona catálogo, pedidos, cotizaciones, inventario y clientes desde el dashboard.</td>
+            <td class="col-r" style="color:var(--gris-med) !important; font-size:12px !important;">Interno</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 03 MÓDULOS -->
+  <div class="seccion">
+    <span class="sec-label">03 — Alcance Funcional</span>
+    <h2>Qué incluye la Fase 1</h2>
+    <p class="intro">La plataforma se construye en una sola fase de 9 semanas con los siguientes módulos. La facturación CFDI 4.0 se implementa en Fase 2 después del lanzamiento.</p>
+
+    <div class="modulos-grid">
+      <div class="modulo"><div class="modulo-icono">📦</div><div><h3>Catálogo industrial</h3><p>Miles de SKUs con fichas técnicas, filtros por grado y forma, descarga de PDF y archivos DWG.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">⚖️</div><div><h3>Compra por metro, kilo o pieza</h3><p>Calculadora de peso integrada en cada producto. El cliente elige la unidad y el sistema calcula el precio en tiempo real.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">📋</div><div><h3>Módulo de cotizaciones</h3><p>El cliente arma su lista de materiales y solicita cotización. El sistema genera un PDF y notifica por email y WhatsApp.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">✂️</div><div><h3>Solicitud de cortes a medida</h3><p>Formulario para especificar dimensiones, tolerancias y material. Se integra al panel de pedidos del administrador.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">💳</div><div><h3>Tienda en línea</h3><p>Carrito, checkout y pago con Mercado Pago: tarjeta, OXXO, SPEI y transferencia bancaria.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">🏢</div><div><h3>Portal de clientes empresariales</h3><p>Registro de empresa, historial de pedidos y cotizaciones, precios especiales por volumen y nivel de cliente (Oro, Plata, etc.).</p></div></div>
+      <div class="modulo"><div class="modulo-icono">⚙️</div><div><h3>Dashboard administrativo</h3><p>Panel completo: gestión de pedidos, inventario en tiempo real, clientes, cotizaciones y reportes de ventas.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">📊</div><div><h3>Blog SEO</h3><p>Sección de artículos técnicos optimizados para búsquedas como "comprar acero 4140" o "distribuidor de inoxidable CDMX".</p></div></div>
+      <div class="modulo"><div class="modulo-icono">📍</div><div><h3>Google Business Profile</h3><p>Alta y optimización del perfil en Google Maps. Clave para búsquedas locales.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">📈</div><div><h3>Analytics y Search Console</h3><p>Google Analytics 4 y Search Console configurados para monitorear tráfico, conversiones y posicionamiento.</p></div></div>
+      <div class="modulo"><div class="modulo-icono">💬</div><div><h3>Emails y WhatsApp</h3><p>Notificaciones automáticas de cotización, pedido y estado de envío por email (Resend) y WhatsApp Business.</p></div></div>
+      <div class="modulo" style="border-color:#fdd8b4; background:#fff8f3;"><div class="modulo-icono">🧾</div><div><h3>Facturación CFDI 4.0 <span style="font-size:10px; background:var(--acento); color:#fff; border-radius:3px; padding:1px 6px; font-weight:700; vertical-align:middle;">FASE 2</span></h3><p>Integración con PAC certificado SAT. XML timbrado, cancelación y portal de facturas para el cliente.</p></div></div>
+    </div>
+  </div>
+
+  <!-- 04 STACK -->
+  <div class="seccion">
+    <span class="sec-label">04 — Tecnología</span>
+    <h2>El stack técnico</h2>
+    <p class="intro">La plataforma se construye con tecnología de punta, sin depender de plataformas de terceros que cobren comisión sobre cada venta.</p>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead-grupo"><td colspan="3">Stack tecnológico — Fase 1</td></tr>
+          <tr>
+            <td class="col-item">Next.js + TypeScript</td>
+            <td>Framework de desarrollo web. Rápido, escalable y optimizado para SEO desde el inicio.</td>
+            <td class="col-r" style="font-size:11px !important; color:var(--gris-med) !important;">Frontend / Backend</td>
+          </tr>
+          <tr>
+            <td class="col-item">Tailwind + shadcn/ui</td>
+            <td>Sistema de diseño y componentes de interfaz. Consistente en todas las pantallas.</td>
+            <td class="col-r" style="font-size:11px !important; color:var(--gris-med) !important;">UI</td>
+          </tr>
+          <tr>
+            <td class="col-item">Supabase</td>
+            <td>Base de datos PostgreSQL escalable. Maneja catálogo, pedidos, clientes e inventario.</td>
+            <td class="col-r" style="font-size:11px !important; color:var(--gris-med) !important;">Base de datos</td>
+          </tr>
+          <tr>
+            <td class="col-item">Mercado Pago</td>
+            <td>Pasarela de pago principal. Acepta tarjeta, OXXO, SPEI y transferencia bancaria.</td>
+            <td class="col-r" style="font-size:11px !important; color:var(--gris-med) !important;">Pagos</td>
+          </tr>
+          <tr>
+            <td class="col-item">Resend</td>
+            <td>Servicio de emails transaccionales. Confirmaciones de pedido, cotizaciones y notificaciones.</td>
+            <td class="col-r" style="font-size:11px !important; color:var(--gris-med) !important;">Email</td>
+          </tr>
+          <tr>
+            <td class="col-item">Hostinger Business</td>
+            <td>Servidor de hospedaje. Dominio acerosymetalesurgentes.com ya adquirido y listo.</td>
+            <td class="col-r" style="font-size:11px !important; color:var(--gris-med) !important;">Infraestructura</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="nota-box">
+      <p><strong>Sin comisiones de plataforma:</strong> A diferencia de Shopify o WooCommerce con plugins de pago, esta arquitectura no cobra comisión por venta. Solo se pagan las comisiones estándar de Mercado Pago (entre 2.9% y 3.9% + IVA por transacción).</p>
+    </div>
+  </div>
+
+  <!-- 05 PANTALLAS -->
+  <div class="seccion">
+    <span class="sec-label">05 — Diseño</span>
+    <h2>Pantallas diseñadas y aprobadas</h2>
+    <p class="intro">El diseño visual está completado y aprobado. Sistema "Industrial Precision" — Steel Blue + naranja acento + Montserrat/Inter.</p>
+
+    <div class="pantallas">
+      <div class="pantalla"><div class="p-num">01</div><h3>Homepage</h3><p>Hero, categorías, calculadora de peso, productos en stock, sección B2B.</p></div>
+      <div class="pantalla"><div class="p-num">02</div><h3>Catálogo</h3><p>Filtros laterales, resultados, calculadora sticky. Preparado para miles de SKUs.</p></div>
+      <div class="pantalla"><div class="p-num">03</div><h3>Cotización</h3><p>Formulario multi-material, carga de PDF/DWG, tabla de specs técnicas.</p></div>
+      <div class="pantalla"><div class="p-num">04</div><h3>Producto</h3><p>Galería, ficha técnica, equivalencias internacionales, panel de compra sticky.</p></div>
+      <div class="pantalla"><div class="p-num">05</div><h3>Dashboard Admin</h3><p>KPIs, pedidos recientes, inventario crítico, cotizaciones pendientes.</p></div>
+      <div class="pantalla"><div class="p-num">06</div><h3>Portal Cliente</h3><p>Mis pedidos, cotizaciones, lista de precios, nivel de cliente y crédito disponible.</p></div>
+    </div>
+  </div>
+
+  <!-- 06 PLAN -->
+  <div class="seccion">
+    <span class="sec-label">06 — Plan de Trabajo</span>
+    <h2>9 semanas al lanzamiento</h2>
+    <p class="intro">El proyecto se divide en 5 fases con entregables concretos. El cliente aprueba cada fase antes de avanzar.</p>
+
+    <div class="fases">
+      <div class="fase">
+        <div class="fase-semana">Semana 1</div>
+        <h3>Fase 1 — Descubrimiento y Setup</h3>
+        <p>Reunión de kickoff, definición de catálogo inicial, diseño de base de datos en Supabase, setup del proyecto Next.js y deploy inicial en Hostinger.</p>
+      </div>
+      <div class="fase">
+        <div class="fase-semana">Semanas 2–4</div>
+        <h3>Fase 2 — Frontend y Catálogo</h3>
+        <p>UI completa, homepage, catálogo con filtros, calculadora de peso, fichas técnicas con descarga PDF y carga de archivos DWG.</p>
+      </div>
+      <div class="fase">
+        <div class="fase-semana">Semanas 4–7</div>
+        <h3>Fase 3 — E-commerce y Módulos de Negocio</h3>
+        <p>Carrito, checkout, Mercado Pago, módulo de cotizaciones, solicitud de cortes, portal de clientes, precios por volumen y dashboard administrativo.</p>
+      </div>
+      <div class="fase">
+        <div class="fase-semana">Semanas 7–8</div>
+        <h3>Fase 4 — SEO y Contenido</h3>
+        <p>Blog con 3 artículos iniciales, SEO on-page en 5 páginas, Google Search Console, Analytics y Google Business Profile.</p>
+      </div>
+      <div class="fase">
+        <div class="fase-semana">Semana 9</div>
+        <h3>Fase 5 — QA y Lanzamiento</h3>
+        <p>Pruebas completas de todos los flujos (cotización, pago, pedido), correcciones finales y go-live en producción.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 INVERSIÓN -->
+  <div class="seccion">
+    <span class="sec-label">07 — Inversión</span>
+    <h2>Resumen de costos</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead-grupo"><td colspan="2">Fase 1 — Desarrollo (pago único)</td></tr>
+          <tr><td class="col-item">Diseño UI + sistema de componentes</td><td class="col-r">$8,000</td></tr>
+          <tr><td class="col-item">Setup Next.js + TypeScript + Supabase</td><td class="col-r">$10,000</td></tr>
+          <tr><td class="col-item">Catálogo industrial (miles de SKUs, PDF, DWG)</td><td class="col-r">$12,000</td></tr>
+          <tr><td class="col-item">Calculadora de peso</td><td class="col-r">$3,500</td></tr>
+          <tr><td class="col-item">Módulo de cotizaciones</td><td class="col-r">$7,000</td></tr>
+          <tr><td class="col-item">E-commerce + Mercado Pago</td><td class="col-r">$8,000</td></tr>
+          <tr><td class="col-item">Portal de clientes empresariales</td><td class="col-r">$9,000</td></tr>
+          <tr><td class="col-item">Dashboard administrativo + inventario</td><td class="col-r">$10,000</td></tr>
+          <tr><td class="col-item">Blog SEO + Search Console + Analytics</td><td class="col-r">$4,000</td></tr>
+          <tr><td class="col-item">Google Business Profile</td><td class="col-r">$1,500</td></tr>
+          <tr><td class="col-item">Soporte 30 días post-lanzamiento</td><td class="col-r">$2,000</td></tr>
+          <tr class="thead-grupo"><td colspan="2">Servicio mensual</td></tr>
+          <tr><td class="col-item">Mantenimiento + SEO continuo + reporte + infraestructura</td><td class="col-r">$5,400 / mes</td></tr>
+          <tr class="thead-grupo"><td colspan="2">Fase 2 (post-lanzamiento)</td></tr>
+          <tr style="opacity:0.7"><td class="col-item">Facturación CFDI 4.0 con PAC</td><td class="col-r">$8,000 – $12,000</td></tr>
+          <tr class="fila-total"><td>TOTAL FASE 1</td><td class="col-r">$75,000 MXN</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="nota-box">
+      <p><strong>Dominio y hosting:</strong> Ya adquiridos y pagados por el cliente — listos para el deploy.</p>
+      <p><strong>Precios sin IVA.</strong> Cotización válida por 30 días.</p>
+    </div>
+  </div>
+
+  <!-- 08 TÉRMINOS -->
+  <div class="seccion">
+    <span class="sec-label">08 — Términos</span>
+    <h2>Condiciones del proyecto</h2>
+
+    <div class="terminos">
+      <div class="termino">
+        <div class="termino-ico">📅</div>
+        <div><label>Duración mínima</label><span>Contrato de 6 meses. El canal digital necesita tiempo para madurar — los primeros resultados reales se ven entre el mes 3 y 4.</span></div>
+      </div>
+      <div class="termino">
+        <div class="termino-ico">✅</div>
+        <div><label>Aprobaciones por fase</label><span>El cliente aprueba el diseño antes de programar y aprueba cada fase antes de avanzar a la siguiente. Sin sorpresas.</span></div>
+      </div>
+      <div class="termino">
+        <div class="termino-ico">🔒</div>
+        <div><label>Propiedad del sitio</label><span>El dominio, hosting y código fuente pertenecen al cliente. Al terminar el contrato, el sitio queda en su poder sin costo adicional.</span></div>
+      </div>
+      <div class="termino">
+        <div class="termino-ico">📊</div>
+        <div><label>Reporte mensual</label><span>Cada mes se entrega un reporte de tráfico, leads generados, pedidos y posicionamiento en Google. Transparencia total.</span></div>
+      </div>
+      <div class="termino">
+        <div class="termino-ico">💰</div>
+        <div><label>Esquema de pago sugerido</label><span>40% al inicio ($30,000) · 30% al aprobar diseño ($22,500) · 30% al lanzamiento ($22,500). O diferido en comisiones según acuerdo previo.</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CIERRE -->
+<div class="cierre">
+  <div style="max-width:900px; margin:0 auto; padding:0 8px;">
+    <span class="sec-label">09 — Siguiente paso</span>
+    <h2>¿Arrancamos?</h2>
+    <p>Este documento resume el alcance, tecnología, diseño, plan y costos del proyecto. Para iniciar solo se necesita aprobación por escrito y el primer pago.</p>
+    <p style="margin-top:8px;">La primera reunión de arranque (kickoff) dura 60 minutos y define el catálogo inicial, accesos y prioridades de la Fase 1.</p>
+
+    <div class="firma">
+      <div class="firma-item"><strong>Juan Azael Pinales Regis</strong>Desarrollador Web · azaelecommerce@gmail.com</div>
+      <div class="firma-item"><strong>+52 55 1923 2398</strong>WhatsApp / Teléfono</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>PRD Ejecutivo — acerosymetalesurgentes.com · Julio 2026</span>
+  <span class="f-conf">Documento Confidencial</span>
+</footer>
+
+</body>
+</html>

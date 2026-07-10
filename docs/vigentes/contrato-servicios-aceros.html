@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contrato de Servicios — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+  :root { --primary:#162839; --primary-c:#2c3e50; --acento:#f78b30; --gris:#43474c; --gris-cl:#c4c6cd; --bg:#ffffff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--primary); font-family:'Inter',sans-serif; font-size:13.5px; line-height:1.8; }
+
+  @media print { body { font-size:12px; } .no-print { display:none; } .page-break { page-break-before:always; } }
+
+  .header { background:var(--primary-c); color:#fff; padding:40px 56px; border-bottom:4px solid var(--acento); }
+  .header-flex { display:flex; justify-content:space-between; align-items:flex-end; }
+  .header h1 { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; }
+  .header p { color:rgba(255,255,255,0.5); font-size:12px; margin-top:4px; }
+  .header-ref { text-align:right; color:rgba(255,255,255,0.5); font-size:11px; letter-spacing:1px; }
+  .header-ref strong { color:#fff; display:block; font-size:13px; }
+
+  .contenido { max-width:800px; margin:0 auto; padding:40px 56px; }
+
+  h2 { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.5px; margin-top:32px; margin-bottom:12px; padding-bottom:6px; border-bottom:2px solid var(--acento); }
+
+  h2:first-of-type { margin-top:0; }
+
+  p { color:var(--gris); margin-bottom:12px; text-align:justify; }
+
+  .partes { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0 24px; }
+  .parte { background:#f7f9fb; border:1px solid var(--gris-cl); border-radius:4px; padding:16px 20px; }
+  .parte-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--acento); margin-bottom:8px; }
+  .parte p { font-size:13px; color:var(--gris); margin-bottom:4px; text-align:left; }
+  .parte strong { color:var(--primary); }
+
+  ol { padding-left:20px; margin-bottom:16px; }
+  ol li { margin-bottom:8px; color:var(--gris); }
+  ol li strong { color:var(--primary); }
+
+  .tabla-pagos { width:100%; border-collapse:collapse; margin:16px 0; border:1px solid var(--gris-cl); }
+  .tabla-pagos th { background:var(--primary-c); color:#fff; padding:10px 16px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
+  .tabla-pagos td { padding:10px 16px; border-bottom:1px solid #e5e7eb; font-size:13px; color:var(--gris); }
+  .tabla-pagos tr:last-child td { border-bottom:none; }
+  .tabla-pagos .monto { font-weight:700; color:var(--primary); text-align:right; }
+
+  .tabla-comisiones { width:100%; border-collapse:collapse; margin:16px 0; border:1px solid var(--gris-cl); }
+  .tabla-comisiones th { background:var(--primary-c); color:#fff; padding:8px 16px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
+  .tabla-comisiones td { padding:8px 16px; border-bottom:1px solid #e5e7eb; font-size:13px; color:var(--gris); }
+  .tabla-comisiones tr:last-child td { border-bottom:none; }
+  .tabla-comisiones .pct { font-weight:700; color:var(--acento); text-align:center; }
+
+  .firmas { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:60px; }
+  .firma { border-top:1px solid var(--primary); padding-top:12px; }
+  .firma-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--acento); margin-bottom:4px; }
+  .firma-nombre { font-size:14px; font-weight:700; color:var(--primary); }
+  .firma-rol { font-size:12px; color:var(--gris); }
+  .firma-espacio { height:60px; }
+
+  footer { background:var(--primary-c); padding:14px 56px; border-top:4px solid var(--acento); text-align:center; margin-top:40px; }
+  footer span { font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:1px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-flex">
+    <div>
+      <h1>Contrato de Servicios Profesionales</h1>
+      <p>Desarrollo de plataforma web · acerosymetalesurgentes.com</p>
+    </div>
+    <div class="header-ref">
+      <strong>CONT-AMU-2026-01</strong>
+      Julio 2026
+    </div>
+  </div>
+</div>
+
+<div class="contenido">
+
+  <h2>1. Partes</h2>
+  <div class="partes">
+    <div class="parte">
+      <div class="parte-label">El Prestador</div>
+      <p><strong>Juan Azael Pinales Regis</strong></p>
+      <p>azaelecommerce@gmail.com</p>
+      <p>+52 55 1923 2398</p>
+      <p>Desarrollo web y consultoría de marketing digital</p>
+    </div>
+    <div class="parte">
+      <div class="parte-label">El Cliente</div>
+      <p><strong>[Nombre o razón social del cliente]</strong></p>
+      <p>[RFC]</p>
+      <p>[Dirección fiscal]</p>
+      <p>[Teléfono y email de contacto]</p>
+    </div>
+  </div>
+
+  <h2>2. Objeto del contrato</h2>
+  <p>El Prestador se compromete a diseñar, desarrollar y poner en producción la plataforma de ventas industriales en línea <strong>acerosymetalesurgentes.com</strong>, conforme al Documento de Requerimientos de Producto (PRD Ejecutivo v2.0, Julio 2026) que ambas partes conocen y aceptan como anexo técnico de este contrato.</p>
+  <p>El alcance del proyecto incluye los módulos descritos en el PRD: catálogo industrial, cotizaciones, tienda en línea con Mercado Pago y transferencia bancaria, portal de clientes empresariales, dashboard administrativo, buscador inteligente, blog SEO, y configuración de analytics (GA4, Meta Pixel, Microsoft Clarity).</p>
+
+  <h2>3. Entregables</h2>
+  <ol>
+    <li><strong>Plataforma web funcional</strong> desplegada en producción en el dominio acerosymetalesurgentes.com, con todos los módulos del MVP según el PRD.</li>
+    <li><strong>10 pantallas de diseño</strong> implementadas según el sistema de diseño "Industrial Precision" aprobado.</li>
+    <li><strong>Catálogo de productos</strong> cargado con los materiales proporcionados por el cliente.</li>
+    <li><strong>Dashboard administrativo</strong> con acceso para gestión de pedidos, inventario, cotizaciones y clientes.</li>
+    <li><strong>Google Business Profile</strong> creado y optimizado.</li>
+    <li><strong>Código fuente</strong> en repositorio GitHub privado propiedad del cliente.</li>
+    <li><strong>Manual de administración básico</strong> para gestionar productos, pedidos y cotizaciones desde el dashboard.</li>
+  </ol>
+
+  <h2>4. Duración y plazos</h2>
+  <p>El proyecto tiene una duración estimada de <strong>30 a 45 días</strong> desde la fecha del primer pago (kickoff) hasta el lanzamiento en producción (go-live).</p>
+  <p>El contrato de servicios tiene una vigencia mínima de <strong>6 meses</strong> a partir del go-live, periodo que incluye el servicio mensual de mantenimiento, SEO y reportes.</p>
+  <p>Al término de los 6 meses, el contrato se renueva automáticamente de forma mensual, salvo aviso por escrito con 30 días de anticipación.</p>
+
+  <h2>5. Inversión y forma de pago</h2>
+
+  <table class="tabla-pagos">
+    <thead><tr><th>Concepto</th><th>Momento</th><th style="text-align:right">Monto</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Primer pago (40%)</strong></td><td>Al firmar este contrato — inicia el desarrollo</td><td class="monto">$34,400 MXN</td></tr>
+      <tr><td><strong>Segundo pago (30%)</strong></td><td>Al aprobar el diseño implementado (semana 3-4)</td><td class="monto">$25,800 MXN</td></tr>
+      <tr><td><strong>Tercer pago (30%)</strong></td><td>Al lanzamiento en producción (go-live)</td><td class="monto">$25,800 MXN</td></tr>
+      <tr style="background:#f7f9fb"><td><strong>TOTAL DESARROLLO (pago único)</strong></td><td></td><td class="monto" style="color:var(--acento); font-size:15px;">$86,000 MXN</td></tr>
+      <tr><td><strong>Servicio mensual</strong></td><td>A partir del mes siguiente al go-live, cada mes</td><td class="monto">$5,400 MXN / mes</td></tr>
+    </tbody>
+  </table>
+
+  <p>Los pagos se realizan por transferencia bancaria a la cuenta que el Prestador indique. Precios en pesos mexicanos, sin IVA. Los pagos no son reembolsables una vez entregada la fase correspondiente.</p>
+
+  <h2>6. Comisiones por canal digital</h2>
+  <p>Adicionalmente a la inversión de desarrollo, por cada venta generada a través del canal digital (sitio web) se aplica una comisión sobre la venta neta (sin IVA) según la categoría del producto:</p>
+
+  <table class="tabla-comisiones">
+    <thead><tr><th>Categoría</th><th style="text-align:center">Comisión</th></tr></thead>
+    <tbody>
+      <tr><td>Aceros Comerciales</td><td class="pct">3%</td></tr>
+      <tr><td>Aceros Especiales</td><td class="pct">3%</td></tr>
+      <tr><td>Aluminio</td><td class="pct">2%</td></tr>
+      <tr><td>Cobre</td><td class="pct">2%</td></tr>
+      <tr><td>Bronce</td><td class="pct">2%</td></tr>
+      <tr><td>Latón</td><td class="pct">2%</td></tr>
+      <tr><td>Herramientas y Maquinaria</td><td class="pct">5%</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Atribución:</strong> Se considera venta digital toda aquella cuyo primer contacto provino del sitio web (formulario, carrito, cotización en línea o WhatsApp del sitio) dentro de los 30 días previos al cierre de la venta.</p>
+  <p><strong>Pago de comisiones:</strong> Dentro de los primeros 5 días hábiles del mes siguiente, sobre las ventas confirmadas y cobradas del mes anterior.</p>
+  <p><strong>Reporte:</strong> El Prestador entrega un reporte mensual con el detalle de ventas atribuibles al canal digital, cruzado con los datos de analytics y los registros del dashboard.</p>
+
+  <h2>7. Servicio mensual</h2>
+  <p>El servicio mensual de $5,400 MXN incluye:</p>
+  <ol>
+    <li><strong>Mantenimiento técnico:</strong> actualizaciones de seguridad, corrección de bugs, backups y monitoreo de uptime.</li>
+    <li><strong>SEO continuo:</strong> optimización de contenido existente, publicación de 1-2 artículos de blog técnico por mes, monitoreo de posicionamiento.</li>
+    <li><strong>Reporte mensual:</strong> tráfico, leads generados, pedidos, posicionamiento en Google y métricas de conversión.</li>
+    <li><strong>Soporte:</strong> respuesta en menos de 24 horas hábiles para dudas operativas y ajustes menores en el dashboard.</li>
+    <li><strong>Infraestructura:</strong> costos de Vercel, Supabase, Resend y Cloudflare incluidos mientras se mantenga el servicio.</li>
+  </ol>
+  <p>No incluye: desarrollo de nuevos módulos (V2, V3, V4), rediseño completo, ni campañas de publicidad pagada (Google Ads, Facebook Ads).</p>
+
+  <h2>8. Propiedad intelectual</h2>
+  <p>El dominio acerosymetalesurgentes.com, el código fuente del sitio, las bases de datos, el contenido y las imágenes proporcionadas por el cliente son y seguirán siendo <strong>propiedad del Cliente</strong>.</p>
+  <p>Al terminar el contrato (por cualquier motivo), el Prestador entrega al Cliente: acceso completo al repositorio de código, exportación de la base de datos, y documentación técnica necesaria para la continuidad del proyecto.</p>
+  <p>El Prestador se reserva el derecho de incluir el proyecto en su portafolio profesional con fines de referencia, sin revelar información confidencial.</p>
+
+  <h2>9. Confidencialidad</h2>
+  <p>Ambas partes se comprometen a no divulgar información confidencial del otro, incluyendo pero no limitado a: precios, márgenes, datos de clientes, estrategias comerciales y datos de acceso a sistemas. Esta obligación permanece vigente durante 2 años después de terminado el contrato.</p>
+
+  <h2>10. Cancelación</h2>
+  <p><strong>Por el Cliente:</strong> puede cancelar el contrato en cualquier momento con aviso por escrito de 30 días. Los pagos realizados por fases completadas no son reembolsables. Los pagos por fases no iniciadas se devuelven íntegramente.</p>
+  <p><strong>Por el Prestador:</strong> puede cancelar con aviso de 30 días si el Cliente no proporciona los assets necesarios en un plazo de 30 días después de solicitados, o si hay 2 o más pagos vencidos sin cubrir.</p>
+  <p>En cualquier caso de cancelación, el Cliente conserva la propiedad de todo el trabajo entregado hasta la fecha.</p>
+
+  <h2>11. Fases futuras</h2>
+  <p>Las versiones V2 (precios por volumen avanzados, portal B2B completo), V3 (agentes IA, facturación CFDI 4.0, integración ERP) y V4 (app móvil) se cotizan por separado y requieren un addendum a este contrato. Los precios estimados se encuentran en el PRD Ejecutivo v2.0.</p>
+
+  <h2>12. Aceptación</h2>
+  <p>Ambas partes declaran haber leído, entendido y aceptado los términos de este contrato. El PRD Ejecutivo v2.0 (Julio 2026) se considera parte integral de este documento como anexo técnico.</p>
+
+  <div class="firmas">
+    <div class="firma">
+      <div class="firma-espacio"></div>
+      <div class="firma-label">El Prestador</div>
+      <div class="firma-nombre">Juan Azael Pinales Regis</div>
+      <div class="firma-rol">Desarrollador Web</div>
+    </div>
+    <div class="firma">
+      <div class="firma-espacio"></div>
+      <div class="firma-label">El Cliente</div>
+      <div class="firma-nombre">[Nombre del representante legal]</div>
+      <div class="firma-rol">[Cargo]</div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:40px; font-size:12px; color:var(--gris-cl);">Fecha de firma: _____ / _____ / 2026 &nbsp;&nbsp;&nbsp; Lugar: _________________________</p>
+
+</div>
+
+<footer><span>CONT-AMU-2026-01 · Contrato de Servicios Profesionales · acerosymetalesurgentes.com</span></footer>
+</body>
+</html>

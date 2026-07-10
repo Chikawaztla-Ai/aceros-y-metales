@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD Técnico — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+  :root {
+    --negro:    #0D1117;
+    --panel:    #161B22;
+    --borde:    #21262D;
+    --primary:  #162839;
+    --primary-c:#2c3e50;
+    --acento:   #f78b30;
+    --plata:    #8B949E;
+    --blanco:   #E6EDF3;
+    --verde:    #3FB950;
+    --azul:     #58A6FF;
+    --rojo:     #FF7B72;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--borde);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--plata);
+  }
+
+  .header-logo span { color: var(--acento); font-weight: 700; }
+
+  .header-badges { display: flex; gap: 10px; }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+
+  .badge-v { color: var(--acento); border-color: rgba(247,139,48,0.3); background: rgba(247,139,48,0.08); }
+  .badge-s { color: var(--verde); border-color: rgba(63,185,80,0.3); background: rgba(63,185,80,0.08); }
+
+  /* PORTADA */
+  .portada {
+    background: var(--primary-c);
+    padding: 64px 56px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portada::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--acento);
+  }
+
+  .portada-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 24px;
+  }
+
+  .portada h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+
+  .portada h1 em { font-style: normal; color: var(--acento); }
+
+  .portada-meta {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    overflow: hidden;
+    width: fit-content;
+    margin-top: 40px;
+  }
+
+  .meta { padding: 14px 22px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .meta:last-child { border-right: none; }
+  .meta label { display:block; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:4px; }
+  .meta span { font-size:13px; font-weight:700; color:#fff; }
+
+  /* CONTENIDO */
+  .contenido { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+
+  .seccion { padding: 56px 0; border-bottom: 1px solid var(--borde); }
+  .seccion:last-child { border-bottom: none; }
+
+  .sec-label {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(247,139,48,0.1);
+    color: var(--acento);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(247,139,48,0.25);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .intro { font-size: 15px; color: var(--plata); max-width: 700px; }
+
+  p { color: var(--plata); margin-bottom: 12px; max-width: 700px; }
+
+  /* CODE BLOCK */
+  .code-block {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--blanco);
+    overflow-x: auto;
+  }
+
+  .code-block .comment { color: var(--plata); }
+  .code-block .key { color: var(--azul); }
+  .code-block .val { color: var(--verde); }
+  .code-block .accent { color: var(--acento); }
+  .code-block .error { color: var(--rojo); }
+
+  /* TABLA TÉCNICA */
+  .tabla-wrap {
+    margin-top: 28px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  .thead-grupo td {
+    padding: 10px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--primary-c);
+    color: var(--acento);
+  }
+
+  tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  tbody td { padding: 12px 18px; font-size: 13px; color: var(--plata); vertical-align: top; }
+  .col-key { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--azul) !important; white-space: nowrap; }
+  .col-name { font-weight: 600; color: var(--blanco) !important; }
+  .col-type { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--verde) !important; }
+  .col-note { font-size: 12px; }
+
+  /* CARDS DE MÓDULO */
+  .modulos { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--borde); border-radius: 6px; overflow: hidden; }
+
+  .modulo-item {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    gap: 20px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: start;
+  }
+
+  .modulo-item:last-child { border-bottom: none; }
+  .modulo-item:hover { background: rgba(255,255,255,0.02); }
+
+  .modulo-nombre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--acento);
+  }
+
+  .modulo-desc { font-size: 12.5px; color: var(--plata); }
+  .modulo-desc code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--azul); background: rgba(88,166,255,0.08); padding: 1px 5px; border-radius: 3px; }
+
+  .modulo-fase {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--plata);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* SCHEMA */
+  .schema-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:640px){ .schema-grid{ grid-template-columns:1fr; } }
+
+  .schema-card {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .schema-header {
+    background: var(--primary-c);
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--acento);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .schema-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+
+  .schema-field {
+    display: flex;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .sf-name { color: var(--azul); min-width: 120px; flex-shrink: 0; }
+  .sf-type { color: var(--verde); min-width: 80px; flex-shrink: 0; }
+  .sf-note { color: var(--plata); font-size: 10px; }
+
+  /* RUTAS */
+  .rutas { margin-top: 28px; display: flex; flex-direction: column; gap: 8px; }
+
+  .ruta {
+    display: grid;
+    grid-template-columns: 240px 80px 1fr;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  .ruta:hover { border-color: var(--acento); }
+  .ruta-path { color: var(--azul); font-weight: 600; }
+  .ruta-method { font-size: 10px; font-weight: 700; text-align: center; padding: 2px 6px; border-radius: 3px; }
+  .get { background: rgba(63,185,80,0.12); color: var(--verde); border: 1px solid rgba(63,185,80,0.25); }
+  .post { background: rgba(88,166,255,0.12); color: var(--azul); border: 1px solid rgba(88,166,255,0.25); }
+  .del { background: rgba(255,123,114,0.12); color: var(--rojo); border: 1px solid rgba(255,123,114,0.25); }
+  .ruta-desc { color: var(--plata); font-size: 11px; }
+
+  /* CHECKLIST -->
+  .checklist { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--borde); border-radius: 6px; overflow: hidden; }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--borde);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .check-body strong { display: block; font-size: 13px; color: var(--blanco); font-weight: 600; margin-bottom: 2px; }
+  .check-body span { font-size: 12px; color: var(--plata); }
+  .check-body code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--azul); background: rgba(88,166,255,0.08); padding: 1px 5px; border-radius: 3px; }
+
+  /* CIERRE */
+  .cierre { background: var(--panel); border-top: 1px solid var(--borde); padding: 40px 48px; }
+
+  footer {
+    background: var(--primary-c);
+    padding: 18px 48px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 4px solid var(--acento);
+  }
+
+  footer span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">aceros<span>ymetalesurgentes</span>.com · PRD Técnico</div>
+  <div class="header-badges">
+    <span class="badge badge-v">v1.0</span>
+    <span class="badge badge-s">Fase 1 — 9 semanas</span>
+  </div>
+</header>
+
+<!-- PORTADA -->
+<div class="portada">
+  <div class="portada-tag">Product Requirements Document — Técnico</div>
+  <h1>PRD Técnico<br><em>acerosymetales</em><br>urgentes.com</h1>
+  <div class="portada-meta">
+    <div class="meta"><label>Stack</label><span>Next.js + Supabase</span></div>
+    <div class="meta"><label>Duración</label><span>9 semanas</span></div>
+    <div class="meta"><label>Dev</label><span>Juan Azael Pinales Regis</span></div>
+    <div class="meta"><label>Versión</label><span>1.0 — Julio 2026</span></div>
+  </div>
+</div>
+
+<div class="contenido">
+
+  <!-- 01 STACK -->
+  <div class="seccion">
+    <span class="sec-label">01 — Stack</span>
+    <h2>Tecnologías y dependencias</h2>
+    <p class="intro">Arquitectura limpia y escalable. Sin plataformas de terceros que cobren comisión por venta.</p>
+
+    <div class="code-block">
+<span class="comment"># package.json — dependencias principales</span>
+
+<span class="key">"dependencies"</span>: {
+  <span class="comment">// Core</span>
+  <span class="key">"next"</span>: <span class="val">"^15.0.0"</span>,
+  <span class="key">"react"</span>: <span class="val">"^19.0.0"</span>,
+  <span class="key">"typescript"</span>: <span class="val">"^5.0.0"</span>,
+
+  <span class="comment">// UI</span>
+  <span class="key">"tailwindcss"</span>: <span class="val">"^3.4.0"</span>,
+  <span class="key">"@shadcn/ui"</span>: <span class="val">"latest"</span>,
+  <span class="key">"lucide-react"</span>: <span class="val">"latest"</span>,        <span class="comment">// íconos</span>
+
+  <span class="comment">// Base de datos</span>
+  <span class="key">"@supabase/supabase-js"</span>: <span class="val">"^2.0.0"</span>,
+  <span class="key">"@supabase/ssr"</span>: <span class="val">"latest"</span>,
+
+  <span class="comment">// Pagos</span>
+  <span class="key">"mercadopago"</span>: <span class="val">"^2.0.0"</span>,
+
+  <span class="comment">// Email</span>
+  <span class="key">"resend"</span>: <span class="val">"^3.0.0"</span>,
+  <span class="key">"react-email"</span>: <span class="val">"latest"</span>,
+
+  <span class="comment">// PDF / DWG</span>
+  <span class="key">"@react-pdf/renderer"</span>: <span class="val">"^3.0.0"</span>,   <span class="comment">// generación fichas PDF</span>
+
+  <span class="comment">// Forms y validación</span>
+  <span class="key">"react-hook-form"</span>: <span class="val">"^7.0.0"</span>,
+  <span class="key">"zod"</span>: <span class="val">"^3.0.0"</span>,
+
+  <span class="comment">// Utilidades</span>
+  <span class="key">"clsx"</span>: <span class="val">"latest"</span>,
+  <span class="key">"date-fns"</span>: <span class="val">"latest"</span>,
+  <span class="key">"zustand"</span>: <span class="val">"^4.0.0"</span>             <span class="comment">// estado carrito</span>
+}
+    </div>
+
+    <div class="code-block" style="margin-top:14px;">
+<span class="comment"># Variables de entorno (.env.local)</span>
+
+<span class="key">NEXT_PUBLIC_SUPABASE_URL</span>=<span class="val">https://xxx.supabase.co</span>
+<span class="key">NEXT_PUBLIC_SUPABASE_ANON_KEY</span>=<span class="val">eyJ...</span>
+<span class="key">SUPABASE_SERVICE_ROLE_KEY</span>=<span class="val">eyJ...</span>    <span class="comment"># solo server-side</span>
+
+<span class="key">MP_ACCESS_TOKEN</span>=<span class="val">APP_USR-...</span>           <span class="comment"># Mercado Pago</span>
+<span class="key">MP_PUBLIC_KEY</span>=<span class="val">APP_USR-...</span>
+
+<span class="key">RESEND_API_KEY</span>=<span class="val">re_...</span>
+<span class="key">RESEND_FROM</span>=<span class="val">noreply@acerosymetalesurgentes.com</span>
+
+<span class="key">NEXT_PUBLIC_WA_NUMBER</span>=<span class="val">5215519232398</span>
+<span class="key">NEXTAUTH_SECRET</span>=<span class="val">...</span>
+<span class="key">NEXTAUTH_URL</span>=<span class="val">https://acerosymetalesurgentes.com</span>
+    </div>
+  </div>
+
+  <!-- 02 ESTRUCTURA -->
+  <div class="seccion">
+    <span class="sec-label">02 — Arquitectura</span>
+    <h2>Estructura del proyecto</h2>
+
+    <div class="code-block">
+<span class="comment"># /src — estructura de directorios</span>
+
+<span class="accent">acerosymetalesurgentes/</span>
+├── <span class="key">app/</span>                        <span class="comment"># App Router de Next.js</span>
+│   ├── <span class="key">(public)/</span>               <span class="comment"># Rutas públicas</span>
+│   │   ├── page.tsx                <span class="comment"># / Homepage</span>
+│   │   ├── <span class="key">catalogo/</span>
+│   │   │   ├── page.tsx            <span class="comment"># /catalogo</span>
+│   │   │   └── [slug]/page.tsx     <span class="comment"># /catalogo/[producto]</span>
+│   │   ├── <span class="key">cotizacion/</span>
+│   │   │   └── page.tsx            <span class="comment"># /cotizacion</span>
+│   │   └── <span class="key">blog/</span>
+│   │       ├── page.tsx            <span class="comment"># /blog</span>
+│   │       └── [slug]/page.tsx     <span class="comment"># /blog/[articulo]</span>
+│   ├── <span class="key">(auth)/</span>                  <span class="comment"># Login / registro</span>
+│   │   ├── login/page.tsx
+│   │   └── registro/page.tsx
+│   ├── <span class="key">portal/</span>                  <span class="comment"># Portal del cliente (protegido)</span>
+│   │   ├── layout.tsx
+│   │   ├── pedidos/page.tsx
+│   │   ├── cotizaciones/page.tsx
+│   │   ├── precios/page.tsx
+│   │   └── facturas/page.tsx
+│   ├── <span class="key">admin/</span>                   <span class="comment"># Dashboard admin (protegido)</span>
+│   │   ├── layout.tsx
+│   │   ├── page.tsx                <span class="comment"># Dashboard</span>
+│   │   ├── pedidos/page.tsx
+│   │   ├── inventario/page.tsx
+│   │   ├── cotizaciones/page.tsx
+│   │   ├── clientes/page.tsx
+│   │   └── blog/page.tsx
+│   └── <span class="key">api/</span>                     <span class="comment"># API Routes (server-side)</span>
+│       ├── productos/route.ts
+│       ├── cotizaciones/route.ts
+│       ├── pedidos/route.ts
+│       ├── pagos/
+│       │   ├── crear/route.ts      <span class="comment"># crear preferencia MP</span>
+│       │   └── webhook/route.ts    <span class="comment"># webhook MP</span>
+│       ├── pdf/route.ts            <span class="comment"># generar ficha PDF</span>
+│       └── email/route.ts          <span class="comment"># enviar emails Resend</span>
+├── <span class="key">components/</span>
+│   ├── ui/                         <span class="comment"># shadcn/ui base</span>
+│   ├── catalogo/                   <span class="comment"># ProductCard, Filters, etc</span>
+│   ├── calculadora/                <span class="comment"># WeightCalculator</span>
+│   ├── cotizacion/                 <span class="comment"># QuoteForm, QuoteItem</span>
+│   ├── carrito/                    <span class="comment"># CartDrawer, CartItem</span>
+│   ├── admin/                      <span class="comment"># Dashboard componentes</span>
+│   └── shared/                     <span class="comment"># Header, Footer, Nav</span>
+├── <span class="key">lib/</span>
+│   ├── supabase/
+│   │   ├── client.ts               <span class="comment"># cliente browser</span>
+│   │   └── server.ts               <span class="comment"># cliente server</span>
+│   ├── mercadopago.ts
+│   ├── resend.ts
+│   └── weight-calculator.ts        <span class="comment"># lógica calculadora</span>
+├── <span class="key">store/</span>
+│   └── carrito.ts                  <span class="comment"># Zustand store</span>
+└── <span class="key">types/</span>
+    └── index.ts                    <span class="comment"># tipos TypeScript globales</span>
+    </div>
+  </div>
+
+  <!-- 03 SCHEMA DB -->
+  <div class="seccion">
+    <span class="sec-label">03 — Base de Datos</span>
+    <h2>Schema Supabase (PostgreSQL)</h2>
+    <p class="intro">Tablas principales con Row Level Security (RLS) activado. Admin tiene acceso total, clientes solo sus propios datos.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <div class="schema-header">products</div>
+        <div class="schema-body">
+          <div class="schema-field"><span class="sf-name">id</span><span class="sf-type">uuid PK</span><span class="sf-note">gen_random_uuid()</span></div>
+          <div class="schema-field"><span class="sf-name">sku</span><span class="sf-type">text UNIQUE</span><span class="sf-note">4140-RD-025</span></div>
+          <div class="schema-field"><span class="sf-name">name</span><span class="sf-type">text</span><span class="sf-note">Nombre del producto</span></div>
+          <div class="schema-field"><span class="sf-name">slug</span><span class="sf-type">text UNIQUE</span><span class="sf-note">Para URL SEO</span></div>
+          <div class="schema-field"><span class="sf-name">category_id</span><span class="sf-type">uuid FK</span><span class="sf-note">→ categories</span></div>
+          <div class="schema-field"><span class="sf-name">aisi_grade</span><span class="sf-type">text</span><span class="sf-note">4140, D2, 304...</span></div>
+          <div class="schema-field"><span class="sf-name">profile</span><span class="sf-type">text</span><span class="sf-note">redondo, placa...</span></div>
+          <div class="schema-field"><span class="sf-name">unit_types</span><span class="sf-type">text[]</span><span class="sf-note">[metro, kilo, pieza]</span></div>
+          <div class="schema-field"><span class="sf-name">base_price</span><span class="sf-type">numeric</span><span class="sf-note">Precio base MXN</span></div>
+          <div class="schema-field"><span class="sf-name">density</span><span class="sf-type">numeric</span><span class="sf-note">g/cm³ para calc peso</span></div>
+          <div class="schema-field"><span class="sf-name">stock_qty</span><span class="sf-type">numeric</span><span class="sf-note">Unidades en stock</span></div>
+          <div class="schema-field"><span class="sf-name">pdf_url</span><span class="sf-type">text</span><span class="sf-note">URL ficha técnica</span></div>
+          <div class="schema-field"><span class="sf-name">dwg_url</span><span class="sf-type">text</span><span class="sf-note">URL plano DWG</span></div>
+          <div class="schema-field"><span class="sf-name">specs</span><span class="sf-type">jsonb</span><span class="sf-note">Especificaciones técnicas</span></div>
+          <div class="schema-field"><span class="sf-name">equivalences</span><span class="sf-type">jsonb</span><span class="sf-note">DIN, JIS, BS...</span></div>
+          <div class="schema-field"><span class="sf-name">active</span><span class="sf-type">boolean</span><span class="sf-note">default true</span></div>
+          <div class="schema-field"><span class="sf-name">created_at</span><span class="sf-type">timestamptz</span><span class="sf-note">now()</span></div>
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <div class="schema-header">orders</div>
+        <div class="schema-body">
+          <div class="schema-field"><span class="sf-name">id</span><span class="sf-type">uuid PK</span></div>
+          <div class="schema-field"><span class="sf-name">order_number</span><span class="sf-type">text UNIQUE</span><span class="sf-note">URG-8902</span></div>
+          <div class="schema-field"><span class="sf-name">customer_id</span><span class="sf-type">uuid FK</span><span class="sf-note">→ customers</span></div>
+          <div class="schema-field"><span class="sf-name">status</span><span class="sf-type">text</span><span class="sf-note">pending/processing/delivered</span></div>
+          <div class="schema-field"><span class="sf-name">subtotal</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">tax</span><span class="sf-type">numeric</span><span class="sf-note">IVA 16%</span></div>
+          <div class="schema-field"><span class="sf-name">total</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">payment_method</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">mp_payment_id</span><span class="sf-type">text</span><span class="sf-note">ID de MP</span></div>
+          <div class="schema-field"><span class="sf-name">notes</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">created_at</span><span class="sf-type">timestamptz</span></div>
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <div class="schema-header">order_items</div>
+        <div class="schema-body">
+          <div class="schema-field"><span class="sf-name">id</span><span class="sf-type">uuid PK</span></div>
+          <div class="schema-field"><span class="sf-name">order_id</span><span class="sf-type">uuid FK</span><span class="sf-note">→ orders</span></div>
+          <div class="schema-field"><span class="sf-name">product_id</span><span class="sf-type">uuid FK</span><span class="sf-note">→ products</span></div>
+          <div class="schema-field"><span class="sf-name">unit_type</span><span class="sf-type">text</span><span class="sf-note">metro/kilo/pieza</span></div>
+          <div class="schema-field"><span class="sf-name">quantity</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">unit_price</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">weight_kg</span><span class="sf-type">numeric</span><span class="sf-note">calculado</span></div>
+          <div class="schema-field"><span class="sf-name">subtotal</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">cut_specs</span><span class="sf-type">jsonb</span><span class="sf-note">null si no hay corte</span></div>
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <div class="schema-header">customers</div>
+        <div class="schema-body">
+          <div class="schema-field"><span class="sf-name">id</span><span class="sf-type">uuid PK</span></div>
+          <div class="schema-field"><span class="sf-name">user_id</span><span class="sf-type">uuid FK</span><span class="sf-note">→ auth.users</span></div>
+          <div class="schema-field"><span class="sf-name">company_name</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">rfc</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">tier</span><span class="sf-type">text</span><span class="sf-note">standard/silver/gold</span></div>
+          <div class="schema-field"><span class="sf-name">discount_pct</span><span class="sf-type">numeric</span><span class="sf-note">0-100</span></div>
+          <div class="schema-field"><span class="sf-name">credit_limit</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">credit_used</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">phone</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">address</span><span class="sf-type">jsonb</span></div>
+          <div class="schema-field"><span class="sf-name">created_at</span><span class="sf-type">timestamptz</span></div>
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <div class="schema-header">quotes</div>
+        <div class="schema-body">
+          <div class="schema-field"><span class="sf-name">id</span><span class="sf-type">uuid PK</span></div>
+          <div class="schema-field"><span class="sf-name">quote_number</span><span class="sf-type">text UNIQUE</span></div>
+          <div class="schema-field"><span class="sf-name">customer_id</span><span class="sf-type">uuid FK</span><span class="sf-note">null si anónimo</span></div>
+          <div class="schema-field"><span class="sf-name">contact_name</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">contact_email</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">contact_phone</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">company</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">status</span><span class="sf-type">text</span><span class="sf-note">pending/responded/closed</span></div>
+          <div class="schema-field"><span class="sf-name">items</span><span class="sf-type">jsonb</span></div>
+          <div class="schema-field"><span class="sf-name">pdf_url</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">dwg_url</span><span class="sf-type">text</span><span class="sf-note">archivo adjunto</span></div>
+          <div class="schema-field"><span class="sf-name">notes</span><span class="sf-type">text</span></div>
+          <div class="schema-field"><span class="sf-name">created_at</span><span class="sf-type">timestamptz</span></div>
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <div class="schema-header">volume_prices</div>
+        <div class="schema-body">
+          <div class="schema-field"><span class="sf-name">id</span><span class="sf-type">uuid PK</span></div>
+          <div class="schema-field"><span class="sf-name">product_id</span><span class="sf-type">uuid FK</span></div>
+          <div class="schema-field"><span class="sf-name">tier</span><span class="sf-type">text</span><span class="sf-note">silver/gold/custom</span></div>
+          <div class="schema-field"><span class="sf-name">min_qty</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">price</span><span class="sf-type">numeric</span></div>
+          <div class="schema-field"><span class="sf-name">unit_type</span><span class="sf-type">text</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 API ROUTES -->
+  <div class="seccion">
+    <span class="sec-label">04 — API Routes</span>
+    <h2>Endpoints principales</h2>
+
+    <div class="rutas">
+      <div class="ruta"><span class="ruta-path">/api/productos</span><span class="ruta-method get">GET</span><span class="ruta-desc">Listado con filtros: ?categoria=&grado=&perfil=&page=</span></div>
+      <div class="ruta"><span class="ruta-path">/api/productos/[slug]</span><span class="ruta-method get">GET</span><span class="ruta-desc">Detalle completo del producto con specs y equivalencias</span></div>
+      <div class="ruta"><span class="ruta-path">/api/productos</span><span class="ruta-method post">POST</span><span class="ruta-desc">Crear producto (admin only)</span></div>
+      <div class="ruta"><span class="ruta-path">/api/cotizaciones</span><span class="ruta-method post">POST</span><span class="ruta-desc">Crear cotización, generar PDF, enviar email + WhatsApp</span></div>
+      <div class="ruta"><span class="ruta-path">/api/cotizaciones/[id]</span><span class="ruta-method get">GET</span><span class="ruta-desc">Ver cotización (admin o dueño)</span></div>
+      <div class="ruta"><span class="ruta-path">/api/pedidos</span><span class="ruta-method post">POST</span><span class="ruta-desc">Crear pedido post-pago</span></div>
+      <div class="ruta"><span class="ruta-path">/api/pedidos/[id]</span><span class="ruta-method get">GET</span><span class="ruta-desc">Estado del pedido</span></div>
+      <div class="ruta"><span class="ruta-path">/api/pagos/crear</span><span class="ruta-method post">POST</span><span class="ruta-desc">Crear preferencia de pago en Mercado Pago</span></div>
+      <div class="ruta"><span class="ruta-path">/api/pagos/webhook</span><span class="ruta-method post">POST</span><span class="ruta-desc">Webhook de Mercado Pago — actualizar estado pedido</span></div>
+      <div class="ruta"><span class="ruta-path">/api/pdf</span><span class="ruta-method post">POST</span><span class="ruta-desc">Generar PDF de ficha técnica o cotización</span></div>
+      <div class="ruta"><span class="ruta-path">/api/inventario</span><span class="ruta-method get">GET</span><span class="ruta-desc">Stock actual de todos los productos (admin)</span></div>
+      <div class="ruta"><span class="ruta-path">/api/inventario/[id]</span><span class="ruta-method post">POST</span><span class="ruta-desc">Actualizar stock (admin only)</span></div>
+      <div class="ruta"><span class="ruta-path">/api/clientes/[id]/tier</span><span class="ruta-method post">POST</span><span class="ruta-desc">Cambiar tier de cliente (admin only)</span></div>
+    </div>
+  </div>
+
+  <!-- 05 MÓDULOS -->
+  <div class="seccion">
+    <span class="sec-label">05 — Módulos</span>
+    <h2>Especificación técnica por módulo</h2>
+
+    <div class="modulos">
+      <div class="modulo-item">
+        <div class="modulo-nombre">weight-calculator</div>
+        <div class="modulo-desc">
+          Cálculo de peso teórico según material, perfil y dimensiones.<br>
+          Fórmulas: Redondo: <code>π × (d/2000)² × L × ρ × qty</code> / Solera y placa: <code>(a/1000) × (b/1000) × L × ρ × qty</code><br>
+          Densidades: Acero 7850 / Inox 7900 / Aluminio 2700 / Cobre 8960 / Bronce 8800 / Nylamid 1150 (kg/m³)<br>
+          Expuesto como: hook <code>useWeightCalc()</code> + componente <code>WeightCalculator</code>
+        </div>
+        <div class="modulo-fase">Fase 2 · Sem 3</div>
+      </div>
+      <div class="modulo-item">
+        <div class="modulo-nombre">carrito / store</div>
+        <div class="modulo-desc">
+          Zustand store con persistencia en <code>localStorage</code>.<br>
+          Estado: <code>items[], total, itemCount</code>. Acciones: <code>addItem, removeItem, updateQty, clear</code><br>
+          Cada item incluye: <code>productId, sku, name, unitType, qty, unitPrice, subtotal, weightKg</code>
+        </div>
+        <div class="modulo-fase">Fase 3 · Sem 4</div>
+      </div>
+      <div class="modulo-item">
+        <div class="modulo-nombre">mercado-pago</div>
+        <div class="modulo-desc">
+          Integración con Checkout Pro (redirect). Métodos: tarjeta, OXXO, SPEI, transferencia.<br>
+          Flujo: <code>POST /api/pagos/crear</code> → Preferencia MP → redirect → <code>POST /api/pagos/webhook</code> → actualizar orden<br>
+          Validar firma del webhook con <code>x-signature</code> header. Guardar <code>mp_payment_id</code> en orders.
+        </div>
+        <div class="modulo-fase">Fase 3 · Sem 5</div>
+      </div>
+      <div class="modulo-item">
+        <div class="modulo-nombre">cotizaciones</div>
+        <div class="modulo-desc">
+          Form multi-material con <code>react-hook-form</code> + <code>zod</code>. Soporta upload de PDF/DWG a Supabase Storage.<br>
+          Al enviar: guardar en DB → generar PDF con <code>@react-pdf/renderer</code> → email al admin (Resend) → mensaje WhatsApp (wa.me link o API)<br>
+          Email templates con <code>react-email</code>.
+        </div>
+        <div class="modulo-fase">Fase 3 · Sem 5-6</div>
+      </div>
+      <div class="modulo-item">
+        <div class="modulo-nombre">precios-volumen</div>
+        <div class="modulo-desc">
+          Middleware que intercepta el precio base y aplica descuento según <code>customer.tier</code> o <code>volume_prices</code> table.<br>
+          Hook: <code>usePricing(productId, unitType, qty, customerId)</code> → devuelve precio efectivo.<br>
+          Si el usuario no está autenticado, muestra precio base siempre.
+        </div>
+        <div class="modulo-fase">Fase 3 · Sem 7</div>
+      </div>
+      <div class="modulo-item">
+        <div class="modulo-nombre">auth / middleware</div>
+        <div class="modulo-desc">
+          Supabase Auth con <code>@supabase/ssr</code>. Rutas protegidas: <code>/portal/*</code> y <code>/admin/*</code><br>
+          Middleware en <code>middleware.ts</code> — verifica sesión y rol. Admin role en <code>auth.users.user_metadata.role = 'admin'</code><br>
+          RLS en todas las tablas: clientes ven solo sus propios datos.
+        </div>
+        <div class="modulo-fase">Fase 1 · Sem 1</div>
+      </div>
+      <div class="modulo-item">
+        <div class="modulo-nombre">seo / metadata</div>
+        <div class="modulo-desc">
+          <code>generateMetadata()</code> dinámico por producto y artículo de blog.<br>
+          <code>sitemap.ts</code> generado dinámicamente desde Supabase (todos los slugs de productos y blog).<br>
+          Schema markup JSON-LD: <code>Product</code> en fichas, <code>BreadcrumbList</code> en catálogo, <code>Organization</code> en homepage.
+        </div>
+        <div class="modulo-fase">Fase 4 · Sem 7-8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 QA CHECKLIST -->
+  <div class="seccion">
+    <span class="sec-label">06 — QA</span>
+    <h2>Checklist de lanzamiento</h2>
+
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Flujo completo de compra</strong><span>Agregar al carrito → checkout → pago Mercado Pago (tarjeta, OXXO, SPEI) → confirmación → email</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Flujo de cotización</strong><span>Llenar form → adjuntar PDF/DWG → enviar → recibir email → ver en dashboard admin</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Calculadora de peso</strong><span>Verificar fórmulas para redondo, cuadrado, solera y placa con todos los materiales</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Webhook de Mercado Pago</strong><span>Simular pago con <code>ngrok</code> en dev. Verificar que el pedido cambie a "pagado" y se envíe el email</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Autenticación y roles</strong><span>Admin no puede acceder al portal del cliente y viceversa. RLS funciona correctamente en Supabase.</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>SEO técnico</strong><span>Lighthouse &gt; 90 en Performance, SEO y Accessibility. Sitemap enviado a Search Console. Metadatos dinámicos.</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Responsive</strong><span>Pruebas en iPhone SE (375px), iPhone 14 (390px), iPad (768px) y desktop (1280px+)</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Precios por volumen</strong><span>Cliente Gold ve su precio con descuento. Cliente sin sesión ve precio base. Admin puede cambiar tier.</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Descarga de PDF y DWG</strong><span>Ficha técnica generada correctamente. Archivo DWG descargable desde Supabase Storage.</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-body"><strong>Inventario en tiempo real</strong><span>Al confirmar pedido, el stock se descuenta automáticamente. Admin ve alerta si stock &lt; umbral.</span></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CIERRE -->
+<div class="cierre">
+  <div style="max-width:960px; margin:0 auto; padding:0 8px;">
+    <span class="sec-label">07 — Notas</span>
+    <h2 style="font-family:'Montserrat',sans-serif; font-size:28px; margin-bottom:12px;">Fase 2 — CFDI 4.0</h2>
+    <p>La facturación electrónica se implementa después del lanzamiento. PAC recomendado: <strong style="color:var(--blanco)">Facturama</strong> o <strong style="color:var(--blanco)">SW Sapien</strong>. Ambos tienen SDK para Node.js/Next.js y sandbox de pruebas. El flujo será: checkout → orden pagada → trigger automático de generación de CFDI → envío por email al cliente.</p>
+  </div>
+</div>
+
+<footer>
+  <span>PRD Técnico — acerosymetalesurgentes.com · Julio 2026 · v1.0</span>
+  <span>Juan Azael Pinales Regis · azaelecommerce@gmail.com</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap – acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --negro:    #0D1117;
+    --panel:    #161B22;
+    --borde:    #21262D;
+    --acero:    #1C3A5E;
+    --acento:   #C8991A;
+    --acento-cl:#F5C842;
+    --plata:    #8B949E;
+    --blanco:   #E6EDF3;
+    --verde:    #3FB950;
+    --azul:     #58A6FF;
+    --morado:   #BC8CFF;
+    --rojo:     #FF7B72;
+    --naranja:  #FFA657;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--borde);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 32px; height: 32px;
+    background: var(--acento);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    color: var(--negro);
+  }
+
+  .logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--plata);
+  }
+
+  .logo-text span { color: var(--acento-cl); }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .badge-version {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(200,153,26,0.12);
+    color: var(--acento-cl);
+    border: 1px solid rgba(200,153,26,0.3);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .progreso-global {
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  .progreso-global span { color: var(--verde); font-weight: 700; }
+
+  /* HERO */
+  .hero {
+    padding: 56px 40px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 em { font-style: normal; color: var(--acento-cl); }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--plata);
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+
+  /* STATS RÁPIDAS */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--borde);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 56px;
+  }
+
+  @media(max-width:640px){ .stats{ grid-template-columns: 1fr 1fr; } }
+
+  .stat {
+    background: var(--panel);
+    padding: 20px 24px;
+  }
+
+  .stat-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-n.verde { color: var(--verde); }
+  .stat-n.amarillo { color: var(--acento-cl); }
+  .stat-n.azul { color: var(--azul); }
+  .stat-n.morado { color: var(--morado); }
+
+  .stat p { font-size: 12px; color: var(--plata); }
+
+  /* CONTENIDO */
+  .contenido {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  /* LEYENDA */
+  .leyenda {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    padding: 14px 18px;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+  }
+
+  .ley-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* FASES */
+  .fase-wrap { margin-bottom: 8px; }
+
+  .fase-header {
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+
+  .fase-header:hover { background: #1C2128; }
+  .fase-header.cerrado { border-radius: 8px; }
+
+  .fase-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--acento);
+  }
+
+  .fase-info h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 2px;
+  }
+
+  .fase-info p {
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  .fase-duracion {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--plata);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .fase-toggle {
+    font-size: 16px;
+    color: var(--plata);
+    transition: transform 0.2s;
+  }
+
+  .fase-toggle.abierto { transform: rotate(90deg); }
+
+  /* BARRA DE PROGRESO DE FASE */
+  .fase-prog-wrap {
+    padding: 0 20px 14px;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-top: none;
+  }
+
+  .fase-prog-bar {
+    height: 3px;
+    background: var(--borde);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .fase-prog-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  /* TAREAS */
+  .tareas {
+    border: 1px solid var(--borde);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    display: none;
+  }
+
+  .tareas.visible { display: block; }
+
+  .tarea {
+    display: grid;
+    grid-template-columns: 28px 1fr auto auto;
+    gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--borde);
+    align-items: flex-start;
+    transition: background 0.1s;
+  }
+
+  .tarea:last-child { border-bottom: none; }
+  .tarea:hover { background: rgba(255,255,255,0.02); }
+
+  .tarea-cb {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--borde);
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+    background: transparent;
+  }
+
+  .tarea-cb.done {
+    background: var(--verde);
+    border-color: var(--verde);
+  }
+
+  .tarea-cb.done::after {
+    content: '✓';
+    font-size: 10px;
+    color: var(--negro);
+    font-weight: 700;
+  }
+
+  .tarea-cb.progress {
+    background: rgba(88,166,255,0.15);
+    border-color: var(--azul);
+  }
+
+  .tarea-cb.progress::after {
+    content: '◐';
+    font-size: 10px;
+    color: var(--azul);
+  }
+
+  .tarea-body strong {
+    display: block;
+    font-size: 13.5px;
+    color: var(--blanco);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .tarea-body p {
+    font-size: 12px;
+    color: var(--plata);
+    margin: 0;
+  }
+
+  .tarea-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  .tag-backend  { background: rgba(188,140,255,0.12); color: var(--morado); border: 1px solid rgba(188,140,255,0.25); }
+  .tag-frontend { background: rgba(88,166,255,0.12);  color: var(--azul);   border: 1px solid rgba(88,166,255,0.25); }
+  .tag-db       { background: rgba(63,185,80,0.12);   color: var(--verde);  border: 1px solid rgba(63,185,80,0.25); }
+  .tag-infra    { background: rgba(255,166,87,0.12);  color: var(--naranja);border: 1px solid rgba(255,166,87,0.25); }
+  .tag-seo      { background: rgba(200,153,26,0.12);  color: var(--acento-cl); border: 1px solid rgba(200,153,26,0.25); }
+  .tag-ux       { background: rgba(255,123,114,0.12); color: var(--rojo);   border: 1px solid rgba(255,123,114,0.25); }
+
+  .tarea-sem {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--plata);
+    white-space: nowrap;
+    align-self: flex-start;
+    padding-top: 3px;
+  }
+
+  /* SUBTAREA */
+  .subtareas {
+    grid-column: 2 / -1;
+    margin-top: 8px;
+    padding-left: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .subtarea {
+    font-size: 12px;
+    color: var(--plata);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .subtarea::before {
+    content: '└';
+    position: absolute;
+    left: 0;
+    color: var(--borde);
+    font-family: monospace;
+  }
+
+  /* FOOTER ROADMAP */
+  .roadmap-footer {
+    margin-top: 48px;
+    padding: 28px 32px;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-dev {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--plata);
+  }
+
+  .footer-dev span { color: var(--acento-cl); }
+
+  .footer-stack {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .stack-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--borde);
+    color: var(--plata);
+    background: rgba(255,255,255,0.03);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">A</div>
+    <div class="logo-text">aceros<span>ymetalesurgentes</span>.com</div>
+  </div>
+  <div class="header-right">
+    <span class="badge-version">v1.0 · Roadmap</span>
+    <span class="progreso-global">Progreso: <span id="pct">0%</span></span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">Roadmap de Desarrollo</div>
+  <h1>Plan Completo<br>de <em>9 Semanas</em></h1>
+  <p class="hero-desc">Plataforma de ventas industrial a medida — Next.js + TypeScript + Supabase + Stripe + Mercado Pago + Resend + Cloudflare.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n verde">9</div>
+      <p>Semanas de desarrollo</p>
+    </div>
+    <div class="stat">
+      <div class="stat-n amarillo">5</div>
+      <p>Fases del proyecto</p>
+    </div>
+    <div class="stat">
+      <div class="stat-n azul">28</div>
+      <p>Módulos a desarrollar</p>
+    </div>
+    <div class="stat">
+      <div class="stat-n morado">7</div>
+      <p>Tecnologías integradas</p>
+    </div>
+  </div>
+</div>
+
+<div class="contenido">
+
+  <div class="leyenda">
+    <div class="ley-item"><div class="dot" style="background:var(--morado)"></div> Backend / API</div>
+    <div class="ley-item"><div class="dot" style="background:var(--azul)"></div> Frontend / UI</div>
+    <div class="ley-item"><div class="dot" style="background:var(--verde)"></div> Base de datos</div>
+    <div class="ley-item"><div class="dot" style="background:var(--naranja)"></div> Infraestructura</div>
+    <div class="ley-item"><div class="dot" style="background:var(--acento-cl)"></div> SEO / Contenido</div>
+    <div class="ley-item"><div class="dot" style="background:var(--rojo)"></div> UX / Diseño</div>
+  </div>
+
+  <!-- FASE 1 -->
+  <div class="fase-wrap">
+    <div class="fase-header" onclick="toggleFase(this)">
+      <div class="fase-num">F1</div>
+      <div class="fase-info">
+        <h3>Descubrimiento y Setup</h3>
+        <p>Arquitectura, base de datos y entorno de desarrollo</p>
+      </div>
+      <div class="fase-duracion">Sem 1<br>5 días</div>
+      <div class="fase-toggle abierto">▶</div>
+    </div>
+    <div class="fase-prog-wrap">
+      <div class="fase-prog-bar"><div class="fase-prog-fill" style="width:0%; background:var(--verde)"></div></div>
+    </div>
+    <div class="tareas visible">
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Reunión de kickoff con el cliente</strong>
+          <p>Levantamiento de información: productos, categorías, clientes tipo, flujos de compra y cotización</p>
+        </div>
+        <span class="tarea-tag tag-ux">UX</span>
+        <span class="tarea-sem">S1 · D1</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Diseño del esquema de base de datos en Supabase</strong>
+          <p>Tablas: productos, categorías, clientes, pedidos, cotizaciones, precios por volumen, cortes</p>
+          <div class="subtareas">
+            <div class="subtarea">products, categories, product_specs (fichas técnicas)</div>
+            <div class="subtarea">orders, order_items, quotes, quote_items</div>
+            <div class="subtarea">customers, customer_tiers, volume_prices</div>
+            <div class="subtarea">cut_requests, notifications</div>
+          </div>
+        </div>
+        <span class="tarea-tag tag-db">DB</span>
+        <span class="tarea-sem">S1 · D2</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Setup del proyecto Next.js + TypeScript</strong>
+          <p>Scaffolding con App Router, Tailwind, ESLint, estructura de carpetas, variables de entorno</p>
+        </div>
+        <span class="tarea-tag tag-infra">INFRA</span>
+        <span class="tarea-sem">S1 · D2</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Conexión Supabase + autenticación</strong>
+          <p>Supabase client setup, Auth con email/contraseña, Row Level Security (RLS) básico</p>
+        </div>
+        <span class="tarea-tag tag-db">DB</span>
+        <span class="tarea-sem">S1 · D3</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Deploy inicial en Cloudflare + dominio</strong>
+          <p>Configurar acerosymetalesurgentes.com, SSL, CI/CD básico con GitHub Actions</p>
+        </div>
+        <span class="tarea-tag tag-infra">INFRA</span>
+        <span class="tarea-sem">S1 · D4</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>2 propuestas de diseño UI</strong>
+          <p>Prototipo visual de Home + Catálogo — presentar al cliente para aprobación antes de desarrollar</p>
+        </div>
+        <span class="tarea-tag tag-ux">UX</span>
+        <span class="tarea-sem">S1 · D5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 2 -->
+  <div class="fase-wrap">
+    <div class="fase-header cerrado" onclick="toggleFase(this)">
+      <div class="fase-num">F2</div>
+      <div class="fase-info">
+        <h3>Frontend + Catálogo Industrial</h3>
+        <p>UI completa, catálogo con fichas PDF, compra por metro/kilo</p>
+      </div>
+      <div class="fase-duracion">Sem 2–4<br>15 días</div>
+      <div class="fase-toggle">▶</div>
+    </div>
+    <div class="fase-prog-wrap">
+      <div class="fase-prog-bar"><div class="fase-prog-fill" style="width:0%; background:var(--azul)"></div></div>
+    </div>
+    <div class="tareas">
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Layout base: Header, Footer, Nav</strong>
+          <p>Componentes globales responsive, menú de categorías, buscador, carrito en header</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S2</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Homepage</strong>
+          <p>Hero, categorías destacadas, productos más vendidos, CTA a cotización, sección de confianza</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S2</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Catálogo de productos con filtros</strong>
+          <p>Listado por categoría, filtros por tipo/calibre/material, paginación, búsqueda en tiempo real</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S2–S3</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Página de producto individual</strong>
+          <p>Ficha técnica completa, selector de unidad (metro/kilo/pieza), stock, precio según volumen</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S3</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Generador de fichas técnicas PDF</strong>
+          <p>Descarga de ficha en PDF por producto usando react-pdf o Puppeteer — marca + especificaciones</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S3</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Módulo de compra por metro lineal y por kilo</strong>
+          <p>Calculadora de precio según cantidad y unidad elegida, validación de mínimos por producto</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S3</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>API de productos (Supabase)</strong>
+          <p>CRUD completo, endpoints de búsqueda, filtros por categoría, precios por tier de cliente</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S3–S4</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Admin básico de catálogo</strong>
+          <p>Panel para agregar/editar/eliminar productos, subir imágenes a Supabase Storage</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 3 -->
+  <div class="fase-wrap">
+    <div class="fase-header cerrado" onclick="toggleFase(this)">
+      <div class="fase-num">F3</div>
+      <div class="fase-info">
+        <h3>E-commerce + Módulos de Negocio</h3>
+        <p>Carrito, pagos, cotizador, cortes y portal de clientes</p>
+      </div>
+      <div class="fase-duracion">Sem 4–7<br>20 días</div>
+      <div class="fase-toggle">▶</div>
+    </div>
+    <div class="fase-prog-wrap">
+      <div class="fase-prog-bar"><div class="fase-prog-fill" style="width:0%; background:var(--morado)"></div></div>
+    </div>
+    <div class="tareas">
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Carrito de compras</strong>
+          <p>Estado global con Zustand o Context, persistencia en localStorage, resumen de pedido</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S4</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Checkout completo</strong>
+          <p>Datos de envío/factura, resumen de pedido, selección de método de pago</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S4–S5</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Integración Stripe</strong>
+          <p>Payment Intents, webhooks de confirmación, tarjetas internacionales, manejo de errores</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S5</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Integración Mercado Pago</strong>
+          <p>Checkout Pro, OXXO Pay, SPEI, webhooks de pago, conciliación de órdenes</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S5</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Emails transaccionales con Resend</strong>
+          <p>Confirmación de pedido, actualización de estado, nueva cotización recibida, acceso al portal</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S5</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Módulo de cotización en línea</strong>
+          <p>Formulario multi-producto, cálculo automático, PDF de cotización generado, notificación email + WhatsApp</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S5–S6</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Solicitud de cortes a medida</strong>
+          <p>Formulario de especificaciones (medida, cantidad, material, tolerancia), estado del pedido</p>
+        </div>
+        <span class="tarea-tag tag-backend">BACK</span>
+        <span class="tarea-sem">S6</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Portal de clientes — Mi Cuenta</strong>
+          <p>Registro/login, historial de pedidos, cotizaciones guardadas, solicitudes de corte, datos de facturación</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S6–S7</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Precios especiales por volumen</strong>
+          <p>Sistema de tiers por cliente (precio A, B, C), asignación desde admin, aplicación automática en checkout</p>
+        </div>
+        <span class="tarea-tag tag-db">DB</span>
+        <span class="tarea-sem">S7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 4 -->
+  <div class="fase-wrap">
+    <div class="fase-header cerrado" onclick="toggleFase(this)">
+      <div class="fase-num">F4</div>
+      <div class="fase-info">
+        <h3>SEO, Contenido y Blog</h3>
+        <p>Posicionamiento orgánico desde el inicio</p>
+      </div>
+      <div class="fase-duracion">Sem 7–8<br>7 días</div>
+      <div class="fase-toggle">▶</div>
+    </div>
+    <div class="fase-prog-wrap">
+      <div class="fase-prog-bar"><div class="fase-prog-fill" style="width:0%; background:var(--acento-cl)"></div></div>
+    </div>
+    <div class="tareas">
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>SEO on-page en 5 páginas clave</strong>
+          <p>Metadatos, Open Graph, sitemap.xml, robots.txt, schema markup de producto y empresa</p>
+        </div>
+        <span class="tarea-tag tag-seo">SEO</span>
+        <span class="tarea-sem">S7</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Blog con estructura SEO</strong>
+          <p>Sección /blog con categorías, 3 artículos iniciales de palabras clave objetivo del sector</p>
+        </div>
+        <span class="tarea-tag tag-seo">SEO</span>
+        <span class="tarea-sem">S7–S8</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Optimización de velocidad (Core Web Vitals)</strong>
+          <p>Image optimization, lazy loading, code splitting, análisis con Lighthouse y PageSpeed</p>
+        </div>
+        <span class="tarea-tag tag-infra">INFRA</span>
+        <span class="tarea-sem">S8</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Alta en Google Search Console + Analytics</strong>
+          <p>Verificación de dominio, envío de sitemap, configuración de GA4 con eventos de conversión</p>
+        </div>
+        <span class="tarea-tag tag-seo">SEO</span>
+        <span class="tarea-sem">S8</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Google Business Profile</strong>
+          <p>Alta/optimización del perfil, fotos de productos/empresa, categorías, horarios</p>
+        </div>
+        <span class="tarea-tag tag-seo">SEO</span>
+        <span class="tarea-sem">S8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 5 -->
+  <div class="fase-wrap">
+    <div class="fase-header cerrado" onclick="toggleFase(this)">
+      <div class="fase-num">F5</div>
+      <div class="fase-info">
+        <h3>QA, Lanzamiento y Entrega</h3>
+        <p>Pruebas finales, go-live y capacitación</p>
+      </div>
+      <div class="fase-duracion">Sem 9<br>5 días</div>
+      <div class="fase-toggle">▶</div>
+    </div>
+    <div class="fase-prog-wrap">
+      <div class="fase-prog-bar"><div class="fase-prog-fill" style="width:0%; background:var(--naranja)"></div></div>
+    </div>
+    <div class="tareas">
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>QA completo — pruebas de flujos críticos</strong>
+          <p>Flujo de compra completo (Stripe + MercadoPago), cotizador, solicitud de cortes, portal de clientes</p>
+        </div>
+        <span class="tarea-tag tag-infra">INFRA</span>
+        <span class="tarea-sem">S9 · D1-2</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Pruebas en móvil y diferentes navegadores</strong>
+          <p>Chrome, Safari, Firefox, Edge — iOS y Android</p>
+        </div>
+        <span class="tarea-tag tag-frontend">FRONT</span>
+        <span class="tarea-sem">S9 · D2</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Correcciones finales</strong>
+          <p>Ajustes de diseño, bugs de último momento, revisión de contenido con el cliente</p>
+        </div>
+        <span class="tarea-tag tag-ux">UX</span>
+        <span class="tarea-sem">S9 · D3</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Go-live en producción</strong>
+          <p>Deploy final en Cloudflare, verificación de dominio, monitoreo de primeras horas</p>
+        </div>
+        <span class="tarea-tag tag-infra">INFRA</span>
+        <span class="tarea-sem">S9 · D4</span>
+      </div>
+      <div class="tarea">
+        <div class="tarea-cb" onclick="toggleCheck(this)"></div>
+        <div class="tarea-body">
+          <strong>Capacitación al cliente + entrega de accesos</strong>
+          <p>Sesión de 60 min: admin del catálogo, gestión de pedidos/cotizaciones, panel de Supabase</p>
+        </div>
+        <span class="tarea-tag tag-ux">UX</span>
+        <span class="tarea-sem">S9 · D5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="roadmap-footer">
+    <div class="footer-dev">
+      Desarrollado por <span>Juan Azael Pinales Regis</span><br>
+      <span style="color:var(--plata)">azaelecommerce@gmail.com · +52 55 1923 2398</span>
+    </div>
+    <div class="footer-stack">
+      <span class="stack-badge">Next.js</span>
+      <span class="stack-badge">TypeScript</span>
+      <span class="stack-badge">Tailwind</span>
+      <span class="stack-badge">Supabase</span>
+      <span class="stack-badge">Stripe</span>
+      <span class="stack-badge">MercadoPago</span>
+      <span class="stack-badge">Resend</span>
+      <span class="stack-badge">Cloudflare</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleFase(header) {
+    const tareas = header.nextElementSibling.nextElementSibling;
+    const toggle = header.querySelector('.fase-toggle');
+    const isVisible = tareas.classList.contains('visible');
+
+    if (isVisible) {
+      tareas.classList.remove('visible');
+      toggle.classList.remove('abierto');
+      header.classList.add('cerrado');
+    } else {
+      tareas.classList.add('visible');
+      toggle.classList.add('abierto');
+      header.classList.remove('cerrado');
+    }
+  }
+
+  function toggleCheck(cb) {
+    cb.classList.toggle('done');
+    updateProgreso();
+  }
+
+  function updateProgreso() {
+    const total = document.querySelectorAll('.tarea-cb').length;
+    const done  = document.querySelectorAll('.tarea-cb.done').length;
+    const pct   = Math.round((done / total) * 100);
+    document.getElementById('pct').textContent = pct + '%';
+
+    // Actualizar barras de fase
+    document.querySelectorAll('.fase-wrap').forEach(fase => {
+      const cbs   = fase.querySelectorAll('.tarea-cb');
+      const dones = fase.querySelectorAll('.tarea-cb.done');
+      const fill  = fase.querySelector('.fase-prog-fill');
+      if (fill && cbs.length) {
+        fill.style.width = Math.round((dones.length / cbs.length) * 100) + '%';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

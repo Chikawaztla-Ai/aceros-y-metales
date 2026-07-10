@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Marketing Digital – Aceros y Metales Urgentes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --negro:     #0F1923;
+    --acero:     #1E3448;
+    --acento:    #C8991A;
+    --acento-cl: #F5C842;
+    --gris-osc:  #3A3A3A;
+    --gris-med:  #6B7280;
+    --gris-cl:   #D1D5DB;
+    --gris-bg:   #F3F4F6;
+    --blanco:    #FFFFFF;
+    --verde:     #16A34A;
+    --azul:      #2563EB;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--blanco);
+    color: var(--negro);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* PORTADA */
+  .portada {
+    background: var(--acero);
+    color: var(--blanco);
+    padding: 64px 56px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portada::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--acento) 0%, var(--acento-cl) 100%);
+  }
+
+  .portada-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--acento-cl);
+    margin-bottom: 28px;
+  }
+
+  .portada h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(50px, 8vw, 88px);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+  }
+
+  .portada h1 em { font-style: normal; color: var(--acento-cl); }
+
+  .portada-desc {
+    font-size: 16px;
+    color: #A8BFCF;
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  .portada-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .meta { padding: 16px 26px; border-right: 1px solid rgba(255,255,255,0.12); }
+  .meta:last-child { border-right: none; }
+  .meta label { display:block; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#7A9DB5; margin-bottom:4px; font-weight:600; }
+  .meta span { font-size:14px; font-weight:700; color:#FFFFFF; }
+
+  /* CONTENIDO */
+  .contenido { max-width: 860px; margin: 0 auto; padding: 0 48px; }
+
+  .seccion { padding: 56px 0; border-bottom: 1px solid var(--gris-cl); }
+  .seccion:last-child { border-bottom: none; }
+
+  .sec-label {
+    display: inline-block;
+    background: var(--acero);
+    color: var(--acento-cl);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 4.5vw, 46px);
+    color: var(--negro);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .intro { font-size: 15px; color: var(--gris-med); max-width: 660px; }
+
+  /* PREGUNTA CENTRAL */
+  .pregunta-box {
+    margin-top: 32px;
+    background: var(--gris-bg);
+    border-radius: 8px;
+    padding: 28px 32px;
+    border-left: 4px solid var(--acero);
+  }
+
+  .pregunta-box .q {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--acero);
+    margin-bottom: 10px;
+  }
+
+  .pregunta-box p {
+    font-size: 14px;
+    color: var(--gris-osc);
+    margin-bottom: 10px;
+  }
+  .pregunta-box p:last-child { margin-bottom: 0; }
+
+  /* TIMELINE SEO vs ADS */
+  .comparativa {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media(max-width:640px){ .comparativa{ grid-template-columns:1fr; } }
+
+  .comp-card {
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 8px;
+    padding: 24px;
+    background: var(--blanco);
+  }
+
+  .comp-card.lento { border-top: 4px solid var(--azul); }
+  .comp-card.rapido { border-top: 4px solid var(--acento); }
+
+  .comp-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .comp-card.lento .comp-tag { color: var(--azul); }
+  .comp-card.rapido .comp-tag { color: var(--acento); }
+
+  .comp-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .comp-card ul {
+    list-style: none;
+    margin-top: 12px;
+  }
+
+  .comp-card li {
+    font-size: 13px;
+    color: var(--gris-med);
+    padding: 6px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .comp-card li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gris-cl);
+  }
+
+  /* RUTA / TIMELINE */
+  .ruta {
+    margin-top: 36px;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .ruta::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--gris-cl);
+  }
+
+  .ruta-item {
+    position: relative;
+    padding-bottom: 32px;
+  }
+
+  .ruta-item:last-child { padding-bottom: 0; }
+
+  .ruta-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--acento);
+    border: 3px solid var(--blanco);
+    box-shadow: 0 0 0 2px var(--acento);
+  }
+
+  .ruta-fase {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 4px;
+  }
+
+  .ruta-item h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--negro);
+    margin-bottom: 6px;
+  }
+
+  .ruta-item p {
+    font-size: 13px;
+    color: var(--gris-med);
+    max-width: 600px;
+  }
+
+  /* TABLA PRESUPUESTO */
+  .tabla-wrap {
+    margin-top: 36px;
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  .thead-grupo td {
+    padding: 10px 20px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--acero);
+    color: var(--acento-cl);
+  }
+
+  tbody tr { border-bottom: 1px solid var(--gris-cl); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--gris-bg); }
+
+  tbody td { padding: 14px 20px; font-size: 14px; color: var(--gris-osc); }
+  .col-nombre { font-weight: 600; color: var(--negro) !important; }
+  .col-desc { font-size: 12px !important; color: var(--gris-med) !important; }
+  .col-precio { text-align: right; font-weight: 700; color: var(--negro) !important; white-space: nowrap; }
+
+  .fila-total td {
+    background: var(--acero);
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    padding: 18px 20px !important;
+    border-top: 3px solid var(--acento);
+  }
+  .fila-total .col-precio { color: var(--acento-cl) !important; font-size: 19px !important; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    letter-spacing: 0.5px;
+  }
+  .badge-prioridad { background: rgba(200,153,26,0.12); color: var(--acento); border: 1px solid rgba(200,153,26,0.3); }
+  .badge-gratis { background: rgba(22,163,74,0.1); color: var(--verde); border: 1px solid rgba(22,163,74,0.25); }
+
+  /* NOTA */
+  .nota-box {
+    margin-top: 20px;
+    background: #FFFBEB;
+    border: 1.5px solid #FDE68A;
+    border-left: 4px solid var(--acento);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+  }
+  .nota-box p { font-size: 13px; color: var(--gris-osc); margin-bottom: 6px; }
+  .nota-box p:last-child { margin-bottom: 0; }
+  .nota-box strong { color: var(--negro); }
+
+  /* EXPECTATIVAS */
+  .expect-grid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media(max-width:640px){ .expect-grid{ grid-template-columns:1fr; } }
+
+  .expect-card {
+    border: 1.5px solid var(--gris-cl);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .expect-card .mes {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--acero);
+    margin-bottom: 8px;
+  }
+
+  .expect-card p { font-size: 12.5px; color: var(--gris-med); margin: 0; }
+
+  /* CIERRE */
+  .cierre {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 56px;
+    position: relative;
+  }
+  .cierre::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--acento) 0%, var(--acento-cl) 100%);
+  }
+  .cierre .sec-label { background: rgba(255,255,255,0.08); color: var(--acento-cl); margin-bottom: 20px; }
+  .cierre h2 { color: #FFFFFF; margin-bottom: 12px; }
+  .cierre p { color: #8FA3B1; max-width: 600px; margin-bottom: 10px; }
+
+  footer {
+    background: var(--acero);
+    padding: 20px 56px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  footer span { font-size: 11px; color: #7A9DB5; }
+  .f-conf { letter-spacing: 3px; text-transform: uppercase; color: #4A6A82 !important; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="portada">
+  <div class="portada-tag">Plan de Marketing Digital</div>
+  <h1>SEO + RRSS<br>para Canal de<br><em>Ventas de Acero</em></h1>
+  <p class="portada-desc">
+    Estrategia y presupuesto mensual para acelerar la generación de leads del sitio web,
+    combinando posicionamiento orgánico con publicidad de bajo costo y alto retorno.
+  </p>
+  <div class="portada-grid">
+    <div class="meta"><label>Preparado por</label><span>Juan Azael Pinales Regis</span></div>
+    <div class="meta"><label>Para</label><span>Aceros y Metales Urgentes</span></div>
+    <div class="meta"><label>Presupuesto</label><span>$5,000 MXN/mes</span></div>
+    <div class="meta"><label>Fecha</label><span>Junio 2026</span></div>
+  </div>
+</div>
+
+<div class="contenido">
+
+  <!-- 01 LA PREGUNTA -->
+  <div class="seccion">
+    <span class="sec-label">01 — El Dilema</span>
+    <h2>¿Solo SEO o necesitamos pagar?</h2>
+    <p class="intro">Es la pregunta correcta antes de gastar un peso. La respuesta corta: el SEO sí puede generar ventas solo, pero tarda. Con un presupuesto pequeño, lo inteligente es combinar ambos caminos desde el día uno.</p>
+
+    <div class="pregunta-box">
+      <div class="q">Por qué el SEO solo no basta al principio</div>
+      <p>Google no posiciona sitios nuevos rápido — sin importar qué tan bueno sea el contenido, toma entre <strong>4 y 8 meses</strong> en promedio ganar confianza suficiente para aparecer en primeras posiciones para términos competidos como "comprar acero" o "distribuidor de varilla".</p>
+      <p>Durante ese tiempo, el sitio existe pero prácticamente nadie lo encuentra de forma orgánica. Si la empresa depende 100% de SEO, pasa medio año sin ver resultados del canal digital.</p>
+    </div>
+  </div>
+
+  <!-- 02 COMPARATIVA -->
+  <div class="seccion">
+    <span class="sec-label">02 — Los Dos Caminos</span>
+    <h2>SEO vs. Publicidad pagada</h2>
+    <p class="intro">No son opuestos — son complementarios. Uno construye el activo a largo plazo, el otro genera resultados mientras el primero madura.</p>
+
+    <div class="comparativa">
+      <div class="comp-card lento">
+        <div class="comp-tag">Camino Lento — SEO Orgánico</div>
+        <h3>Gratis, pero tarda</h3>
+        <ul>
+          <li>Resultados visibles entre mes 4 y mes 8</li>
+          <li>Una vez posicionado, el tráfico es gratuito de por vida</li>
+          <li>Requiere contenido constante (blog, fichas de producto)</li>
+          <li>Construye un activo que no se apaga si dejas de pagar</li>
+          <li>Ideal para términos de búsqueda específicos del nicho</li>
+        </ul>
+      </div>
+      <div class="comp-card rapido">
+        <div class="comp-tag">Camino Rápido — Google Ads</div>
+        <h3>Cuesta, pero es inmediato</h3>
+        <ul>
+          <li>Resultados visibles desde la primera semana</li>
+          <li>Apareces arriba aunque el sitio sea nuevo</li>
+          <li>Se apaga el tráfico si dejas de pagar</li>
+          <li>Permite probar qué palabras clave realmente convierten</li>
+          <li>Esa data sirve después para afinar el SEO</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 RUTA RECOMENDADA -->
+  <div class="seccion">
+    <span class="sec-label">03 — La Ruta Recomendada</span>
+    <h2>Cómo combinarlos con $5,000/mes</h2>
+    <p class="intro">Con presupuesto limitado, la estrategia es invertir en lo que genera intención de compra real, y usar lo gratuito para todo lo demás.</p>
+
+    <div class="ruta">
+      <div class="ruta-item">
+        <div class="ruta-fase">Mes 1 – 2</div>
+        <h3>Base SEO + Google Business Profile</h3>
+        <p>Se trabaja la estructura SEO del sitio (ya incluida en el desarrollo), se optimiza el perfil de Google Business y se piden las primeras reseñas a clientes actuales. Esto es gratuito y es lo que más impacta en búsquedas locales tipo "distribuidor de acero cerca de mí".</p>
+      </div>
+      <div class="ruta-item">
+        <div class="ruta-fase">Mes 1 en adelante</div>
+        <h3>Google Ads de búsqueda — arranque inmediato</h3>
+        <p>Se activa desde el primer mes con el presupuesto disponible. Captura a quien ya está buscando comprar acero ahora mismo. Es el canal con mayor probabilidad de generar ventas reales en el corto plazo.</p>
+      </div>
+      <div class="ruta-item">
+        <div class="ruta-fase">Mes 1 en adelante</div>
+        <h3>LinkedIn orgánico — sin costo de pauta</h3>
+        <p>Publicaciones regulares mostrando proyectos, productos y casos de uso. No genera ventas directas, pero construye credibilidad frente a compradores B2B (gerentes de compras, contratistas) que después buscan la marca en Google.</p>
+      </div>
+      <div class="ruta-item">
+        <div class="ruta-fase">Mes 3 – 4</div>
+        <h3>Evaluación y reasignación de presupuesto</h3>
+        <p>Se revisa qué canal trajo más leads reales y se mueve presupuesto hacia ahí. Si Google Ads funciona bien, se le da más peso. Si el SEO ya empieza a traer tráfico, se puede reducir la pauta paga.</p>
+      </div>
+      <div class="ruta-item">
+        <div class="ruta-fase">Mes 5+</div>
+        <h3>SEO toma el relevo</h3>
+        <p>Para este punto el sitio ya debería tener cierta autoridad y empezar a posicionar de forma orgánica. El presupuesto pagado se puede mantener como complemento o reducir según resultados.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 PRESUPUESTO -->
+  <div class="seccion">
+    <span class="sec-label">04 — Presupuesto Mensual</span>
+    <h2>Desglose de $5,000 MXN</h2>
+    <p class="intro">Distribución pensada para maximizar resultados con un presupuesto ajustado, priorizando el canal de mayor intención de compra.</p>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead-grupo">
+            <td colspan="3">Pauta Pagada</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Google Ads (búsqueda) <span class="badge badge-prioridad">Prioridad</span></td>
+            <td class="col-desc">Campaña de búsqueda para palabras clave de alta intención: "comprar acero", "distribuidor de varilla", etc.</td>
+            <td class="col-precio">$3,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Facebook / Instagram Ads</td>
+            <td class="col-desc">Reconocimiento de marca y remarketing a quienes visitaron el sitio. No esperar ventas directas de aquí.</td>
+            <td class="col-precio">$1,000</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Reserva / pruebas</td>
+            <td class="col-desc">Fondo flexible para mover hacia el canal que mejor esté funcionando tras el primer mes</td>
+            <td class="col-precio">$500</td>
+          </tr>
+
+          <tr class="thead-grupo">
+            <td colspan="3">Orgánico (sin costo de pauta)</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">LinkedIn orgánico <span class="badge badge-gratis">Sin costo</span></td>
+            <td class="col-desc">2-3 publicaciones semanales: proyectos, productos, casos de uso. Requiere tiempo, no presupuesto.</td>
+            <td class="col-precio">$0</td>
+          </tr>
+          <tr>
+            <td class="col-nombre">Google Business Profile <span class="badge badge-gratis">Sin costo</span></td>
+            <td class="col-desc">Gestión de reseñas, fotos y publicaciones periódicas en el perfil</td>
+            <td class="col-precio">$0</td>
+          </tr>
+
+          <tr class="fila-total">
+            <td colspan="2">PRESUPUESTO MENSUAL TOTAL</td>
+            <td class="col-precio">$4,500 MXN</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="nota-box">
+      <p><strong>Nota:</strong> Este presupuesto de $4,500 es solo el gasto en pauta publicitaria — no incluye gestión. Si quieren que yo administre las campañas (configuración, optimización, reportes), eso se cotiza aparte como servicio mensual de gestión de marketing.</p>
+      <p><strong>Costo por clic en acero:</strong> Es una industria con CPC relativamente bajo comparado a otros B2B, por lo que $3,000 en Google Ads puede generar entre 40-80 clics calificados al mes, dependiendo de la competencia en la zona.</p>
+    </div>
+  </div>
+
+  <!-- 05 EXPECTATIVAS -->
+  <div class="seccion">
+    <span class="sec-label">05 — Expectativas Realistas</span>
+    <h2>Qué esperar y cuándo</h2>
+    <p class="intro">Para que la conversación con la clienta sea honesta desde el inicio.</p>
+
+    <div class="expect-grid">
+      <div class="expect-card">
+        <div class="mes">Mes 1</div>
+        <p>Primeros clics de Google Ads. Tráfico bajo aún en SEO. Es normal no ver ventas todavía — se está construyendo la base.</p>
+      </div>
+      <div class="expect-card">
+        <div class="mes">Mes 2-3</div>
+        <p>Leads más consistentes vía Ads. Primeras señales de movimiento en SEO (palabras clave de baja competencia empiezan a aparecer).</p>
+      </div>
+      <div class="expect-card">
+        <div class="mes">Mes 4-6</div>
+        <p>El SEO empieza a aportar tráfico real. Se puede evaluar reducir o mantener la pauta pagada según el ritmo de ventas generadas.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cierre">
+  <div style="max-width:860px; margin:0 auto; padding:0 8px;">
+    <span class="sec-label">06 — Resumen</span>
+    <h2>La respuesta corta</h2>
+    <p>El SEO solo sí puede generar ventas — pero no de inmediato. Con un presupuesto de $5,000 MXN, lo más inteligente es usar Google Ads como motor de ventas en los primeros meses, mientras el SEO y el contenido orgánico construyen el canal gratuito a largo plazo.</p>
+    <p>En 4 a 6 meses, el sitio debería poder sostenerse cada vez más con tráfico orgánico, reduciendo la dependencia de la pauta pagada.</p>
+  </div>
+</div>
+
+<footer>
+  <span>Plan de Marketing Digital – Aceros y Metales Urgentes · Junio 2026</span>
+  <span class="f-conf">Documento Confidencial</span>
+</footer>
+
+</body>
+</html>

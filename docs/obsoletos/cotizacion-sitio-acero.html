@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotización – Sitio Web Empresa de Acero</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --negro: #0A0A0A;
+    --acero: #1C2B3A;
+    --acero-medio: #2E4057;
+    --plata: #8FA3B1;
+    --acento: #E8C547;
+    --blanco: #F5F5F5;
+    --texto: #CBD5E0;
+    --verde: #48C774;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--texto);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* PORTADA */
+  .portada {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 48px;
+    background: var(--acero);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portada::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px),
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
+  }
+
+  .portada-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .portada h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.92;
+    color: var(--blanco);
+    letter-spacing: 1px;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .portada h1 span { color: var(--acento); }
+
+  .portada-sub {
+    font-size: 16px;
+    color: var(--plata);
+    max-width: 480px;
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .portada-linea {
+    width: 64px;
+    height: 3px;
+    background: var(--acento);
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .portada-meta {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .meta-item label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--plata);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .meta-item span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blanco);
+  }
+
+  /* SECCIONES */
+  section {
+    padding: 72px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .sec-tag {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--blanco);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  p { color: var(--texto); margin-bottom: 16px; max-width: 680px; }
+
+  hr.divisor { border: none; border-top: 1px solid rgba(255,255,255,0.07); }
+
+  /* FASES */
+  .fases { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+
+  .fase {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: start;
+  }
+
+  .fase:last-child { border-bottom: none; }
+
+  .fase-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--acento);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .fase-body h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 4px;
+  }
+
+  .fase-body p {
+    font-size: 13px;
+    color: var(--plata);
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .fase-dias {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--acento);
+    white-space: nowrap;
+    padding-top: 4px;
+    text-align: right;
+  }
+
+  /* LISTA DE ENTREGABLES */
+  .entregables {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) { .entregables { grid-template-columns: 1fr; } }
+
+  .entregable {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    background: var(--acero);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--texto);
+  }
+
+  .entregable .check {
+    color: var(--verde);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* TABLA DE COTIZACIÓN */
+  .tabla-wrap {
+    margin-top: 40px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead tr { background: var(--acero-medio); }
+
+  thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--plata);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  tbody td { padding: 15px 20px; font-size: 14px; color: var(--texto); }
+  tbody td:first-child { color: var(--blanco); font-weight: 500; }
+  tbody td:last-child { text-align: right; font-weight: 600; color: var(--blanco); }
+
+  .fila-subtotal td { 
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: var(--plata) !important;
+    font-size: 13px !important;
+    padding-top: 12px;
+  }
+
+  .fila-total {
+    background: rgba(232, 197, 71, 0.08) !important;
+  }
+
+  .fila-total td {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--acento) !important;
+    padding: 20px 20px !important;
+  }
+
+  .fila-mensual td {
+    font-size: 13px !important;
+    color: var(--plata) !important;
+    padding-top: 6px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .tag-op {
+    display: inline-block;
+    background: rgba(143,163,177,0.1);
+    color: var(--plata);
+    border: 1px solid rgba(143,163,177,0.2);
+    border-radius: 3px;
+    padding: 1px 7px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* OPCIONES DE PAGO */
+  .pagos {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .pago-card {
+    background: var(--acero);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+
+  .pago-card:hover { border-color: var(--acento); }
+  .pago-card.recomendado { border-color: var(--acento); }
+
+  .pago-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--acento);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .pago-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 8px;
+  }
+
+  .pago-card p {
+    font-size: 13px;
+    color: var(--plata);
+    margin: 0;
+    max-width: 100%;
+  }
+
+  /* NOTAS */
+  .notas {
+    margin-top: 32px;
+    background: var(--acero);
+    border-left: 3px solid var(--acento);
+    padding: 20px 24px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .notas p {
+    font-size: 13px;
+    color: var(--plata);
+    margin-bottom: 8px;
+    max-width: 100%;
+  }
+
+  .notas p:last-child { margin-bottom: 0; }
+  .notas strong { color: var(--blanco); }
+
+  /* CIERRE */
+  .bloque-acento {
+    background: var(--acento);
+    padding: 48px;
+  }
+
+  .bloque-acento h2 { color: var(--negro); margin-bottom: 12px; }
+  .bloque-acento p { color: rgba(10,10,10,0.7); max-width: 640px; }
+  .bloque-acento .firma { margin-top: 32px; font-weight: 700; color: var(--negro); font-size: 14px; }
+
+  footer {
+    background: var(--acero);
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer span { font-size: 12px; color: var(--plata); }
+  .confidencial { font-size: 10px !important; letter-spacing: 3px; text-transform: uppercase; color: rgba(143,163,177,0.4) !important; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="portada">
+  <div class="portada-tag">Cotización de Proyecto</div>
+  <h1>Sitio Web<br><span>Empresa</span><br>de Acero</h1>
+  <div class="portada-linea"></div>
+  <p class="portada-sub">Desarrollo completo del canal digital: catálogo, cotizador, e-commerce, blog y posicionamiento SEO.</p>
+  <div class="portada-meta">
+    <div class="meta-item">
+      <label>Preparado por</label>
+      <span>Tu Nombre / Empresa</span>
+    </div>
+    <div class="meta-item">
+      <label>Para</label>
+      <span>Empresa de Acero</span>
+    </div>
+    <div class="meta-item">
+      <label>Fecha</label>
+      <span>Junio 2026</span>
+    </div>
+    <div class="meta-item">
+      <label>Validez</label>
+      <span>30 días</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divisor">
+
+<!-- ENTREGABLES -->
+<section>
+  <div class="sec-tag">01 — Alcance</div>
+  <h2>Qué incluye el proyecto</h2>
+  <p>Un sitio web completo orientado a generar ventas, no solo presencia. Cada elemento está pensado para convertir visitantes en clientes que soliciten cotización o compren directamente.</p>
+
+  <div class="entregables">
+    <div class="entregable"><span class="check">✓</span> Diseño UI personalizado (no template genérico)</div>
+    <div class="entregable"><span class="check">✓</span> Catálogo de productos con fichas técnicas</div>
+    <div class="entregable"><span class="check">✓</span> Formulario de solicitud de cotización</div>
+    <div class="entregable"><span class="check">✓</span> Botón WhatsApp con mensaje predefinido</div>
+    <div class="entregable"><span class="check">✓</span> Sección "Quiénes somos" + certif. / clientes</div>
+    <div class="entregable"><span class="check">✓</span> Tienda en línea (WooCommerce o similar)</div>
+    <div class="entregable"><span class="check">✓</span> Pasarela de pago configurada (Stripe / Conekta)</div>
+    <div class="entregable"><span class="check">✓</span> Blog con estructura SEO desde el inicio</div>
+    <div class="entregable"><span class="check">✓</span> Optimización SEO on-page (5 páginas clave)</div>
+    <div class="entregable"><span class="check">✓</span> Alta en Google Search Console + Analytics</div>
+    <div class="entregable"><span class="check">✓</span> Perfil de Google Business configurado</div>
+    <div class="entregable"><span class="check">✓</span> Diseño responsive (móvil + escritorio)</div>
+    <div class="entregable"><span class="check">✓</span> Velocidad optimizada (Core Web Vitals)</div>
+    <div class="entregable"><span class="check">✓</span> SSL (HTTPS) + seguridad básica</div>
+    <div class="entregable"><span class="check">✓</span> Capacitación básica al cliente (1 sesión)</div>
+    <div class="entregable"><span class="check">✓</span> 30 días de soporte post-lanzamiento</div>
+  </div>
+</section>
+
+<hr class="divisor">
+
+<!-- FASES -->
+<section>
+  <div class="sec-tag">02 — Plan de Trabajo</div>
+  <h2>Fases del proyecto</h2>
+  <p>El proyecto se divide en 5 fases con entregables claros en cada etapa. El cliente aprueba antes de avanzar.</p>
+
+  <div class="fases">
+    <div class="fase">
+      <div class="fase-num">01</div>
+      <div class="fase-body">
+        <h3>Descubrimiento y Estrategia</h3>
+        <p>Reunión inicial, levantamiento de información, definición de estructura del sitio, mapa de contenidos, palabras clave SEO objetivo y revisión de competencia digital.</p>
+      </div>
+      <div class="fase-dias">Sem 1</div>
+    </div>
+    <div class="fase">
+      <div class="fase-num">02</div>
+      <div class="fase-body">
+        <h3>Diseño UI / Prototipo</h3>
+        <p>Diseño visual de las páginas principales (Home, Catálogo, Producto, Contacto). Se presentan 2 propuestas de diseño para aprobación antes de programar.</p>
+      </div>
+      <div class="fase-dias">Sem 2–3</div>
+    </div>
+    <div class="fase">
+      <div class="fase-num">03</div>
+      <div class="fase-body">
+        <h3>Desarrollo Web</h3>
+        <p>Programación del sitio en WordPress + WooCommerce, carga de catálogo, configuración de pasarela de pago, formularios, WhatsApp y blog.</p>
+      </div>
+      <div class="fase-dias">Sem 3–6</div>
+    </div>
+    <div class="fase">
+      <div class="fase-num">04</div>
+      <div class="fase-body">
+        <h3>SEO y Configuración</h3>
+        <p>Optimización SEO on-page, velocidad, metadatos, schema markup para productos, alta en Google Search Console, Analytics y Google Business Profile.</p>
+      </div>
+      <div class="fase-dias">Sem 6–7</div>
+    </div>
+    <div class="fase">
+      <div class="fase-num">05</div>
+      <div class="fase-body">
+        <h3>Lanzamiento y Entrega</h3>
+        <p>Revisión final, correcciones, lanzamiento en producción, capacitación al cliente y activación del soporte post-lanzamiento de 30 días.</p>
+      </div>
+      <div class="fase-dias">Sem 8</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divisor">
+
+<!-- COTIZACIÓN -->
+<section>
+  <div class="sec-tag">03 — Inversión</div>
+  <h2>Desglose de costos</h2>
+  <p>El proyecto se cotiza en dos partes: desarrollo inicial (pago único) y servicio mensual continuo (mantenimiento + SEO activo).</p>
+
+  <div class="tabla-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Descripción</th>
+          <th>Precio MXN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- DESARROLLO -->
+        <tr>
+          <td colspan="3" style="padding:14px 20px 8px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--acento); font-weight:600; background:rgba(232,197,71,0.04);">Desarrollo Inicial — Pago Único</td>
+        </tr>
+        <tr>
+          <td>Diseño UI personalizado</td>
+          <td style="font-size:13px; color:var(--plata)">2 propuestas de diseño, responsive, identidad visual</td>
+          <td>$6,000</td>
+        </tr>
+        <tr>
+          <td>Desarrollo WordPress + WooCommerce</td>
+          <td style="font-size:13px; color:var(--plata)">Instalación, tema personalizado, plugins esenciales</td>
+          <td>$8,000</td>
+        </tr>
+        <tr>
+          <td>Catálogo de productos</td>
+          <td style="font-size:13px; color:var(--plata)">Hasta 50 productos con ficha técnica, precio y categorías</td>
+          <td>$4,000</td>
+        </tr>
+        <tr>
+          <td>Módulo de cotización</td>
+          <td style="font-size:13px; color:var(--plata)">Formulario inteligente con notificación por email y WhatsApp</td>
+          <td>$3,500</td>
+        </tr>
+        <tr>
+          <td>Tienda en línea (e-commerce)</td>
+          <td style="font-size:13px; color:var(--plata)">Carrito, checkout, pasarela Stripe + Conekta (OXXO/SPEI)</td>
+          <td>$5,500</td>
+        </tr>
+        <tr>
+          <td>Blog con estructura SEO</td>
+          <td style="font-size:13px; color:var(--plata)">Sección blog, 3 artículos iniciales, categorías y etiquetas</td>
+          <td>$3,000</td>
+        </tr>
+        <tr>
+          <td>SEO On-Page (5 páginas)</td>
+          <td style="font-size:13px; color:var(--plata)">Palabras clave, metadatos, schema, velocidad, Search Console</td>
+          <td>$4,000</td>
+        </tr>
+        <tr>
+          <td>Google Business Profile</td>
+          <td style="font-size:13px; color:var(--plata)">Alta/optimización del perfil en Google Maps</td>
+          <td>$1,500</td>
+        </tr>
+        <tr>
+          <td>Capacitación + soporte 30 días</td>
+          <td style="font-size:13px; color:var(--plata)">1 sesión de capacitación + soporte por correo/WhatsApp</td>
+          <td>$1,500</td>
+        </tr>
+
+        <tr class="fila-subtotal">
+          <td colspan="2" style="font-size:13px; text-align:right; padding-right:20px;">Subtotal desarrollo</td>
+          <td>$37,000</td>
+        </tr>
+
+        <!-- MENSUAL -->
+        <tr>
+          <td colspan="3" style="padding:16px 20px 8px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--acento); font-weight:600; background:rgba(232,197,71,0.04);">Servicio Mensual — Recurrente</td>
+        </tr>
+        <tr>
+          <td>Mantenimiento y actualizaciones</td>
+          <td style="font-size:13px; color:var(--plata)">Plugins, seguridad, backups, actualizaciones de contenido</td>
+          <td>$1,200</td>
+        </tr>
+        <tr>
+          <td>SEO continuo</td>
+          <td style="font-size:13px; color:var(--plata)">1 artículo mensual, monitoreo de posiciones, ajustes técnicos</td>
+          <td>$2,500</td>
+        </tr>
+        <tr>
+          <td>Reporte mensual de resultados</td>
+          <td style="font-size:13px; color:var(--plata)">Tráfico, leads generados, pedidos atribuibles al canal digital</td>
+          <td>$300</td>
+        </tr>
+        <tr>
+          <td>Hosting premium <span class="tag-op">Opcional</span></td>
+          <td style="font-size:13px; color:var(--plata)">Si el cliente no tiene hosting propio, se incluye en el paquete</td>
+          <td>$500</td>
+        </tr>
+
+        <tr class="fila-subtotal">
+          <td colspan="2" style="font-size:13px; text-align:right; padding-right:20px;">Subtotal mensual (sin hosting)</td>
+          <td>$4,000</td>
+        </tr>
+
+        <!-- TOTAL -->
+        <tr class="fila-total">
+          <td colspan="2">INVERSIÓN INICIAL TOTAL</td>
+          <td>$37,000 MXN</td>
+        </tr>
+        <tr class="fila-mensual">
+          <td colspan="2" style="text-align:right; padding-right:20px;">+ Servicio mensual desde</td>
+          <td style="color:var(--plata) !important; font-weight:500 !important;">$4,000 MXN/mes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="notas">
+    <p><strong>No incluye:</strong> dominio (≈$300/año), fotografía profesional de productos, redacción de fichas técnicas si la empresa no las proporciona, campañas de publicidad pagada (Google Ads / Meta Ads).</p>
+    <p><strong>Nota sobre la comisión:</strong> Si se acepta el esquema de comisión por ventas (propuesta adjunta), el desarrollo inicial puede negociarse como inversión diferida, descontada de las primeras comisiones generadas.</p>
+  </div>
+</section>
+
+<hr class="divisor">
+
+<!-- OPCIONES DE PAGO -->
+<section>
+  <div class="sec-tag">04 — Opciones de Pago</div>
+  <h2>¿Cómo quieren pagarlo?</h2>
+  <p>Se ofrecen tres esquemas de pago para el desarrollo inicial. El servicio mensual se factura el día 1 de cada mes.</p>
+
+  <div class="pagos">
+    <div class="pago-card">
+      <div class="pago-tag">Opción A</div>
+      <h3>50% / 50%</h3>
+      <p>$18,500 al inicio del proyecto y $18,500 en la entrega final. El más común.</p>
+    </div>
+    <div class="pago-card recomendado">
+      <div class="pago-tag">⭐ Opción B — Recomendada</div>
+      <h3>40% / 30% / 30%</h3>
+      <p>$14,800 al inicio, $11,100 al aprobar diseño, $11,100 al lanzamiento. Menor riesgo para ambas partes.</p>
+    </div>
+    <div class="pago-card">
+      <div class="pago-tag">Opción C</div>
+      <h3>Diferido en comisiones</h3>
+      <p>Si se acepta el esquema de comisión (propuesta adjunta), el desarrollo se descuenta de las primeras comisiones generadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<div class="bloque-acento">
+  <div style="max-width:900px; margin:0 auto;">
+    <div style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:rgba(10,10,10,0.45); margin-bottom:12px; font-weight:600;">05 — Próximo Paso</div>
+    <h2>Listos para comenzar</h2>
+    <p>Esta cotización tiene validez de 30 días. Los precios no incluyen IVA. Cualquier funcionalidad adicional no listada aquí se cotiza por separado antes de ser incorporada.</p>
+    <p style="margin-top:8px;">Para arrancar solo necesitamos: aprobación por escrito, primer pago y una reunión de arranque de 60 minutos.</p>
+    <div class="firma">
+      Tu Nombre &nbsp;·&nbsp; tu@email.com &nbsp;·&nbsp; +52 (XXX) XXX-XXXX
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Cotización – Sitio Web Empresa de Acero &nbsp;·&nbsp; Junio 2026</span>
+  <span class="confidencial">Documento Confidencial</span>
+</footer>
+
+</body>
+</html>
