@@ -1,0 +1,58 @@
+import Link from 'next/link';
+
+export function Footer() {
+  return (
+    <footer className="bg-primary-container border-t-4 border-on-tertiary-container">
+      <div className="max-w-container mx-auto px-10 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div className="font-montserrat font-bold text-lg text-on-primary tracking-tight mb-2">
+            ACEROS <span className="text-on-tertiary-container">Y</span> METALES
+          </div>
+          <p className="text-sm text-on-primary-container/70">
+            Distribución industrial de acero, aluminio, cobre, bronce y metales especiales.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-widest text-on-tertiary-container mb-4">
+            Catálogo
+          </h4>
+          <nav className="flex flex-col gap-2">
+            <Link href="/catalogo?cat=aceros-comerciales" className="text-sm text-on-primary-container/70 hover:underline decoration-on-tertiary-container">Aceros Comerciales</Link>
+            <Link href="/catalogo?cat=aceros-especiales" className="text-sm text-on-primary-container/70 hover:underline decoration-on-tertiary-container">Aceros Especiales</Link>
+            <Link href="/catalogo?cat=aluminio" className="text-sm text-on-primary-container/70 hover:underline decoration-on-tertiary-container">Aluminio</Link>
+            <Link href="/catalogo?cat=no-ferrosos" className="text-sm text-on-primary-container/70 hover:underline decoration-on-tertiary-container">No Ferrosos</Link>
+          </nav>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-widest text-on-tertiary-container mb-4">
+            Servicios
+          </h4>
+          <nav className="flex flex-col gap-2">
+            <Link href="/cotizacion" className="text-sm text-on-primary-container/70 hover:underline decoration-on-tertiary-container">Cotización rápida</Link>
+            <Link href="/blog" className="text-sm text-on-primary-container/70 hover:underline decoration-on-tertiary-container">Blog técnico</Link>
+            <Link href="/nosotros" className="text-sm text-on-primary-container/70 hover:underline decoration-on-tertiary-container">Nosotros</Link>
+          </nav>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-widest text-on-tertiary-container mb-4">
+            Contacto
+          </h4>
+          <div className="flex flex-col gap-2 text-sm text-on-primary-container/70">
+            <span>📍 [Dirección del cliente]</span>
+            <span>📞 [Teléfono]</span>
+            <span>✉️ [Email]</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-on-primary-container/10 py-6 text-center">
+        <span className="text-xs text-on-primary-container/50">
+          © {new Date().getFullYear()} Aceros y Metales Urgentes. Todos los derechos reservados.
+        </span>
+      </div>
+    </footer>
+  );
+}

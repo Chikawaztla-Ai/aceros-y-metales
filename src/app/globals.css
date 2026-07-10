@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design System: Industrial Precision
+   acerosymetalesurgentes.com
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* Primary */
+    --primary: #162839;
+    --primary-container: #2c3e50;
+    --on-primary: #ffffff;
+    --on-primary-container: #96a9be;
+
+    /* Accent (naranja) */
+    --tertiary-container: #612f00;
+    --on-tertiary-container: #f78b30;
+
+    /* Surfaces */
+    --background: #f7f9fb;
+    --surface: #f7f9fb;
+    --surface-bright: #f7f9fb;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f2f4f6;
+    --surface-container: #eceef0;
+    --surface-container-high: #e6e8ea;
+    --surface-container-highest: #e0e3e5;
+
+    /* Text */
+    --on-surface: #191c1e;
+    --on-surface-variant: #43474c;
+    --on-background: #191c1e;
+
+    /* Borders */
+    --outline: #74777d;
+    --outline-variant: #c4c6cd;
+
+    /* Semantic */
+    --error: #ba1a1a;
+    --success: #16a34a;
+
+    /* Secondary */
+    --secondary: #4b6076;
+    --secondary-container: #cce2fc;
+  }
+}
+
+/* Font families via CSS custom properties */
+.font-montserrat {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-container-low);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d8dadc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(247, 139, 48, 0.2);
+  color: var(--on-surface);
+}
