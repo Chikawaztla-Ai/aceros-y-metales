@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDD — Technical Design Document — acerosymetalesurgentes.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+  :root {
+    --negro:    #0D1117;
+    --panel:    #161B22;
+    --borde:    #21262D;
+    --primary:  #162839;
+    --primary-c:#2c3e50;
+    --acento:   #f78b30;
+    --plata:    #8B949E;
+    --blanco:   #E6EDF3;
+    --verde:    #3FB950;
+    --azul:     #58A6FF;
+    --rojo:     #FF7B72;
+    --amarillo: #E3B341;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body { background:var(--negro); color:var(--blanco); font-family:'Inter',sans-serif; font-size:14px; line-height:1.7; }
+
+  header { background:var(--panel); border-bottom:1px solid var(--borde); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+  .header-logo { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--plata); }
+  .header-logo span { color:var(--acento); font-weight:700; }
+  .header-badges { display:flex; gap:10px; }
+  .badge { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px; border:1px solid; }
+  .badge-v { color:var(--acento); border-color:rgba(247,139,48,0.3); background:rgba(247,139,48,0.08); }
+  .badge-s { color:var(--verde); border-color:rgba(63,185,80,0.3); background:rgba(63,185,80,0.08); }
+  .badge-a { color:var(--azul); border-color:rgba(88,166,255,0.3); background:rgba(88,166,255,0.08); }
+
+  .portada { background:var(--primary-c); padding:64px 56px 72px; position:relative; overflow:hidden; }
+  .portada::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:var(--acento); }
+  .portada-tag { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--acento); margin-bottom:24px; }
+  .portada h1 { font-family:'Montserrat',sans-serif; font-size:clamp(40px,6vw,64px); font-weight:800; line-height:0.95; letter-spacing:-0.02em; color:#fff; margin-bottom:16px; }
+  .portada h1 em { font-style:normal; color:var(--acento); }
+  .portada-desc { font-size:15px; color:rgba(255,255,255,0.6); max-width:600px; }
+
+  .contenido { max-width:960px; margin:0 auto; padding:0 48px; }
+  .seccion { padding:56px 0; border-bottom:1px solid var(--borde); }
+  .seccion:last-child { border-bottom:none; }
+
+  .sec-label { display:inline-block; font-family:'JetBrains Mono',monospace; background:rgba(247,139,48,0.1); color:var(--acento); font-size:9px; font-weight:700; letter-spacing:4px; text-transform:uppercase; padding:4px 10px; border-radius:3px; border:1px solid rgba(247,139,48,0.25); margin-bottom:16px; }
+
+  h2 { font-family:'Montserrat',sans-serif; font-size:clamp(24px,3vw,36px); font-weight:800; color:#fff; letter-spacing:-0.01em; line-height:1.1; margin-bottom:16px; }
+  h3 { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; color:var(--blanco); margin-top:28px; margin-bottom:12px; }
+  .intro { font-size:15px; color:var(--plata); max-width:700px; }
+  p { color:var(--plata); margin-bottom:12px; max-width:700px; }
+
+  .code-block { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:20px 24px; margin-top:16px; margin-bottom:16px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.8; color:var(--blanco); overflow-x:auto; white-space:pre; }
+  .code-block .c { color:var(--plata); }
+  .code-block .k { color:var(--azul); }
+  .code-block .v { color:var(--verde); }
+  .code-block .a { color:var(--acento); }
+  .code-block .r { color:var(--rojo); }
+  .code-block .y { color:var(--amarillo); }
+
+  .flow { margin-top:20px; display:flex; flex-direction:column; gap:0; }
+  .flow-step { display:grid; grid-template-columns:48px 1fr; gap:16px; position:relative; }
+  .flow-line { display:flex; flex-direction:column; align-items:center; }
+  .flow-dot { width:12px; height:12px; border-radius:50%; border:2px solid var(--acento); background:var(--negro); flex-shrink:0; z-index:1; }
+  .flow-dot.active { background:var(--acento); }
+  .flow-connector { width:2px; flex:1; background:var(--borde); min-height:20px; }
+  .flow-content { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:14px 18px; margin-bottom:8px; }
+  .flow-content strong { color:var(--blanco); font-size:13px; display:block; margin-bottom:4px; }
+  .flow-content span { font-size:12px; color:var(--plata); }
+  .flow-content code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--azul); background:rgba(88,166,255,0.08); padding:1px 5px; border-radius:3px; }
+
+  .decision { margin-top:20px; background:var(--panel); border:1px solid var(--borde); border-left:3px solid var(--acento); border-radius:0 6px 6px 0; padding:16px 20px; }
+  .decision strong { color:var(--blanco); display:block; margin-bottom:6px; }
+  .decision p { font-size:13px; color:var(--plata); margin:0; max-width:100%; }
+
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px; }
+  @media(max-width:640px){ .grid-2{ grid-template-columns:1fr; } }
+
+  .card { background:var(--panel); border:1px solid var(--borde); border-radius:6px; padding:16px 20px; }
+  .card h4 { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--acento); margin-bottom:8px; }
+  .card p { font-size:12px; color:var(--plata); margin:0; max-width:100%; }
+  .card code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--azul); background:rgba(88,166,255,0.08); padding:1px 5px; border-radius:3px; }
+
+  .tabla-wrap { margin-top:20px; border:1px solid var(--borde); border-radius:6px; overflow:hidden; }
+  table { width:100%; border-collapse:collapse; }
+  .thead td { padding:10px 18px; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; background:var(--primary-c); color:var(--acento); }
+  tbody tr { border-bottom:1px solid rgba(255,255,255,0.04); }
+  tbody tr:last-child { border-bottom:none; }
+  tbody td { padding:10px 18px; font-size:13px; color:var(--plata); vertical-align:top; }
+  .tk { font-family:'JetBrains Mono',monospace; font-weight:600; color:var(--azul) !important; white-space:nowrap; }
+  .tv { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--verde) !important; }
+  .tn { font-weight:600; color:var(--blanco) !important; }
+
+  .warn { margin-top:16px; background:rgba(227,179,65,0.06); border:1px solid rgba(227,179,65,0.2); border-left:3px solid var(--amarillo); border-radius:0 6px 6px 0; padding:14px 18px; }
+  .warn p { font-size:12px; color:var(--amarillo); margin:0; max-width:100%; }
+  .warn strong { color:var(--amarillo); }
+
+  .cierre { background:var(--panel); border-top:1px solid var(--borde); padding:40px 48px; }
+  footer { background:var(--primary-c); padding:18px 48px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-top:4px solid var(--acento); }
+  footer span { font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">aceros<span>ymetalesurgentes</span>.com · TDD</div>
+  <div class="header-badges">
+    <span class="badge badge-v">v1.0</span>
+    <span class="badge badge-a">Technical Design</span>
+    <span class="badge badge-s">MVP</span>
+  </div>
+</header>
+
+<div class="portada">
+  <div class="portada-tag">Technical Design Document</div>
+  <h1>TDD<br><em>Arquitectura</em><br>y Diseño Técnico</h1>
+  <p class="portada-desc">Cómo se construye la plataforma — decisiones de arquitectura, flujos de datos, modelo de seguridad, estrategia de deploy y patrones de implementación.</p>
+</div>
+
+<div class="contenido">
+
+  <!-- 01 ARQUITECTURA -->
+  <div class="seccion">
+    <span class="sec-label">01 — Arquitectura General</span>
+    <h2>Vista de alto nivel</h2>
+    <p class="intro">Arquitectura serverless de 3 capas: presentación (Next.js en Vercel), lógica de negocio (API Routes + Edge Functions) y datos (Supabase PostgreSQL).</p>
+
+    <div class="code-block">
+<span class="c">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="c">│</span>                     <span class="a">CLIENTE (Browser)</span>                       <span class="c">│</span>
+<span class="c">│</span>  React 19 · Next.js App Router · Zustand · Tailwind/shadcn <span class="c">│</span>
+<span class="c">└────────────────────────┬────────────────────────────────────┘</span>
+                         <span class="c">│ HTTPS</span>
+<span class="c">┌────────────────────────▼────────────────────────────────────┐</span>
+<span class="c">│</span>                  <span class="k">VERCEL (Edge Network)</span>                     <span class="c">│</span>
+<span class="c">│</span>  SSR/SSG · API Routes · Middleware Auth · ISR (revalidate)  <span class="c">│</span>
+<span class="c">│</span>  Dominio: acerosymetalesurgentes.com (DNS via Cloudflare)   <span class="c">│</span>
+<span class="c">└───────┬─────────────┬──────────────┬───────────────┬────────┘</span>
+        <span class="c">│             │              │               │</span>
+<span class="c">┌───────▼──────┐┌─────▼─────┐┌──────▼──────┐┌───────▼───────┐</span>
+<span class="c">│</span> <span class="v">Supabase</span>     <span class="c">││</span> <span class="v">Mercado</span>   <span class="c">││</span> <span class="v">Resend</span>      <span class="c">││</span> <span class="v">OpenAI</span>        <span class="c">│</span>
+<span class="c">│</span> PostgreSQL   <span class="c">││</span> Pago      <span class="c">││</span> Email       <span class="c">││</span> Embeddings    <span class="c">│</span>
+<span class="c">│</span> Auth         <span class="c">││</span> Checkout  <span class="c">││</span> Transacc.   <span class="c">││</span> text-embed-   <span class="c">│</span>
+<span class="c">│</span> Storage      <span class="c">││</span> Pro       <span class="c">││</span>             <span class="c">││</span> 3-small       <span class="c">│</span>
+<span class="c">│</span> Edge Func.   <span class="c">││</span> Webhooks  <span class="c">││</span>             <span class="c">││</span>               <span class="c">│</span>
+<span class="c">│</span> pgvector     <span class="c">││</span>           <span class="c">││</span>             <span class="c">││</span>               <span class="c">│</span>
+<span class="c">└──────────────┘└───────────┘└─────────────┘└───────────────┘</span>
+</div>
+
+    <div class="decision">
+      <strong>Decisión: ¿Por qué no un backend separado (Express, Nest)?</strong>
+      <p>Next.js API Routes son suficientes para el MVP — cada ruta es una función serverless en Vercel, escala automáticamente y no requiere servidor dedicado. Si en V3 la complejidad del backend crece (agentes IA, ERP), se puede extraer a un servicio separado sin tocar el frontend.</p>
+    </div>
+  </div>
+
+  <!-- 02 RENDERING -->
+  <div class="seccion">
+    <span class="sec-label">02 — Estrategia de Rendering</span>
+    <h2>SSR, SSG e ISR por ruta</h2>
+    <p class="intro">No todo se renderiza igual — cada ruta usa la estrategia que mejor equilibra performance y frescura de datos.</p>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Ruta</td><td>Estrategia</td><td>Revalidación</td><td>Razón</td></tr>
+          <tr><td class="tn">/</td><td class="tv">ISR</td><td class="tk">3600s (1h)</td><td>Cambia poco, pero las promos y productos "más solicitados" se actualizan</td></tr>
+          <tr><td class="tn">/catalogo</td><td class="tv">SSR</td><td class="tk">—</td><td>Filtros dinámicos + precios en tiempo real, no se puede cachear</td></tr>
+          <tr><td class="tn">/catalogo/[slug]</td><td class="tv">ISR</td><td class="tk">1800s (30m)</td><td>Ficha técnica cambia poco, pero el stock sí. Regenera cada 30 min</td></tr>
+          <tr><td class="tn">/cotizacion</td><td class="tv">SSG</td><td class="tk">—</td><td>Formulario estático, datos del lado del cliente</td></tr>
+          <tr><td class="tn">/blog</td><td class="tv">ISR</td><td class="tk">3600s</td><td>Artículos nuevos se publican ocasionalmente</td></tr>
+          <tr><td class="tn">/blog/[slug]</td><td class="tv">ISR</td><td class="tk">86400s (24h)</td><td>Artículo publicado casi nunca cambia</td></tr>
+          <tr><td class="tn">/portal/*</td><td class="tv">SSR</td><td class="tk">—</td><td>Datos del cliente en tiempo real, requiere auth</td></tr>
+          <tr><td class="tn">/admin/*</td><td class="tv">SSR</td><td class="tk">—</td><td>Dashboard con datos en vivo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="code-block">
+<span class="c">// Ejemplo: ficha de producto con ISR</span>
+<span class="c">// app/(public)/catalogo/[slug]/page.tsx</span>
+
+<span class="k">export const</span> revalidate = <span class="v">1800</span>; <span class="c">// regenera cada 30 min</span>
+
+<span class="k">export async function</span> <span class="a">generateStaticParams</span>() {
+  <span class="k">const</span> products = <span class="k">await</span> supabase.from(<span class="v">'products'</span>).select(<span class="v">'slug'</span>);
+  <span class="k">return</span> products.data.map(p => ({ slug: p.slug }));
+}
+
+<span class="k">export async function</span> <span class="a">generateMetadata</span>({ params }) {
+  <span class="k">const</span> product = <span class="k">await</span> getProduct(params.slug);
+  <span class="k">return</span> {
+    title: <span class="v">`${product.name} | ACEROS Y METALES URGENTES`</span>,
+    description: <span class="v">`${product.aisi_grade} - Ficha técnica, precio y disponibilidad`</span>,
+  };
+}
+</div>
+  </div>
+
+  <!-- 03 FLUJOS -->
+  <div class="seccion">
+    <span class="sec-label">03 — Flujos de Datos</span>
+    <h2>Flujo de compra completo</h2>
+    <p class="intro">El camino del usuario desde que busca un material hasta que paga y recibe confirmación.</p>
+
+    <h3>Flujo 1 — Compra con Mercado Pago</h3>
+    <div class="code-block">
+<span class="a">Usuario</span>          <span class="k">Frontend</span>           <span class="v">API Route</span>          <span class="y">Supabase</span>       <span class="r">Mercado Pago</span>
+
+  │ Agrega al carrito
+  │───────────▶│ Zustand store
+  │             │ (localStorage)
+  │ Click "Pagar"
+  │───────────▶│
+  │             │──────────────▶│ POST /api/pagos/crear
+  │             │               │──────────────▶│ INSERT orders
+  │             │               │               │ status: <span class="y">'pending'</span>
+  │             │               │◀──────────────│ order_id
+  │             │               │──────────────────────────▶│ create_preference()
+  │             │               │◀──────────────────────────│ init_point URL
+  │             │◀──────────────│ redirect URL
+  │◀────────────│ Redirect a MP
+  │                                                         │
+  │ ═══ Paga en MP ═══                                      │
+  │                                                         │
+  │             │               │◀──────────────────────────│ POST /api/pagos/webhook
+  │             │               │ Verificar x-signature     │
+  │             │               │──────────────▶│ UPDATE orders
+  │             │               │               │ status: <span class="v">'paid'</span>
+  │             │               │               │ UPDATE stock
+  │             │               │──────────────▶│ Resend: email confirmación
+  │◀────────────│ Redirect /confirmacion?order_id=xxx
+</div>
+
+    <h3>Flujo 2 — Compra con Transferencia</h3>
+    <div class="code-block">
+<span class="a">Usuario</span>          <span class="k">Frontend</span>           <span class="v">API Route</span>          <span class="y">Supabase</span>
+
+  │ Selecciona "Transferencia"
+  │───────────▶│
+  │             │──────────────▶│ POST /api/pagos/transferencia
+  │             │               │──────────────▶│ INSERT orders
+  │             │               │               │ status: <span class="y">'pending_transfer'</span>
+  │             │               │──────────────▶│ Resend: email con datos bancarios
+  │             │               │──────────────▶│ Resend: notificar admin
+  │◀────────────│ Mostrar CLABE, banco, referencia
+  │
+  │ ═══ 48 horas máximo ═══
+  │
+  <span class="a">Admin</span>           <span class="k">Dashboard</span>
+  │ Confirma pago recibido
+  │───────────▶│──────────────▶│ POST /api/pagos/confirmar/:id
+  │             │               │──────────────▶│ UPDATE orders
+  │             │               │               │ status: <span class="v">'paid'</span>
+  │             │               │               │ UPDATE stock
+  │             │               │──────────────▶│ Resend: email confirmación al cliente
+
+  <span class="c">// Si no se confirma en 48h:</span>
+  <span class="r">Edge Function (cron)</span> ──────────▶│ UPDATE orders
+                                  │ status: <span class="r">'cancelled'</span>
+                                  │ RESTORE stock
+</div>
+
+    <h3>Flujo 3 — Cotización</h3>
+    <div class="code-block">
+<span class="a">Usuario</span>          <span class="k">Frontend</span>           <span class="v">API Route</span>          <span class="y">Supabase</span>
+
+  │ Llena formulario multi-material
+  │ Adjunta PDF/DWG
+  │───────────▶│
+  │             │──────────────▶│ Upload PDF/DWG → Supabase Storage
+  │             │──────────────▶│ POST /api/cotizaciones
+  │             │               │──────────────▶│ INSERT quotes
+  │             │               │               │ status: <span class="y">'pending'</span>
+  │             │               │──────────────▶│ @react-pdf/renderer → generar PDF cotización
+  │             │               │──────────────▶│ Upload PDF → Storage
+  │             │               │──────────────▶│ Resend: email al admin con PDF
+  │             │               │──────────────▶│ wa.me link o API WhatsApp
+  │◀────────────│ "Cotización enviada"
+</div>
+
+    <h3>Flujo 4 — Búsqueda Inteligente (IA)</h3>
+    <div class="code-block">
+<span class="c">// Al crear/actualizar producto (background):</span>
+<span class="v">content</span> = <span class="v">`${name} ${aisi_grade} ${applications} ${equivalences}`</span>
+<span class="k">embedding</span> = <span class="k">await</span> openai.embeddings.create({
+  model: <span class="v">"text-embedding-3-small"</span>,
+  input: content
+}) <span class="c">// → vector(1536)</span>
+<span class="y">INSERT INTO</span> product_embeddings (product_id, embedding, content)
+
+<span class="c">// Al buscar:</span>
+<span class="a">Usuario</span> escribe: <span class="v">"varilla 3/8 para construcción"</span>
+  │
+  │ POST /api/buscar { query: "varilla 3/8 para construcción" }
+  │
+  <span class="k">query_embedding</span> = openai.embeddings.create(query)
+  │
+  <span class="y">SELECT</span> p.*, 1 - (pe.embedding <=> query_embedding) AS similarity
+  <span class="y">FROM</span> product_embeddings pe
+  <span class="y">JOIN</span> products p ON p.id = pe.product_id
+  <span class="y">WHERE</span> 1 - (pe.embedding <=> query_embedding) > <span class="v">0.3</span>
+  <span class="y">ORDER BY</span> similarity <span class="y">DESC</span>
+  <span class="y">LIMIT</span> <span class="v">10</span>;
+</div>
+  </div>
+
+  <!-- 04 SEGURIDAD -->
+  <div class="seccion">
+    <span class="sec-label">04 — Modelo de Seguridad</span>
+    <h2>Auth, RLS y protección de rutas</h2>
+
+    <h3>Autenticación (Supabase Auth)</h3>
+    <div class="code-block">
+<span class="c">// Roles en auth.users.raw_user_meta_data</span>
+{ <span class="k">"role"</span>: <span class="v">"admin"</span> }      <span class="c">// acceso a /admin/*</span>
+{ <span class="k">"role"</span>: <span class="v">"customer"</span> }   <span class="c">// acceso a /portal/*</span>
+<span class="c">// Sin sesión = usuario anónimo (solo puede ver catálogo y cotizar)</span>
+
+<span class="c">// Métodos de auth habilitados:</span>
+<span class="v">email + password</span>      <span class="c">// principal</span>
+<span class="v">magic link</span>            <span class="c">// alternativo</span>
+<span class="r">Google OAuth</span>          <span class="c">// V2 (no en MVP)</span>
+</div>
+
+    <h3>Middleware de Next.js</h3>
+    <div class="code-block">
+<span class="c">// middleware.ts</span>
+
+<span class="k">const</span> protectedRoutes = {
+  <span class="v">'/portal'</span>: [<span class="v">'customer'</span>, <span class="v">'admin'</span>],
+  <span class="v">'/admin'</span>:  [<span class="v">'admin'</span>],
+};
+
+<span class="c">// Flujo:</span>
+<span class="c">// 1. Verificar sesión con @supabase/ssr</span>
+<span class="c">// 2. Si no hay sesión → redirect /login?redirect=<original_url></span>
+<span class="c">// 3. Si hay sesión pero rol incorrecto → redirect /403</span>
+<span class="c">// 4. Si OK → next()</span>
+</div>
+
+    <h3>Row Level Security (RLS)</h3>
+    <div class="code-block">
+<span class="c">-- RLS Policies por tabla</span>
+
+<span class="c">-- products: lectura pública, escritura solo admin</span>
+<span class="y">CREATE POLICY</span> <span class="v">"products_read"</span> ON products FOR <span class="k">SELECT</span> USING (<span class="v">true</span>);
+<span class="y">CREATE POLICY</span> <span class="v">"products_write"</span> ON products FOR <span class="k">ALL</span>
+  USING (auth.jwt() ->> <span class="v">'role'</span> = <span class="v">'admin'</span>);
+
+<span class="c">-- orders: cliente ve solo sus pedidos, admin ve todos</span>
+<span class="y">CREATE POLICY</span> <span class="v">"orders_customer"</span> ON orders FOR <span class="k">SELECT</span>
+  USING (customer_id = auth.uid() OR auth.jwt() ->> <span class="v">'role'</span> = <span class="v">'admin'</span>);
+<span class="y">CREATE POLICY</span> <span class="v">"orders_insert"</span> ON orders FOR <span class="k">INSERT</span>
+  WITH CHECK (customer_id = auth.uid());
+<span class="y">CREATE POLICY</span> <span class="v">"orders_admin"</span> ON orders FOR <span class="k">UPDATE</span>
+  USING (auth.jwt() ->> <span class="v">'role'</span> = <span class="v">'admin'</span>);
+
+<span class="c">-- quotes: el creador y admin pueden ver</span>
+<span class="y">CREATE POLICY</span> <span class="v">"quotes_read"</span> ON quotes FOR <span class="k">SELECT</span>
+  USING (
+    customer_id = auth.uid()
+    OR contact_email = auth.jwt() ->> <span class="v">'email'</span>
+    OR auth.jwt() ->> <span class="v">'role'</span> = <span class="v">'admin'</span>
+  );
+
+<span class="c">-- wishlist_items: solo el dueño</span>
+<span class="y">CREATE POLICY</span> <span class="v">"wishlist_owner"</span> ON wishlist_items FOR <span class="k">ALL</span>
+  USING (customer_id = auth.uid());
+
+<span class="c">-- volume_prices: lectura pública (precio visible), escritura admin</span>
+<span class="y">CREATE POLICY</span> <span class="v">"volume_read"</span> ON volume_prices FOR <span class="k">SELECT</span> USING (<span class="v">true</span>);
+<span class="y">CREATE POLICY</span> <span class="v">"volume_write"</span> ON volume_prices FOR <span class="k">ALL</span>
+  USING (auth.jwt() ->> <span class="v">'role'</span> = <span class="v">'admin'</span>);
+</div>
+
+    <h3>Seguridad de API Routes</h3>
+    <div class="grid-2">
+      <div class="card"><h4>Webhook Mercado Pago</h4><p>Validar <code>x-signature</code> header con HMAC SHA-256 usando el secret de MP. Rechazar cualquier request sin firma válida. Loggear intentos fallidos.</p></div>
+      <div class="card"><h4>Rate Limiting</h4><p>Limitar <code>/api/cotizaciones</code> a 5 req/min por IP (prevenir spam). Limitar <code>/api/buscar</code> a 20 req/min por IP (controlar costos OpenAI).</p></div>
+      <div class="card"><h4>Validación de inputs</h4><p>Zod schemas en TODAS las API routes. Nunca confiar en datos del cliente. Sanitizar HTML en campos de texto libre (<code>notes</code>, <code>company</code>).</p></div>
+      <div class="card"><h4>CORS y headers</h4><p>Next.js maneja CORS por defecto (same-origin). Headers de seguridad en <code>next.config.js</code>: X-Frame-Options, CSP, HSTS.</p></div>
+    </div>
+  </div>
+
+  <!-- 05 CALCULADORA -->
+  <div class="seccion">
+    <span class="sec-label">05 — Calculadora de Peso</span>
+    <h2>Lógica, fórmulas y densidades</h2>
+    <p class="intro">Componente reutilizable en homepage, catálogo, producto y carrito. Código compartido via hook.</p>
+
+    <div class="code-block">
+<span class="c">// lib/weight-calculator.ts</span>
+
+<span class="k">const</span> DENSITIES: Record&lt;string, number&gt; = {
+  <span class="v">'acero'</span>:     <span class="a">7850</span>,    <span class="c">// kg/m³</span>
+  <span class="v">'inox'</span>:      <span class="a">7900</span>,
+  <span class="v">'aluminio'</span>:  <span class="a">2700</span>,
+  <span class="v">'cobre'</span>:     <span class="a">8960</span>,
+  <span class="v">'bronce'</span>:    <span class="a">8800</span>,
+  <span class="v">'laton'</span>:     <span class="a">8500</span>,
+  <span class="v">'nylamid'</span>:   <span class="a">1150</span>,
+  <span class="v">'acetal'</span>:    <span class="a">1410</span>,
+  <span class="v">'ptfe'</span>:      <span class="a">2200</span>,
+};
+
+<span class="k">type</span> Profile = <span class="v">'redondo'</span> | <span class="v">'cuadrado'</span> | <span class="v">'solera'</span> | <span class="v">'placa'</span> | <span class="v">'hexagonal'</span> | <span class="v">'tubo'</span>;
+
+<span class="k">function</span> <span class="a">calcWeight</span>(
+  material: string,
+  profile: Profile,
+  dims: { d?: number; a?: number; b?: number; wall?: number },
+  length: number,      <span class="c">// metros</span>
+  qty: number
+): number {
+  <span class="k">const</span> ρ = DENSITIES[material];
+
+  <span class="k">switch</span> (profile) {
+    <span class="k">case</span> <span class="v">'redondo'</span>:
+      <span class="c">// π × (d/2000)² × L × ρ × qty</span>
+      <span class="k">return</span> Math.PI * (dims.d! / 2000) ** 2 * length * ρ * qty;
+
+    <span class="k">case</span> <span class="v">'cuadrado'</span>:
+      <span class="c">// (a/1000)² × L × ρ × qty</span>
+      <span class="k">return</span> (dims.a! / 1000) ** 2 * length * ρ * qty;
+
+    <span class="k">case</span> <span class="v">'solera'</span>:
+    <span class="k">case</span> <span class="v">'placa'</span>:
+      <span class="c">// (a/1000) × (b/1000) × L × ρ × qty</span>
+      <span class="k">return</span> (dims.a! / 1000) * (dims.b! / 1000) * length * ρ * qty;
+
+    <span class="k">case</span> <span class="v">'hexagonal'</span>:
+      <span class="c">// (√3/2) × (a/1000)² × L × ρ × qty</span>
+      <span class="k">return</span> (Math.sqrt(3) / 2) * (dims.a! / 1000) ** 2 * length * ρ * qty;
+
+    <span class="k">case</span> <span class="v">'tubo'</span>:
+      <span class="c">// π × ((D/2000)² - ((D-2t)/2000)²) × L × ρ × qty</span>
+      <span class="k">const</span> R = dims.d! / 2000;
+      <span class="k">const</span> r = (dims.d! - 2 * dims.wall!) / 2000;
+      <span class="k">return</span> Math.PI * (R ** 2 - r ** 2) * length * ρ * qty;
+  }
+}
+</div>
+
+    <div class="warn">
+      <p><strong>Nota para el sitio:</strong> La calculadora usa los perfiles internamente para el cálculo matemático, pero por requerimiento del cliente, las presentaciones (Barra redonda, Solera, Placa, etc.) NO se muestran en la UI del catálogo, filtros ni fichas de producto. El usuario selecciona el perfil solo dentro de la calculadora de peso.</p>
+    </div>
+  </div>
+
+  <!-- 06 ESTADO -->
+  <div class="seccion">
+    <span class="sec-label">06 — Gestión de Estado</span>
+    <h2>Zustand + Server State</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Cliente (Zustand)</h4>
+        <p>Carrito: <code>items[], total, itemCount</code> con persistencia en <code>localStorage</code>. Se hidrata en el cliente para evitar mismatch SSR. Acciones: <code>addItem, removeItem, updateQty, clear</code>.</p>
+      </div>
+      <div class="card">
+        <h4>Server State</h4>
+        <p>Todo lo demás viene de Supabase via <code>fetch</code> en Server Components o <code>useEffect</code> en Client Components. Sin React Query en MVP — se agrega en V2 si hace falta caché client-side.</p>
+      </div>
+    </div>
+
+    <div class="code-block">
+<span class="c">// store/carrito.ts</span>
+
+<span class="k">import</span> { create } <span class="k">from</span> <span class="v">'zustand'</span>;
+<span class="k">import</span> { persist } <span class="k">from</span> <span class="v">'zustand/middleware'</span>;
+
+<span class="k">interface</span> CartItem {
+  productId: string;
+  sku: string;
+  name: string;
+  unitType: <span class="v">'metro'</span> | <span class="v">'kilo'</span> | <span class="v">'pieza'</span>;
+  qty: number;
+  unitPrice: number;
+  weightKg: number;   <span class="c">// calculado por weight-calculator</span>
+  subtotal: number;
+}
+
+<span class="k">interface</span> CartStore {
+  items: CartItem[];
+  <span class="a">addItem</span>: (item: CartItem) => void;
+  <span class="a">removeItem</span>: (productId: string) => void;
+  <span class="a">updateQty</span>: (productId: string, qty: number) => void;
+  <span class="a">clear</span>: () => void;
+  <span class="k">get</span> <span class="a">total</span>(): number;
+  <span class="k">get</span> <span class="a">totalWeight</span>(): number;
+}
+</div>
+  </div>
+
+  <!-- 07 ERROR HANDLING -->
+  <div class="seccion">
+    <span class="sec-label">07 — Manejo de Errores</span>
+    <h2>Estrategia de errores y fallbacks</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Escenario</td><td>Tipo</td><td>Cómo se maneja</td></tr>
+          <tr><td class="tn">Supabase caído</td><td class="tk">Infraestructura</td><td>Error boundary con mensaje "Estamos trabajando en ello". Reintento automático 3x con backoff exponencial.</td></tr>
+          <tr><td class="tn">Webhook MP no llega</td><td class="tk">Pagos</td><td>Cron job cada 15 min consulta status de órdenes 'pending' via API de MP. Reconcilia automáticamente.</td></tr>
+          <tr><td class="tn">OpenAI API falla</td><td class="tk">IA</td><td>Fallback a búsqueda SQL por ILIKE en name + aisi_grade. El usuario no nota la diferencia.</td></tr>
+          <tr><td class="tn">Resend falla</td><td class="tk">Email</td><td>Cola de reintentos en Supabase (tabla email_queue). Edge Function reintenta cada 5 min, máx 3 intentos.</td></tr>
+          <tr><td class="tn">Stock insuficiente</td><td class="tk">Negocio</td><td>Verificar stock en /api/pagos/crear ANTES de crear preferencia de MP. Si no hay stock, error 409 con mensaje.</td></tr>
+          <tr><td class="tn">Transferencia no confirmada</td><td class="tk">Negocio</td><td>Edge Function cron cada hora: cancelar órdenes pending_transfer > 48h. Restaurar stock.</td></tr>
+          <tr><td class="tn">Formulario inválido</td><td class="tk">Validación</td><td>Zod schemas en API + react-hook-form en frontend. Errores inline por campo.</td></tr>
+          <tr><td class="tn">404 producto</td><td class="tk">UI</td><td>not-found.tsx personalizado con buscador y "productos similares".</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="code-block">
+<span class="c">// Patrón de error en API Routes</span>
+
+<span class="k">export async function</span> <span class="a">POST</span>(req: Request) {
+  <span class="k">try</span> {
+    <span class="k">const</span> body = <span class="k">await</span> req.json();
+    <span class="k">const</span> validated = <span class="a">schema.parse</span>(body); <span class="c">// Zod</span>
+
+    <span class="c">// ... lógica</span>
+
+    <span class="k">return</span> Response.json({ success: <span class="v">true</span>, data }, { status: <span class="v">200</span> });
+  } <span class="k">catch</span> (error) {
+    <span class="k">if</span> (error <span class="k">instanceof</span> ZodError) {
+      <span class="k">return</span> Response.json(
+        { success: <span class="r">false</span>, errors: error.flatten() },
+        { status: <span class="r">400</span> }
+      );
+    }
+    console.error(<span class="v">'[API]'</span>, error);
+    <span class="k">return</span> Response.json(
+      { success: <span class="r">false</span>, message: <span class="v">'Error interno'</span> },
+      { status: <span class="r">500</span> }
+    );
+  }
+}
+</div>
+  </div>
+
+  <!-- 08 DEPLOY -->
+  <div class="seccion">
+    <span class="sec-label">08 — Deploy y CI/CD</span>
+    <h2>Pipeline de producción</h2>
+
+    <div class="code-block">
+<span class="a">GitHub</span>                    <span class="k">Vercel</span>                     <span class="v">Producción</span>
+
+  main ──push──▶ Build automático
+                  │ next build
+                  │ Type check (tsc --noEmit)
+                  │ Lint (eslint)
+                  ▼
+               Preview deploy ─────▶ URL temporal para QA
+                  │
+               Merge a main
+                  │
+                  ▼
+               Production deploy ──▶ acerosymetalesurgentes.com
+                                     │
+                                     ├── Vercel Edge Network (CDN global)
+                                     ├── Cloudflare (DNS + DDoS protection)
+                                     └── Hostinger (dominio registrado)
+</div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Branches</h4>
+        <p><code>main</code> = producción (protegido, requiere PR). <code>develop</code> = desarrollo activo. <code>feature/*</code> = features individuales. Cada PR genera preview deploy en Vercel.</p>
+      </div>
+      <div class="card">
+        <h4>Environment Variables</h4>
+        <p>3 entornos en Vercel: <code>development</code>, <code>preview</code>, <code>production</code>. Cada uno con sus propias keys de Supabase, MP y Resend. Nunca compartir keys entre entornos.</p>
+      </div>
+    </div>
+
+    <h3>DNS Configuration</h3>
+    <div class="code-block">
+<span class="c"># En Cloudflare (proxy habilitado):</span>
+<span class="k">A</span>     acerosymetalesurgentes.com    → <span class="v">76.76.21.21</span>       <span class="c"># Vercel</span>
+<span class="k">CNAME</span> www                           → <span class="v">cname.vercel-dns.com</span>
+
+<span class="c"># En Vercel:</span>
+<span class="k">Domain:</span> acerosymetalesurgentes.com
+<span class="k">Redirect:</span> www → apex (301)
+</div>
+  </div>
+
+  <!-- 09 PERFORMANCE -->
+  <div class="seccion">
+    <span class="sec-label">09 — Performance</span>
+    <h2>Objetivos y optimizaciones</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Métrica</td><td>Objetivo</td><td>Cómo se logra</td></tr>
+          <tr><td class="tn">LCP</td><td class="tv">&lt; 2.5s</td><td>ISR para páginas de producto. Imágenes con <code>next/image</code> + srcset. Font preload de Montserrat e Inter.</td></tr>
+          <tr><td class="tn">INP</td><td class="tv">&lt; 200ms</td><td>Calculadora de peso 100% client-side (sin API call). Filtros del catálogo con debounce 300ms.</td></tr>
+          <tr><td class="tn">CLS</td><td class="tv">&lt; 0.1</td><td>Dimensiones explícitas en imágenes. Skeleton loaders en cards de producto. Font-display: swap.</td></tr>
+          <tr><td class="tn">Lighthouse</td><td class="tv">&gt; 90</td><td>Performance, SEO, Accessibility y Best Practices. Auditar antes de cada deploy a main.</td></tr>
+          <tr><td class="tn">Bundle size</td><td class="tv">&lt; 150KB JS</td><td>Dynamic imports para calculadora, carrito y dashboard. Tree shaking de shadcn/ui (importar solo componentes usados).</td></tr>
+          <tr><td class="tn">TTFB</td><td class="tv">&lt; 200ms</td><td>Vercel Edge Network + Cloudflare. SSG/ISR donde sea posible.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Imágenes</h3>
+    <div class="code-block">
+<span class="c">// next.config.js</span>
+images: {
+  formats: [<span class="v">'image/avif'</span>, <span class="v">'image/webp'</span>],
+  remotePatterns: [{
+    protocol: <span class="v">'https'</span>,
+    hostname: <span class="v">'*.supabase.co'</span>,    <span class="c">// imágenes de Storage</span>
+  }],
+  deviceSizes: [<span class="v">640, 768, 1024, 1280</span>],
+}
+
+<span class="c">// Producto sin imagen → placeholder SVG con ícono del material</span>
+<span class="c">// NO usar imágenes stock genéricas</span>
+</div>
+  </div>
+
+  <!-- 10 TESTING -->
+  <div class="seccion">
+    <span class="sec-label">10 — Testing</span>
+    <h2>Estrategia de pruebas</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Unit Tests</h4>
+        <p>Vitest + Testing Library. Prioridad: <code>weight-calculator.ts</code> (fórmulas exactas), Zustand store (carrito), Zod schemas (validación), helpers de precio/descuento.</p>
+      </div>
+      <div class="card">
+        <h4>E2E Tests</h4>
+        <p>Playwright para los 3 flujos críticos: compra con MP, compra con transferencia, envío de cotización. Correr antes de merge a main.</p>
+      </div>
+      <div class="card">
+        <h4>Visual Regression</h4>
+        <p>No en MVP. Considerar en V2 cuando haya más pantallas y el design system esté en código.</p>
+      </div>
+      <div class="card">
+        <h4>Manual QA</h4>
+        <p>Checklist de 10 flujos del PRD Técnico. Probar en: Chrome, Safari, Firefox + iPhone SE, iPhone 14, iPad.</p>
+      </div>
+    </div>
+
+    <div class="code-block">
+<span class="c">// Ejemplo: test de calculadora de peso</span>
+<span class="c">// __tests__/weight-calculator.test.ts</span>
+
+<span class="k">import</span> { calcWeight } <span class="k">from</span> <span class="v">'@/lib/weight-calculator'</span>;
+
+describe(<span class="v">'calcWeight'</span>, () => {
+  it(<span class="v">'redondo de acero 25mm x 1m = 3.85 kg'</span>, () => {
+    <span class="k">const</span> result = calcWeight(<span class="v">'acero'</span>, <span class="v">'redondo'</span>, { d: <span class="a">25</span> }, <span class="a">1</span>, <span class="a">1</span>);
+    expect(result).toBeCloseTo(<span class="a">3.853</span>, 1);
+  });
+
+  it(<span class="v">'placa aluminio 100x50mm x 2m = 27 kg'</span>, () => {
+    <span class="k">const</span> result = calcWeight(<span class="v">'aluminio'</span>, <span class="v">'placa'</span>, { a:<span class="a">100</span>, b:<span class="a">50</span> }, <span class="a">2</span>, <span class="a">1</span>);
+    expect(result).toBeCloseTo(<span class="a">27.0</span>, 0);
+  });
+
+  it(<span class="v">'tubo acero D=50mm wall=3mm x 6m x 2 pzas'</span>, () => {
+    <span class="k">const</span> result = calcWeight(<span class="v">'acero'</span>, <span class="v">'tubo'</span>, { d:<span class="a">50</span>, wall:<span class="a">3</span> }, <span class="a">6</span>, <span class="a">2</span>);
+    expect(result).toBeCloseTo(<span class="a">26.4</span>, 0);
+  });
+});
+</div>
+  </div>
+
+  <!-- 11 MONITORING -->
+  <div class="seccion">
+    <span class="sec-label">11 — Monitoreo</span>
+    <h2>Observabilidad en producción</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Capa</td><td>Herramienta</td><td>Qué monitorea</td></tr>
+          <tr><td class="tn">Frontend / UX</td><td class="tv">Microsoft Clarity</td><td>Heatmaps, session recordings, rage clicks, dead clicks. Gratis.</td></tr>
+          <tr><td class="tn">Analytics</td><td class="tv">GA4</td><td>Tráfico, fuentes, conversiones (cotización enviada, pedido pagado). Funnel de compra.</td></tr>
+          <tr><td class="tn">SEO</td><td class="tv">Search Console</td><td>Indexación, CTR, posición promedio, errores de cobertura.</td></tr>
+          <tr><td class="tn">Campañas</td><td class="tv">Meta Pixel</td><td>Atribución de conversiones de Facebook/Instagram Ads.</td></tr>
+          <tr><td class="tn">Uptime</td><td class="tv">Vercel Analytics</td><td>Web Vitals reales (LCP, INP, CLS) + disponibilidad.</td></tr>
+          <tr><td class="tn">Errores server</td><td class="tv">Vercel Logs</td><td>Logs de API routes y Edge Functions. Alertas por error rate.</td></tr>
+          <tr><td class="tn">Base de datos</td><td class="tv">Supabase Dashboard</td><td>Query performance, conexiones activas, storage usado.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="code-block">
+<span class="c">// Eventos de conversión para GA4</span>
+
+<span class="a">gtag</span>(<span class="v">'event'</span>, <span class="v">'add_to_cart'</span>, {
+  currency: <span class="v">'MXN'</span>,
+  value: item.subtotal,
+  items: [{ item_id: item.sku, item_name: item.name }]
+});
+
+<span class="a">gtag</span>(<span class="v">'event'</span>, <span class="v">'begin_checkout'</span>, { currency: <span class="v">'MXN'</span>, value: cart.total });
+
+<span class="a">gtag</span>(<span class="v">'event'</span>, <span class="v">'purchase'</span>, {
+  transaction_id: order.order_number,
+  currency: <span class="v">'MXN'</span>,
+  value: order.total,
+  items: order.items.map(i => ({ item_id: i.sku, item_name: i.name }))
+});
+
+<span class="a">gtag</span>(<span class="v">'event'</span>, <span class="v">'generate_lead'</span>, { <span class="c">// cotización enviada</span>
+  currency: <span class="v">'MXN'</span>,
+  value: <span class="a">0</span>, <span class="c">// no tiene valor monetario aún</span>
+});
+</div>
+  </div>
+
+  <!-- 12 EDGE FUNCTIONS -->
+  <div class="seccion">
+    <span class="sec-label">12 — Edge Functions (Cron Jobs)</span>
+    <h2>Procesos automáticos en background</h2>
+
+    <div class="tabla-wrap">
+      <table>
+        <tbody>
+          <tr class="thead"><td>Función</td><td>Frecuencia</td><td>Qué hace</td></tr>
+          <tr><td class="tn">cancel-expired-transfers</td><td class="tv">cada 1h</td><td>Cancela órdenes con status <code>pending_transfer</code> creadas hace más de 48h. Restaura stock. Envía email al cliente avisando.</td></tr>
+          <tr><td class="tn">reconcile-mp-payments</td><td class="tv">cada 15m</td><td>Consulta API de MP para órdenes <code>pending</code> cuyo webhook no llegó. Actualiza status si MP reporta <code>approved</code>.</td></tr>
+          <tr><td class="tn">retry-failed-emails</td><td class="tv">cada 5m</td><td>Reintenta emails de la cola <code>email_queue</code> con status <code>failed</code> y retry_count &lt; 3.</td></tr>
+          <tr><td class="tn">low-stock-alerts</td><td class="tv">diario 8am</td><td>Revisa productos con stock por debajo del umbral. Envía email resumen al admin con lista de materiales críticos.</td></tr>
+          <tr><td class="tn">reindex-embeddings</td><td class="tv">diario 3am</td><td>Re-genera embeddings para productos modificados en las últimas 24h. Mantiene el buscador IA actualizado.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="code-block">
+<span class="c">// supabase/functions/cancel-expired-transfers/index.ts</span>
+
+Deno.serve(<span class="k">async</span> () => {
+  <span class="k">const</span> { data: expired } = <span class="k">await</span> supabase
+    .from(<span class="v">'orders'</span>)
+    .select(<span class="v">'id, order_number, customer_id'</span>)
+    .eq(<span class="v">'status'</span>, <span class="v">'pending_transfer'</span>)
+    .lt(<span class="v">'created_at'</span>, <span class="a">new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString()</span>);
+
+  <span class="k">for</span> (<span class="k">const</span> order <span class="k">of</span> expired) {
+    <span class="c">// 1. Cancelar orden</span>
+    <span class="k">await</span> supabase.from(<span class="v">'orders'</span>)
+      .update({ status: <span class="r">'cancelled'</span>, cancelled_reason: <span class="v">'transfer_timeout'</span> })
+      .eq(<span class="v">'id'</span>, order.id);
+
+    <span class="c">// 2. Restaurar stock</span>
+    <span class="k">await</span> restoreStock(order.id);
+
+    <span class="c">// 3. Notificar al cliente</span>
+    <span class="k">await</span> sendEmail(order.customer_id, <span class="v">'transfer-expired'</span>, { order_number: order.order_number });
+  }
+
+  <span class="k">return</span> Response.json({ cancelled: expired.length });
+});
+</div>
+  </div>
+
+  <!-- 13 CONVENCIONES -->
+  <div class="seccion">
+    <span class="sec-label">13 — Convenciones de Código</span>
+    <h2>Estándares del proyecto</h2>
+
+    <div class="grid-2">
+      <div class="card"><h4>Naming</h4><p>Archivos: <code>kebab-case.tsx</code>. Componentes: <code>PascalCase</code>. Hooks: <code>useCamelCase</code>. DB columns: <code>snake_case</code>. API responses: <code>camelCase</code>.</p></div>
+      <div class="card"><h4>Imports</h4><p>Path aliases: <code>@/components</code>, <code>@/lib</code>, <code>@/store</code>, <code>@/types</code>. Configurado en <code>tsconfig.json</code>.</p></div>
+      <div class="card"><h4>Commits</h4><p>Conventional commits: <code>feat:</code>, <code>fix:</code>, <code>docs:</code>, <code>refactor:</code>, <code>test:</code>, <code>chore:</code>. En español está bien.</p></div>
+      <div class="card"><h4>Componentes</h4><p>Server Components por defecto. <code>"use client"</code> solo cuando hay interactividad (forms, modals, calculadora, carrito). Nunca en layouts.</p></div>
+    </div>
+
+    <div class="code-block">
+<span class="c">// .eslintrc.json</span>
+{
+  <span class="k">"extends"</span>: [<span class="v">"next/core-web-vitals"</span>, <span class="v">"next/typescript"</span>],
+  <span class="k">"rules"</span>: {
+    <span class="v">"@typescript-eslint/no-unused-vars"</span>: <span class="v">"error"</span>,
+    <span class="v">"no-console"</span>: [<span class="v">"warn"</span>, { <span class="v">"allow"</span>: [<span class="v">"error"</span>] }]
+  }
+}
+
+<span class="c">// .prettierrc</span>
+{
+  <span class="k">"semi"</span>: <span class="v">true</span>,
+  <span class="k">"singleQuote"</span>: <span class="v">true</span>,
+  <span class="k">"tabWidth"</span>: <span class="a">2</span>,
+  <span class="k">"trailingComma"</span>: <span class="v">"es5"</span>,
+  <span class="k">"printWidth"</span>: <span class="a">100</span>
+}
+</div>
+  </div>
+
+</div>
+
+<!-- CIERRE -->
+<div class="cierre">
+  <div style="max-width:960px; margin:0 auto; padding:0 8px;">
+    <span class="sec-label">Referencia</span>
+    <h2 style="font-family:'Montserrat',sans-serif; font-size:24px; margin-bottom:12px;">Documentos relacionados</h2>
+    <p><strong style="color:var(--blanco)">PRD Ejecutivo v2.0</strong> — Qué se construye, para quién y cuánto cuesta.</p>
+    <p><strong style="color:var(--blanco)">PRD Técnico v2.0</strong> — Schema DB, API routes, estructura de directorios, checklist QA.</p>
+    <p><strong style="color:var(--blanco)">DESIGN-SYSTEM-OFICIAL v3.0</strong> — Paleta, tipografía, componentes UI, patrones de layout.</p>
+    <p style="margin-top:16px; font-size:12px; color:var(--plata);">Este TDD complementa al PRD Técnico — el PRD dice <em>qué</em> se construye, el TDD dice <em>cómo</em>.</p>
+  </div>
+</div>
+
+<footer>
+  <span>TDD v1.0 — acerosymetalesurgentes.com · Julio 2026</span>
+  <span>Juan Azael Pinales Regis · azaelecommerce@gmail.com</span>
+</footer>
+
+</body>
+</html>
