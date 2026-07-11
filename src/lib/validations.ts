@@ -47,6 +47,49 @@ export const createOrderSchema = z.object({
   notes: z.string().max(500).optional(),
 });
 
+// --- Checkout: payload completo desde el carrito ---
+// Nota: productId se valida como string (no uuid estricto) para tolerar
+// el catálogo mock durante desarrollo. El servidor re-cotiza contra la BD
+// cuando el producto existe, así que el precio del cliente nunca es autoritativo.
+export const checkoutPayloadSchema = z.object({
+  items: z
+    .array(
+      z.object({
+        productId: z.string().min(1),
+        sku: z.string().min(1),
+        name: z.string().min(1).max(200),
+        unitType: z.enum(['metro', 'kilo', 'pieza']),
+        qty: z.number().positive().max(100000),
+        unitPrice: z.number().nonnegative(),
+        weightKg: z.number().nonnegative().default(0),
+      })
+    )
+    .min(1, 'El carrito está vacío')
+    .max(50),
+  paymentMethod: z.enum(['mercadopago', 'transferencia']),
+  shippingType: z.enum(['delivery', 'pickup']).default('delivery'),
+  shippingAddress: z
+    .object({
+      street: z.string().min(3).max(200),
+      colony: z.string().min(2).max(100),
+      city: z.string().min(2).max(100),
+      state: z.string().min(2).max(100),
+      zip: z.string().regex(cpRegex, 'CP debe ser de 5 dígitos'),
+    })
+    .optional(),
+  contactName: z.string().min(2).max(200),
+  contactPhone: z.string().regex(phoneRegex, 'Teléfono inválido'),
+  billingRfc: z
+    .string()
+    .regex(rfcRegex, 'RFC inválido')
+    .optional()
+    .or(z.literal('')),
+  needsCfdi: z.boolean().default(false),
+  notes: z.string().max(500).optional(),
+});
+
+export type CheckoutPayload = z.infer<typeof checkoutPayloadSchema>;
+
 // --- Cotización ---
 export const createQuoteSchema = z.object({
   contactName: z.string().min(2, 'Nombre requerido').max(100),

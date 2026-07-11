@@ -169,11 +169,6 @@ export function WeightCalculator() {
           ~{formatWeight(weight)}
         </span>
       </div>
-
-      {/* CTA */}
-      <button className="w-full border-2 border-primary-container text-primary-container text-sm font-bold uppercase tracking-wide py-3 rounded-lg hover:bg-primary-container hover:text-white transition-all">
-        Agregar al carrito
-      </button>
     </div>
   );
 }

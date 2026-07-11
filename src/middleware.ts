@@ -5,6 +5,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 const PROTECTED_ROUTES: Record<string, string[]> = {
   '/portal': ['customer', 'admin'],
   '/admin': ['admin'],
+  '/checkout': ['customer', 'admin'],
 };
 
 export async function middleware(request: NextRequest) {
@@ -62,5 +63,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/portal/:path*', '/admin/:path*'],
+  matcher: ['/portal/:path*', '/admin/:path*', '/checkout/:path*', '/checkout'],
 };

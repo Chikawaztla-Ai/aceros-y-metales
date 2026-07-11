@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/* Tailwind v4 no carga tailwind.config.ts automáticamente: hay que
+   apuntarlo explícitamente para que se generen los colores/tokens
+   del design system (primary-container, on-tertiary-container, etc.). */
+@config '../../tailwind.config.ts';
 
 /* ============================================================
    Design System: Industrial Precision

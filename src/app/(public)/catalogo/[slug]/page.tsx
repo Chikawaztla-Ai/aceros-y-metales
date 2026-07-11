@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { WeightCalculator } from '@/components/calculadora/weight-calculator';
+import { BuyBox } from '@/components/cart/buy-box';
 
 // Mock — en producción viene de Supabase con generateStaticParams()
 const product = {
@@ -164,57 +165,27 @@ export default function ProductoPage() {
 
             <hr className="border-outline-variant" />
 
-            {/* Selector Metro/Kilo/Pieza */}
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[2px] text-on-surface-variant mb-2">Unidad de compra</p>
-              <div className="flex bg-surface-low p-1 rounded-lg">
-                {['Por Metro', 'Por Kilo', 'Por Pieza'].map((tab, i) => (
-                  <button
-                    key={tab}
-                    className={`flex-1 text-xs font-semibold py-2 rounded-md transition-all ${
-                      i === 1
-                        ? 'bg-white shadow-sm text-primary-container border-b-2 border-primary-container'
-                        : 'text-on-surface-variant hover:text-primary-container'
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
+            {/* Compra — conectado al carrito (Zustand) */}
+            <BuyBox
+              product={{
+                id: product.sku,
+                sku: product.sku,
+                name: product.name,
+                price: product.price,
+                inStock: product.inStock,
+              }}
+            />
+
+            {/* Calculadora de peso (herramienta de estimación) */}
+            <details className="group">
+              <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[2px] text-primary-container list-none flex items-center gap-2">
+                <span className="group-open:rotate-90 transition-transform">▸</span>
+                Calcular peso teórico
+              </summary>
+              <div className="mt-3">
+                <WeightCalculator />
               </div>
-            </div>
-
-            {/* Calculadora embebida */}
-            <WeightCalculator />
-
-            {/* Precio */}
-            <div>
-              <p className="text-xs text-on-surface-variant">Precio desde:</p>
-              <div className="flex items-baseline gap-2">
-                <span className="font-montserrat font-bold text-2xl text-on-tertiary-container">
-                  ${product.price}.00
-                </span>
-                <span className="text-sm text-on-surface-variant">MXN/{product.unit}</span>
-              </div>
-              <p className="text-[11px] text-on-surface-variant/70 mt-1">
-                Precio varía según cantidad. Cotiza para precio especial.
-              </p>
-            </div>
-
-            {/* CTAs */}
-            <button className="w-full bg-on-tertiary-container text-white text-sm font-bold uppercase tracking-wide py-3.5 rounded-lg hover:brightness-110 active:scale-95 transition-all">
-              Agregar al Carrito
-            </button>
-            <button className="w-full border-2 border-primary-container text-primary-container text-sm font-bold uppercase tracking-wide py-3 rounded-lg hover:bg-primary-container hover:text-white transition-all">
-              Solicitar Cotización
-            </button>
-            <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WA_NUMBER || '5215519232398'}?text=Hola, me interesa el ${product.name}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-[#16a34a] text-white text-sm font-bold py-3 rounded-lg hover:brightness-110 transition-all"
-            >
-              💬 Consultar disponibilidad
-            </a>
+            </details>
 
             {/* Beneficios */}
             <div className="space-y-3 pt-2">

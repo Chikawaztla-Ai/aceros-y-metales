@@ -59,7 +59,13 @@ export const useCartStore = create<CartStore>()(
         set((state) => ({
           items: state.items.map((i) =>
             i.productId === productId
-              ? { ...i, qty, subtotal: qty * i.unitPrice }
+              ? {
+                  ...i,
+                  qty,
+                  // Escala el peso proporcionalmente para mantener el total coherente.
+                  weightKg: i.qty > 0 ? (i.weightKg / i.qty) * qty : i.weightKg,
+                  subtotal: qty * i.unitPrice,
+                }
               : i
           ),
         })),
