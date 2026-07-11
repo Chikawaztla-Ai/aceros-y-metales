@@ -16,6 +16,11 @@ export async function middleware(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseKey || supabaseUrl.includes('xxxx')) {
+    // DEMO_PREVIEW: sin Supabase, permitir ver las pantallas con datos mock
+    // (se restaura el redirect a /login al configurar credenciales).
+    if (process.env.NEXT_PUBLIC_DEMO_PREVIEW === '1') {
+      return supabaseResponse;
+    }
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     url.searchParams.set('redirect', request.nextUrl.pathname);

@@ -5,9 +5,9 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
   return (
     <>
       <Header />
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-surface">
         <PortalSidebar />
-        <main className="ml-64 p-8">{children}</main>
+        <main className="ml-64 px-10 py-12">{children}</main>
       </div>
     </>
   );
