@@ -5,11 +5,17 @@ export function Footer() {
     <footer className="bg-primary-container border-t-4 border-on-tertiary-container">
       <div className="max-w-container mx-auto px-10 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <div className="font-montserrat font-bold text-lg text-on-primary tracking-tight mb-2">
-            ACEROS <span className="text-on-tertiary-container">Y</span> METALES
+          <div className="flex flex-col leading-none mb-4">
+            <span className="font-montserrat font-bold text-lg text-on-primary tracking-tighter uppercase">
+              ACEROS Y METALES
+            </span>
+            <span className="text-[10px] font-bold text-on-tertiary-container tracking-[3px] uppercase">
+              URGENTES
+            </span>
           </div>
           <p className="text-sm text-on-primary-container/70">
             Distribución industrial de acero, aluminio, cobre, bronce y metales especiales.
+            Disponibilidad inmediata y calidad certificada.
           </p>
         </div>
 
@@ -40,17 +46,26 @@ export function Footer() {
           <h4 className="text-xs font-bold uppercase tracking-widest text-on-tertiary-container mb-4">
             Contacto
           </h4>
-          <div className="flex flex-col gap-2 text-sm text-on-primary-container/70">
-            <span>📍 [Dirección del cliente]</span>
-            <span>📞 [Teléfono]</span>
-            <span>✉️ [Email]</span>
+          <div className="flex flex-col gap-3 text-sm text-on-primary-container/70">
+            <span className="flex items-center gap-3">
+              <span className="material-symbols-outlined text-[20px] text-on-tertiary-container">location_on</span>
+              [Dirección del cliente]
+            </span>
+            <span className="flex items-center gap-3">
+              <span className="material-symbols-outlined text-[20px] text-on-tertiary-container">phone</span>
+              [Teléfono]
+            </span>
+            <span className="flex items-center gap-3">
+              <span className="material-symbols-outlined text-[20px] text-on-tertiary-container">mail</span>
+              [Email]
+            </span>
           </div>
         </div>
       </div>
 
       <div className="border-t border-on-primary-container/10 py-6 text-center">
-        <span className="text-xs text-on-primary-container/50">
-          © {new Date().getFullYear()} Aceros y Metales Urgentes. Todos los derechos reservados.
+        <span className="text-[12px] font-medium text-on-primary-container/50">
+          © {new Date().getFullYear()} Aceros y Metales Urgentes · acerosymetalesurgentes.com
         </span>
       </div>
     </footer>

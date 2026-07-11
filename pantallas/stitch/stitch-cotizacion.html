@@ -1,0 +1,402 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Solicita tu Cotización Industrial | Aceros y Metales Urgentes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .industrial-grid {
+            background-image: radial-gradient(#162839 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(22, 40, 57, 0.1);
+        }
+        .input-focus-effect:focus {
+            outline: none;
+            border-color: #162839;
+            box-shadow: 0 0 0 2px rgba(22, 40, 57, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed-dim": "#b3c9e2",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#091d2e",
+                        "tertiary": "#411d00",
+                        "on-error-container": "#93000a",
+                        "primary": "#162839",
+                        "secondary-container": "#cce2fc",
+                        "on-surface-variant": "#43474c",
+                        "outline": "#74777d",
+                        "on-primary-fixed-variant": "#36485b",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-primary": "#b5c8df",
+                        "outline-variant": "#c4c6cd",
+                        "primary-container": "#2c3e50",
+                        "on-background": "#191c1e",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-container": "#96a9be",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed": "#301400",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary": "#4b6076",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary-container": "#612f00",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#051d30",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#34495e",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#4e6073",
+                        "secondary-fixed": "#cfe5ff",
+                        "background": "#f7f9fb",
+                        "on-secondary-container": "#50657b",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed-dim": "#b5c8df",
+                        "on-tertiary-container": "#f78b30",
+                        "primary-fixed": "#d1e4fb",
+                        "vivid-orange": "#E67E22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "mono-data": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary">
+<!-- Top Navigation Shell -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="h-12 w-auto shrink-0"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKUX72FTJBOScDmo3eAlKZnNpkyAWwYlmHddePBRtwltDsucQWjtMRt9c-qqgHUfG3wj_5X2_hhmXKm15MsbnWMFcEHT8qK-CZz8ypQvxRS00OFQoJc8kSHOCKtOcofmCCvqVaPnHB0Vqx6putbmSKIlY0kUIuAFdHybGb_ycI8QGmowyKmPo67wTC9Bo4hOuhNkUXTkhv6tkGA6IxD_KGMvlJEFDEYvpF3uX-U2ik3c7opiZunsFuzENg4n31IZPN7w" alt="Aceros y Metales Urgentes" class="h-full w-auto object-contain"></div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200" href="#">Steels</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200" href="#">Aluminum</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200" href="#">Non-ferrous</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200" href="#">Machinery</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden lg:flex items-center gap-2 bg-vivid-orange text-white px-6 py-2 rounded-lg font-bold text-label-md uppercase hover:brightness-110 transition-all active:scale-95">
+                    WhatsApp CTA
+                </button>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-2xl">shopping_cart</span>
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Background Decoration -->
+<div class="absolute inset-0 industrial-grid -z-10 pointer-events-none"></div>
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop pt-16 pb-8 text-center md:text-left">
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Solicita tu Cotización Industrial</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mb-12">
+                Recibe una propuesta técnica detallada en menos de 2 horas. Nuestra infraestructura logística garantiza disponibilidad inmediata para los sectores más exigentes.
+            </p>
+</section>
+<!-- Main Content Grid -->
+<section class="max-w-container-max mx-auto px-margin-desktop pb-24 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Side: Quotation Form -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-8 border border-outline-variant shadow-sm rounded-lg">
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6" id="quotationForm">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-primary">Nombre Completo</label>
+<input class="h-12 border border-outline px-4 rounded-lg input-focus-effect font-body-md" placeholder="Ej. Juan Pérez" required="" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-primary">Empresa</label>
+<input class="h-12 border border-outline px-4 rounded-lg input-focus-effect font-body-md" placeholder="Nombre de la compañía" required="" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-primary">Teléfono</label>
+<input class="h-12 border border-outline px-4 rounded-lg input-focus-effect font-body-md" placeholder="+52 ..." required="" type="tel">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-primary">Correo Electrónico</label>
+<input class="h-12 border border-outline px-4 rounded-lg input-focus-effect font-body-md" placeholder="correo@empresa.com" required="" type="email">
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-md text-primary">Material Requerido</label>
+<select class="h-12 border border-outline px-4 rounded-lg input-focus-effect font-body-md appearance-none bg-white">
+<option>Acero Inoxidable (304, 316)</option>
+<option>Aluminio Estructural</option>
+<option>Metales No Ferrosos (Bronce, Cobre)</option>
+<option>Placas de Grado Industrial</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-primary">Cantidad</label>
+<input class="h-12 border border-outline px-4 rounded-lg input-focus-effect font-body-md" placeholder="Ej. 50 piezas o 2 toneladas" required="" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-primary">Medidas (Espesor, Diámetro, Largo)</label>
+<input class="h-12 border border-outline px-4 rounded-lg input-focus-effect font-body-md" placeholder="Ej. 1/2' x 20ft" required="" type="text">
+</div>
+<!-- File Upload -->
+<div class="md:col-span-2 mt-4">
+<label class="font-label-md text-primary block mb-2">Adjuntar plano PDF o DWG</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-secondary mb-2 group-hover:scale-110 transition-transform">upload_file</span>
+<p class="text-label-md text-on-surface-variant">Arrastra tus archivos aquí o haz clic para buscar</p>
+<p class="text-xs text-outline mt-1">Máximo 25MB. Formatos: PDF, DWG, DXF, JPG.</p>
+<input class="hidden" type="file">
+</div>
+</div>
+<div class="md:col-span-2 mt-6">
+<button class="w-full bg-vivid-orange text-white py-4 px-8 rounded-lg font-headline-md font-bold uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-[0.98] transition-all" type="submit">
+                            Enviar Solicitud de Cotización
+                        </button>
+</div>
+</form>
+</div>
+<!-- Right Side: Benefits & Trust -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<!-- Business Benefits -->
+<div class="grid grid-cols-1 gap-6">
+<h3 class="font-headline-md text-primary mb-2">Beneficios Corporativos</h3>
+<div class="flex gap-6 p-6 border border-outline-variant bg-white rounded-lg group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-xl text-primary shrink-0">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Líneas de Crédito</h4>
+<p class="text-body-md text-on-surface-variant">Esquemas de financiamiento a 30, 60 y 90 días para proyectos industriales a gran escala.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 border border-outline-variant bg-white rounded-lg group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-xl text-primary shrink-0">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">percent</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Descuentos por Volumen</h4>
+<p class="text-body-md text-on-surface-variant">Precios preferenciales y escalonados según el tonelaje o volumen de compra mensual.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 border border-outline-variant bg-white rounded-lg group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-xl text-primary shrink-0">
+<span class="material-symbols-outlined text-3xl">support_agent</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Ejecutivo Dedicado</h4>
+<p class="text-body-md text-on-surface-variant">Gestión personalizada para seguimiento de pedidos y asesoría técnica especializada.</p>
+</div>
+</div>
+</div>
+<!-- Trust Seals -->
+<div class="mt-8">
+<h3 class="font-label-md text-outline uppercase tracking-widest mb-6">Certificaciones y Confianza</h3>
+<div class="grid grid-cols-3 gap-8 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<div class="flex flex-col items-center gap-2">
+<img class="h-16 w-auto object-contain" data-alt="A clean, minimalist monochrome ISO 9001 certification badge logo with industrial styling, vector aesthetic, high contrast black and white on a light surface background. The design is crisp and professional, symbolizing high-quality standards in the metal manufacturing industry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3v1o2R_qZbSBjmyqbN6s8c6EALxZ-80sX84fFgrLfvqwSpewYAYxHMXd8CC_7T7b4ptVXSDt1UFL5sbfx_U4JzDDZj-QK6eagVZJL1hczZN3ragtJgBrQ36lUF39HhCdF3bnWzt_Dc5EJm2nIi7PvYoc0Mu6f21Sny3YCpm_cfH5i4yUio7g-v4oLZV956AxmkRsTZukAkBe75dAIj8cqgxn4_WKwg4p53UFZhIDaxuDpUQpP5byu">
+<span class="text-mono-data text-xs text-center">ISO 9001:2015</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<img class="h-16 w-auto object-contain" data-alt="A professional ASTM International standards certification seal, rendered in a modern industrial line art style. The lighting is bright and clean, fitting a light-mode corporate B2B interface. Sharp edges and precise geometry define the mark of metallurgical excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSE7lTsU3mOMKpmmEaiJha6ASqSleKS1xQD5eio-TFWwPolrCR6QpPUswYvhuX4PTBd50OUue0uZMgXEYJv_UGxTpAgnKVij88VOvWaUVRl6foyJCxFp_98oU0Hoc0aHZMQ7u6j8WULJ5Uo7JCvTLZUOwiPIz4VD_Bh93XuN--PL63AzCImJ-unh4mUzJSbl8r74j_by--h-wVWhkNWWrNLiQ0tqlUu_Vuwkw7P_QycIMlkBTYoqcl">
+<span class="text-mono-data text-xs text-center">ASTM Standard</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<img class="h-16 w-auto object-contain" data-alt="A high-quality 24-hour delivery guarantee badge with a stopwatch and arrow motif, styled in a technical blueprint aesthetic. Deep steel blue strokes on a crisp white background, echoing high-speed logistics and industrial efficiency in the construction sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQvL_vdQ1c8yhZw0oWe7MyRQFR0lAstw6SfxuHcyE2-aOJvZk9MU_qBxrHuZilfP_aHYwNCy87P69b8VmhNR0n24KxzHNOdHGRZ4_cshyA67VMovVd-9Au2ZpDG3-hBR1u0ARtI8byoVOzgGouTx4PK8xZ5JNMbcpO9lPaMNFwbMRUYemc9C61IUZ4_e2p7PmKPaYpt2dLo4BCd94DjIk8B_bECwAsDh3RjACUollCSM2hlSTcvssf">
+<span class="text-mono-data text-xs text-center">Entrega 24h</span>
+</div>
+</div>
+</div>
+<!-- Logistics Image -->
+<div class="relative rounded-lg overflow-hidden h-64 mt-4 group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic wide shot of a high-tech metal warehouse with rows of gleaming stainless steel coils and aluminum sheets. Bright, natural lighting pours in from high warehouse windows, creating long, soft shadows. The atmosphere is clean, organized, and powerful, conveying massive industrial capacity and logistics efficiency." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZ2sdYT6A2KZVtMhadxMFvjdtvBx25_dLl1qKbdgck4cxMEaDZjQzwg3ygwUS2KEC7n72BqrzyoSwehQeKkDDzahR2ruWoUjalv-JRWajanU8QmY6btdRAF3FCm-VZ-IWpRZFD8ZsiPod_IYsxi_vu9nIGXkRx-2ab11JRiUjQzOXLDDzY4Io9m9tgd0x73MsucolgOOE0Ss8jYrPvVM-Isgv6I9HBYMUoFTB2Zb8GeWrL92VwiqA1')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-6">
+<p class="text-white font-bold text-headline-md leading-tight">Stock permanente con envío inmediato.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Specs Table (Extra Value) -->
+<section class="bg-surface-container-low py-20 border-y border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="mb-12">
+<h2 class="font-headline-lg text-primary">Tabla de Especificaciones Técnicas</h2>
+<p class="text-body-md text-on-surface-variant">Consulta las propiedades más comunes antes de cotizar.</p>
+</div>
+<div class="overflow-x-auto border border-outline-variant rounded-lg">
+<table class="w-full text-left border-collapse bg-white">
+<thead class="bg-primary text-white font-headline-md">
+<tr>
+<th class="p-6 font-semibold border-r border-white/10">Material</th>
+<th class="p-6 font-semibold border-r border-white/10">Grado</th>
+<th class="p-6 font-semibold border-r border-white/10">Dureza (Brinell)</th>
+<th class="p-6 font-semibold border-r border-white/10">Aplicación</th>
+<th class="p-6 font-semibold">Resistencia (PSI)</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr class="hover:bg-surface-container transition-colors border-b border-outline-variant">
+<td class="p-6 border-r border-outline-variant font-medium">Acero Inoxidable</td>
+<td class="p-6 border-r border-outline-variant text-mono-data">304</td>
+<td class="p-6 border-r border-outline-variant">123 HB</td>
+<td class="p-6 border-r border-outline-variant">Alimenticio / Farmacéutico</td>
+<td class="p-6">75,000</td>
+</tr>
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors border-b border-outline-variant">
+<td class="p-6 border-r border-outline-variant font-medium">Acero al Carbón</td>
+<td class="p-6 border-r border-outline-variant text-mono-data">A36</td>
+<td class="p-6 border-r border-outline-variant">112-140 HB</td>
+<td class="p-6 border-r border-outline-variant">Construcción Estructural</td>
+<td class="p-6">58,000 - 80,000</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors border-b border-outline-variant">
+<td class="p-6 border-r border-outline-variant font-medium">Aluminio</td>
+<td class="p-6 border-r border-outline-variant text-mono-data">6061-T6</td>
+<td class="p-6 border-r border-outline-variant">95 HB</td>
+<td class="p-6 border-r border-outline-variant">Aeroespacial / Marino</td>
+<td class="p-6">45,000</td>
+</tr>
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors">
+<td class="p-6 border-r border-outline-variant font-medium">Bronce</td>
+<td class="p-6 border-r border-outline-variant text-mono-data">SAE 64</td>
+<td class="p-6 border-r border-outline-variant">75-85 HB</td>
+<td class="p-6 border-r border-outline-variant">Bujes y Chumaceras</td>
+<td class="p-6">35,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-primary text-on-primary">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 w-full max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="h-16 w-auto mb-6"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJMMGgpTnUGLere_5GTOkJi7b746EDaKXV1S2v7dbaKGjCf3iIFVGazdajRyFMGZRc5zfZrYk3o__oknDbETa1qXRY_1-W8fms-sxawFV1ZK1fcC2ML1_XQ7oOEmpzwXWzKzPuIEeAMYS9l84tqyB2iRdRbuERA5W9YFoIJnj2mlAn0mCHOGzpLkx62cZAyZ_yVHOLx4Lbh5qltmlgAfQx82sWbaM60x3b8qVpenoH1GFdk3x0ENs0dSHcsLXlV5WcnQ" alt="Aceros y Metales Urgentes" class="h-full w-auto object-contain"></div>
+<p class="text-on-primary-container text-body-md opacity-80">
+                    Soluciones en suministros industriales con entrega inmediata y certificación de calidad global.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold uppercase tracking-widest text-secondary-fixed-dim text-label-md">Productos</h4>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Acero Inoxidable</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Perfiles Estructurales</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Metales Especiales</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold uppercase tracking-widest text-secondary-fixed-dim text-label-md">Empresa</h4>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Certificaciones</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Facturación</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Ubicaciones</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold uppercase tracking-widest text-secondary-fixed-dim text-label-md">Soporte</h4>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Contacto Urgente</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">WhatsApp Soporte</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors" href="#">Preguntas Frecuentes</a>
+</div>
+</div>
+<div class="border-t border-primary-container py-8 px-margin-desktop text-center">
+<p class="text-label-md text-on-primary-container opacity-60">
+                © 2024 Aceros y Metales Urgentes. Industrial Structuralist Design.
+            </p>
+</div>
+</footer>
+<!-- Form Micro-interaction Script -->
+<script>
+        document.getElementById('quotationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="flex items-center justify-center gap-3"><span class="material-symbols-outlined animate-spin">sync</span> PROCESANDO...</span>';
+            
+            setTimeout(() => {
+                btn.classList.replace('bg-vivid-orange', 'bg-green-600');
+                btn.innerHTML = '<span class="flex items-center justify-center gap-3"><span class="material-symbols-outlined">check_circle</span> SOLICITUD ENVIADA</span>';
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.classList.replace('bg-green-600', 'bg-vivid-orange');
+                    btn.innerHTML = originalText;
+                    e.target.reset();
+                }, 3000);
+            }, 1500);
+        });
+
+        // Simple drag and drop visual feedback
+        const dropzone = document.querySelector('.border-dashed');
+        if(dropzone) {
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    dropzone.classList.add('bg-primary-fixed', 'border-primary');
+                }, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    dropzone.classList.remove('bg-primary-fixed', 'border-primary');
+                }, false);
+            });
+        }
+    </script>
+
+
+</body></html>

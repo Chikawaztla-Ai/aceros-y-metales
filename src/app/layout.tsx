@@ -39,6 +39,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${montserrat.variable} ${inter.variable}`}>
+      <head>
+        {/* Material Symbols Outlined — íconos del design system oficial */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0&display=block"
+        />
+      </head>
       <body className="font-sans bg-[#f7f9fb] text-[#191c1e] antialiased">
         {children}
       </body>

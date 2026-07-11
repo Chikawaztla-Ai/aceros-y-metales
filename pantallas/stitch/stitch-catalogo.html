@@ -1,0 +1,486 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Material Catalog | Aceros y Metales Urgentes</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed-dim": "#b3c9e2",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#091d2e",
+                    "tertiary": "#411d00",
+                    "on-error-container": "#93000a",
+                    "primary": "#162839",
+                    "secondary-container": "#cce2fc",
+                    "on-surface-variant": "#43474c",
+                    "outline": "#74777d",
+                    "on-primary-fixed-variant": "#36485b",
+                    "inverse-surface": "#2d3133",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-primary": "#b5c8df",
+                    "outline-variant": "#c4c6cd",
+                    "primary-container": "#2c3e50",
+                    "on-background": "#191c1e",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-container": "#96a9be",
+                    "surface-container-low": "#f2f4f6",
+                    "on-tertiary-fixed": "#301400",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "tertiary-fixed": "#ffdcc5",
+                    "secondary": "#4b6076",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "tertiary-container": "#612f00",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#051d30",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#34495e",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#4e6073",
+                    "secondary-fixed": "#cfe5ff",
+                    "background": "#f7f9fb",
+                    "on-secondary-container": "#50657b",
+                    "surface": "#f7f9fb",
+                    "on-surface": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed-dim": "#b5c8df",
+                    "on-tertiary-container": "#f78b30",
+                    "primary-fixed": "#d1e4fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Montserrat"],
+                    "mono-data": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .structural-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr 340px;
+        }
+        @media (max-width: 1024px) {
+            .structural-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .cut-out-effect {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+        .industrial-border {
+            border: 1px solid rgba(116, 119, 125, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-gutter">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV72WnjZyLaIkeVcljV-_nu58JgNU2Yq5ypStrRface9v4VuFzEqdvJt0Tfc1KU840vIVfbow-deQ5zJnH_Spc1AkiNCr7s5eVVcHKo7wv11356vkx3EUViDKMaA9ga3jkr_Uic0ExmoBC_jwBAWEBl8mcA5R7wrCUmZxMXk_UsEH-3uf9fTv6ElsXhahN3Xk5VWoVfTT6GY8i89jH6ad6aMEgeKjxINUEj1fUHw1QaFlzJUp6jj_GsdhZhSERvlK31A" alt="Aceros y Metales Urgentes" class="h-10 w-auto object-contain">
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary font-bold pb-1 text-label-md font-label-md" href="#">Steels</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="#">Aluminum</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="#">Non-ferrous</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary transition-colors duration-200 text-label-md font-label-md" href="#">Machinery</a>
+</nav>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2 w-64 focus:border-primary focus:ring-0 transition-all font-body-md text-body-md" placeholder="Search Materials..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-2 text-outline">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-[#E67E22] text-white px-6 py-2.5 font-bold uppercase text-label-md tracking-wider hover:opacity-90 active:scale-95 transition-all">WhatsApp CTA</button>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined p-2 cursor-pointer hover:bg-surface-container-low rounded-full">shopping_cart</span>
+<span class="material-symbols-outlined p-2 cursor-pointer hover:bg-surface-container-low rounded-full">account_circle</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-unit">
+<div class="structural-grid gap-gutter mt-8">
+<!-- SideNavBar (Filters) -->
+<aside class="bg-surface-container-low dark:bg-surface-container-highest h-fit rounded-lg industrial-border sticky top-24">
+<div class="flex flex-col gap-unit p-6">
+<div class="mb-6">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">filter_list</span>
+<h2 class="text-headline-md font-headline-md text-primary">Specifications</h2>
+</div>
+<p class="text-body-md text-on-surface-variant">Refine Search</p>
+</div>
+<div class="space-y-6">
+<!-- Filter Group: Material -->
+<div>
+<span class="text-label-md font-label-md text-primary uppercase block mb-3">Material Type</span>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container font-bold rounded-xl px-4 py-3 translate-x-1 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">category</span>
+<span class="">Steel</span>
+</label>
+<label class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high px-4 py-3 transition-all cursor-pointer">
+<span class="material-symbols-outlined">category</span>
+<span class="">Aluminum</span>
+</label>
+</div>
+</div>
+<!-- Filter Group: Grade -->
+<div>
+<span class="text-label-md font-label-md text-primary uppercase block mb-3">Grade</span>
+<select class="w-full bg-surface-container-lowest border border-outline-variant p-3 rounded font-body-md outline-none focus:border-primary">
+<option>A36 Structural</option>
+<option>4140 Alloy</option>
+<option>304 Stainless</option>
+<option>6061-T6 Aluminum</option>
+</select>
+</div>
+<!-- Filter Group: Shape -->
+<div>
+<span class="text-label-md font-label-md text-primary uppercase block mb-3">Shape / Profile</span>
+<div class="grid grid-cols-2 gap-2">
+<button class="p-3 industrial-border hover:bg-surface-container-high text-on-surface-variant transition-all flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">view_column</span>
+<span class="text-mono-data">Beam</span>
+</button>
+<button class="p-3 industrial-border bg-primary-container text-on-primary-container flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">rectangle</span>
+<span class="text-mono-data">Plate</span>
+</button>
+<button class="p-3 industrial-border hover:bg-surface-container-high text-on-surface-variant transition-all flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+<span class="text-mono-data">Tube</span>
+</button>
+<button class="p-3 industrial-border hover:bg-surface-container-high text-on-surface-variant transition-all flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">straighten</span>
+<span class="text-mono-data">Angle</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 font-bold uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all mt-4">
+                            Apply Filters
+                        </button>
+</div>
+</div>
+</aside>
+<!-- Results Grid -->
+<section class="flex flex-col gap-gutter">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h1 class="text-display-lg font-display-lg text-primary">Material Catalog</h1>
+<p class="text-body-lg text-on-surface-variant mt-2">Showing 24 results for <span class="font-bold text-primary">Steel Plate</span></p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant bg-white text-primary"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-2 border border-primary bg-primary text-white"><span class="material-symbols-outlined">list</span></button>
+</div>
+</div>
+<!-- Product List View -->
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest industrial-border p-6 flex flex-col md:flex-row gap-6 hover:shadow-[0px_4px_12px_rgba(44,62,80,0.08)] transition-all group">
+<div class="w-full md:w-48 h-32 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A macro studio shot of stacked structural steel plates with sharp, precise edges. The lighting is cold and industrial, highlighting the metallic texture and heavy-duty nature of the material. Deep shadows and high contrast emphasize the structural integrity and premium quality for a B2B audience. The background is a clean, minimalist factory floor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAprZCYt7vuPmDNZQSeV-sR0AwVwr64guTqJ0YlcGjpx0LQXkpcrM8xK5-1xsHYsVnMJe2Li8zhy5dbefTpZQC2yq8FyFjyUfpEFJr0rLVpA-g-5xTbuOVl3usdEnhEotQEsFPYyS9St4g_oeWkbPqNQq5QeOShwGOfchBVPGfHwAMgxgjB4fIFvOrlbBhxhjrTkMdwCggvU15y2WBCyz5lW1t5ksL3m87kpUKbKSYSq6_JsZkO9_Kj">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-1">A36 Structural Steel Plate</h3>
+<span class="text-mono-data bg-surface-container-high px-2 py-0.5 rounded text-secondary">ID: AMU-ST-A36-P1</span>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md text-green-700 flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span> In Stock
+                                    </span>
+<p class="text-headline-md font-bold text-primary mt-1">$1.42 <span class="text-body-md font-normal text-on-surface-variant">/ lb</span></p>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 py-3 border-t border-outline-variant">
+<div>
+<span class="text-label-md text-outline block uppercase">Thickness</span>
+<span class="text-mono-data font-bold">1/4" (6.35mm)</span>
+</div>
+<div>
+<span class="text-label-md text-outline block uppercase">Dimensions</span>
+<span class="text-mono-data font-bold">48" x 96"</span>
+</div>
+<div>
+<span class="text-label-md text-outline block uppercase">Grade</span>
+<span class="text-mono-data font-bold">ASTM A36</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-[#E67E22] text-white px-4 py-2 font-bold text-label-md uppercase w-full">Add to Quote</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest industrial-border p-6 flex flex-col md:flex-row gap-6 hover:shadow-[0px_4px_12px_rgba(44,62,80,0.08)] transition-all group">
+<div class="w-full md:w-48 h-32 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Close-up detail of heavy-duty steel beams with industrial markings and technical stamps. The lighting is dramatic, coming from one side to reveal the brushed metal surface and perfect right angles. The composition is geometric and unyielding, reflecting corporate modernism. The overall tone is authoritative and reliable for heavy construction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqgz2Hq0gKrOXVy8aDOMLc0mWKx5zEfCMOH6M6U2GCRZTzHWaC_quZ_VVxb5vGMPX-eCF599M6nCyOYU1RpbYsXDEQpyfJtAbioCLrmsOyRBeUJHqJ4O5xzNkKcBWyjd1yqWaJG-q_skpbAFaGBCUvP55g9OLt8iFHOYB2ni_29_rIfG_CuH_K3E781J7AtuDwTsGiLCISwdWpXsqPyHQ0-EIALsFcNcS-NAFIYVPTNtFB15-pjPAF">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-1">AR400 Wear Resistant Plate</h3>
+<span class="text-mono-data bg-surface-container-high px-2 py-0.5 rounded text-secondary">ID: AMU-ST-AR4-P2</span>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md text-amber-700 flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">schedule</span> 3-5 Days Lead
+                                    </span>
+<p class="text-headline-md font-bold text-primary mt-1">$2.85 <span class="text-body-md font-normal text-on-surface-variant">/ lb</span></p>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 py-3 border-t border-outline-variant">
+<div>
+<span class="text-label-md text-outline block uppercase">Thickness</span>
+<span class="text-mono-data font-bold">1/2" (12.7mm)</span>
+</div>
+<div>
+<span class="text-label-md text-outline block uppercase">Dimensions</span>
+<span class="text-mono-data font-bold">60" x 120"</span>
+</div>
+<div>
+<span class="text-label-md text-outline block uppercase">Hardness</span>
+<span class="text-mono-data font-bold">360-440 BHN</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-[#E67E22] text-white px-4 py-2 font-bold text-label-md uppercase w-full">Add to Quote</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest industrial-border p-6 flex flex-col md:flex-row gap-6 hover:shadow-[0px_4px_12px_rgba(44,62,80,0.08)] transition-all group">
+<div class="w-full md:w-48 h-32 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="High-resolution industrial photography of premium 304 stainless steel sheets showing a reflective mirror-like finish. The setting is clean and high-tech, like an aerospace manufacturing facility. Crisp highlights and sharp lines convey structural integrity and high trust. The palette is dominated by cool silvers and deep steel blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFf8uv3qEQg0VSktO7KXsei_AtKRwoT5TZTljtEt7wbXdstnxnDJvz0v4o-gvi4xPSs3vMwJ2oNQ2Bxe3WgO6jUfJmfeD_6Ab6zQtBhu407xaqiiC3KPEEmUj4Opjx73JBX24GEGqyaRkWxEnV1FHsKCRu9whUKe4o0swOftm07Bdov9Wrzk2dUTD_KEfp45GoU-f1S-Z97hEIxEwzOhykZFHAgSy4dIRRxqT7LzKzXplcZrv8yNu2">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-1">304 Stainless Steel Sheet</h3>
+<span class="text-mono-data bg-surface-container-high px-2 py-0.5 rounded text-secondary">ID: AMU-SS-304-S3</span>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md text-green-700 flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span> In Stock
+                                    </span>
+<p class="text-headline-md font-bold text-primary mt-1">$4.15 <span class="text-body-md font-normal text-on-surface-variant">/ lb</span></p>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 py-3 border-t border-outline-variant">
+<div>
+<span class="text-label-md text-outline block uppercase">Gauge</span>
+<span class="text-mono-data font-bold">11 Gauge</span>
+</div>
+<div>
+<span class="text-label-md text-outline block uppercase">Finish</span>
+<span class="text-mono-data font-bold">#4 Brushed</span>
+</div>
+<div>
+<span class="text-label-md text-outline block uppercase">Weight</span>
+<span class="text-mono-data font-bold">160 lbs / sht</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-[#E67E22] text-white px-4 py-2 font-bold text-label-md uppercase w-full">Add to Quote</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-2 mt-8">
+<button class="p-2 border border-outline-variant hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-10 h-10 border border-primary bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 border border-outline-variant hover:bg-surface-container font-medium">2</button>
+<button class="w-10 h-10 border border-outline-variant hover:bg-surface-container font-medium">3</button>
+<button class="p-2 border border-outline-variant hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</section>
+<!-- Material Calculator Widget -->
+<aside class="space-y-gutter h-fit sticky top-24">
+<div class="bg-primary p-6 text-on-primary rounded-lg shadow-lg">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">calculate</span>
+<h3 class="text-headline-md font-headline-md uppercase tracking-tight">Material Calculator</h3>
+</div>
+<div class="space-y-4">
+<div>
+<label class="text-label-md font-label-md text-on-primary-container block mb-1">Select Shape</label>
+<select class="w-full bg-primary-container text-white border border-outline p-2 rounded outline-none focus:border-tertiary-fixed-dim transition-all">
+<option>Rectangular Plate</option>
+<option>Round Tube</option>
+<option>I-Beam</option>
+<option>Solid Round Bar</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="text-label-md font-label-md text-on-primary-container block mb-1">Length (in)</label>
+<input class="w-full bg-primary-container text-white border border-outline p-2 rounded outline-none focus:border-tertiary-fixed-dim" placeholder="0.00" type="number">
+</div>
+<div>
+<label class="text-label-md font-label-md text-on-primary-container block mb-1">Width (in)</label>
+<input class="w-full bg-primary-container text-white border border-outline p-2 rounded outline-none focus:border-tertiary-fixed-dim" placeholder="0.00" type="number">
+</div>
+</div>
+<div>
+<label class="text-label-md font-label-md text-on-primary-container block mb-1">Thickness (in)</label>
+<input class="w-full bg-primary-container text-white border border-outline p-2 rounded outline-none focus:border-tertiary-fixed-dim" placeholder="0.00" type="number">
+</div>
+<div class="pt-4 border-t border-outline">
+<div class="flex justify-between items-center">
+<span class="text-body-md">Est. Weight:</span>
+<span class="text-headline-md font-bold text-tertiary-fixed-dim">0.00 lbs</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-body-md">Est. Volume:</span>
+<span class="text-headline-md font-bold text-tertiary-fixed-dim">0.00 in³</span>
+</div>
+</div>
+<button class="w-full border-2 border-white text-white py-3 font-bold uppercase text-label-md hover:bg-white hover:text-primary transition-all">
+                            Add result to quote
+                        </button>
+</div>
+</div>
+<!-- Quick Certs Info -->
+<div class="bg-surface-container-high p-6 border-l-4 border-primary">
+<h4 class="font-bold text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined">verified</span> Certifications
+                    </h4>
+<p class="text-body-md text-on-surface-variant leading-tight">
+                        All materials include MTRs (Material Test Reports) and comply with ASTM/AISI standards.
+                    </p>
+</div>
+<!-- Recent Activity/News -->
+<div class="bg-white industrial-border p-6">
+<h4 class="text-label-md font-label-md text-primary uppercase mb-4">Steel Market Index</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-mono-data">
+<span class="">Carbon Steel</span>
+<span class="text-green-600 font-bold">↑ 0.4%</span>
+</div>
+<div class="flex justify-between items-center text-mono-data">
+<span class="">Stainless 304</span>
+<span class="text-red-600 font-bold">↓ 1.2%</span>
+</div>
+<div class="flex justify-between items-center text-mono-data">
+<span class="">Aluminum 6061</span>
+<span class="text-on-surface-variant font-bold">-- 0.0%</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container border-t-4 border-tertiary-container mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 w-full max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0X_IMBdSlYAfvP7Fix8n-ScQDCiBUDCN9kXyp4Zegze3qIE7wOm-3hsNE4UZ04oPnAXHquoRWQBmXgjXJ90O5sJR2_BK5awNPZSmBeWEr4qjtNKxFIAzibUplh4TLU-8J-nCiPqK6fwYud_fYgMrYe2dHRako-p96zarMgcJPxQfbDaaeLWHoX0O_Kb938TjZzytTeDR3Q3J4U6v5FdXIg0hxgRULz5oS-wmmgausPhQw7Nfy5YECVQkWgUkfNSP5Qw" alt="Aceros y Metales Urgentes" class="h-[60px] w-auto object-contain mb-6">
+<p class="text-on-primary-container mt-6 text-body-md">
+                    Leading supplier of industrial metals with precision cutting and urgent delivery nationwide.
+                </p>
+</div>
+<div>
+<h4 class="text-on-primary font-bold mb-6 text-label-md uppercase tracking-widest">Resources</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-md" href="#">Certifications</a></li>
+<li class=""><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-md" href="#">Shipping Information</a></li>
+<li class=""><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-md" href="#">Billing &amp; Terms</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-on-primary font-bold mb-6 text-label-md uppercase tracking-widest">Navigation</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-tertiary-fixed-dim underline text-body-md" href="#">Product Catalog</a></li>
+<li class=""><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-md" href="#">Machinery Sales</a></li>
+<li class=""><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-md" href="#">Contact Sales</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-on-primary font-bold mb-6 text-label-md uppercase tracking-widest">Contact</h4>
+<p class="text-on-primary-container text-body-md mb-4">Industrial Zone, Sector 4<br>Nuevo León, MX</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:text-tertiary-fixed transition-colors">phone</span>
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:text-tertiary-fixed transition-colors">mail</span>
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:text-tertiary-fixed transition-colors">location_on</span>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop py-8 border-t border-outline text-center">
+<p class="text-on-primary-container text-label-md">© 2024 Aceros y Metales Urgentes. Industrial Structuralist Design.</p>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the calculator
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', () => {
+                const weightDisplay = document.querySelector('.text-tertiary-fixed-dim');
+                // Fake calculation logic for UI effect
+                const val1 = parseFloat(document.querySelectorAll('input[type="number"]')[0].value) || 0;
+                const val2 = parseFloat(document.querySelectorAll('input[type="number"]')[1].value) || 0;
+                const val3 = parseFloat(document.querySelectorAll('input[type="number"]')[2].value) || 0;
+                
+                if (val1 && val2 && val3) {
+                    const result = (val1 * val2 * val3 * 0.2833).toFixed(2);
+                    weightDisplay.innerText = `${result} lbs`;
+                } else {
+                    weightDisplay.innerText = `0.00 lbs`;
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

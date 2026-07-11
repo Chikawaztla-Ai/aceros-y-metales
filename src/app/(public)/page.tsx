@@ -2,209 +2,387 @@ import Link from 'next/link';
 import { WeightCalculator } from '@/components/calculadora/weight-calculator';
 
 const categories = [
-  { name: 'Aceros Comerciales', slug: 'aceros-comerciales', icon: '🏗️', count: 45 },
-  { name: 'Aceros Especiales', slug: 'aceros-especiales', icon: '⚙️', count: 38 },
-  { name: 'Aluminio', slug: 'aluminio', icon: '🔩', count: 22 },
-  { name: 'No Ferrosos', slug: 'no-ferrosos', icon: '🔬', count: 18 },
-  { name: 'Maquinaria', slug: 'maquinaria', icon: '🏭', count: 15 },
-  { name: 'Herramientas', slug: 'herramientas', icon: '🛠️', count: 30 },
-];
-
-const trustItems = [
-  { icon: '🚚', text: 'Entrega el mismo día' },
-  { icon: '📦', text: '+500 SKUs en stock' },
-  { icon: '✂️', text: 'Cortes a medida' },
-  { icon: '🧾', text: 'Factura CFDI' },
-  { icon: '💬', text: 'Asesor WhatsApp' },
+  {
+    name: 'Aceros',
+    subtitle: 'PTR, IPR, HSS, Canales',
+    slug: 'aceros-comerciales',
+    image: '/images/home/cat-aceros.jpg',
+  },
+  {
+    name: 'Aluminio',
+    subtitle: '6061, 7075, Placa, Perfil',
+    slug: 'aluminio',
+    image: '/images/home/cat-aluminio.jpg',
+  },
+  {
+    name: 'No Ferrosos',
+    subtitle: 'Cobre, Bronce, Latón',
+    slug: 'no-ferrosos',
+    image: '/images/home/cat-noferrosos.jpg',
+  },
+  {
+    name: 'Maquinaria',
+    subtitle: 'Corte, Doblez, CNC',
+    slug: 'maquinaria',
+    image: '/images/home/cat-maquinaria.jpg',
+  },
 ];
 
 const featuredProducts = [
-  { sku: '4140-RD', name: 'Acero 4140', grade: 'AISI 4140', price: 185, unit: 'kg', slug: 'acero-4140-barra-redonda', badge: 'Más vendido' },
-  { sku: 'D2-RD', name: 'Acero D2', grade: 'AISI D2', price: 320, unit: 'kg', slug: 'acero-d2-barra-redonda', badge: null },
-  { sku: '6061-PL', name: 'Aluminio 6061', grade: '6061-T6', price: 210, unit: 'kg', slug: 'aluminio-6061-placa', badge: 'En stock' },
-  { sku: '304-RD', name: 'Inoxidable 304', grade: 'AISI 304', price: 145, unit: 'kg', slug: 'inoxidable-304-barra-redonda', badge: null },
+  {
+    name: 'Acero Cromo-Molibdeno 4140',
+    slug: 'acero-4140-barra-redonda',
+    price: 185,
+    stock: '124 pzas',
+    badge: 'Disponible',
+    image: '/images/home/prod-viga-ipr.jpg',
+    specs: [
+      { label: 'Grado:', value: 'AISI 4140' },
+      { label: 'Dureza:', value: '28-32 HRC' },
+    ],
+  },
+  {
+    name: 'Aluminio 6061-T6 Placa',
+    slug: 'aluminio-6061-placa',
+    price: 210,
+    stock: '45 pzas',
+    badge: 'Disponible',
+    image: '/images/home/prod-placa-aluminio.jpg',
+    specs: [
+      { label: 'Temple:', value: 'T6' },
+      { label: 'Formato:', value: 'Placa' },
+    ],
+  },
+  {
+    name: 'Acero al Cromo D2',
+    slug: 'acero-d2-barra-redonda',
+    price: 320,
+    stock: '300+ pzas',
+    badge: 'Disponible',
+    image: '/images/home/prod-ptr.jpg',
+    specs: [
+      { label: 'Grado:', value: 'AISI D2' },
+      { label: 'Uso:', value: 'Troqueles' },
+    ],
+  },
+  {
+    name: 'Bronce SAE 660',
+    slug: 'bronce-sae660-barra',
+    price: 280,
+    stock: '12 pzas',
+    badge: 'En Tránsito',
+    image: '/images/home/prod-barra-cobre.jpg',
+    specs: [
+      { label: 'Norma:', value: 'SAE 660' },
+      { label: 'Uso:', value: 'Bujes' },
+    ],
+  },
+];
+
+const trustItems = [
+  {
+    icon: 'inventory_2',
+    title: 'Inventario Disponible',
+    desc: 'Contamos con más de 5,000 toneladas en stock real para entrega inmediata sin demoras.',
+  },
+  {
+    icon: 'verified_user',
+    title: 'Compra Segura',
+    desc: 'Procesos de pago encriptados y trazabilidad total en cada etapa de su pedido logístico.',
+  },
+  {
+    icon: 'support_agent',
+    title: 'Atención Especializada',
+    desc: 'Ingenieros y técnicos expertos listos para asesorarle en la selección del material óptimo.',
+  },
+];
+
+const b2bBenefits = [
+  'Crédito Industrial',
+  'Escalas de Precio',
+  'Logística Prioritaria',
+  'Certificados de Calidad',
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-[#f7f9fb] overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#162839 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }} />
-        <div className="relative max-w-container mx-auto px-10 py-20 md:py-28">
-          <p className="text-[10px] font-semibold uppercase tracking-[4px] text-on-tertiary-container mb-4">
-            Distribución Industrial
-          </p>
-          <h1 className="font-montserrat font-extrabold text-4xl md:text-6xl text-primary tracking-tight leading-[1.05] mb-6">
-            Acero y Metales —<br />
-            <span className="text-on-tertiary-container">Disponibilidad Inmediata</span>
-          </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl mb-10">
-            Más de 500 materiales en stock. Compra por metro, kilo o pieza.
-            Cotiza en 2 minutos.
-          </p>
-          <div className="flex flex-wrap gap-4 mb-12">
-            <Link
-              href="/catalogo"
-              className="bg-on-tertiary-container text-white text-sm font-bold uppercase tracking-wide px-8 py-3.5 rounded-lg hover:brightness-110 active:scale-95 transition-all"
-            >
-              Ver Catálogo
-            </Link>
-            <Link
-              href="/cotizacion"
-              className="border-2 border-primary-container text-primary-container text-sm font-bold uppercase tracking-wide px-8 py-3.5 rounded-lg hover:bg-primary-container hover:text-white transition-all"
-            >
-              Solicitar Cotización
-            </Link>
-          </div>
-
-          {/* Barra de búsqueda */}
+      {/* HERO — foto industrial + gradiente (stitch) */}
+      <section className="relative h-[640px] flex items-center overflow-hidden bg-primary-container">
+        <div className="absolute inset-0 z-0">
+          <div
+            className="w-full h-full bg-cover bg-center opacity-60"
+            style={{ backgroundImage: "url('/images/home/hero.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
+        </div>
+        <div className="relative z-10 w-full px-10 max-w-container mx-auto">
           <div className="max-w-2xl">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Busca por clave, grado o material... Ej: 4140, D2, 6061"
-                className="w-full bg-white border border-outline-variant rounded-lg py-3.5 pl-12 pr-4 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none shadow-card"
-              />
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-on-surface-variant/50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <h1 className="font-montserrat font-bold text-4xl md:text-[48px] md:leading-[56px] text-white tracking-[-0.02em] mb-6">
+              Aceros, Aluminio y Metales Industriales con Entrega Rápida
+            </h1>
+            <p className="text-lg text-on-primary-container mb-10 max-w-lg">
+              Compra en línea materiales industriales, perfiles estructurales, aluminio,
+              cobre, bronce y más. Soluciones metalúrgicas de alta precisión para
+              proyectos a gran escala.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/catalogo"
+                className="bg-on-tertiary-container text-white text-sm font-bold uppercase px-10 py-4 hover:scale-105 transition-transform shadow-lg"
+              >
+                Comprar Ahora
+              </Link>
+              <Link
+                href="/cotizacion"
+                className="border-2 border-white text-white text-sm font-bold uppercase px-10 py-4 hover:bg-white hover:text-primary transition-all"
+              >
+                Solicitar Cotización
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* BARRA DE CONFIANZA */}
-      <section className="bg-surface-low border-y border-outline-variant">
-        <div className="max-w-container mx-auto px-10 py-5">
-          <div className="flex flex-wrap justify-between items-center gap-6">
-            {trustItems.map((item) => (
-              <div key={item.text} className="flex items-center gap-3">
-                <span className="text-2xl">{item.icon}</span>
-                <span className="text-sm font-medium text-on-surface-variant">{item.text}</span>
+      {/* BUSCADOR FLOTANTE (stitch) */}
+      <section className="relative -mt-10 z-20 px-10">
+        <form
+          action="/catalogo"
+          className="max-w-4xl mx-auto bg-surface p-2 shadow-2xl border border-outline-variant flex items-center gap-2"
+        >
+          <div className="flex-grow flex items-center px-4 gap-3 border-r border-outline-variant">
+            <span className="material-symbols-outlined text-on-tertiary-container">search</span>
+            <input
+              type="text"
+              name="q"
+              placeholder="Busca por material, medida, calibre o categoría"
+              className="w-full py-4 bg-transparent border-none focus:ring-0 outline-none text-sm text-primary placeholder:text-on-surface-variant/60"
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-primary text-white text-sm font-bold uppercase px-8 py-4 flex items-center gap-2 hover:bg-primary-container transition-colors"
+          >
+            <span className="material-symbols-outlined">filter_list</span>
+            <span className="hidden sm:inline">Explorar Materiales</span>
+          </button>
+        </form>
+      </section>
+
+      {/* CATEGORÍAS DESTACADAS (stitch) */}
+      <section className="py-24 px-10 max-w-container mx-auto">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <span className="text-on-tertiary-container font-bold uppercase tracking-widest text-sm block mb-2">
+              Catálogo Industrial
+            </span>
+            <h2 className="font-montserrat font-bold text-[32px] leading-10 text-primary">
+              Categorías Destacadas
+            </h2>
+          </div>
+          <Link
+            href="/catalogo"
+            className="text-primary font-bold border-b-2 border-primary pb-1 hover:text-on-tertiary-container hover:border-on-tertiary-container transition-all"
+          >
+            Ver Todo el Inventario
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/catalogo?cat=${cat.slug}`}
+              className="group cursor-pointer relative overflow-hidden h-[400px] border border-outline-variant block"
+            >
+              <div
+                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: `url('${cat.image}')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent" />
+              <div className="absolute bottom-0 p-8">
+                <h3 className="text-white font-montserrat font-semibold text-2xl mb-2">{cat.name}</h3>
+                <p className="text-on-primary-container text-xs font-medium mb-4">{cat.subtitle}</p>
+                <span className="inline-flex items-center text-white font-bold text-sm group-hover:translate-x-2 transition-transform">
+                  Explorar
+                  <span className="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* PRODUCTOS EN EXISTENCIA (stitch) */}
+      <section className="bg-surface-low py-24 industrial-grid">
+        <div className="px-10 max-w-container mx-auto">
+          <div className="mb-12">
+            <h2 className="font-montserrat font-bold text-[32px] leading-10 text-primary mb-4">
+              Productos en Existencia
+            </h2>
+            <p className="text-secondary">
+              Disponibilidad inmediata para recolección o envío urgente.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <div
+                key={product.slug}
+                className="bg-white border border-outline-variant group hover:shadow-xl transition-shadow duration-300"
+              >
+                <Link href={`/catalogo/${product.slug}`} className="block h-56 relative overflow-hidden border-b border-outline-variant">
+                  <div
+                    className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform"
+                    style={{ backgroundImage: `url('${product.image}')` }}
+                  />
+                  <div className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 uppercase tracking-tighter">
+                    {product.badge}
+                  </div>
+                </Link>
+                <div className="p-6">
+                  <Link href={`/catalogo/${product.slug}`}>
+                    <h4 className="font-montserrat font-semibold text-primary mb-2 hover:text-on-tertiary-container transition-colors">
+                      {product.name}
+                    </h4>
+                  </Link>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-on-tertiary-container font-bold text-xl">
+                      ${product.price}
+                      <span className="text-xs font-medium text-on-surface-variant ml-1">MXN/kg</span>
+                    </span>
+                    <span className="text-on-surface-variant text-xs font-medium">
+                      Stock: {product.stock}
+                    </span>
+                  </div>
+                  <div className="bg-surface-low p-3 mb-4 flex flex-col gap-1">
+                    {product.specs.map((spec) => (
+                      <div key={spec.label} className="flex justify-between text-xs font-medium">
+                        <span className="text-secondary">{spec.label}</span>
+                        <span className="text-primary font-bold">{spec.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/catalogo/${product.slug}`}
+                    className="w-full bg-primary text-white text-sm font-bold uppercase py-3 flex items-center justify-center gap-2 hover:bg-on-tertiary-container transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">shopping_cart</span>
+                    Agregar al Carrito
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CATEGORÍAS */}
-      <section className="max-w-container mx-auto px-10 py-16">
-        <h2 className="font-montserrat font-bold text-2xl text-primary-container uppercase tracking-tight mb-8">
-          Categorías
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {categories.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={`/catalogo?cat=${cat.slug}`}
-              className="group bg-white border border-outline-variant rounded-lg p-6 hover:shadow-card-hover hover:border-primary-container transition-all"
-            >
-              <span className="text-3xl mb-3 block">{cat.icon}</span>
-              <h3 className="font-montserrat font-bold text-primary-container text-lg mb-1">
-                {cat.name}
-              </h3>
-              <span className="text-sm text-on-surface-variant">
-                {cat.count} productos
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* CALCULADORA DE PESO */}
-      <section className="bg-surface-low border-y border-outline-variant">
-        <div className="max-w-container mx-auto px-10 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="font-montserrat font-bold text-2xl text-primary-container uppercase tracking-tight mb-4">
-                Calculadora de Peso
-              </h2>
-              <p className="text-on-surface-variant mb-6">
-                Calcula el peso teórico de cualquier material antes de comprar.
-                Selecciona material, perfil e ingresa las dimensiones.
-              </p>
-              <p className="text-xs text-on-surface-variant/70">
-                El peso es aproximado. Varía según aleación y tolerancia de fabricación.
-              </p>
+      {/* CALCULADORA DE PESO (stitch) */}
+      <section id="calculadora" className="py-24 px-10 scroll-mt-20">
+        <div className="max-w-container mx-auto flex flex-col lg:flex-row gap-16 items-center">
+          <div className="w-full lg:w-1/2">
+            <span className="text-on-tertiary-container font-bold uppercase tracking-widest text-sm block mb-2">
+              Herramientas de Precisión
+            </span>
+            <h2 className="font-montserrat font-bold text-[32px] leading-10 text-primary mb-6">
+              Calculadora de Peso y Medidas
+            </h2>
+            <p className="text-secondary mb-8">
+              Calcula con exactitud el peso teórico de tus materiales según dimensiones
+              y aleaciones. Optimiza tu logística y presupuesto con datos técnicos precisos.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="bg-primary text-white p-2 rounded-lg">
+                  <span className="material-symbols-outlined">precision_manufacturing</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary">Precisión Milimétrica</h4>
+                  <p className="text-sm text-secondary">Basado en densidades industriales certificadas.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="bg-primary text-white p-2 rounded-lg">
+                  <span className="material-symbols-outlined">history</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary">Historial de Cálculos</h4>
+                  <p className="text-sm text-secondary">Guarda tus cotizaciones rápidas en tu cuenta.</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="w-full lg:w-1/2">
             <WeightCalculator />
           </div>
         </div>
       </section>
 
-      {/* PRODUCTOS DESTACADOS */}
-      <section className="max-w-container mx-auto px-10 py-16">
-        <h2 className="font-montserrat font-bold text-2xl text-primary-container uppercase tracking-tight mb-8">
-          Más Solicitados
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {featuredProducts.map((product) => (
-            <Link
-              key={product.sku}
-              href={`/catalogo/${product.slug}`}
-              className="group bg-white border border-outline-variant rounded-lg p-4 hover:shadow-card-hover transition-all"
-            >
-              {/* Image placeholder */}
-              <div className="relative h-40 bg-surface-low rounded-md mb-4 overflow-hidden flex items-center justify-center">
-                <span className="text-4xl text-on-surface-variant/20">⬡</span>
-                {product.badge && (
-                  <span className="absolute top-2 left-2 bg-on-tertiary-container text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-full">
-                    {product.badge}
-                  </span>
-                )}
+      {/* COMPRAS EMPRESARIALES (stitch) */}
+      <section className="bg-primary py-24">
+        <div className="px-10 max-w-container mx-auto overflow-hidden">
+          <div className="bg-primary-container border border-outline p-12 lg:p-20 relative">
+            <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
+              <span className="material-symbols-outlined text-[200px] text-white">corporate_fare</span>
+            </div>
+            <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-white font-montserrat font-bold text-[32px] leading-10 mb-6">
+                  Compras Empresariales
+                </h2>
+                <p className="text-on-primary-container text-lg mb-10">
+                  Optimizamos la cadena de suministro para su empresa. Acceda a precios
+                  por volumen, líneas de crédito exclusivas y un gestor de cuenta dedicado.
+                </p>
+                <div className="grid grid-cols-2 gap-6 mb-10">
+                  {b2bBenefits.map((benefit) => (
+                    <div key={benefit} className="flex items-center gap-3">
+                      <span className="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+                      <span className="text-white font-medium">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  href="/registro"
+                  className="inline-flex bg-on-tertiary-container text-white text-sm font-bold uppercase px-12 py-4 shadow-xl hover:-translate-y-0.5 transition-all"
+                >
+                  Abrir Cuenta Corporativa
+                </Link>
               </div>
-              <p className="text-[10px] font-semibold uppercase tracking-[2px] text-on-surface-variant mb-1">
-                {product.grade}
-              </p>
-              <h3 className="font-montserrat font-bold text-primary-container text-lg mb-2 group-hover:text-on-tertiary-container transition-colors">
-                {product.name}
-              </h3>
-              <div className="flex items-baseline justify-between">
-                <span className="text-on-tertiary-container font-bold text-lg">
-                  ${product.price}
-                </span>
-                <span className="text-xs text-on-surface-variant">MXN/{product.unit}</span>
+              <div className="grid grid-cols-2 gap-4">
+                <div
+                  className="h-48 bg-cover bg-center border border-outline"
+                  style={{ backgroundImage: "url('/images/home/b2b-cascos.jpg')" }}
+                />
+                <div
+                  className="h-48 bg-cover bg-center border border-outline mt-8"
+                  style={{ backgroundImage: "url('/images/home/b2b-logistica.jpg')" }}
+                />
+                <div
+                  className="h-48 bg-cover bg-center border border-outline -mt-8"
+                  style={{ backgroundImage: "url('/images/home/b2b-handshake.jpg')" }}
+                />
+                <div
+                  className="h-48 bg-cover bg-center border border-outline"
+                  style={{ backgroundImage: "url('/images/home/b2b-bobinas.jpg')" }}
+                />
               </div>
-            </Link>
-          ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* CLIENTES EMPRESARIALES */}
-      <section className="bg-primary text-white">
-        <div className="max-w-container mx-auto px-10 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[4px] text-on-tertiary-container mb-4">
-                Portal B2B
-              </p>
-              <h2 className="font-montserrat font-bold text-3xl tracking-tight mb-6">
-                ¿Compras en Volumen?
-              </h2>
-              <p className="text-on-primary-container/80 mb-8">
-                Registra tu empresa y accede a precios especiales, crédito a 30-60-90 días
-                y atención personalizada de un asesor dedicado.
-              </p>
-              <Link
-                href="/registro"
-                className="inline-flex bg-on-tertiary-container text-white text-sm font-bold uppercase tracking-wide px-8 py-3.5 rounded-lg hover:brightness-110 active:scale-95 transition-all"
-              >
-                Registrar mi empresa
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: '💰', title: 'Precios por volumen', desc: 'Descuentos automáticos según tu nivel' },
-                { icon: '🏢', title: 'Portal empresarial', desc: 'Historial, cotizaciones y facturas' },
-                { icon: '📅', title: 'Crédito 30-60-90', desc: 'Línea de crédito para tu empresa' },
-                { icon: '🧾', title: 'Facturas CFDI', desc: 'Facturación automática al instante' },
-              ].map((item) => (
-                <div key={item.title} className="bg-white/5 border border-white/10 rounded-lg p-5">
-                  <span className="text-2xl mb-2 block">{item.icon}</span>
-                  <h3 className="font-bold text-sm mb-1">{item.title}</h3>
-                  <p className="text-xs text-on-primary-container/60">{item.desc}</p>
+      {/* CONFIANZA (stitch) */}
+      <section className="py-24 bg-surface px-10">
+        <div className="max-w-container mx-auto">
+          <div className="grid md:grid-cols-3 gap-16">
+            {trustItems.map((item) => (
+              <div key={item.title} className="text-center group">
+                <div className="w-20 h-20 bg-surface-container mx-auto flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <span className="material-symbols-outlined text-4xl">{item.icon}</span>
                 </div>
-              ))}
-            </div>
+                <h3 className="font-montserrat font-semibold text-xl text-primary mb-3">{item.title}</h3>
+                <p className="text-secondary">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
