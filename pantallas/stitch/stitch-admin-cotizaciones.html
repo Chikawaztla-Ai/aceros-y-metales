@@ -1,0 +1,395 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Bandeja de Cotizaciones | Aceros y Metales Urgentes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#cfe5ff",
+                    "on-secondary-fixed-variant": "#34495e",
+                    "on-primary-fixed-variant": "#36485b",
+                    "tertiary-fixed": "#ffdcc5",
+                    "primary": "#162839",
+                    "surface-dim": "#d8dadc",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-surface": "#191c1e",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#051d30",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-primary-fixed": "#091d2e",
+                    "outline-variant": "#c4c6cd",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#43474c",
+                    "on-tertiary-fixed": "#301400",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed-dim": "#b3c9e2",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#2c3e50",
+                    "tertiary": "#411d00",
+                    "surface-bright": "#f7f9fb",
+                    "primary-fixed-dim": "#b5c8df",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#50657b",
+                    "tertiary-container": "#612f00",
+                    "surface-container": "#eceef0",
+                    "inverse-primary": "#b5c8df",
+                    "secondary": "#4b6076",
+                    "primary-fixed": "#d1e4fb",
+                    "surface-tint": "#4e6073",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "on-background": "#191c1e",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-container": "#f78b30",
+                    "outline": "#74777d",
+                    "background": "#f7f9fb",
+                    "secondary-container": "#cce2fc",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-high": "#e6e8ea",
+                    "on-primary-container": "#96a9be"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "mono-data": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #162839; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2c3e50; }
+        
+        /* Zebra striping for technical tables as per guidelines */
+        .technical-table tr:nth-child(even) { background-color: #f7f9fb; }
+        .technical-table tr:nth-child(odd) { background-color: #ffffff; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-hidden h-screen flex flex-col">
+<!-- TopAppBar Shell (Manual Reconstruction from JSON) -->
+<header class="bg-surface border-b border-outline-variant h-20 flex items-center z-20">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-headline-md font-headline-md font-bold text-primary uppercase tracking-tight">Aceros y Metales Urgentes</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Steels</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Aluminum</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Non-ferrous</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Machinery</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2 w-64 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search orders..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-2 text-on-surface-variant">search</span>
+</div>
+<button class="flex items-center gap-2 bg-on-tertiary-container text-white px-4 py-2 rounded-lg font-bold hover:opacity-90 transition-all uppercase text-label-md">
+<span class="material-symbols-outlined">message</span>
+                    WhatsApp CTA
+                </button>
+<button class="p-2 text-primary hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar Shell (Manual Reconstruction from JSON) -->
+<aside class="bg-surface-container-low border-r border-outline-variant h-full w-64 flex flex-col gap-unit p-4 shrink-0 overflow-y-auto">
+<div class="mb-6 px-4">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">filter_list</span>
+</div>
+<div>
+<h2 class="text-primary font-bold font-headline-md text-headline-md leading-tight">Specifications</h2>
+<p class="text-on-surface-variant text-label-md font-label-md">Refine Search</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high px-4 py-3 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">category</span>
+                    Material Type
+                </a>
+<!-- Active Item: Cotizaciones / Requests -->
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container font-bold rounded-xl px-4 py-3 translate-x-1 transition-transform font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+                    Cotizaciones
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high px-4 py-3 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">grade</span>
+                    Grade
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high px-4 py-3 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">straighten</span>
+                    Dimensions
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high px-4 py-3 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Availability
+                </a>
+</nav>
+<div class="mt-auto pt-6 px-2">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-bold uppercase tracking-wider hover:bg-primary-container transition-colors shadow-sm font-label-md text-label-md">
+                    Apply Filters
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col bg-surface overflow-hidden">
+<!-- Content Header -->
+<header class="px-margin-desktop py-8 border-b border-outline-variant flex justify-between items-end">
+<div>
+<nav class="flex gap-2 text-on-surface-variant mb-2 font-label-md text-label-md">
+<span>Admin</span>
+<span>/</span>
+<span class="text-primary font-bold">Cotizaciones</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Bandeja de Cotizaciones</h1>
+<p class="text-on-surface-variant font-body-md mt-1">Gestión administrativa de solicitudes de materiales industriales pendientes.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high border border-outline-variant px-6 py-3 rounded-lg flex items-center gap-6">
+<div class="text-center">
+<span class="block text-primary font-bold text-headline-md">24</span>
+<span class="text-label-md text-on-surface-variant uppercase">Pendientes</span>
+</div>
+<div class="w-px h-8 bg-outline-variant"></div>
+<div class="text-center">
+<span class="block text-error font-bold text-headline-md">3h</span>
+<span class="text-label-md text-on-surface-variant uppercase">T. de Respuesta</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Table Container -->
+<div class="flex-1 overflow-y-auto px-margin-desktop py-8">
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left technical-table border-collapse">
+<thead class="bg-primary text-on-primary font-headline-md text-label-md uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4 font-bold">Quote ID</th>
+<th class="px-6 py-4 font-bold">Prospect / Company</th>
+<th class="px-6 py-4 font-bold">Date</th>
+<th class="px-6 py-4 font-bold">Request Summary</th>
+<th class="px-6 py-4 font-bold">Est. Value</th>
+<th class="px-6 py-4 font-bold text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono-data text-mono-data text-primary">#QT-2024-8841</td>
+<td class="px-6 py-5">
+<span class="block font-bold text-primary">Industrias Metalmecánicas S.A.</span>
+<span class="text-on-surface-variant text-label-md italic">Ing. Ricardo Soria</span>
+</td>
+<td class="px-6 py-5 font-mono-data text-mono-data text-on-surface-variant">22/05/2024</td>
+<td class="px-6 py-5 max-w-xs">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Steel 1018</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[11px] font-bold uppercase">Urgente</span>
+</div>
+<p class="text-on-surface-variant text-label-md truncate">12 Barras de acero al carbón estirado en frío, 2.5 pulg...</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-bold text-primary font-mono-data">$4,250.00 USD</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center gap-2 opacity-100 group-hover:opacity-100 transition-opacity">
+<button class="p-2 bg-on-tertiary-container text-white rounded hover:scale-105 active:scale-95 transition-all" title="Responder">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+<button class="p-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-all" title="Asignar Ejecutivo">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</button>
+<button class="p-2 border border-error text-error rounded hover:bg-error hover:text-white transition-all" title="Rechazar">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono-data text-mono-data text-primary">#QT-2024-8845</td>
+<td class="px-6 py-5">
+<span class="block font-bold text-primary">Constructora del Bajío</span>
+<span class="text-on-surface-variant text-label-md italic">Arq. Elena Pardo</span>
+</td>
+<td class="px-6 py-5 font-mono-data text-mono-data text-on-surface-variant">22/05/2024</td>
+<td class="px-6 py-5 max-w-xs">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">H-Beams</span>
+</div>
+<p class="text-on-surface-variant text-label-md truncate">50 Vigas tipo H de 8" x 20ft para estructura industrial...</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-bold text-primary font-mono-data">$18,700.00 USD</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center gap-2">
+<button class="p-2 bg-on-tertiary-container text-white rounded hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+<button class="p-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</button>
+<button class="p-2 border border-error text-error rounded hover:bg-error hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono-data text-mono-data text-primary">#QT-2024-8848</td>
+<td class="px-6 py-5">
+<span class="block font-bold text-primary">Maquinados Tepic</span>
+<span class="text-on-surface-variant text-label-md italic">C.P. Mario Lopez</span>
+</td>
+<td class="px-6 py-5 font-mono-data text-mono-data text-on-surface-variant">21/05/2024</td>
+<td class="px-6 py-5 max-w-xs">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Bronze</span>
+<span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded text-[11px] font-bold uppercase">Recurring</span>
+</div>
+<p class="text-on-surface-variant text-label-md truncate">Bronce SAE 64 sólido, corte a medida 12 unidades...</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-bold text-primary font-mono-data">$890.00 USD</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center gap-2">
+<button class="p-2 bg-on-tertiary-container text-white rounded hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+<button class="p-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</button>
+<button class="p-2 border border-error text-error rounded hover:bg-error hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono-data text-mono-data text-primary">#QT-2024-8851</td>
+<td class="px-6 py-5">
+<span class="block font-bold text-primary">AutoParts Globals</span>
+<span class="text-on-surface-variant text-label-md italic">Daniela Ruiz</span>
+</td>
+<td class="px-6 py-5 font-mono-data text-mono-data text-on-surface-variant">21/05/2024</td>
+<td class="px-6 py-5 max-w-xs">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Aluminum 6061</span>
+</div>
+<p class="text-on-surface-variant text-label-md truncate">Placa de aluminio 6061-T651, 1/2 pulgada de espesor...</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-bold text-primary font-mono-data">$2,145.00 USD</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center gap-2">
+<button class="p-2 bg-on-tertiary-container text-white rounded hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+<button class="p-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</button>
+<button class="p-2 border border-error text-error rounded hover:bg-error hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Dashboard Background Ambient Effect (Micro-interaction) -->
+<div class="absolute bottom-10 right-10 pointer-events-none opacity-5 select-none">
+<span class="text-[120px] font-extrabold uppercase tracking-tighter text-primary leading-none">STRUCTURAL</span>
+</div>
+</main>
+</div>
+<!-- Footer Shell (Manual Reconstruction from JSON) -->
+<footer class="bg-primary border-t-4 border-tertiary-container z-30 shrink-0">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-8 w-full max-w-container-max mx-auto text-on-primary">
+<div class="col-span-1">
+<span class="text-headline-md font-headline-md font-bold text-on-primary block mb-2 uppercase">AMU Industrial</span>
+<p class="text-label-md opacity-80">Industrial Structuralist Design System v2.0</p>
+</div>
+<div class="col-span-2 flex gap-8 items-center">
+<a class="text-on-primary-container hover:text-on-primary transition-colors text-label-md" href="#">Shipping</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors text-label-md" href="#">Billing</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors text-label-md" href="#">Returns</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors text-label-md" href="#">Certifications</a>
+<a class="text-on-primary-container hover:text-on-primary transition-colors text-label-md" href="#">Contact</a>
+</div>
+<div class="col-span-1 text-right">
+<p class="text-label-md font-label-md text-on-primary-container">© 2024 Aceros y Metales Urgentes.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', function(e) {
+                // If it wasn't a button click, highlight the row
+                if (!e.target.closest('button')) {
+                    this.classList.toggle('bg-primary-fixed');
+                }
+            });
+        });
+    </script>
+</body></html>
