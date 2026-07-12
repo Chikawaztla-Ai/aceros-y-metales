@@ -89,6 +89,56 @@
   background-size: 40px 40px;
 }
 
+/* ============================================================
+   Micro-animaciones (DESIGN-SYSTEM §8 + stitch 404)
+   ============================================================ */
+
+/* Engrane roto de la 404 — tiembla sutilmente en loop */
+@keyframes tremor {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+}
+.animate-tremor {
+  animation: tremor 4s ease-in-out infinite;
+}
+
+/* Chispas doradas de la 404 */
+.spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #f5c842;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes spark-fly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--spark-x), var(--spark-y)) scale(0); opacity: 0; }
+}
+
+/* Reveal al hacer scroll — fade + subida sutil */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-tremor {
+    animation: none;
+  }
+}
+
 /* Font families via CSS custom properties */
 .font-montserrat {
   font-family: var(--font-montserrat), 'Montserrat', sans-serif;

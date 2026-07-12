@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useCartStore, type CartItem } from '@/store/carrito';
 import { formatMXN } from '@/lib/pricing';
+import { useCountUp } from '@/lib/use-count-up';
 
 export interface BuyBoxProduct {
   id: string;
@@ -31,6 +32,7 @@ export function BuyBox({ product }: { product: BuyBoxProduct }) {
   const [added, setAdded] = useState(false);
 
   const subtotal = product.price * (qty || 0);
+  const animatedSubtotal = useCountUp(subtotal);
   const inStock = product.inStock ?? true;
 
   function handleAdd() {
@@ -116,8 +118,8 @@ export function BuyBox({ product }: { product: BuyBoxProduct }) {
       <div>
         <p className="text-xs text-on-surface-variant">Subtotal (sin IVA):</p>
         <div className="flex items-baseline gap-2">
-          <span className="font-montserrat font-bold text-2xl text-on-tertiary-container">
-            {formatMXN(subtotal)}
+          <span className="font-montserrat font-bold text-2xl text-on-tertiary-container tabular-nums">
+            {formatMXN(animatedSubtotal)}
           </span>
           <span className="text-sm text-on-surface-variant">
             {formatMXN(product.price)}/{UNIT_TABS.find((t) => t.value === unitType)?.short}

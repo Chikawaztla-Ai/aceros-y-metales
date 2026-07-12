@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { WeightCalculator } from '@/components/calculadora/weight-calculator';
+import { Reveal } from '@/components/shared/reveal';
 
 const categories = [
   {
@@ -188,9 +189,9 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
+          {categories.map((cat, i) => (
+            <Reveal key={cat.slug} delay={i * 100}>
             <Link
-              key={cat.slug}
               href={`/catalogo?cat=${cat.slug}`}
               className="group cursor-pointer relative overflow-hidden h-[400px] border border-outline-variant block"
             >
@@ -208,6 +209,7 @@ export default function HomePage() {
                 </span>
               </div>
             </Link>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -224,9 +226,9 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
+            {featuredProducts.map((product, i) => (
+              <Reveal key={product.slug} delay={i * 100}>
               <div
-                key={product.slug}
                 className="bg-white border border-outline-variant group hover:shadow-xl transition-shadow duration-300"
               >
                 <Link href={`/catalogo/${product.slug}`} className="block h-56 relative overflow-hidden border-b border-outline-variant">
@@ -270,6 +272,7 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -278,7 +281,8 @@ export default function HomePage() {
       {/* CALCULADORA DE PESO (stitch) */}
       <section id="calculadora" className="py-24 px-10 scroll-mt-20">
         <div className="max-w-container mx-auto flex flex-col lg:flex-row gap-16 items-center">
-          <div className="w-full lg:w-1/2">
+          <Reveal className="w-full lg:w-1/2">
+          <div>
             <span className="text-on-tertiary-container font-bold uppercase tracking-widest text-sm block mb-2">
               Herramientas de Precisión
             </span>
@@ -310,15 +314,17 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2">
+          </Reveal>
+          <Reveal className="w-full lg:w-1/2" delay={150}>
             <WeightCalculator />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* COMPRAS EMPRESARIALES (stitch) */}
       <section className="bg-primary py-24">
         <div className="px-10 max-w-container mx-auto overflow-hidden">
+          <Reveal>
           <div className="bg-primary-container border border-outline p-12 lg:p-20 relative">
             <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
               <span className="material-symbols-outlined text-[200px] text-white">corporate_fare</span>
@@ -367,6 +373,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
@@ -374,14 +381,16 @@ export default function HomePage() {
       <section className="py-24 bg-surface px-10">
         <div className="max-w-container mx-auto">
           <div className="grid md:grid-cols-3 gap-16">
-            {trustItems.map((item) => (
-              <div key={item.title} className="text-center group">
+            {trustItems.map((item, i) => (
+              <Reveal key={item.title} delay={i * 120}>
+              <div className="text-center group">
                 <div className="w-20 h-20 bg-surface-container mx-auto flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <span className="material-symbols-outlined" style={{ fontSize: 36 }}>{item.icon}</span>
                 </div>
                 <h3 className="font-montserrat font-semibold text-xl text-primary mb-3">{item.title}</h3>
                 <p className="text-secondary">{item.desc}</p>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>

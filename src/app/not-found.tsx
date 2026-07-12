@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { Bebas_Neue, JetBrains_Mono } from 'next/font/google';
 import { Header } from '@/components/shared/header';
@@ -21,6 +22,47 @@ const OUTLINE = '#807662';
 
 export default function NotFound() {
   const pathname = usePathname();
+  const sparkContainerRef = useRef<HTMLDivElement>(null);
+
+  // Chispas doradas (stitch 404): brotan periódicamente del centro del
+  // engrane y en ráfaga al pasar el mouse.
+  useEffect(() => {
+    const container = sparkContainerRef.current;
+    if (!container) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function createSpark() {
+      if (!container) return;
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      const rect = container.getBoundingClientRect();
+      spark.style.left = `${rect.width / 2}px`;
+      spark.style.top = `${rect.height / 2}px`;
+      const tx = (Math.random() - 0.5) * 200;
+      const ty = (Math.random() - 0.5) * 200;
+      spark.style.setProperty('--spark-x', `${tx}px`);
+      spark.style.setProperty('--spark-y', `${ty}px`);
+      spark.style.animation = `spark-fly ${0.5 + Math.random()}s cubic-bezier(0, 0.9, 0.57, 1) forwards`;
+      container.appendChild(spark);
+      setTimeout(() => spark.remove(), 1500);
+    }
+
+    const interval = setInterval(() => {
+      if (Math.random() > 0.7) {
+        for (let i = 0; i < 3; i++) createSpark();
+      }
+    }, 800);
+
+    const burst = () => {
+      for (let i = 0; i < 10; i++) setTimeout(createSpark, i * 50);
+    };
+    container.parentElement?.addEventListener('mouseenter', burst);
+
+    return () => {
+      clearInterval(interval);
+      container.parentElement?.removeEventListener('mouseenter', burst);
+    };
+  }, []);
 
   return (
     <>
@@ -40,7 +82,7 @@ export default function NotFound() {
           <div className="flex justify-center md:justify-end">
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
+                <div className="relative animate-tremor">
                   <span
                     className="material-symbols-outlined select-none"
                     style={{
@@ -61,6 +103,8 @@ export default function NotFound() {
                   </span>
                 </div>
               </div>
+              {/* Capa de chispas */}
+              <div ref={sparkContainerRef} className="absolute inset-0 pointer-events-none overflow-visible" />
 
               {/* Callouts técnicos */}
               <div

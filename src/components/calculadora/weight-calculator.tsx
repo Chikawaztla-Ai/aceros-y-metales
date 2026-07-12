@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import { calcWeight, formatWeight, DENSITIES, type Profile } from '@/lib/weight-calculator';
+import { useCountUp } from '@/lib/use-count-up';
 
 const materials = Object.keys(DENSITIES).map((key) => ({
   value: key,
@@ -36,6 +37,7 @@ export function WeightCalculator() {
     const dims = { d, a, b, wall };
     return calcWeight(material, profile, dims, length, qty);
   }, [material, profile, d, a, b, wall, length, qty]);
+  const animatedWeight = useCountUp(weight);
 
   const needsD = profile === 'redondo' || profile === 'tubo';
   const needsA = profile === 'cuadrado' || profile === 'solera' || profile === 'placa' || profile === 'hexagonal';
@@ -125,8 +127,8 @@ export function WeightCalculator() {
         {/* Resultado — barra oscura estilo stitch */}
         <div className="bg-primary p-6 flex items-center justify-between">
           <span className="text-white/70 text-sm font-medium">Peso Estimado:</span>
-          <span className="font-montserrat text-white text-xl font-bold">
-            {formatWeight(weight)}
+          <span className="font-montserrat text-white text-xl font-bold tabular-nums">
+            {formatWeight(animatedWeight)}
           </span>
         </div>
 
