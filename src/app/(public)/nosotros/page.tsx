@@ -177,7 +177,7 @@ export default function NosotrosPage() {
                   }`}
                 >
                   <span
-                    className={`material-symbols-outlined ${v.dark ? 'text-white' : 'text-primary-container group-hover:text-white'}`}
+                    className={`material-symbols-outlined ${v.dark ? 'text-white' : 'text-primary-container group-hover:text-white'} text-[24px]`}
                     style={{ fontVariationSettings: "'FILL' 1" }}
                   >
                     {v.icon}
@@ -209,7 +209,7 @@ export default function NosotrosPage() {
             <ul className="space-y-6">
               {infraestructura.map((item) => (
                 <li key={item.title} className="flex items-start gap-4">
-                  <span className="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+                  <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">check_circle</span>
                   <div>
                     <h4 className="font-bold uppercase text-sm">{item.title}</h4>
                     <p className="text-on-primary-container mt-1">{item.desc}</p>
@@ -239,7 +239,7 @@ export default function NosotrosPage() {
       <section className="py-12 px-10 bg-surface-low border-y border-outline-variant">
         <div className="max-w-container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-4">
-            <span className="material-symbols-outlined text-primary text-[40px]">verified_user</span>
+            <span className="material-symbols-outlined text-primary" style={{ fontSize: 40 }}>verified_user</span>
             <div>
               <h5 className="font-montserrat font-bold text-lg text-primary uppercase">Certificaciones ISO</h5>
               <p className="text-sm text-on-surface-variant">Estándares internacionales de gestión y calidad.</p>

@@ -113,7 +113,7 @@ export default function MisDireccionesPage() {
                   addr.isDefault ? 'bg-primary/10' : 'bg-on-surface-variant/5'
                 }`}
               >
-                <span className={`material-symbols-outlined ${addr.isDefault ? 'text-primary' : 'text-on-surface-variant'}`}>
+                <span className={`material-symbols-outlined ${addr.isDefault ? 'text-primary' : 'text-on-surface-variant'} text-[24px]`}>
                   {addr.icon}
                 </span>
               </div>
@@ -153,7 +153,7 @@ export default function MisDireccionesPage() {
           className="group border-2 border-dashed border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center gap-4 hover:border-primary hover:bg-primary/5 transition-all min-h-[220px]"
         >
           <div className="w-16 h-16 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-all">
-            <span className="material-symbols-outlined text-2xl text-outline-variant group-hover:text-primary">
+            <span className="material-symbols-outlined text-outline-variant group-hover:text-primary" style={{ fontSize: 24 }}>
               add_location
             </span>
           </div>
@@ -166,7 +166,7 @@ export default function MisDireccionesPage() {
       {/* Banner logístico */}
       <div className="p-6 bg-primary rounded-xl flex flex-col md:flex-row items-center gap-6">
         <div className="w-14 h-14 rounded-full bg-on-tertiary-container flex items-center justify-center shrink-0">
-          <span className="material-symbols-outlined text-white text-[32px]">local_shipping</span>
+          <span className="material-symbols-outlined text-white" style={{ fontSize: 32 }}>local_shipping</span>
         </div>
         <div className="flex-grow">
           <h4 className="text-sm font-bold text-on-tertiary-container uppercase mb-1">Optimización Logística</h4>
@@ -195,7 +195,7 @@ export default function MisDireccionesPage() {
                 className="text-white hover:text-on-tertiary-container transition-colors"
                 aria-label="Cerrar"
               >
-                <span className="material-symbols-outlined">close</span>
+                <span className="material-symbols-outlined text-[24px]">close</span>
               </button>
             </div>
             <form onSubmit={handleCreate} className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">

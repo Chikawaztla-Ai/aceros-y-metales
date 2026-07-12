@@ -132,7 +132,7 @@ export function BuyBox({ product }: { product: BuyBoxProduct }) {
         disabled={!inStock}
         className="w-full bg-on-tertiary-container text-white text-sm font-bold uppercase tracking-wide py-4 rounded-lg hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
       >
-        <span className="material-symbols-outlined">shopping_cart</span>
+        <span className="material-symbols-outlined text-[24px]">shopping_cart</span>
         {added ? 'Agregado ✓' : inStock ? 'Agregar al carrito' : 'Sin stock'}
       </button>
       <Link

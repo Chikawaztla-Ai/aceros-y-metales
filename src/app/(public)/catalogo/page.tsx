@@ -94,7 +94,7 @@ function CatalogoContent() {
           <div className="flex flex-col p-6">
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-2">
-                <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <span className="material-symbols-outlined text-primary text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                   filter_list
                 </span>
                 <h2 className="font-montserrat font-semibold text-xl text-primary">Filtros</h2>
@@ -160,7 +160,7 @@ function CatalogoContent() {
                             : 'border-outline-variant/40 text-on-surface-variant hover:bg-surface-high'
                         )}
                       >
-                        <span className="material-symbols-outlined">{shape.icon}</span>
+                        <span className="material-symbols-outlined text-[24px]">{shape.icon}</span>
                         <span>{shape.label}</span>
                       </button>
                     );
@@ -211,7 +211,7 @@ function CatalogoContent() {
                   view === 'grid' ? 'border-primary bg-primary text-white' : 'border-outline-variant bg-white text-primary'
                 )}
               >
-                <span className="material-symbols-outlined">grid_view</span>
+                <span className="material-symbols-outlined text-[24px]">grid_view</span>
               </button>
               <button
                 onClick={() => setView('list')}
@@ -221,14 +221,14 @@ function CatalogoContent() {
                   view === 'list' ? 'border-primary bg-primary text-white' : 'border-outline-variant bg-white text-primary'
                 )}
               >
-                <span className="material-symbols-outlined">list</span>
+                <span className="material-symbols-outlined text-[24px]">list</span>
               </button>
             </div>
           </div>
 
           {filtered.length === 0 ? (
             <div className="text-center py-20 bg-white border border-outline-variant/40">
-              <span className="material-symbols-outlined text-[48px] text-on-surface-variant/30 mb-4">search_off</span>
+              <span className="material-symbols-outlined text-on-surface-variant/30 mb-4" style={{ fontSize: 48 }}>search_off</span>
               <p className="text-lg font-bold text-primary mb-2">Sin resultados</p>
               <p className="text-sm text-on-surface-variant mb-4">
                 No encontramos materiales con esos filtros.
@@ -366,7 +366,7 @@ function CatalogoContent() {
                 className="p-2 border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-40"
                 disabled
               >
-                <span className="material-symbols-outlined">chevron_left</span>
+                <span className="material-symbols-outlined text-[24px]">chevron_left</span>
               </button>
               <button className="w-10 h-10 border border-primary bg-primary text-white font-bold">1</button>
               <button
@@ -374,7 +374,7 @@ function CatalogoContent() {
                 className="p-2 border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-40"
                 disabled
               >
-                <span className="material-symbols-outlined">chevron_right</span>
+                <span className="material-symbols-outlined text-[24px]">chevron_right</span>
               </button>
             </div>
           )}

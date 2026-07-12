@@ -90,7 +90,7 @@ export default function AdminDashboard() {
         <h1 className="font-montserrat font-semibold text-2xl text-on-surface uppercase">Dashboard</h1>
         <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center bg-surface-low px-4 py-2 rounded border border-outline-variant">
-            <span className="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+            <span className="material-symbols-outlined text-on-surface-variant mr-2 text-[24px]">search</span>
             <input
               type="text"
               placeholder="Buscar pedido o material..."
@@ -188,7 +188,7 @@ export default function AdminDashboard() {
             <div className="bg-white p-6 rounded border border-outline-variant">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-montserrat font-semibold text-[20px] text-on-surface uppercase">Stock Bajo</h3>
-                <span className="material-symbols-outlined text-error">warning</span>
+                <span className="material-symbols-outlined text-error text-[24px]">warning</span>
               </div>
               <div className="space-y-5">
                 {lowStock.map((item) => (
@@ -209,7 +209,7 @@ export default function AdminDashboard() {
             <div className="bg-white p-6 rounded border border-outline-variant">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-montserrat font-semibold text-[20px] text-on-surface uppercase">Cotizaciones</h3>
-                <span className="material-symbols-outlined text-on-tertiary-container">pending_actions</span>
+                <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">pending_actions</span>
               </div>
               <div className="space-y-4">
                 {pendingQuotes.map((q) => (

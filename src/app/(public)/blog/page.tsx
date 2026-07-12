@@ -27,7 +27,7 @@ export default function BlogPage() {
             estratégica para la industria metalmecánica.
           </p>
           <div className="max-w-xl mx-auto relative">
-            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[24px]">
               search
             </span>
             <input
@@ -69,7 +69,7 @@ export default function BlogPage() {
               <p className="text-on-surface-variant mb-6 line-clamp-3">{featured.excerpt}</p>
               <div className="flex items-center text-primary font-bold uppercase text-sm group-hover:translate-x-2 transition-transform">
                 Leer artículo completo
-                <span className="material-symbols-outlined ml-2">arrow_forward</span>
+                <span className="material-symbols-outlined ml-2 text-[24px]">arrow_forward</span>
               </div>
             </div>
           </Link>
@@ -109,7 +109,7 @@ export default function BlogPage() {
               disabled
               aria-label="Anterior"
             >
-              <span className="material-symbols-outlined">chevron_left</span>
+              <span className="material-symbols-outlined text-[24px]">chevron_left</span>
             </button>
             <button className="w-12 h-12 flex items-center justify-center border border-primary bg-primary text-white font-bold">
               1
@@ -119,7 +119,7 @@ export default function BlogPage() {
               disabled
               aria-label="Siguiente"
             >
-              <span className="material-symbols-outlined">chevron_right</span>
+              <span className="material-symbols-outlined text-[24px]">chevron_right</span>
             </button>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function BlogPage() {
             {/* Categorías */}
             <section className="bg-white border border-outline-variant p-8">
               <h4 className="font-montserrat font-semibold text-xl text-primary mb-6 flex items-center">
-                <span className="material-symbols-outlined mr-3">category</span> Categorías
+                <span className="material-symbols-outlined mr-3 text-[24px]">category</span> Categorías
               </h4>
               <ul className="space-y-4">
                 {categories.map((cat) => (

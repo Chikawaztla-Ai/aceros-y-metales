@@ -69,7 +69,7 @@ export function Header() {
           <Link
             href="/#calculadora"
             aria-label="Calculadora de peso"
-            className="material-symbols-outlined text-on-primary-container/80 hover:text-on-tertiary-container transition-colors"
+            className="material-symbols-outlined text-on-primary-container/80 hover:text-on-tertiary-container transition-colors text-[24px]"
           >
             calculate
           </Link>
@@ -79,7 +79,7 @@ export function Header() {
           <Link
             href="/login"
             aria-label="Mi cuenta"
-            className="material-symbols-outlined text-on-primary-container/80 hover:text-on-tertiary-container transition-colors"
+            className="material-symbols-outlined text-on-primary-container/80 hover:text-on-tertiary-container transition-colors text-[24px]"
           >
             account_circle
           </Link>

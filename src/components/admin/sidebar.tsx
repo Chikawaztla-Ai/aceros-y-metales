@@ -44,7 +44,7 @@ export function AdminSidebar() {
               )}
             >
               <span
-                className="material-symbols-outlined group-hover:text-on-tertiary-container"
+                className="material-symbols-outlined group-hover:text-on-tertiary-container text-[24px]"
                 style={active ? { fontVariationSettings: "'FILL' 1" } : undefined}
               >
                 {item.icon}
@@ -65,7 +65,7 @@ export function AdminSidebar() {
             <span className="text-sm font-bold text-white leading-none truncate">Carlos Mendoza</span>
             <span className="text-[10px] text-on-primary-container uppercase mt-1 font-semibold">Administrador</span>
           </div>
-          <span className="material-symbols-outlined text-on-primary-container ml-auto">more_vert</span>
+          <span className="material-symbols-outlined text-on-primary-container ml-auto text-[24px]">more_vert</span>
         </div>
       </div>
     </aside>

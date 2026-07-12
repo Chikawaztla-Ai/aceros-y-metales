@@ -42,7 +42,7 @@ export default function CarritoPage() {
   if (items.length === 0) {
     return (
       <div className="max-w-container mx-auto px-10 py-20 text-center min-h-[50vh]">
-        <span className="material-symbols-outlined text-[56px] text-on-surface-variant/30 mb-4">
+        <span className="material-symbols-outlined text-on-surface-variant/30 mb-4" style={{ fontSize: 56 }}>
           shopping_cart
         </span>
         <h1 className="font-montserrat font-bold text-2xl text-primary mb-2">
@@ -164,7 +164,7 @@ export default function CarritoPage() {
                       className="text-outline hover:text-error transition-colors"
                       aria-label="Eliminar"
                     >
-                      <span className="material-symbols-outlined">delete</span>
+                      <span className="material-symbols-outlined text-[24px]">delete</span>
                     </button>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ export default function CarritoPage() {
               href="/catalogo"
               className="flex items-center gap-2 text-primary hover:underline text-sm font-semibold"
             >
-              <span className="material-symbols-outlined">arrow_back</span>
+              <span className="material-symbols-outlined text-[24px]">arrow_back</span>
               Continuar comprando
             </Link>
           </div>
@@ -251,7 +251,7 @@ export default function CarritoPage() {
                 className="w-full bg-on-tertiary-container text-white text-sm font-bold uppercase py-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all"
               >
                 Proceder al pago
-                <span className="material-symbols-outlined">arrow_forward</span>
+                <span className="material-symbols-outlined text-[24px]">arrow_forward</span>
               </Link>
               <Link
                 href="/cotizacion"
@@ -264,19 +264,19 @@ export default function CarritoPage() {
             {/* Íconos de confianza (stitch) */}
             <div className="mt-8 pt-6 border-t border-outline-variant grid grid-cols-3 gap-4">
               <div className="flex flex-col items-center text-center gap-2">
-                <span className="material-symbols-outlined text-secondary">verified_user</span>
+                <span className="material-symbols-outlined text-secondary text-[24px]">verified_user</span>
                 <span className="text-[10px] font-bold text-on-surface-variant uppercase leading-tight">
                   Seguridad Certificada
                 </span>
               </div>
               <div className="flex flex-col items-center text-center gap-2">
-                <span className="material-symbols-outlined text-secondary">local_shipping</span>
+                <span className="material-symbols-outlined text-secondary text-[24px]">local_shipping</span>
                 <span className="text-[10px] font-bold text-on-surface-variant uppercase leading-tight">
                   Envío Express
                 </span>
               </div>
               <div className="flex flex-col items-center text-center gap-2">
-                <span className="material-symbols-outlined text-secondary">description</span>
+                <span className="material-symbols-outlined text-secondary text-[24px]">description</span>
                 <span className="text-[10px] font-bold text-on-surface-variant uppercase leading-tight">
                   Certificaciones
                 </span>
@@ -287,7 +287,7 @@ export default function CarritoPage() {
           {/* Ayuda técnica (stitch) */}
           <div className="mt-6 flex flex-col gap-3 p-4 bg-primary text-white rounded-lg">
             <div className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-on-tertiary-container">support_agent</span>
+              <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">support_agent</span>
               <p className="text-sm font-semibold">¿Necesitas ayuda técnica?</p>
             </div>
             <p className="text-[13px] opacity-80">

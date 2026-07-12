@@ -37,7 +37,7 @@ export function PortalSidebar() {
                   : 'text-on-surface-variant hover:bg-surface-high'
               )}
             >
-              <span className="material-symbols-outlined group-hover:text-primary">{item.icon}</span>
+              <span className="material-symbols-outlined group-hover:text-primary text-[24px]">{item.icon}</span>
               <span className="text-sm">{item.label}</span>
             </Link>
           );

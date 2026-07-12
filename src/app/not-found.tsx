@@ -1,73 +1,156 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Bebas_Neue, JetBrains_Mono } from 'next/font/google';
 import { Header } from '@/components/shared/header';
 import { Footer } from '@/components/shared/footer';
 
+// Tipografías exclusivas de la pantalla 404 (diseño Stitch aprobado):
+// Bebas Neue para el headline y JetBrains Mono para los callouts técnicos.
+const bebas = Bebas_Neue({ weight: '400', subsets: ['latin'] });
+const jetbrains = JetBrains_Mono({ subsets: ['latin'] });
+
+// Paleta propia de esta pantalla (Stitch 404 — dorado industrial).
+const GOLD = '#c8991a';
+const GOLD_DARK = '#785a00';
+const INK = '#151c27';
+const INK_SOFT = '#4e4635';
+const BEIGE = '#d2c5af';
+const OUTLINE = '#807662';
+
 export default function NotFound() {
+  const pathname = usePathname();
+
   return (
     <>
       <Header />
-      <main className="relative overflow-hidden bg-surface">
+      <main className="relative flex-grow flex items-center justify-center overflow-hidden bg-[#f9f9ff] px-4 md:px-10 py-24">
         {/* Rejilla estructural de fondo */}
-        <div className="absolute inset-0 grid grid-cols-12 pointer-events-none opacity-60">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className={i < 11 ? 'border-r border-outline-variant/40 h-full' : 'h-full'} />
-          ))}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="grid grid-cols-12 h-full w-full">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className={i < 11 ? 'h-full border-r border-[#807662]' : 'h-full'} />
+            ))}
+          </div>
         </div>
 
-        <div className="relative max-w-container mx-auto px-10 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[70vh]">
-          {/* Emblema 404 */}
-          <div className="relative flex items-center justify-center order-2 lg:order-1">
-            <div className="relative w-72 h-72 md:w-96 md:h-96 border-4 border-primary-container/20 flex items-center justify-center">
-              <span
-                className="material-symbols-outlined text-primary-container text-[120px] md:text-[160px]"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                error
-              </span>
-              <div className="absolute top-0 right-0 border border-primary-container p-2 bg-surface shadow-sm -translate-y-1/2 translate-x-1/4">
-                <p className="text-xs font-bold text-primary uppercase tracking-wider">Err_Code: 404</p>
+        <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+          {/* Engrane roto */}
+          <div className="flex justify-center md:justify-end">
+            <div className="relative w-64 h-64 md:w-80 md:h-80">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative">
+                  <span
+                    className="material-symbols-outlined select-none"
+                    style={{
+                      fontSize: 'clamp(180px, 20vw, 240px)',
+                      color: BEIGE,
+                      fontVariationSettings: "'FILL' 0, 'wght' 100",
+                    }}
+                  >
+                    settings
+                  </span>
+                  {/* La pieza faltante */}
+                  <div className="absolute top-1/4 right-0 w-24 h-24 bg-[#f9f9ff] rounded-full" />
+                  <span
+                    className="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    style={{ fontSize: 60, color: GOLD, fontVariationSettings: "'FILL' 1" }}
+                  >
+                    error
+                  </span>
+                </div>
               </div>
-              <div className="absolute bottom-8 left-0 border border-outline p-2 bg-surface shadow-sm -translate-x-1/4">
-                <p className="text-xs font-medium text-on-surface-variant uppercase">Status: Structural_Failure</p>
+
+              {/* Callouts técnicos */}
+              <div
+                className="absolute top-0 right-0 p-2 bg-[#f9f9ff] shadow-sm border"
+                style={{ borderColor: GOLD }}
+              >
+                <p
+                  className={`${jetbrains.className} uppercase`}
+                  style={{ fontSize: 12, lineHeight: '16px', color: GOLD_DARK }}
+                >
+                  Err_Code: 404
+                </p>
+              </div>
+              <div
+                className="absolute bottom-10 left-0 p-2 bg-[#f9f9ff] shadow-sm border"
+                style={{ borderColor: OUTLINE }}
+              >
+                <p
+                  className={`${jetbrains.className} uppercase`}
+                  style={{ fontSize: 12, lineHeight: '16px', color: INK_SOFT }}
+                >
+                  Status: Structural_Failure
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Texto */}
-          <div className="order-1 lg:order-2">
-            <p className="text-sm font-semibold text-on-tertiary-container uppercase tracking-widest mb-4">
-              Sistemas Interrumpidos
-            </p>
-            <h1 className="font-montserrat font-bold text-4xl md:text-5xl text-on-surface uppercase mb-6 leading-tight">
-              Material No Encontrado
-            </h1>
-            <p className="text-lg text-on-surface-variant mb-10 max-w-lg">
-              La ruta solicitada se encuentra fuera de servicio o el material ha sido removido de
-              nuestro inventario activo. Verifique las especificaciones e intente de nuevo.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+          {/* Mensaje y CTAs */}
+          <div className="flex flex-col text-center md:text-left gap-8">
+            <div>
+              <p
+                className={`${jetbrains.className} uppercase mb-3 font-bold`}
+                style={{ fontSize: 11, letterSpacing: '1.5px', color: GOLD_DARK }}
+              >
+                Sistemas Interrumpidos
+              </p>
+              <h1
+                className={`${bebas.className} uppercase mb-5`}
+                style={{ fontSize: 'clamp(48px, 6vw, 64px)', lineHeight: 1.1, letterSpacing: '0.5px', color: INK }}
+              >
+                Material No Encontrado
+              </h1>
+              <p className="text-lg leading-7 max-w-md mx-auto md:mx-0" style={{ color: INK_SOFT }}>
+                La ruta solicitada se encuentra fuera de servicio o el material ha sido removido
+                de nuestro inventario activo. Verifique las especificaciones e intente de nuevo.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 justify-center md:justify-start">
               <Link
                 href="/catalogo"
-                className="bg-primary-container text-on-primary hover:bg-primary transition-all px-8 py-4 rounded-[6px] text-sm font-bold uppercase flex items-center justify-center gap-2 active:scale-95"
+                className="text-white transition-all px-8 py-4 rounded-[6px] text-[13px] font-bold uppercase flex items-center justify-center gap-2 active:scale-95 hover:brightness-95"
+                style={{ backgroundColor: GOLD }}
               >
-                <span className="material-symbols-outlined">inventory_2</span>
+                <span className="material-symbols-outlined text-[20px]">inventory_2</span>
                 Volver al Catálogo
               </Link>
               <Link
                 href="/"
-                className="border-2 border-on-background text-on-background hover:bg-on-background hover:text-surface transition-all px-8 py-4 rounded-[6px] text-sm font-bold uppercase flex items-center justify-center gap-2 active:scale-95"
+                className="border-2 transition-all px-8 py-4 rounded-[6px] text-[13px] font-bold uppercase flex items-center justify-center gap-2 active:scale-95 hover:bg-[#151c27] hover:text-white"
+                style={{ borderColor: INK, color: INK }}
               >
-                <span className="material-symbols-outlined">home</span>
+                <span className="material-symbols-outlined text-[20px]">home</span>
                 Ir al Inicio
               </Link>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-outline-variant">
-              <p className="text-xs font-semibold text-on-surface-variant uppercase mb-1">Reporte Técnico</p>
-              <p className="text-sm font-medium text-error flex items-center gap-2">
-                <span className="material-symbols-outlined text-[18px]">link_off</span>
-                Enlace Roto Detectado
-              </p>
+            {/* Footer técnico */}
+            <div className="mt-8 pt-6 border-t" style={{ borderColor: BEIGE }}>
+              <div className="grid grid-cols-2 gap-8 text-left">
+                <div>
+                  <p className={`${jetbrains.className} uppercase`} style={{ fontSize: 12, color: '#6B7280' }}>
+                    Ubicación Actual
+                  </p>
+                  <p
+                    className={`${jetbrains.className} break-all`}
+                    style={{ fontSize: 14, fontWeight: 500, color: INK }}
+                  >
+                    {pathname || '/error-404'}
+                  </p>
+                </div>
+                <div>
+                  <p className={`${jetbrains.className} uppercase`} style={{ fontSize: 12, color: '#6B7280' }}>
+                    Reporte Técnico
+                  </p>
+                  <p className={`${jetbrains.className}`} style={{ fontSize: 14, fontWeight: 500, color: INK }}>
+                    Enlace Roto Detectado
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

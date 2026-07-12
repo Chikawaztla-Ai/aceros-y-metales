@@ -100,11 +100,11 @@ export default function ProductoPage() {
               <p className="text-on-surface-variant mb-6">{product.subtitle}</p>
               <div className="space-y-4">
                 <button className="w-full border-2 border-primary-container text-primary-container py-3 text-sm font-semibold uppercase rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container hover:text-white transition-all">
-                  <span className="material-symbols-outlined">download</span>
+                  <span className="material-symbols-outlined text-[24px]">download</span>
                   Ficha Técnica PDF
                 </button>
                 <button className="w-full border-2 border-outline text-on-surface-variant py-3 text-sm font-semibold uppercase rounded-lg flex items-center justify-center gap-2 hover:border-primary-container hover:text-primary-container transition-all">
-                  <span className="material-symbols-outlined">architecture</span>
+                  <span className="material-symbols-outlined text-[24px]">architecture</span>
                   Plano DWG
                 </button>
               </div>
@@ -243,7 +243,7 @@ export default function ProductoPage() {
               <h4 className="font-montserrat font-semibold text-[18px] text-primary-container mb-2">{rel.name}</h4>
               <div className="flex justify-between items-center">
                 <span className="text-on-tertiary-container font-bold text-sm">${rel.price.toFixed(2)}/kg</span>
-                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-on-tertiary-container transition-colors">
+                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-on-tertiary-container transition-colors text-[24px]">
                   add_shopping_cart
                 </span>
               </div>

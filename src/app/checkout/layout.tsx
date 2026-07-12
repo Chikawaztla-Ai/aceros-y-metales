@@ -11,7 +11,7 @@ export default function CheckoutLayout({ children }: { children: React.ReactNode
             ACEROS Y METALES <span className="text-on-tertiary-container">URGENTES</span>
           </Link>
           <div className="flex items-center gap-2 text-secondary text-sm font-semibold">
-            <span className="material-symbols-outlined text-primary">lock</span>
+            <span className="material-symbols-outlined text-primary text-[24px]">lock</span>
             PAGO 100% SEGURO
           </div>
         </div>

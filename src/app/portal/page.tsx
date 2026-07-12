@@ -124,10 +124,10 @@ export default function PortalPedidos() {
                       <td className="px-6 py-5">
                         <div className="flex justify-center gap-4">
                           <button className="text-on-surface hover:text-on-tertiary-container transition-colors" title="Ver detalle">
-                            <span className="material-symbols-outlined">visibility</span>
+                            <span className="material-symbols-outlined text-[24px]">visibility</span>
                           </button>
                           <button className="text-on-surface hover:text-on-tertiary-container transition-colors" title="Repetir pedido">
-                            <span className="material-symbols-outlined">replay</span>
+                            <span className="material-symbols-outlined text-[24px]">replay</span>
                           </button>
                         </div>
                       </td>
@@ -159,7 +159,7 @@ export default function PortalPedidos() {
             {/* Card nivel */}
             <div className="bg-white rounded-lg border border-outline-variant p-6 shadow-sm">
               <div className="flex items-center justify-between mb-6">
-                <span className="material-symbols-outlined text-on-tertiary-container text-[32px]">verified</span>
+                <span className="material-symbols-outlined text-on-tertiary-container" style={{ fontSize: 32 }}>verified</span>
                 <span className="px-3 py-1 bg-on-tertiary-container text-white text-[10px] font-semibold rounded uppercase tracking-wider">
                   Cliente Preferente
                 </span>
@@ -197,7 +197,7 @@ export default function PortalPedidos() {
 
             {/* Asesor */}
             <div className="p-4 border border-dashed border-outline rounded-lg flex items-start gap-4">
-              <span className="material-symbols-outlined text-secondary">support_agent</span>
+              <span className="material-symbols-outlined text-secondary text-[24px]">support_agent</span>
               <div>
                 <p className="text-xs font-semibold text-on-surface">Asesor Asignado:</p>
                 <p className="text-sm font-bold text-primary">Ing. Ricardo Mendoza</p>

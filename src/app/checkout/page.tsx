@@ -324,7 +324,7 @@ function CheckoutInner() {
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-white border border-outline-variant rounded flex items-center justify-center">
-                          <span className="material-symbols-outlined text-primary">{opt.icon}</span>
+                          <span className="material-symbols-outlined text-primary text-[24px]">{opt.icon}</span>
                         </div>
                         <div>
                           <p className="font-montserrat font-semibold text-primary text-sm uppercase">{opt.title}</p>
@@ -350,7 +350,7 @@ function CheckoutInner() {
         <div className="lg:col-span-5 lg:sticky lg:top-28">
           <section className="bg-primary text-white p-8 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-10">
-              <span className="material-symbols-outlined text-9xl">receipt_long</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 128 }}>receipt_long</span>
             </div>
             <h2 className="font-montserrat font-semibold text-xl mb-8 border-b border-white/20 pb-4 uppercase tracking-tighter">
               Resumen del Pedido
@@ -417,15 +417,15 @@ function CheckoutInner() {
 
             <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-8 opacity-60">
               <div className="flex flex-col items-center gap-2 text-[10px] uppercase font-bold text-center">
-                <span className="material-symbols-outlined text-white">verified</span>
+                <span className="material-symbols-outlined text-white text-[24px]">verified</span>
                 <span>Garantía de Calidad</span>
               </div>
               <div className="flex flex-col items-center gap-2 text-[10px] uppercase font-bold text-center">
-                <span className="material-symbols-outlined text-white">bolt</span>
+                <span className="material-symbols-outlined text-white text-[24px]">bolt</span>
                 <span>Entrega Urgente</span>
               </div>
               <div className="flex flex-col items-center gap-2 text-[10px] uppercase font-bold text-center">
-                <span className="material-symbols-outlined text-white">support_agent</span>
+                <span className="material-symbols-outlined text-white text-[24px]">support_agent</span>
                 <span>Soporte Técnico</span>
               </div>
             </div>

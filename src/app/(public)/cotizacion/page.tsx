@@ -102,7 +102,7 @@ export default function CotizacionPage() {
         <div className="lg:col-span-7 bg-white p-8 border border-outline-variant shadow-sm rounded-lg">
           {sent ? (
             <div className="text-center py-16">
-              <span className="material-symbols-outlined text-[56px] text-green-600 mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>
+              <span className="material-symbols-outlined text-green-600 mb-4" style={{ fontVariationSettings: "'FILL' 1", fontSize: 56 }}>
                 check_circle
               </span>
               <h2 className="font-montserrat font-bold text-2xl text-primary mb-2">¡Solicitud enviada!</h2>
@@ -173,7 +173,7 @@ export default function CotizacionPage() {
               <div className="md:col-span-2 mt-2">
                 <label className="text-sm font-semibold text-primary block mb-2">Adjuntar plano PDF o DWG</label>
                 <label className="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center bg-surface-low hover:bg-surface-high transition-colors cursor-pointer group">
-                  <span className="material-symbols-outlined text-4xl text-secondary mb-2 group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform" style={{ fontSize: 36 }}>
                     upload_file
                   </span>
                   <p className="text-sm text-on-surface-variant">
@@ -212,7 +212,7 @@ export default function CotizacionPage() {
                 className="flex gap-6 p-6 border border-outline-variant bg-white rounded-lg hover:border-primary transition-colors"
               >
                 <div className="w-12 h-12 bg-secondary-container flex items-center justify-center rounded-xl text-primary shrink-0">
-                  <span className="material-symbols-outlined text-3xl">{b.icon}</span>
+                  <span className="material-symbols-outlined" style={{ fontSize: 30 }}>{b.icon}</span>
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">{b.title}</h4>
@@ -234,7 +234,7 @@ export default function CotizacionPage() {
                 { icon: 'bolt', label: 'Entrega 24h' },
               ].map((seal) => (
                 <div key={seal.label} className="flex flex-col items-center gap-2 text-center">
-                  <span className="material-symbols-outlined text-4xl text-secondary">{seal.icon}</span>
+                  <span className="material-symbols-outlined text-secondary" style={{ fontSize: 36 }}>{seal.icon}</span>
                   <span className="text-xs text-on-surface-variant">{seal.label}</span>
                 </div>
               ))}

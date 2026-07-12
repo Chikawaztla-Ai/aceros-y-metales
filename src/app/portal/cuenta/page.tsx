@@ -43,7 +43,7 @@ export default function MiPerfilPage() {
       <div className="bg-white border border-outline-variant p-8">
         <div className="flex items-center justify-between mb-8 border-b border-outline-variant pb-4">
           <h2 className="font-montserrat font-semibold text-xl text-on-background uppercase flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary">edit_square</span>
+            <span className="material-symbols-outlined text-primary text-[24px]">edit_square</span>
             Información Personal
           </h2>
           <span className="text-xs font-semibold text-primary uppercase">Actualización Requerida</span>
@@ -83,7 +83,7 @@ export default function MiPerfilPage() {
       <div className="bg-primary text-white p-8 border-l-4 border-on-tertiary-container">
         <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
           <h2 className="font-montserrat font-semibold text-xl uppercase flex items-center gap-2">
-            <span className="material-symbols-outlined text-on-tertiary-container">lock_reset</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">lock_reset</span>
             Gestión de Seguridad
           </h2>
         </div>
