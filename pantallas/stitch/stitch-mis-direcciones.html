@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mis Direcciones | Aceros y Metales Urgentes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c0c6db",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#151c27",
+                    "surface": "#f9f9ff",
+                    "on-surface": "#151c27",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#404758",
+                    "on-secondary-container": "#5c6274",
+                    "tertiary-fixed": "#ffe08f",
+                    "tertiary-container": "#c49b0f",
+                    "surface-container": "#e7eefe",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#f3bf42",
+                    "on-tertiary-container": "#453500",
+                    "on-primary-container": "#473400",
+                    "primary": "#785a00",
+                    "tertiary-fixed-dim": "#eec13c",
+                    "surface-dim": "#d3daea",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#dce2f7",
+                    "on-tertiary-fixed-variant": "#584400",
+                    "secondary": "#575e70",
+                    "surface-variant": "#dce2f3",
+                    "on-secondary-fixed": "#141b2b",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#d2c5af",
+                    "primary-fixed": "#ffdf9d",
+                    "outline": "#807662",
+                    "surface-container-highest": "#dce2f3",
+                    "primary-container": "#c8991a",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#4e4635",
+                    "surface-tint": "#785a00",
+                    "surface-container-high": "#e2e8f8",
+                    "on-primary-fixed": "#251a00",
+                    "primary-fixed-dim": "#f3bf42",
+                    "on-primary-fixed-variant": "#5b4300",
+                    "surface-container-low": "#f0f3ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2a313d",
+                    "surface-bright": "#f9f9ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#755b00",
+                    "secondary-container": "#d9dff5",
+                    "background": "#f9f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "margin-desktop": "64px",
+                    "xl": "48px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Bebas Neue"],
+                    "technical-md": ["JetBrains Mono"],
+                    "technical-sm": ["JetBrains Mono"],
+                    "headline-md": ["Bebas Neue"],
+                    "headline-sm": ["Bebas Neue"],
+                    "eyebrow": ["JetBrains Mono"],
+                    "button-label": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Bebas Neue"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "technical-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "technical-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "1.5px", "fontWeight": "700"}],
+                    "button-label": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .industrial-card-hover:hover {
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .logo-urgentes {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            color: #6B7280;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar Component -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant z-50">
+<div class="flex items-center justify-between px-margin-desktop py-md max-w-full mx-auto">
+<div class="flex items-center gap-xl">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-tight">Aceros y Metales</span>
+<span class="logo-urgentes">URGENTES</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Aceros</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Aluminio</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">No Ferrosos</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Maquinaria</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm hover:bg-surface-container-low transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_cart</span>
+</button>
+<button class="p-sm hover:bg-surface-container-low transition-all active:scale-95 duration-150 border-2 border-primary rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-desktop py-xl">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Sidebar Navigation (Account Portal) -->
+<aside class="col-span-12 md:col-span-3">
+<div class="flex flex-col gap-xs">
+<h2 class="font-eyebrow text-eyebrow text-on-surface-variant uppercase mb-md">Mi Cuenta</h2>
+<a class="flex items-center gap-sm px-md py-sm font-body-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">person</span> Perfil
+                    </a>
+<a class="flex items-center gap-sm px-md py-sm font-body-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">shopping_bag</span> Historial de Pedidos
+                    </a>
+<a class="flex items-center gap-sm px-md py-sm font-body-md text-primary font-bold border-l-4 border-primary bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span> Mis Direcciones
+                    </a>
+<a class="flex items-center gap-sm px-md py-sm font-body-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">payments</span> Métodos de Pago
+                    </a>
+<hr class="my-sm border-outline-variant"/>
+<a class="flex items-center gap-sm px-md py-sm font-body-md text-error hover:bg-error-container/20 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">logout</span> Cerrar Sesión
+                    </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="col-span-12 md:col-span-9">
+<div class="flex items-center justify-between mb-xl">
+<div class="flex flex-col gap-xs">
+<h1 class="font-headline-md text-headline-md text-on-surface">Mis Direcciones</h1>
+<p class="font-body-md text-on-surface-variant">Gestiona tus puntos de entrega para una logística eficiente.</p>
+</div>
+<button class="bg-primary text-on-primary font-button-label text-button-label uppercase px-lg py-sm rounded-[6px] transition-all active:scale-95 flex items-center gap-sm" onclick="document.getElementById('modal-address').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">add</span> Nueva Dirección
+                    </button>
+</div>
+<!-- Addresses Bento-style Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Primary Address Card -->
+<div class="bg-surface-container-lowest border border-primary-container rounded-xl p-lg flex flex-col gap-md industrial-card-hover transition-all relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary-container text-on-primary-container px-sm py-xs font-technical-sm text-technical-sm rounded-bl-lg">
+                            PREDETERMINADA
+                        </div>
+<div class="flex items-start gap-md">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">factory</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-body-lg font-bold text-on-surface">Planta de Producción Norte</h3>
+<p class="font-technical-sm text-on-surface-variant">ID: AMU-7729-N</p>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="font-body-md text-on-surface">Avenida Industrial del Acero #450, Nave 12-B</p>
+<p class="font-body-md text-on-surface-variant">Parque Industrial Apodaca, N.L. C.P. 66600</p>
+<p class="font-body-md text-on-surface-variant">México</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<span class="font-technical-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">person</span> Ing. Roberto Garza
+                            </span>
+<div class="flex gap-sm">
+<button class="p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-xs hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secondary Address Card -->
+<div class="bg-surface border border-outline-variant rounded-xl p-lg flex flex-col gap-md industrial-card-hover transition-all">
+<div class="flex items-start gap-md">
+<div class="w-12 h-12 bg-on-surface-variant/5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">warehouse</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-body-lg font-bold text-on-surface">Almacén Central Santa Catarina</h3>
+<p class="font-technical-sm text-on-surface-variant">ID: AMU-1120-SC</p>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="font-body-md text-on-surface">Carretera Saltillo KM 12.5, Interior C</p>
+<p class="font-body-md text-on-surface-variant">Santa Catarina, N.L. C.P. 66350</p>
+<p class="font-body-md text-on-surface-variant">México</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<span class="font-technical-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">person</span> Lic. María Elena Sosa
+                            </span>
+<div class="flex gap-sm">
+<button class="p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-xs hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add New Card Skeleton -->
+<button class="group border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center justify-center gap-md hover:border-primary hover:bg-primary/5 transition-all min-h-[220px]" onclick="document.getElementById('modal-address').classList.remove('hidden')">
+<div class="w-16 h-16 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-headline-sm text-outline-variant group-hover:text-primary">add_location</span>
+</div>
+<p class="font-button-label text-on-surface-variant group-hover:text-primary uppercase tracking-widest">Añadir Nueva Dirección</p>
+</button>
+</div>
+<!-- Logistics Insights (Industrial Aesthetic) -->
+<div class="mt-xl p-lg bg-inverse-surface rounded-xl flex flex-col md:flex-row items-center gap-lg">
+<div class="flex-shrink-0">
+<div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[32px]">local_shipping</span>
+</div>
+</div>
+<div class="flex-grow">
+<h4 class="font-technical-md text-primary-fixed uppercase mb-xs">Optimización Logística</h4>
+<p class="font-body-sm text-surface-variant">Al guardar tus direcciones industriales exactas, reducimos el tiempo de cotización y despacho en un 25%. Asegúrate de incluir referencias específicas de naves y accesos de carga.</p>
+</div>
+<div class="flex-shrink-0">
+<button class="font-button-label text-button-label text-primary-fixed-dim border border-primary-fixed-dim/30 px-lg py-sm rounded-[6px] hover:bg-primary-fixed-dim hover:text-on-background transition-all">
+                            VER MAPA LOGÍSTICO
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full mt-auto bg-inverse-surface border-t border-on-secondary-fixed-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-xl w-full max-w-full mx-auto">
+<div class="flex flex-col gap-md">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-surface-container-lowest">ACEROS Y METALES</span>
+<span class="font-technical-sm text-primary-fixed opacity-80">Excelencia Industrial</span>
+</div>
+<p class="font-technical-sm text-surface-variant">Líderes en suministro metalúrgico de alta precisión para proyectos de infraestructura y manufactura pesada.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<h5 class="font-technical-md text-primary-fixed mb-sm uppercase">Recursos</h5>
+<a class="font-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Especificaciones Técnicas</a>
+<a class="font-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Calculadora de Pesos</a>
+<a class="font-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Envíos Logísticos</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h5 class="font-technical-md text-primary-fixed mb-sm uppercase">Compañía</h5>
+<a class="font-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Certificaciones ISO</a>
+<a class="font-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Términos de Venta</a>
+<a class="font-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Contacto</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h5 class="font-technical-md text-primary-fixed mb-sm uppercase">Ubicación</h5>
+<p class="font-technical-sm text-surface-variant">Sede Corporativa: Parque Industrial Monterrey, Nuevo León.</p>
+<div class="mt-md flex gap-sm">
+<div class="w-8 h-8 rounded bg-on-secondary-fixed-variant flex items-center justify-center cursor-pointer hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-white text-[18px]">public</span>
+</div>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-md border-t border-on-secondary-fixed-variant/30 text-center">
+<span class="font-technical-sm text-surface-variant">© 2024 Aceros y Metales Urgentes. Excelencia Industrial.</span>
+</div>
+</footer>
+<!-- Modal Form (Address Creation) -->
+<div class="hidden fixed inset-0 bg-on-background/60 backdrop-blur-sm z-[100] flex items-center justify-center p-md" id="modal-address">
+<div class="bg-surface w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<div class="bg-on-background p-lg flex items-center justify-between">
+<h2 class="font-headline-sm text-surface">Registrar Nueva Dirección</h2>
+<button class="text-surface hover:text-primary transition-colors" onclick="document.getElementById('modal-address').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-lg grid grid-cols-1 md:grid-cols-2 gap-lg bg-surface">
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-on-surface-variant uppercase">Nombre de Dirección</label>
+<input class="border border-outline-variant bg-white rounded-lg p-sm font-body-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Ej. Planta Fundición" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-on-surface-variant uppercase">Tipo de Punto</label>
+<select class="border border-outline-variant bg-white rounded-lg p-sm font-body-sm focus:ring-2 focus:ring-primary focus:outline-none">
+<option>Planta / Manufactura</option>
+<option>Almacén / CEDI</option>
+<option>Obra en Sitio</option>
+<option>Oficina Corporativa</option>
+</select>
+</div>
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-technical-sm text-on-surface-variant uppercase">Dirección (Calle, Número, Local)</label>
+<input class="border border-outline-variant bg-white rounded-lg p-sm font-body-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Calle Industrial #123" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-on-surface-variant uppercase">Estado</label>
+<input class="border border-outline-variant bg-white rounded-lg p-sm font-body-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Nuevo León" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-on-surface-variant uppercase">Código Postal</label>
+<input class="border border-outline-variant bg-white rounded-lg p-sm font-body-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="64000" type="text"/>
+</div>
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-technical-sm text-on-surface-variant uppercase">Instrucciones de Entrega (Opcional)</label>
+<textarea class="border border-outline-variant bg-white rounded-lg p-sm font-body-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Entrar por caseta 4, preguntar por supervisor de turno..." rows="3"></textarea>
+</div>
+</div>
+<div class="p-lg bg-surface-container border-t border-outline-variant flex justify-end gap-md">
+<button class="font-button-label text-button-label text-on-surface-variant uppercase px-lg py-sm rounded-lg hover:bg-surface-variant transition-all" onclick="document.getElementById('modal-address').classList.add('hidden')">Cancelar</button>
+<button class="bg-primary text-on-primary font-button-label text-button-label uppercase px-xl py-sm rounded-lg shadow-lg active:scale-95 transition-all">Guardar Dirección</button>
+</div>
+</div>
+</div>
+<script>
+        // Simple interactivity for the modal backdrop
+        window.onclick = function(event) {
+            let modal = document.getElementById('modal-address');
+            if (event.target == modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+</body></html>

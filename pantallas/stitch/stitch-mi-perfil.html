@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c0c6db",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#151c27",
+                    "surface": "#f9f9ff",
+                    "on-surface": "#151c27",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#404758",
+                    "on-secondary-container": "#5c6274",
+                    "tertiary-fixed": "#ffe08f",
+                    "tertiary-container": "#c49b0f",
+                    "surface-container": "#e7eefe",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#f3bf42",
+                    "on-tertiary-container": "#453500",
+                    "on-primary-container": "#473400",
+                    "primary": "#785a00",
+                    "tertiary-fixed-dim": "#eec13c",
+                    "surface-dim": "#d3daea",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#dce2f7",
+                    "on-tertiary-fixed-variant": "#584400",
+                    "secondary": "#575e70",
+                    "surface-variant": "#dce2f3",
+                    "on-secondary-fixed": "#141b2b",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#d2c5af",
+                    "primary-fixed": "#ffdf9d",
+                    "outline": "#807662",
+                    "surface-container-highest": "#dce2f3",
+                    "primary-container": "#c8991a",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#4e4635",
+                    "surface-tint": "#785a00",
+                    "surface-container-high": "#e2e8f8",
+                    "on-primary-fixed": "#251a00",
+                    "primary-fixed-dim": "#f3bf42",
+                    "on-primary-fixed-variant": "#5b4300",
+                    "surface-container-low": "#f0f3ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2a313d",
+                    "surface-bright": "#f9f9ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#755b00",
+                    "secondary-container": "#d9dff5",
+                    "background": "#f9f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "margin-desktop": "64px",
+                    "xl": "48px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Bebas Neue"],
+                    "technical-md": ["JetBrains Mono"],
+                    "technical-sm": ["JetBrains Mono"],
+                    "headline-md": ["Bebas Neue"],
+                    "headline-sm": ["Bebas Neue"],
+                    "eyebrow": ["JetBrains Mono"],
+                    "button-label": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Bebas Neue"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "technical-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "technical-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "1.5px", "fontWeight": "700"}],
+                    "button-label": ["13px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-indicator {
+            position: absolute;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #785a00;
+        }
+        input:focus {
+            outline: none;
+            border-color: #785a00 !important;
+            box-shadow: 0 0 0 1px #785a00;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface w-full top-0 sticky border-b border-outline-variant z-50">
+<div class="flex items-center justify-between px-margin-desktop py-md max-w-full mx-auto">
+<div class="flex items-center gap-lg">
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-tight">Aceros y Metales <span class="font-technical-sm text-[#6B7280] tracking-[1.5px] ml-1">URGENTES</span></span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Aceros</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Aluminio</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">No Ferrosos</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Maquinaria</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm hover:bg-surface-container-low transition-all rounded-lg">
+<span class="material-symbols-outlined text-on-surface">shopping_cart</span>
+</button>
+<button class="p-sm hover:bg-surface-container-low transition-all rounded-lg active:scale-95 duration-150 text-primary font-bold border-b-2 border-primary pb-1">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full max-w-full mx-auto px-margin-desktop py-xl grid grid-cols-12 gap-gutter">
+<!-- Sidebar Navigation -->
+<aside class="col-span-12 md:col-span-3 space-y-xs">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-on-background uppercase">Panel de Control</h1>
+<p class="font-technical-sm text-technical-sm text-on-surface-variant">ID Usuario: AMU-99210</p>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="group relative flex items-center gap-md px-md py-lg bg-surface hover:bg-surface-container transition-all border border-outline-variant" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">inventory_2</span>
+<span class="font-button-label text-button-label text-on-surface-variant group-hover:text-on-surface uppercase">Mis Pedidos</span>
+</a>
+<a class="group relative flex items-center gap-md px-md py-lg bg-white transition-all border border-primary shadow-sm" href="#">
+<div class="active-tab-indicator"></div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-button-label text-button-label text-on-surface font-bold uppercase">Perfil y Datos</span>
+</a>
+<a class="group relative flex items-center gap-md px-md py-lg bg-surface hover:bg-surface-container transition-all border border-outline-variant" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">shield</span>
+<span class="font-button-label text-button-label text-on-surface-variant group-hover:text-on-surface uppercase">Seguridad</span>
+</a>
+<a class="group relative flex items-center gap-md px-md py-lg bg-surface hover:bg-surface-container transition-all border border-outline-variant" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">location_on</span>
+<span class="font-button-label text-button-label text-on-surface-variant group-hover:text-on-surface uppercase">Direcciones</span>
+</a>
+<div class="pt-xl">
+<button class="w-full flex items-center justify-center gap-md px-md py-md border-2 border-on-background text-on-background font-button-label uppercase hover:bg-on-background hover:text-white transition-all">
+<span class="material-symbols-outlined">logout</span>
+                        Cerrar Sesión
+                    </button>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="col-span-12 md:col-span-9 space-y-lg">
+<!-- Profile Section -->
+<div class="bg-white border border-outline-variant p-xl">
+<div class="flex items-center justify-between mb-xl border-b border-outline-variant pb-md">
+<h2 class="font-headline-sm text-headline-sm text-on-background uppercase flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">edit_square</span>
+                        Información Personal
+                    </h2>
+<span class="font-eyebrow text-eyebrow text-primary uppercase">Actualización Requerida</span>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-technical-sm text-on-surface-variant uppercase tracking-wider">Nombre Completo / Razón Social</label>
+<input class="bg-surface border border-outline-variant rounded-none px-md py-md font-body-md text-on-surface focus:ring-0 focus:border-primary transition-all" type="text" value="Ing. Ricardo Montalvo"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-technical-sm text-on-surface-variant uppercase tracking-wider">Correo Electrónico Institucional</label>
+<input class="bg-surface border border-outline-variant rounded-none px-md py-md font-body-md text-on-surface focus:ring-0 focus:border-primary transition-all" type="email" value="r.montalvo@industrias-met.mx"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-technical-sm text-on-surface-variant uppercase tracking-wider">Teléfono de Contacto Directo</label>
+<input class="bg-surface border border-outline-variant rounded-none px-md py-md font-body-md text-on-surface focus:ring-0 focus:border-primary transition-all" type="tel" value="+52 (55) 4321-8890"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-technical-sm text-on-surface-variant uppercase tracking-wider">RFC (Opcional)</label>
+<input class="bg-surface border border-outline-variant rounded-none px-md py-md font-body-md text-on-surface focus:ring-0 focus:border-primary transition-all" placeholder="XAXX010101000" type="text"/>
+</div>
+<div class="md:col-span-2 pt-md">
+<button class="bg-primary text-white font-button-label text-button-label px-xl py-md uppercase tracking-wider hover:bg-primary-container transition-all shadow-sm" type="submit">
+                            Guardar Cambios de Perfil
+                        </button>
+</div>
+</form>
+</div>
+<!-- Security Section -->
+<div class="bg-inverse-surface text-surface-container-lowest p-xl border-l-4 border-primary">
+<div class="flex items-center justify-between mb-xl border-b border-on-secondary-fixed-variant pb-md">
+<h2 class="font-headline-sm text-headline-sm uppercase flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed">lock_reset</span>
+                        Gestión de Seguridad
+                    </h2>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-technical-sm text-surface-variant uppercase tracking-wider">Contraseña Actual</label>
+<input class="bg-[#1F2937] border border-[#374151] rounded-none px-md py-md font-body-md text-white focus:ring-0 focus:border-primary-fixed transition-all" type="password"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-technical-sm text-surface-variant uppercase tracking-wider">Nueva Contraseña</label>
+<input class="bg-[#1F2937] border border-[#374151] rounded-none px-md py-md font-body-md text-white focus:ring-0 focus:border-primary-fixed transition-all" type="password"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-technical-sm text-technical-sm text-surface-variant uppercase tracking-wider">Confirmar Contraseña</label>
+<input class="bg-[#1F2937] border border-[#374151] rounded-none px-md py-md font-body-md text-white focus:ring-0 focus:border-primary-fixed transition-all" type="password"/>
+</div>
+<div class="md:col-span-3 flex items-center justify-between pt-md">
+<p class="font-body-sm text-surface-variant max-w-md italic">Asegúrese de usar al menos 12 caracteres, incluyendo números y símbolos especiales para mayor protección industrial.</p>
+<button class="border-1.5 border-primary-fixed text-primary-fixed font-button-label text-button-label px-xl py-md uppercase tracking-wider hover:bg-primary hover:text-white transition-all border-[1.5px] border-solid" type="button">
+                            Actualizar Credenciales
+                        </button>
+</div>
+</form>
+</div>
+<!-- Visual Asset - Industrial Context -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter h-64">
+<div class="relative overflow-hidden group border border-outline-variant">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up photograph of high-quality brushed stainless steel sheets stacked in a modern, organized industrial warehouse. Soft, cool lighting emphasizes the metallic texture and precision edges. The atmosphere is professional and orderly, reflecting industrial efficiency and reliability. The color palette is dominated by silver, grey, and deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXB13jGepRv4HOhVhFFdONL1B9bbxp7RXL_J79FDa_YGSLsXf7FCZdHTyUDBU5U6PNEJCMjomxQIbegzavaJBOFUcMUDU3-u6ybGizpyOXIxL_8D70_2DrhqvnkfS7w0aNCOTGYpF_k4-B6xBjGBpcQxPsyVNsgerEP7yJWYciyhPkqbqXlzNgvZSGoo9dEK1_Z44bFGBVcaSb_EUOH2ioEl6HVYMrsMpkwOJTFfXOIfHmLXYfwtJe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-lg">
+<p class="text-white font-technical-md text-technical-md uppercase">Materiales de Grado Industrial</p>
+</div>
+</div>
+<div class="relative overflow-hidden group border border-outline-variant">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An advanced CNC metal cutting machine operating with high precision in a dimly lit factory. Bright sparks fly as a laser or blade cuts through a thick steel plate. The scene is cinematic, focusing on the technical prowess and raw power of metalworking machinery. The lighting is dramatic with high contrast between the dark environment and the brilliant orange of the sparks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7f6irzXR7Cmkmx0f-LONF9QHwXGlhiuE7hSWLJDe-oll6qups1CE3sXUqVzT1cBo3hWb7EhqYI4k5TwAJ2Idc3xRjB-YuIjN5-xJi7rgeMjvMvoF9QZF1eMuU3_xLLycrpDTy9cgZlHoKQ9CFw4osPRJqsJ5cTZhzuiqEj3jfRE97gv_1UYQKcql4-6xa0QDeB2P--iYZcTZomfQef-XcamBxwGF8l3K6-gTwAuNG7B2GfZskRC4I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-lg">
+<p class="text-white font-technical-md text-technical-md uppercase">Procesos de Alta Precisión</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface border-t border-on-secondary-fixed-variant mt-auto w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-xl w-full mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-md text-headline-md text-surface-container-lowest block mb-md">AMU</span>
+<p class="font-technical-sm text-technical-sm text-surface-variant">Proveedores líderes de soluciones metálicas integrales para la industria pesada y construcción civil.</p>
+</div>
+<div class="space-y-sm">
+<p class="font-eyebrow text-eyebrow text-primary-fixed uppercase mb-md">Herramientas</p>
+<nav class="flex flex-col gap-xs">
+<a class="font-technical-sm text-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Especificaciones Técnicas</a>
+<a class="font-technical-sm text-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Calculadora de Pesos</a>
+<a class="font-technical-sm text-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Certificaciones ISO</a>
+</nav>
+</div>
+<div class="space-y-sm">
+<p class="font-eyebrow text-eyebrow text-primary-fixed uppercase mb-md">Logística</p>
+<nav class="flex flex-col gap-xs">
+<a class="font-technical-sm text-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Envíos Logísticos</a>
+<a class="font-technical-sm text-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Términos de Venta</a>
+<a class="font-technical-sm text-technical-sm text-surface-variant hover:text-surface-bright transition-colors hover:underline" href="#">Contacto</a>
+</nav>
+</div>
+<div class="space-y-md">
+<p class="font-eyebrow text-eyebrow text-primary-fixed uppercase">Suscripción Técnica</p>
+<div class="flex">
+<input class="bg-[#1F2937] border border-[#374151] rounded-none px-md py-sm text-white font-body-sm w-full focus:ring-1 focus:ring-primary-fixed focus:outline-none" placeholder="Email corporativo" type="email"/>
+<button class="bg-primary text-white px-md py-sm hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+<p class="font-technical-sm text-technical-sm text-surface-variant/60">Reciba actualizaciones sobre precios de mercado y disponibilidad.</p>
+</div>
+</div>
+<div class="px-margin-desktop py-lg border-t border-on-secondary-fixed-variant/30 flex flex-col md:flex-row justify-between items-center gap-md">
+<span class="font-technical-sm text-technical-sm text-surface-variant/50">© 2024 Aceros y Metales Urgentes. Excelencia Industrial.</span>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined text-surface-variant/50 text-xl cursor-pointer hover:text-primary-fixed">verified</span>
+<span class="material-symbols-outlined text-surface-variant/50 text-xl cursor-pointer hover:text-primary-fixed">public</span>
+<span class="material-symbols-outlined text-surface-variant/50 text-xl cursor-pointer hover:text-primary-fixed">engineering</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for form focus states and button feedback
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+
+        // Simple feedback for action buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.type === 'submit') {
+                    // Prevent actual submission for demo
+                    e.preventDefault();
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Procesando...';
+                    this.disabled = true;
+                    setTimeout(() => {
+                        this.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Actualizado';
+                        this.classList.add('bg-green-700');
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.classList.remove('bg-green-700');
+                            this.disabled = false;
+                        }, 2000);
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body></html>

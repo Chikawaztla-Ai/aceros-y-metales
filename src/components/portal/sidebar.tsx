@@ -9,6 +9,7 @@ const portalNav = [
   { href: '/portal/cotizaciones', label: 'Mis cotizaciones', icon: 'request_quote' },
   { href: '/portal/precios', label: 'Lista de precios', icon: 'list_alt' },
   { href: '/portal/facturas', label: 'Facturas', icon: 'receipt_long' },
+  { href: '/portal/direcciones', label: 'Mis Direcciones', icon: 'location_on' },
   { href: '/portal/cuenta', label: 'Mis Datos', icon: 'manage_accounts' },
 ];
 
