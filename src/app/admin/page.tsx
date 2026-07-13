@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const kpis = [
   {
     label: 'Ventas Hoy',
@@ -7,6 +9,7 @@ const kpis = [
     note: 'Vs ayer ($114k)',
     noteIcon: 'trending_up',
     variant: 'default',
+    href: '/admin/crm',
   },
   {
     label: 'Pedidos Pendientes',
@@ -16,6 +19,7 @@ const kpis = [
     note: 'Promedio entrega: 4hrs',
     noteIcon: 'schedule',
     variant: 'dark',
+    href: '/admin/pedidos',
   },
   {
     label: 'Cotizaciones Hoy',
@@ -25,6 +29,7 @@ const kpis = [
     note: 'Valor est.: $2.4M',
     noteIcon: 'pending_actions',
     variant: 'error',
+    href: '/admin/cotizaciones',
   },
   {
     label: 'Nuevos Clientes',
@@ -34,6 +39,7 @@ const kpis = [
     note: 'Total mes: 124',
     noteIcon: 'person_add',
     variant: 'success',
+    href: '/admin/clientes',
   },
 ];
 
@@ -97,10 +103,10 @@ export default function AdminDashboard() {
               className="bg-transparent border-none focus:ring-0 outline-none text-sm w-64 placeholder:text-outline"
             />
           </div>
-          <button className="bg-on-tertiary-container text-white px-6 py-2.5 rounded text-sm font-semibold uppercase hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 shadow-sm">
+          <Link href="/admin/pedidos" className="bg-on-tertiary-container text-white px-6 py-2.5 rounded text-sm font-semibold uppercase hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 shadow-sm">
             <span className="material-symbols-outlined text-[18px]">add_circle</span>
             Nuevo Pedido
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -109,9 +115,10 @@ export default function AdminDashboard() {
         {/* KPIs */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {kpis.map((kpi) => (
-            <div
+            <Link
+              href={kpi.href}
               key={kpi.label}
-              className={`p-6 rounded border border-outline-variant hover:shadow-md transition-shadow ${kpiClasses(kpi.variant)}`}
+              className={`block p-6 rounded border border-outline-variant hover:shadow-md hover:-translate-y-0.5 transition-all ${kpiClasses(kpi.variant)}`}
             >
               <p
                 className={`text-[11px] uppercase font-semibold mb-2 ${
@@ -138,7 +145,7 @@ export default function AdminDashboard() {
                 <span className="material-symbols-outlined text-[16px] mr-1">{kpi.noteIcon}</span>
                 {kpi.note}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -148,7 +155,7 @@ export default function AdminDashboard() {
           <div className="lg:col-span-2 bg-white rounded border border-outline-variant overflow-hidden">
             <div className="p-6 border-b border-outline-variant flex justify-between items-center">
               <h2 className="font-montserrat font-semibold text-[20px] text-on-surface uppercase">Pedidos Recientes</h2>
-              <button className="text-primary-container text-sm font-semibold hover:underline">Ver todos</button>
+              <Link href="/admin/pedidos" className="text-primary-container text-sm font-semibold hover:underline">Ver todos</Link>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[640px]">
@@ -174,7 +181,9 @@ export default function AdminDashboard() {
                           {o.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-primary font-bold cursor-pointer hover:underline">Detalles</td>
+                      <td className="px-6 py-4">
+                        <Link href="/admin/pedidos" className="text-sm text-primary font-bold hover:underline">Detalles</Link>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -209,7 +218,7 @@ export default function AdminDashboard() {
             <div className="bg-white p-6 rounded border border-outline-variant">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-montserrat font-semibold text-[20px] text-on-surface uppercase">Cotizaciones</h3>
-                <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">pending_actions</span>
+                <Link href="/admin/cotizaciones" className="text-primary-container text-sm font-semibold hover:underline">Ver todas</Link>
               </div>
               <div className="space-y-4">
                 {pendingQuotes.map((q) => (

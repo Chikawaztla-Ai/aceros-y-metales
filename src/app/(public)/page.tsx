@@ -347,7 +347,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <Link
-                  href="/registro"
+                  href="/login?mode=registro"
                   className="inline-flex bg-on-tertiary-container text-white text-sm font-bold uppercase px-12 py-4 shadow-xl hover:-translate-y-0.5 transition-all"
                 >
                   Abrir Cuenta Corporativa

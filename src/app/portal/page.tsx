@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const orders = [
   {
     id: 'ORD-88291',
@@ -175,9 +177,9 @@ export default function PortalPedidos() {
                 </div>
                 <p className="text-sm font-bold text-primary">En todo el catálogo de materiales.</p>
               </div>
-              <button className="w-full py-3 bg-primary text-on-primary text-sm font-semibold uppercase tracking-wider rounded hover:opacity-90 transition-all active:scale-95">
+              <Link href="/cotizacion" className="block text-center w-full py-3 bg-primary text-on-primary text-sm font-semibold uppercase tracking-wider rounded hover:opacity-90 transition-all active:scale-95">
                 Solicitar nueva cotización
-              </button>
+              </Link>
             </div>
 
             {/* Quick stats */}

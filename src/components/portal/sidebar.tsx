@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
 
 const portalNav = [
-  { href: '/portal/pedidos', label: 'Mis pedidos', icon: 'inventory_2' },
+  { href: '/portal', label: 'Mis pedidos', icon: 'inventory_2' },
   { href: '/portal/cotizaciones', label: 'Mis cotizaciones', icon: 'request_quote' },
   { href: '/portal/precios', label: 'Lista de precios', icon: 'list_alt' },
   { href: '/portal/facturas', label: 'Facturas', icon: 'receipt_long' },
@@ -25,7 +25,8 @@ export function PortalSidebar() {
 
       <nav className="flex flex-col gap-1 flex-1">
         {portalNav.map((item) => {
-          const active = pathname === item.href || pathname.startsWith(item.href);
+          const active =
+            item.href === '/portal' ? pathname === '/portal' : pathname.startsWith(item.href);
           return (
             <Link
               key={item.href}
