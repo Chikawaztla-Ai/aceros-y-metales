@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendientes del Cliente · Aceros y Metales Urgentes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --negro:     #0F1923;
+    --acero:     #1E3448;
+    --acero-2:   #2c3e50;
+    --acento:    #C8991A;
+    --acento-cl: #F5C842;
+    --naranja:   #f78b30;
+    --gris-med:  #6B7280;
+    --gris-cl:   #D1D5DB;
+    --gris-bg:   #F3F4F6;
+    --blanco:    #FFFFFF;
+    --verde:     #16A34A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--blanco);
+    color: var(--negro);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  /* Portada */
+  .portada {
+    background: var(--acero);
+    color: var(--blanco);
+    padding: 72px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .portada::after {
+    content: ""; position: absolute; top: 0; right: 0; width: 40%; height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(200,153,26,.08) 100%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: 3px; font-size: 12px; font-weight: 700;
+    color: var(--acento-cl); margin-bottom: 24px;
+  }
+  .portada h1 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: .95;
+    letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .portada h1 em { font-style: normal; color: var(--acento-cl); }
+  .portada-desc { font-size: 16px; color: #A8BFCF; max-width: 620px; }
+  .barra {
+    height: 5px; width: 100%;
+    background: linear-gradient(90deg, var(--acento) 0%, var(--acento-cl) 100%);
+  }
+
+  /* Contenido */
+  .contenido { padding: 56px; }
+
+  .leyenda {
+    display: flex; gap: 28px; flex-wrap: wrap;
+    background: var(--gris-bg); border-radius: 8px; padding: 16px 24px; margin-bottom: 44px;
+    font-size: 14px;
+  }
+  .leyenda span { display: flex; align-items: center; gap: 8px; }
+  .chip { font-weight: 700; }
+  .chip.ok  { color: var(--verde); }
+  .chip.cli { color: var(--acento); }
+
+  section { margin-bottom: 48px; }
+  .sec-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--acento);
+    background: var(--negro); width: 42px; height: 42px; border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center; margin-right: 14px;
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: .5px;
+    color: var(--acero-2); display: flex; align-items: center; margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  table { width: 100%; border-collapse: collapse; border: 1px solid var(--gris-cl); border-radius: 8px; overflow: hidden; }
+  th {
+    background: var(--acero-2); color: var(--blanco); text-align: left;
+    padding: 12px 16px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+  }
+  td { padding: 14px 16px; border-top: 1px solid var(--gris-cl); vertical-align: top; font-size: 14px; }
+  tr:nth-child(even) td { background: #FAFBFC; }
+  td.estado { text-align: center; width: 54px; font-size: 18px; }
+  td.tarea { font-weight: 700; color: var(--acero-2); width: 210px; }
+  .ok  { color: var(--verde); }
+  .cli { color: var(--acento); }
+
+  /* Camino crítico */
+  .critico {
+    background: var(--acero); color: var(--blanco); border-radius: 10px; padding: 36px 40px;
+    border-left: 6px solid var(--naranja);
+  }
+  .critico h2 { color: var(--acento-cl); margin-bottom: 18px; }
+  .critico ol { margin-left: 20px; }
+  .critico li { margin-bottom: 12px; color: #DCE6EE; }
+  .critico li strong { color: var(--blanco); }
+  .nota-final {
+    background: var(--gris-bg); border-radius: 8px; padding: 20px 24px; margin-top: 32px;
+    font-size: 13px; color: var(--gris-med); font-style: italic;
+  }
+
+  footer {
+    background: var(--negro); color: #7E8B96; padding: 28px 56px; font-size: 12px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer strong { color: var(--acento-cl); }
+
+  @media (max-width: 640px) {
+    .portada, .contenido, footer { padding-left: 28px; padding-right: 28px; }
+    .portada h1 { font-size: 46px; }
+    td.tarea { width: auto; }
+  }
+  @media print {
+    .portada { padding: 48px; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="portada">
+    <p class="eyebrow">Handoff Técnico · acerosymetalesurgentes.com</p>
+    <h1>Pendientes<br>del <em>Cliente</em></h1>
+    <p class="portada-desc">
+      El sitio completo está construido y navegable (más de 30 pantallas: tienda en línea,
+      cotización, blog, panel administrativo y portal de clientes). Todo funciona con datos de
+      ejemplo. Para pasar a producción necesitamos de tu lado la siguiente información y decisiones.
+    </p>
+  </div>
+  <div class="barra"></div>
+
+  <div class="contenido">
+
+    <div class="leyenda">
+      <span><span class="chip ok">✅ Resuelto</span> lo hacemos nosotros</span>
+      <span><span class="chip cli">⬜ Pendiente</span> depende de ti</span>
+    </div>
+
+    <section>
+      <h2><span class="sec-num">1</span> Identidad y contenido de marca</h2>
+      <table>
+        <tr><th>Estado</th><th>Pendiente</th><th>Detalle</th></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Logo en vector</td><td>El logo actual (JLVC / José Luis Vázquez Cruz) solo lo tenemos como foto escaneada de baja calidad. Necesitamos el original en <strong>.AI, .SVG o .EPS</strong> (o PDF vectorial). Si no existe, cotizamos su reconstrucción.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Fotos reales de producto</td><td>Hoy usamos imágenes genéricas. Idealmente fotos de tu inventario real (barras, placas, perfiles) sobre fondo neutro.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Fotos de instalaciones</td><td>Almacén, flota, maquinaria y equipo — para las secciones "Nosotros" y el hero.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Textos definitivos</td><td>Confirmar/ajustar: descripción de la empresa, años de experiencia reales, número de SKUs, cobertura geográfica e historia.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Datos de contacto</td><td>Dirección física, teléfono, WhatsApp oficial, correo de ventas y horario.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Certificaciones reales</td><td>¿Cuentan con ISO 9001 / ASTM / otras? Para mostrarlas o quitarlas.</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="sec-num">2</span> Catálogo de productos</h2>
+      <table>
+        <tr><th>Estado</th><th>Pendiente</th><th>Detalle</th></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Lista real de materiales</td><td>SKU, nombre, grado/norma, categoría, unidad de venta (metro/kilo/pieza) y precio. Ideal en Excel/CSV. Hoy hay 9 productos de ejemplo.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Precios y manejo de IVA</td><td>El PRD indica precios SIN IVA + 16% en checkout. Validar que siga vigente.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Niveles y descuentos</td><td>El portal muestra niveles Oro/Plata/Bronce con % de descuento. Definir si aplican y sus reglas.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Existencias / stock</td><td>¿Cómo se actualizará el inventario? (manual en el panel, o integración con su sistema actual).</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="sec-num">3</span> Pagos</h2>
+      <table>
+        <tr><th>Estado</th><th>Pendiente</th><th>Detalle</th></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Mercado Pago</td><td>Entregar acceso a la cuenta y generar credenciales productivas: <strong>Access Token</strong>, <strong>Public Key</strong> y <strong>Webhook Secret</strong>.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Datos bancarios (SPEI)</td><td>Banco, beneficiario, <strong>CLABE</strong> y número de cuenta reales para el método de transferencia.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Política de confirmación</td><td>El PRD indica: stock se descuenta al confirmarse el pago; transferencias expiran a las 48 h. Validar.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">¿OXXO / otros?</td><td>Definir si se habilitan métodos de pago adicionales.</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="sec-num">4</span> Correos transaccionales</h2>
+      <table>
+        <tr><th>Estado</th><th>Pendiente</th><th>Detalle</th></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Dominio de correo verificado</td><td>Para enviar desde <strong>pedidos@acerosymetalesurgentes.com</strong> configuramos registros DNS (SPF/DKIM) con el proveedor Resend.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Correo del administrador</td><td>A dónde llegan las cotizaciones y avisos de pedidos nuevos.</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="sec-num">5</span> Base de datos y hosting</h2>
+      <table>
+        <tr><th>Estado</th><th>Pendiente</th><th>Detalle</th></tr>
+        <tr><td class="estado ok">✅</td><td class="tarea">Estructura de base de datos</td><td>Migraciones ya escritas (Supabase / PostgreSQL).</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Cuenta de Supabase</td><td>Crear el proyecto productivo (lo configuramos nosotros) o autorizar que lo creemos.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Dominio</td><td>Confirmar que <strong>acerosymetalesurgentes.com</strong> está registrado y quién tiene el acceso (para apuntar DNS a Vercel).</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Aprobar el deploy</td><td>Autorizar el despliegue en Vercel.</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="sec-num">6</span> Analítica y marketing <span style="font-family:Inter;font-size:13px;font-weight:400;color:var(--gris-med);margin-left:10px;text-transform:none;">(opcional para el lanzamiento)</span></h2>
+      <table>
+        <tr><th>Estado</th><th>Pendiente</th><th>Detalle</th></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Google Analytics 4</td><td>ID de medición.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Meta Pixel</td><td>ID (si harán campañas en Facebook/Instagram).</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Search Console</td><td>Verificación del dominio.</td></tr>
+        <tr><td class="estado cli">⬜</td><td class="tarea">Contenido del blog</td><td>Artículos técnicos reales (hoy hay ejemplos).</td></tr>
+      </table>
+    </section>
+
+    <section class="critico">
+      <h2>Lo mínimo para salir a producción</h2>
+      <p style="color:#A8BFCF;margin-bottom:18px;">Si el objetivo es lanzar lo antes posible, el camino crítico es:</p>
+      <ol>
+        <li><strong>Logo vectorial</strong> + fotos y datos de contacto.</li>
+        <li><strong>Catálogo real</strong> (Excel con productos y precios).</li>
+        <li><strong>Mercado Pago</strong> (credenciales) + <strong>datos bancarios</strong>.</li>
+        <li><strong>Correo</strong> (dominio verificado + correo del administrador).</li>
+        <li><strong>Supabase + dominio + deploy</strong> (lo montamos nosotros con tu OK).</li>
+      </ol>
+      <p style="color:#A8BFCF;margin-top:16px;">Analítica y blog pueden quedar para después del lanzamiento sin bloquear la venta en línea.</p>
+    </section>
+
+    <p class="nota-final">
+      Cualquier duda sobre un punto, la aclaramos antes de que lo consigas para no perder tiempo.
+      Marca cada casilla conforme lo entregues.
+    </p>
+
+  </div>
+
+  <footer>
+    <span>© 2026 <strong>Aceros y Metales Urgentes</strong> · acerosymetalesurgentes.com</span>
+    <span>Handoff técnico · Juan Azael Pinales Regis</span>
+  </footer>
+
+</div>
+</body>
+</html>
