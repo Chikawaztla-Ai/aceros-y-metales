@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Constructora Vanguarda S.A. | METAL-LOGIC CRM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-surface-variant": "#43474c",
+                    "tertiary-container": "#612f00",
+                    "inverse-primary": "#b5c8df",
+                    "tertiary": "#411d00",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "surface-dim": "#d8dadc",
+                    "surface-container": "#eceef0",
+                    "outline": "#74777d",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d1e4fb",
+                    "on-primary-container": "#96a9be",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#34495e",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c4c6cd",
+                    "surface-variant": "#e0e3e5",
+                    "error": "#ba1a1a",
+                    "secondary": "#4b6076",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface": "#f7f9fb",
+                    "on-background": "#191c1e",
+                    "secondary-container": "#cce2fc",
+                    "on-secondary-container": "#50657b",
+                    "secondary-fixed-dim": "#b3c9e2",
+                    "on-error": "#ffffff",
+                    "primary-container": "#2c3e50",
+                    "primary": "#162839",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-fixed": "#091d2e",
+                    "on-primary-fixed-variant": "#36485b",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#4e6073",
+                    "secondary-fixed": "#cfe5ff",
+                    "primary-fixed-dim": "#b5c8df",
+                    "on-tertiary-fixed": "#301400",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#f78b30",
+                    "inverse-surface": "#2d3133",
+                    "on-error-container": "#93000a",
+                    "background": "#f7f9fb",
+                    "on-secondary-fixed": "#051d30",
+                    "surface-container-highest": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "mono-data": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .industrial-grid {
+            background-image: radial-gradient(circle, #c4c6cd 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f2f4f6;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4e6073;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container flex justify-between items-center w-full px-margin-desktop h-16 fixed top-0 z-50 border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-on-tertiary-container tracking-tighter">METAL-LOGIC CRM</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-primary dark:text-on-primary-container opacity-80 hover:bg-primary-fixed-dim/10 transition-colors active:scale-95 duration-75" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-on-primary dark:text-on-primary-container opacity-80 hover:bg-primary-fixed-dim/10 transition-colors active:scale-95 duration-75" href="#">Inventario</a>
+<a class="font-label-md text-label-md text-on-primary dark:text-on-primary-container opacity-80 hover:bg-primary-fixed-dim/10 transition-colors active:scale-95 duration-75" href="#">Flota</a>
+<a class="font-label-md text-label-md text-on-tertiary-container border-b-2 border-on-tertiary-container pb-1 active:scale-95 duration-75" href="#">Clientes</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-[#f78b30] text-white px-4 py-2 font-label-md text-label-md font-bold uppercase tracking-wider hover:opacity-90 transition-opacity">Crear Pedido</button>
+<div class="flex gap-2">
+<span class="material-symbols-outlined cursor-pointer p-2 hover:bg-primary-fixed-dim/10 rounded-full">notifications</span>
+<span class="material-symbols-outlined cursor-pointer p-2 hover:bg-primary-fixed-dim/10 rounded-full">settings</span>
+</div>
+<img alt="Perfil de usuario" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional headshot of a senior logistics manager in a modern office, sharp focus, cinematic lighting with blue and steel tones, industrial background with architectural plans on the wall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWHjhC_aDzMoRYRigfDrhwA9uGa1x0DuwZWzSbFRdtOIzIQvbzIqoWi5SeKWUuKKuintTNB3Fxo0c2dBrAoYyo6koWuyr135syAz1Bf4uMCoQRvWG_BdQHu4Uk4Qk8GxQZ60QB6N0H7Hi1gk5lae3daci674IVp-NQSBKPuvUHAxcb9ItJNGvefNknK1yH-w2vybz85xeqhjJmwNYzUHl7dEkcLLfF5tuQhADGyan9-5o-TmbWSDTr"/>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline flex flex-col py-8 z-40">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary dark:text-primary-fixed font-bold">Admin. del Sistema</p>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">ID de Terminal: 882-X</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Resumen</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 bg-primary text-on-primary font-bold rounded-l-none rounded-r-full transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md">Registros de Clientes</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-md text-label-md">Ops. de Flota</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Envíos</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Facturas</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Analíticas</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full bg-[#f78b30] text-white py-3 rounded font-bold uppercase text-xs tracking-widest hover:brightness-110 mb-6">Nuevo Despacho</button>
+<div class="border-t border-outline-variant pt-4 space-y-1">
+<a class="flex items-center gap-4 px-2 py-2 text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Soporte</span>
+</a>
+<a class="flex items-center gap-4 px-2 py-2 text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md text-label-md">Estado del Sistema</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 bg-surface-bright relative">
+<div class="industrial-grid absolute inset-0 pointer-events-none"></div>
+<!-- Page Header -->
+<div class="bg-white border-b border-outline-variant px-margin-desktop py-8 flex justify-between items-end relative z-10">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant mb-4 font-label-md text-[12px] uppercase tracking-widest">
+<span>Clientes</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">Constructora Vanguarda S.A.</span>
+</nav>
+<div class="flex items-center gap-6">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Constructora Vanguarda S.A.</h1>
+<span class="bg-green-100 text-green-800 px-3 py-1 rounded font-bold text-xs uppercase flex items-center gap-1 border border-green-200">
+<span class="w-2 h-2 rounded-full bg-green-600 animate-pulse"></span>
+                            Activo
+                        </span>
+</div>
+<p class="text-on-surface-variant mt-2 font-mono-data">ID de Cuenta: CVA-992-MEX-01</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Límite de Crédito Total</p>
+<p class="font-display-lg text-display-lg text-primary leading-none">$250,000.00</p>
+</div>
+</div>
+<!-- Dashboard Layout (Bento Style) -->
+<div class="p-margin-desktop grid grid-cols-12 gap-gutter relative z-10">
+<!-- Metadata Sidebar (Left) -->
+<div class="col-span-3 space-y-gutter">
+<!-- Client Info Card -->
+<div class="bg-white border border-outline-variant p-6 shadow-sm">
+<h3 class="font-headline-md text-primary text-[18px] border-b border-outline-variant pb-3 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                            Metadatos del Cliente
+                        </h3>
+<div class="space-y-4">
+<div>
+<label class="block font-label-md text-[12px] text-on-surface-variant uppercase mb-1">Industria</label>
+<p class="font-body-md text-primary font-semibold">Construcción Civil Pesada</p>
+</div>
+<div>
+<label class="block font-label-md text-[12px] text-on-surface-variant uppercase mb-1">Contacto Principal</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">person</span>
+<p class="font-body-md text-primary font-semibold">Ing. Ricardo Alarcón</p>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-[12px] text-on-surface-variant uppercase mb-1">Teléfono Directo</label>
+<p class="font-mono-data text-primary">+52 55 8901 2231</p>
+</div>
+<div>
+<label class="block font-label-md text-[12px] text-on-surface-variant uppercase mb-1">Dirección Fiscal</label>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Av. Paseo de la Reforma 450, Piso 12, Ciudad de México, 06600</p>
+</div>
+</div>
+</div>
+<!-- Financial Summary Card -->
+<div class="bg-primary-container text-on-primary p-6 shadow-md border-l-4 border-[#f78b30]">
+<h3 class="font-headline-md text-[18px] text-on-primary-container mb-6 flex items-center justify-between">
+                            Salud Financiera
+                            <span class="material-symbols-outlined text-[#f78b30]">payments</span>
+</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-md text-[12px] uppercase opacity-70">Uso de Crédito</span>
+<span class="font-mono-data text-lg font-bold text-[#f78b30]">62%</span>
+</div>
+<div class="w-full h-3 bg-primary rounded-full overflow-hidden flex">
+<div class="h-full bg-[#f78b30]" style="width: 62%"></div>
+</div>
+<div class="flex justify-between mt-2 font-mono-data text-[11px] opacity-60">
+<span>Usado: $155,000</span>
+<span>Disp: $95,000</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+<div>
+<p class="text-[10px] uppercase opacity-50 mb-1">Pendiente</p>
+<p class="font-mono-data font-bold text-sm">$42,120.00</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-50 mb-1">Pago Promedio</p>
+<p class="font-mono-data font-bold text-sm">18 Días</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Interaction Panel (Center) -->
+<div class="col-span-6 space-y-gutter">
+<!-- Activity Timeline -->
+<div class="bg-white border border-outline-variant p-8 shadow-sm">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-headline-md text-primary flex items-center gap-3">
+<span class="material-symbols-outlined">history</span>
+                                Registro de Actividad
+                            </h3>
+<button class="text-primary hover:underline font-label-md text-sm">Ver Auditoría Completa</button>
+</div>
+<div class="relative">
+<!-- Timeline Line -->
+<div class="absolute left-6 top-0 bottom-0 w-px bg-outline-variant"></div>
+<!-- Timeline Items -->
+<div class="space-y-12">
+<!-- Order Delivered -->
+<div class="relative flex gap-10">
+<div class="z-10 w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary border-4 border-white shadow-sm">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[16px] text-primary">Pedido Entregado</h4>
+<span class="font-mono-data text-on-surface-variant text-xs">Hoy, 09:12 AM</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant">
+<p class="text-sm font-semibold mb-1">PO-2024-0089: Vigas Estructurales Serie-H</p>
+<p class="text-on-surface-variant text-sm">Envío verificado en Terminal Norte. Cliente firmó vía Terminal-X.</p>
+</div>
+</div>
+</div>
+<!-- Call Logged -->
+<div class="relative flex gap-10">
+<div class="z-10 w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary border-4 border-white shadow-sm">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[16px] text-primary">Llamada Registrada</h4>
+<span class="font-mono-data text-on-surface-variant text-xs">24 Oct, 2023, 03:45 PM</span>
+</div>
+<div class="bg-white p-4 rounded border border-outline-variant">
+<p class="text-sm italic text-on-surface-variant">"Se discutió la expansión del límite de crédito para el próximo proyecto en Monterrey. Ricardo solicita un margen adicional de $50k."</p>
+<p class="mt-2 text-[12px] font-bold text-primary">— Registrado por Sarah Miller (Gerente de Cuenta)</p>
+</div>
+</div>
+</div>
+<!-- Quote Sent -->
+<div class="relative flex gap-10">
+<div class="z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary border-4 border-white shadow-sm">
+<span class="material-symbols-outlined">request_quote</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[16px] text-primary">Cotización Enviada</h4>
+<span class="font-mono-data text-on-surface-variant text-xs">22 Oct, 2023, 11:20 AM</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant flex justify-between items-center">
+<div>
+<p class="text-sm font-bold">QT-8892-VANGUARD</p>
+<p class="text-on-surface-variant text-xs">Varilla Especializada y Malla Reforzada</p>
+</div>
+<p class="font-mono-data text-lg font-bold text-primary">$18,400.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Document & Stats (Right) -->
+<div class="col-span-3 space-y-gutter">
+<!-- Document Vault -->
+<div class="bg-white border border-outline-variant p-6 shadow-sm">
+<h3 class="font-headline-md text-primary text-[18px] border-b border-outline-variant pb-3 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">folder_shared</span>
+                            Bóveda de Documentos
+                        </h3>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-3 bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-red-700">picture_as_pdf</span>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">ISO-9001-CERT_2024.pdf</p>
+<p class="text-[10px] text-on-surface-variant uppercase">Certificación de Calidad</p>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary">description</span>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">RFC_TAX_DOC_CVA.pdf</p>
+<p class="text-[10px] text-on-surface-variant uppercase">Identificación Fiscal</p>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">CREDIT_CONTRACT_SIGNED.pdf</p>
+<p class="text-[10px] text-on-surface-variant uppercase">Contrato Legal</p>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</div>
+<button class="w-full mt-4 py-2 border-2 border-dashed border-outline-variant text-on-surface-variant text-sm font-bold flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+                                Subir Artefacto
+                            </button>
+</div>
+</div>
+<!-- Market Context Card -->
+<div class="bg-white border border-outline-variant overflow-hidden shadow-sm">
+<div class="h-32 bg-cover bg-center" data-alt="Aerial view of a large-scale industrial construction site at dawn, featuring cranes, structural steel skeletons, and concrete foundations, sharp focus, technical lighting, cool blue and orange industrial color grading." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtrJv5qqH3OGPIAtTk0-fAr8dOj2kMly5UurEwSb96OEb6lMop5vEWmGmT2XV0oMR57zIfQLzA4bQjyBoE_qtkTjueV_NbVHV95f-Dcq4p_ZrACghtOvSJDt04Xyl96tRMkudg09PKmcsocCk4u_OZy1j2fZYkCswGHStm14HhuU-oHYpHsfQZSXgLs4VUJgvqUHeh4iX-QRvPWXiUaFYltIWuxrYMJ48O7jhn_rKs21J7WgmUuO8m')"></div>
+<div class="p-4">
+<h4 class="font-headline-md text-[14px] text-primary mb-2 uppercase tracking-tight">Contexto de Proyecto Activo</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Suministrando actualmente acero de grado estructural para el desarrollo de uso mixto "Vanguarda Heights" en el Distrito Santa Fe.</p>
+<div class="mt-4 flex items-center justify-between pt-4 border-t border-outline-variant">
+<div class="text-center">
+<p class="text-[10px] text-on-surface-variant uppercase">TM Enviadas</p>
+<p class="font-mono-data font-bold">1,420</p>
+</div>
+<div class="text-center">
+<p class="text-[10px] text-on-surface-variant uppercase">OC Abiertas</p>
+<p class="font-mono-data font-bold">4</p>
+</div>
+<div class="text-center">
+<p class="text-[10px] text-on-surface-variant uppercase">Nivel de Riesgo</p>
+<p class="font-mono-data font-bold text-green-600">BAJO</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Micro-interaction for hover states on financial bar
+        document.addEventListener('DOMContentLoaded', () => {
+            const bar = document.querySelector('.h-full.bg-\\[\\#f78b30\\]');
+            if (bar) {
+                bar.parentElement.addEventListener('mouseenter', () => {
+                    bar.style.transition = 'width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    bar.style.filter = 'brightness(1.1)';
+                });
+                bar.parentElement.addEventListener('mouseleave', () => {
+                    bar.style.filter = 'brightness(1)';
+                });
+            }
+        });
+    </script>
+</body></html>

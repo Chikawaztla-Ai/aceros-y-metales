@@ -89,6 +89,24 @@
   background-size: 40px 40px;
 }
 
+/* Etapas del pipeline CRM con forma de flecha/chevron (stitch crm) */
+.pipeline-arrow {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 16px 50%);
+}
+.pipeline-arrow:first-child {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%);
+}
+.pipeline-arrow:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 16px 50%);
+}
+@media (max-width: 1023px) {
+  .pipeline-arrow,
+  .pipeline-arrow:first-child,
+  .pipeline-arrow:last-child {
+    clip-path: none;
+  }
+}
+
 /* ============================================================
    Micro-animaciones (DESIGN-SYSTEM §8 + stitch 404)
    ============================================================ */

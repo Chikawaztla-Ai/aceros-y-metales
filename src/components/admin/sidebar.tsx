@@ -9,7 +9,9 @@ const adminNav = [
   { href: '/admin/pedidos', label: 'Pedidos', icon: 'receipt_long' },
   { href: '/admin/inventario', label: 'Inventario', icon: 'inventory_2' },
   { href: '/admin/cotizaciones', label: 'Cotizaciones', icon: 'request_quote' },
+  { href: '/admin/crm', label: 'CRM / Ventas', icon: 'insights' },
   { href: '/admin/clientes', label: 'Clientes', icon: 'group' },
+  { href: '/admin/logistica', label: 'Logística', icon: 'local_shipping' },
   { href: '/admin/maquinaria', label: 'Maquinaria', icon: 'precision_manufacturing' },
   { href: '/admin/config', label: 'Ajustes', icon: 'settings' },
 ];

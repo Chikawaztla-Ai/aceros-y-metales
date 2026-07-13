@@ -1,0 +1,405 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>METAL-LOGIC CRM | Fleet &amp; Logistics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-surface-variant": "#43474c",
+                        "tertiary-container": "#612f00",
+                        "inverse-primary": "#b5c8df",
+                        "tertiary": "#411d00",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "surface-dim": "#d8dadc",
+                        "surface-container": "#eceef0",
+                        "outline": "#74777d",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d1e4fb",
+                        "on-primary-container": "#96a9be",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#34495e",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#c4c6cd",
+                        "surface-variant": "#e0e3e5",
+                        "error": "#ba1a1a",
+                        "secondary": "#4b6076",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#cce2fc",
+                        "on-secondary-container": "#50657b",
+                        "secondary-fixed-dim": "#b3c9e2",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2c3e50",
+                        "primary": "#162839",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed": "#091d2e",
+                        "on-primary-fixed-variant": "#36485b",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#4e6073",
+                        "secondary-fixed": "#cfe5ff",
+                        "primary-fixed-dim": "#b5c8df",
+                        "on-tertiary-fixed": "#301400",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#f78b30",
+                        "inverse-surface": "#2d3133",
+                        "on-error-container": "#93000a",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#051d30",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .industrial-grid {
+            background-image: linear-gradient(rgba(224, 227, 229, 0.5) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(224, 227, 229, 0.5) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .truck-active {
+            border-left: 4px solid #f78b30;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 z-50 flex justify-between items-center w-full px-margin-desktop h-16 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-on-tertiary-container tracking-tighter">METAL-LOGIC CRM</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-primary dark:text-on-primary-container opacity-80 hover:bg-primary-fixed-dim/10 transition-colors" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-on-primary dark:text-on-primary-container opacity-80 hover:bg-primary-fixed-dim/10 transition-colors" href="#">Inventory</a>
+<a class="font-label-md text-label-md text-on-tertiary-container border-b-2 border-on-tertiary-container pb-1" href="#">Fleet</a>
+<a class="font-label-md text-label-md text-on-primary dark:text-on-primary-container opacity-80 hover:bg-primary-fixed-dim/10 transition-colors" href="#">Clients</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-tertiary-container text-on-tertiary-fixed px-4 py-1.5 font-label-md text-label-md rounded uppercase tracking-wider font-bold hover:brightness-110 active:scale-95 transition-all">
+                Create Order
+            </button>
+<span class="material-symbols-outlined cursor-pointer hover:bg-primary-fixed-dim/10 p-2 rounded transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-primary-fixed-dim/10 p-2 rounded transition-colors" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution close-up portrait of a male logistics manager in his 40s wearing a clean industrial uniform. The lighting is sharp and cinematic, suggesting a high-tech control center environment. The color palette is dominated by deep steel blues and warm orange accents from digital displays in the background. The aesthetic is clean, sharp, and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBENsK8g_mEFlJNBcu5I8v28sYz4RCm-4If7jM73oR8pPJvxC-Medy_eRzRk6esoZAY51gk_oEHO05e8gLY2p2xfBl3J2hhii3vqB6puFsJYs4MV5y0a6OYzSscVF0TG1iIgeBOYPsohkf2QQbTmKaGVZ8618PmwtdP8ZT2pa2MLeNHt2ha9mDYkOKG0f8kShQwM7xmDhgtMD9SmQP4_fiJHhJuCC0KXAqkG8DTtyZ11VafPfSLJvB4">
+</div>
+</div>
+</header>
+<!-- Side Navigation -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline flex flex-col py-8 hidden lg:flex">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="local_shipping">local_shipping</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-primary">System Admin</p>
+<p class="font-body-md text-[10px] text-on-surface-variant uppercase tracking-tighter">Terminal ID: 882-X</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<ul class="space-y-1">
+<li><a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#"><span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Overview</a></li>
+<li><a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#"><span class="material-symbols-outlined" data-icon="groups">groups</span> Client Records</a></li>
+<li><a class="flex items-center gap-4 px-6 py-3 bg-primary text-on-primary font-bold rounded-l-none rounded-r-full font-label-md text-label-md shadow-lg" href="#"><span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span> Fleet Ops</a></li>
+<li><a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#"><span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span> Shipments</a></li>
+<li><a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#"><span class="material-symbols-outlined" data-icon="description">description</span> Invoices</a></li>
+<li><a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#"><span class="material-symbols-outlined" data-icon="analytics">analytics</span> Analytics</a></li>
+</ul>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-on-tertiary-container text-on-primary py-3 font-bold uppercase text-xs tracking-widest hover:brightness-110 transition-all shadow-md mb-8">New Dispatch</button>
+<div class="space-y-2 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 text-on-surface-variant font-label-md text-label-md hover:text-primary" href="#"><span class="material-symbols-outlined text-[18px]" data-icon="help">help</span> Support</a>
+<a class="flex items-center gap-3 text-on-surface-variant font-label-md text-label-md hover:text-primary" href="#"><span class="material-symbols-outlined text-[18px]" data-icon="sensors">sensors</span> System Status</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-0 lg:ml-64 mt-16 p-8 industrial-grid min-h-[calc(100vh-64px)]">
+<div class="max-w-container-max mx-auto">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Fleet Operations Monitor</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time oversight of regional heavy-duty logistics network.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container border border-outline-variant px-6 py-3">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Active Units</p>
+<p class="font-display-lg text-3xl text-primary">142<span class="text-on-tertiary-container">/150</span></p>
+</div>
+<div class="bg-surface-container border border-outline-variant px-6 py-3">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Efficiency Index</p>
+<p class="font-display-lg text-3xl text-primary">94.8%</p>
+</div>
+</div>
+</div>
+<!-- Dashboard Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Fleet Status List -->
+<div class="md:col-span-4 bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-primary text-on-primary">
+<h2 class="font-headline-md text-headline-md text-lg">Live Fleet Status</h2>
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="sync">sync</span>
+</div>
+<div class="flex-1 overflow-y-auto max-h-[600px]">
+<!-- Truck ID: TRK-902 -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors truck-active cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono-data text-primary font-bold">ID: TRK-902</span>
+<span class="bg-tertiary-fixed text-tertiary px-2 py-0.5 text-[10px] font-bold uppercase rounded">En Tránsito</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Ruta: Bilbao Terminal → Central Yard</p>
+<div class="mt-2 flex items-center justify-between text-xs font-mono-data">
+<span class="text-on-surface-variant"><span class="material-symbols-outlined text-[14px] align-middle mr-1" data-icon="person">person</span> Marcos Valdés</span>
+<span class="text-primary font-bold">ETA: 14:30</span>
+</div>
+</div>
+<!-- Truck ID: TRK-114 -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono-data text-primary font-bold">ID: TRK-114</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 text-[10px] font-bold uppercase rounded">Cargando</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Muelle: Dock 04 - Plate Loading</p>
+<div class="mt-2 flex items-center justify-between text-xs font-mono-data">
+<span class="text-on-surface-variant"><span class="material-symbols-outlined text-[14px] align-middle mr-1" data-icon="person">person</span> Julian Sanz</span>
+<span class="text-on-tertiary-container font-bold">0% Completed</span>
+</div>
+</div>
+<!-- More list items -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono-data text-primary font-bold">ID: TRK-551</span>
+<span class="bg-tertiary-fixed text-tertiary px-2 py-0.5 text-[10px] font-bold uppercase rounded">En Tránsito</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Ruta: Warehouse A → North Border</p>
+<div class="mt-2 flex items-center justify-between text-xs font-mono-data">
+<span class="text-on-surface-variant"><span class="material-symbols-outlined text-[14px] align-middle mr-1" data-icon="person">person</span> Elena Ruiz</span>
+<span class="text-primary font-bold">ETA: 15:15</span>
+</div>
+</div>
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono-data text-primary font-bold">ID: TRK-308</span>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 text-[10px] font-bold uppercase rounded">Maintenance</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Taller: Engine Overhaul Zone 2</p>
+<div class="mt-2 flex items-center justify-between text-xs font-mono-data">
+<span class="text-on-surface-variant"><span class="material-symbols-outlined text-[14px] align-middle mr-1" data-icon="build">build</span> Tech: Aranda</span>
+<span class="text-error font-bold">Out of Service</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Route Tracking Map Visualization -->
+<div class="md:col-span-8 space-y-gutter">
+<div class="relative bg-surface-container-highest border border-outline-variant h-[400px] overflow-hidden group">
+<div class="absolute inset-0 bg-primary opacity-5 mix-blend-multiply z-10 pointer-events-none"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="A high-contrast, technical satellite map view of an industrial port area and surrounding highway infrastructure. The visual style is inspired by dark-mode telemetry dashboards with glowing vector lines representing shipping lanes and routes. Deep steel blues and blacks dominate the land while water is represented by a dark charcoal. Key waypoints are marked with sharp geometric icons in safety orange. Professional and clean aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCL9Q0Z3e1CUhsEcpi6p4DlDo1Op0WgbdDDgeIeo7Nn4EeS6J7jG7t9un5Rdds9tCzU2FiIHF1Wn5_tfxlz4nHmu-DHjHcD-s-lGOYs9M_t1vmFBQOIsOXoQDJ7CynnTOD1egJ7fhHIdrsD61fYwCHRGNgjxI3xo761nVLN8tbKGzcfFx4ykgdEtuylehUgemMR4y-UnDZ10GaM24x4GGN6tFU0W_l0Op4U-LRQusd9DHP_ClRIRl82')"></div>
+<!-- Floating Data Overlays -->
+<div class="absolute top-6 left-6 z-20 bg-primary/90 text-on-primary p-4 border border-outline-variant backdrop-blur-md">
+<h3 class="font-label-md text-label-md uppercase tracking-widest mb-3">Live Feed: TRK-902</h3>
+<div class="grid grid-cols-2 gap-4 font-mono-data text-[12px]">
+<div>
+<p class="text-on-primary-container opacity-60">Speed</p>
+<p class="text-lg">84 km/h</p>
+</div>
+<div>
+<p class="text-on-primary-container opacity-60">Fuel</p>
+<p class="text-lg text-on-tertiary-container">62%</p>
+</div>
+<div>
+<p class="text-on-primary-container opacity-60">Payload</p>
+<p class="text-lg">24.5 Tons</p>
+</div>
+<div>
+<p class="text-on-primary-container opacity-60">Pressure</p>
+<p class="text-lg">Optimal</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 z-20 flex gap-2">
+<button class="bg-surface-container-lowest border border-outline-variant p-2 hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<button class="bg-surface-container-lowest border border-outline-variant p-2 hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+</div>
+</div>
+<!-- Delivery & Documentation Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Maintenance Alerts -->
+<div class="bg-surface-container-low border border-outline-variant p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<h3 class="font-headline-md text-headline-md text-primary text-base">Alertas de Mantenimiento</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-error-container/30 border-l-4 border-error">
+<div>
+<p class="font-label-md text-label-md font-bold text-error">TRK-308: Frenos Críticos</p>
+<p class="text-[11px] text-on-surface-variant font-mono-data">Reportado hace 2h por J. Aranda</p>
+</div>
+<button class="text-xs font-bold uppercase underline text-error">Ver</button>
+</div>
+<div class="flex items-center justify-between p-3 bg-tertiary-fixed/30 border-l-4 border-tertiary">
+<div>
+<p class="font-label-md text-label-md font-bold text-tertiary">TRK-122: Cambio de Aceite</p>
+<p class="text-[11px] text-on-surface-variant font-mono-data">Vence en 450 km</p>
+</div>
+<button class="text-xs font-bold uppercase underline text-tertiary">Agendar</button>
+</div>
+</div>
+</div>
+<!-- Documentación de Entrega -->
+<div class="bg-surface-container-low border border-outline-variant p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="assignment">assignment</span>
+<h3 class="font-headline-md text-headline-md text-primary text-base">Documentación de Entrega</h3>
+</div>
+<table class="w-full text-left font-mono-data text-[12px]">
+<thead class="border-b border-outline-variant text-on-surface-variant uppercase tracking-tighter">
+<tr>
+<th class="pb-2 font-semibold">TICKET ID</th>
+<th class="pb-2 font-semibold">CLIENTE</th>
+<th class="pb-2 font-semibold text-right">ESTADO</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr>
+<td class="py-3 font-bold">#W-8812</td>
+<td class="py-3">Industrial Corp</td>
+<td class="py-3 text-right">
+<span class="flex items-center justify-end gap-1 text-green-600">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                                VALIDADO
+                                            </span>
+</td>
+</tr>
+<tr>
+<td class="py-3 font-bold">#W-8815</td>
+<td class="py-3">Construcciones S.A.</td>
+<td class="py-3 text-right">
+<span class="flex items-center justify-end gap-1 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="pending">pending</span>
+                                                PENDIENTE
+                                            </span>
+</td>
+</tr>
+<tr>
+<td class="py-3 font-bold">#W-8819</td>
+<td class="py-3">Steel Mills Ltd</td>
+<td class="py-3 text-right">
+<span class="flex items-center justify-end gap-1 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="pending">pending</span>
+                                                PENDIENTE
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Stats / Horizontal Strip -->
+<div class="mt-gutter grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="bg-primary text-on-primary p-6 shadow-md border border-outline">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-primary-container">Monthly Volume</p>
+<p class="font-display-lg text-2xl mt-1">12,400 <span class="text-sm font-mono-data opacity-60">TONS</span></p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 shadow-sm">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Safety Incidents</p>
+<p class="font-display-lg text-2xl mt-1 text-primary">0 <span class="text-sm font-mono-data text-on-surface-variant opacity-60">THIS Q</span></p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 shadow-sm">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Fuel Cons. Avg</p>
+<p class="font-display-lg text-2xl mt-1 text-primary">32.4 <span class="text-sm font-mono-data text-on-surface-variant opacity-60">L/100KM</span></p>
+</div>
+<div class="bg-on-tertiary-container text-on-primary p-6 shadow-md">
+<p class="text-[10px] font-bold uppercase tracking-widest opacity-80">System Health</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-3 h-3 bg-white rounded-full animate-pulse"></span>
+<p class="font-display-lg text-2xl">OPTIMAL</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Interactive Layer: Simple JS for row selection highlight -->
+<script>
+        document.querySelectorAll('.truck-active').forEach(item => {
+            item.addEventListener('click', function() {
+                // Future expansion: open truck detail view
+                console.log('Viewing truck details...');
+            });
+        });
+
+        // Add visual feedback to icons
+        document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                icon.style.transform = 'scale(1.1)';
+            });
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>
