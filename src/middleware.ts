@@ -11,20 +11,25 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
-  // Sin credenciales de Supabase configuradas no hay sesión posible:
-  // tratar como no autenticado (fail-closed) en vez de tronar.
+  // MODO DEMO: mientras no haya un backend Supabase real conectado, el sitio
+  // muestra el panel admin y el portal con datos de ejemplo, para que el
+  // cliente pueda revisar todas las pantallas sin iniciar sesión.
+  // En cuanto se configuren credenciales reales de Supabase, el candado de
+  // login (más abajo) se activa automáticamente. Los datos hoy son mock, así
+  // que no hay información sensible que proteger en esta fase.
+  // Para forzar el candado aun sin Supabase (probar el flujo de login), pon
+  // NEXT_PUBLIC_DEMO_PREVIEW=0 en el entorno.
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseKey || supabaseUrl.includes('xxxx')) {
-    // DEMO_PREVIEW: sin Supabase, permitir ver las pantallas con datos mock
-    // (se restaura el redirect a /login al configurar credenciales).
-    if (process.env.NEXT_PUBLIC_DEMO_PREVIEW === '1') {
-      return supabaseResponse;
+  const supabaseConfigurado = supabaseUrl && supabaseKey && !supabaseUrl.includes('xxxx');
+  if (!supabaseConfigurado) {
+    if (process.env.NEXT_PUBLIC_DEMO_PREVIEW === '0') {
+      const url = request.nextUrl.clone();
+      url.pathname = '/login';
+      url.searchParams.set('redirect', request.nextUrl.pathname);
+      return NextResponse.redirect(url);
     }
-    const url = request.nextUrl.clone();
-    url.pathname = '/login';
-    url.searchParams.set('redirect', request.nextUrl.pathname);
-    return NextResponse.redirect(url);
+    return supabaseResponse;
   }
 
   const supabase = createServerClient(
