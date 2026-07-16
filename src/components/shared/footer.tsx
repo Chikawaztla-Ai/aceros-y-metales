@@ -6,8 +6,8 @@ export function Footer() {
     <footer className="bg-primary-container border-t-4 border-on-tertiary-container">
       <div className="max-w-container mx-auto px-10 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <div className="flex items-center gap-3 mb-4">
-            <BrandLogo />
+          <div className="mb-4">
+            <BrandLogo variant="vertical" />
           </div>
           <p className="text-sm text-on-primary-container/70">
             Distribución industrial de acero, aluminio, cobre, bronce y metales especiales.

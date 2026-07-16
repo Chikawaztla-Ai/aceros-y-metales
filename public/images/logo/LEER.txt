@@ -1,9 +1,20 @@
-LOGO DEL CLIENTE — dejar aquí los archivos:
+LOGO OFICIAL — Aceros y Metales Urgentes (JLVC · José Luis Vázquez Cruz)
 
-1) imagotipo.png  → el logo JLVC (el cubo). Idealmente PNG con fondo transparente.
-   Se muestra dentro de un recuadro blanco en el header y footer.
+EN USO (los que lee el sitio):
+  logo-horizontal.png  → header  (cubo a la izquierda + texto). 1435x485
+  logo-vertical.png    → footer  (cubo arriba, texto abajo).    1041x1072
+  Ambos fueron recortados automáticamente al contenido (sin márgenes blancos).
 
-2) (opcional) wordmark.png → el texto "ACEROS Y METALES URGENTES" en su tipografía
-   oficial (serif), si se quiere usar la imagen en vez del texto actual.
+RESPALDO (originales entregados por el cliente, sin recortar):
+  original-horizontal.png
+  original-vertical.png
 
-Tamaño sugerido del imagotipo: al menos 200x200 px.
+NOTA IMPORTANTE:
+  Los archivos NO tienen transparencia (fondo blanco sólido) y el header/footer
+  son azul oscuro, por eso el logo se muestra sobre una PLACA BLANCA
+  (ver src/components/shared/brand-logo.tsx).
+  Si el cliente entrega el logo en vector (.AI/.SVG/.EPS) o PNG con fondo
+  transparente, se puede quitar la placa y usarlo directo sobre el azul.
+
+  Los nombres van en MINÚSCULAS a propósito: en el deploy (Linux) las
+  mayúsculas importan y "Imagotipo.png" daría 404.

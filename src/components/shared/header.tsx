@@ -21,7 +21,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-primary-container border-b border-outline-variant shadow-sm">
       <div className="max-w-container mx-auto px-10 py-4 flex items-center justify-between">
         <div className="flex items-center gap-10">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <BrandLogo />
           </Link>
 
