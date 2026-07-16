@@ -1,0 +1,9 @@
+LOGO DEL CLIENTE — dejar aquí los archivos:
+
+1) imagotipo.png  → el logo JLVC (el cubo). Idealmente PNG con fondo transparente.
+   Se muestra dentro de un recuadro blanco en el header y footer.
+
+2) (opcional) wordmark.png → el texto "ACEROS Y METALES URGENTES" en su tipografía
+   oficial (serif), si se quiere usar la imagen en vez del texto actual.
+
+Tamaño sugerido del imagotipo: al menos 200x200 px.

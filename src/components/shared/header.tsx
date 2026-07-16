@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { clsx } from 'clsx';
 import { CartBadge } from '@/components/cart/cart-badge';
+import { BrandLogo } from '@/components/shared/brand-logo';
 
 const navLinks = [
   { href: '/catalogo', label: 'Catálogo' },
@@ -20,13 +21,8 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-primary-container border-b border-outline-variant shadow-sm">
       <div className="max-w-container mx-auto px-10 py-4 flex items-center justify-between">
         <div className="flex items-center gap-10">
-          <Link href="/" className="flex flex-col leading-none">
-            <span className="font-montserrat font-bold text-lg text-on-primary tracking-tighter">
-              ACEROS Y METALES
-            </span>
-            <span className="text-[10px] font-bold text-on-tertiary-container tracking-[3px] uppercase">
-              URGENTES
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            <BrandLogo />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
