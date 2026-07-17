@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ACERO INDUSTRIAL - Catálogo Móvil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#f7f9fb",
+                    "primary-fixed": "#d1e4fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-container": "#2c3e50",
+                    "on-secondary": "#ffffff",
+                    "primary": "#162839",
+                    "on-secondary-fixed": "#051d30",
+                    "on-primary-fixed-variant": "#36485b",
+                    "surface-container": "#eceef0",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-high": "#e6e8ea",
+                    "on-tertiary-container": "#f78b30",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#96a9be",
+                    "secondary": "#4b6076",
+                    "on-background": "#191c1e",
+                    "inverse-primary": "#b5c8df",
+                    "on-surface": "#191c1e",
+                    "on-surface-variant": "#43474c",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b5c8df",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-bright": "#f7f9fb",
+                    "surface-dim": "#d8dadc",
+                    "on-primary-fixed": "#091d2e",
+                    "surface-container-low": "#f2f4f6",
+                    "secondary-fixed-dim": "#b3c9e2",
+                    "on-secondary-container": "#50657b",
+                    "outline": "#74777d",
+                    "surface": "#f7f9fb",
+                    "on-secondary-fixed-variant": "#34495e",
+                    "tertiary-container": "#612f00",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed": "#cfe5ff",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c4c6cd",
+                    "inverse-surface": "#2d3133",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#cce2fc",
+                    "on-tertiary-fixed": "#301400",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#411d00",
+                    "surface-tint": "#4e6073",
+                    "tertiary-fixed": "#ffdcc5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "mono-data": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .filter-transition {
+            transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
+        }
+        .product-card {
+            border: 1px solid rgba(116, 119, 125, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface border-b border-surface-container-highest">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ACERO INDUSTRIAL</h1>
+</div>
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pb-24">
+<!-- Search & Filter Trigger -->
+<section class="px-margin-mobile py-4 bg-surface-container-low shadow-sm sticky top-16 z-30">
+<div class="flex flex-col gap-3">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-lg font-body-md focus:border-primary focus:ring-0 outline-none transition-all" placeholder="Buscar material o SKU..." type="text"/>
+</div>
+<button class="flex items-center justify-between w-full px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md uppercase tracking-wider" onclick="toggleFilters()">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined">filter_list</span>
+                        Filtros de Catálogo
+                    </span>
+<span class="material-symbols-outlined transition-transform duration-300" id="filter-chevron">expand_more</span>
+</button>
+</div>
+<!-- Expandable Filters -->
+<div class="max-h-0 opacity-0 overflow-hidden filter-transition flex flex-col gap-4 mt-4" id="filter-panel">
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase px-1">Categoría</label>
+<select class="bg-white border-outline-variant rounded-lg text-label-md py-2">
+<option>Todos</option>
+<option>Vigas</option>
+<option>Placas</option>
+<option>Tubería</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase px-1">Grado</label>
+<select class="bg-white border-outline-variant rounded-lg text-label-md py-2">
+<option>A36</option>
+<option>A572-50</option>
+<option>SA-516</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" id="stock-only" type="checkbox"/>
+<label class="text-label-md text-on-surface" for="stock-only">Solo Disponibilidad Inmediata</label>
+</div>
+</div>
+</section>
+<!-- Product List -->
+<section class="px-margin-mobile py-6 flex flex-col gap-4">
+<div class="flex items-center justify-between mb-2">
+<p class="font-label-md text-on-surface-variant">248 RESULTADOS ENCONTRADOS</p>
+<span class="material-symbols-outlined text-on-surface-variant">sort</span>
+</div>
+<!-- Product Card 1 -->
+<div class="product-card bg-white rounded-lg overflow-hidden flex flex-col shadow-sm transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional industrial photograph of stacked heavy-duty structural steel I-beams in a well-lit warehouse. The lighting is crisp and cool, highlighting the metallic texture and sharp edges of the steel. The composition follows industrial modernist principles with a focus on geometric alignment and structural integrity. A subtle blue tint reflects the corporate steel blue brand palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD03NRxJhfLtliIsXS-fgpMA_RiMvScYDo39K4f37lilnXV65i2onqlDP_wOTNBensb7nVUdc6NMMuU4ITnDWH2GLaGyLpz3q32dZ1uEr-yfXV0Qi1MO4_x68FeluwwdISErL5e2kKzOUYf1T0-_bGlqSbrWpyqnCh8w1Rjbl-xD6FOJm-z6q5NfEhWNPiAP5SoMJT7fWh2E3V8YjYIP9nmTZI9hbJf2h5zjb39R7zTo5XhVIPn298j"/>
+<div class="absolute top-3 right-3 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                        Stock Disponible
+                    </div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-[18px] text-primary leading-tight">Viga IPR 12" x 6.5"</h3>
+<p class="text-[12px] font-bold text-on-surface-variant tracking-wider">ASTM A36 / ESTRUCTURAL</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">bookmark_add</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-3 border-y border-outline-variant/30">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">SKU</span>
+<span class="font-mono-data text-mono-data text-primary">IPR-A36-1265-01</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Grado</span>
+<span class="font-mono-data text-mono-data text-primary">A36 (Dual Cert)</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div class="flex items-center gap-1 text-[#27ae60]">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[12px] font-bold">ENTREGA HOY</span>
+</div>
+<button class="bg-[#E67E22] text-white px-6 py-2 rounded font-label-md uppercase shadow-md active:bg-tertiary">Cotizar</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="product-card bg-white rounded-lg overflow-hidden flex flex-col shadow-sm transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A detailed close-up of high-grade industrial steel plates with visible technical markings and mill certifications. The setting is a clean, organized steel service center with high-key lighting that emphasizes the smooth finish and precise thickness of the plates. The color palette is dominated by neutral grays and professional blues, evoking a sense of high-trust industrial reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6hW3AF-kZJdAHX0q5c95M5tnRB5XXM518RPZ-KFlGpvI7UbaisAMbB6EuGefyt8ZOLtSEGYM7stUYPVTqMkWq1BwQInAJmNo6bKlxYgg0IisjEn11CN9BXBshwYcXSUh7qPtpdWJrueqNYqhbjeIgGwqrrV-CA3IFIkHXwgjRd9BQT5ptPOHHWdAi6sMOCwDNRj1UWxSLebcf2S703WbibxRv-BsNVxUVfUQKLOTCg52coqAahyJB"/>
+<div class="absolute top-3 right-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                        Bajo Pedido
+                    </div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-[18px] text-primary leading-tight">Placa de Acero 1/2"</h3>
+<p class="text-[12px] font-bold text-on-surface-variant tracking-wider">SA-516 GR 70 / RECIPIENTES</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">bookmark_add</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-3 border-y border-outline-variant/30">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">SKU</span>
+<span class="font-mono-data text-mono-data text-primary">PL-516-0500-XT</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Grado</span>
+<span class="font-mono-data text-mono-data text-primary">ASTM SA-516</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-[12px] font-bold">3-5 DÍAS HÁB.</span>
+</div>
+<button class="bg-[#E67E22] text-white px-6 py-2 rounded font-label-md uppercase shadow-md active:bg-tertiary">Cotizar</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="product-card bg-white rounded-lg overflow-hidden flex flex-col shadow-sm transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="An artistic perspective of industrial hollow structural sections (HSS) or steel pipes arranged in a rhythmic pattern. The lighting highlights the curved surfaces and the dark interior of the pipes, creating strong shadows and high contrast. The mood is structural and technical, reflecting the architectural blueprints aesthetic. Dominant colors include charcoal grey and a vibrant orange accent from industrial safety markings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy3XY6MoNGoNuu7UZH-rE0tDk76x6zuVnym_IYJS61EIRKBYF38P0v1VMcZI4vsY-ikifYtXvOLCIN32XmL5lEYOMlfLIAyoNCdDoaXhP2qmfNHd3xRHCPum82_QDEx7pyKAJYC3y6RfKA5aD4LQm5sSI8ACxWlRjT4SIAOtPqXRZNfjijTa4O00hS3Vbkk1Wr4VPHMNbu7VA3mO3YKm3Q2eMOAzP4rgfOeuoeyakeN6GByGNuwk1i"/>
+<div class="absolute top-3 right-3 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                        Stock Disponible
+                    </div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-[18px] text-primary leading-tight">PTR 4" x 4" Calibre 11</h3>
+<p class="text-[12px] font-bold text-on-surface-variant tracking-wider">A500 GR B / ESTRUCTURAL</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">bookmark_add</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-3 border-y border-outline-variant/30">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">SKU</span>
+<span class="font-mono-data text-mono-data text-primary">PTR-A500-4040-11</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Grado</span>
+<span class="font-mono-data text-mono-data text-primary">ASTM A500-B</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div class="flex items-center gap-1 text-[#27ae60]">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[12px] font-bold">ENTREGA HOY</span>
+</div>
+<button class="bg-[#E67E22] text-white px-6 py-2 rounded font-label-md uppercase shadow-md active:bg-tertiary">Cotizar</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface border-t border-surface-container-highest pb-safe h-20 z-50 shadow-lg">
+<a class="flex flex-col items-center justify-center text-secondary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-[11px] mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-tertiary-container text-on-tertiary-container rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-[11px] mt-1">Catálogo</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-[11px] mt-1">Pedidos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[11px] mt-1">Perfil</span>
+</a>
+</nav>
+<script>
+        function toggleFilters() {
+            const panel = document.getElementById('filter-panel');
+            const chevron = document.getElementById('filter-chevron');
+            
+            if (panel.classList.contains('max-h-0')) {
+                panel.classList.remove('max-h-0', 'opacity-0');
+                panel.classList.add('max-h-[500px]', 'opacity-100');
+                chevron.classList.add('rotate-180');
+            } else {
+                panel.classList.add('max-h-0', 'opacity-0');
+                panel.classList.remove('max-h-[500px]', 'opacity-100');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+
+        // Simple tactile micro-interaction
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

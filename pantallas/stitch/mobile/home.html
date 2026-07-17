@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ACERO INDUSTRIAL - Inicio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#f7f9fb",
+                    "primary-fixed": "#d1e4fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-container": "#2c3e50",
+                    "on-secondary": "#ffffff",
+                    "primary": "#162839",
+                    "on-secondary-fixed": "#051d30",
+                    "on-primary-fixed-variant": "#36485b",
+                    "surface-container": "#eceef0",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-high": "#e6e8ea",
+                    "on-tertiary-container": "#f78b30",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#96a9be",
+                    "secondary": "#4b6076",
+                    "on-background": "#191c1e",
+                    "inverse-primary": "#b5c8df",
+                    "on-surface": "#191c1e",
+                    "on-surface-variant": "#43474c",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b5c8df",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-bright": "#f7f9fb",
+                    "surface-dim": "#d8dadc",
+                    "on-primary-fixed": "#091d2e",
+                    "surface-container-low": "#f2f4f6",
+                    "secondary-fixed-dim": "#b3c9e2",
+                    "on-secondary-container": "#50657b",
+                    "outline": "#74777d",
+                    "surface": "#f7f9fb",
+                    "on-secondary-fixed-variant": "#34495e",
+                    "tertiary-container": "#612f00",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed": "#cfe5ff",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c4c6cd",
+                    "inverse-surface": "#2d3133",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#cce2fc",
+                    "on-tertiary-fixed": "#301400",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#411d00",
+                    "surface-tint": "#4e6073",
+                    "tertiary-fixed": "#ffdcc5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "mono-data": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(22, 40, 57, 0.85), rgba(22, 40, 57, 0.95));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface border-b border-surface-container-highest">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ACERO INDUSTRIAL</h1>
+</div>
+<div class="cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pb-24">
+<!-- Hero Section -->
+<section class="relative h-[480px] w-full flex flex-col justify-center px-margin-mobile overflow-hidden">
+<div class="absolute inset-0 z-0" data-alt="A macro cinematic shot of stacked industrial steel beams in a high-tech warehouse. The lighting is dramatic and cool-toned, with sharp blue and grey metallic highlights emphasizing structural geometric patterns. No people are present. The atmosphere is professional, clean, and highlights industrial power and precision in a modern B2B context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvyHa3AnmsxHQ2D7DpEFLKKDiMpcOBnzZdR9_vw5lmMt05QQd_UgiYc0mxQResCFEb1PZCC-qNwfIYlvIoD5wwpzbPgK92yTJbVX3VHa-eMuNuPAJPMWm_kLeFSP178iacifGQ1X9mhlUIZO1DKFBXLKyUmaJVALs9OxavPZCqa_MIpTaveNHkMRG9Zy5MMSXJWQRxE7kZ2xzZ2FxgF2IjnfqWYgMPXzx_nwsL4bVNWIfDkM9V0Gt4')"></div>
+<div class="hero-gradient absolute inset-0 z-10"></div>
+<div class="relative z-20 space-y-6">
+<span class="inline-block bg-on-tertiary-container text-white px-3 py-1 font-label-md text-[10px] tracking-widest uppercase rounded-sm">Disponibilidad Inmediata</span>
+<h2 class="text-white font-headline-lg-mobile text-headline-lg-mobile uppercase leading-tight">Suministro de Metal de Alta Resistencia</h2>
+<p class="text-on-primary-container font-body-md">Soluciones estructurales urgentes para proyectos de gran escala. Calidad certificada y entrega logística prioritaria.</p>
+<button class="w-full py-4 bg-[#E67E22] text-white font-label-md uppercase tracking-wider font-bold rounded-sm shadow-md active:scale-[0.98] transition-transform">
+                    Cotizar Ahora
+                </button>
+</div>
+</section>
+<!-- Quick Calculator Widget -->
+<section class="px-margin-mobile -mt-8 relative z-30">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg shadow-sm">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-on-tertiary-container">calculate</span>
+<h3 class="font-label-md text-primary uppercase">Calculadora de Peso</h3>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block font-label-md text-on-surface-variant text-[12px] mb-1">Tipo de Perfil</label>
+<select class="w-full bg-surface border border-outline p-3 rounded-sm font-body-md text-primary focus:border-primary focus:ring-0">
+<option>Viga IPE</option>
+<option>Placa de Acero</option>
+<option>Tubería Redonda</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-on-surface-variant text-[12px] mb-1">Espesor (mm)</label>
+<input class="w-full bg-surface border border-outline p-3 rounded-sm font-mono-data text-primary" placeholder="0.00" type="number"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant text-[12px] mb-1">Largo (m)</label>
+<input class="w-full bg-surface border border-outline p-3 rounded-sm font-mono-data text-primary" placeholder="0.00" type="number"/>
+</div>
+</div>
+<button class="w-full py-3 border-2 border-primary text-primary font-label-md uppercase font-bold hover:bg-surface-container-high transition-colors">
+                        Calcular KG
+                    </button>
+</div>
+</div>
+</section>
+<!-- Categorías Destacadas (Bento Layout) -->
+<section class="mt-12 px-margin-mobile">
+<h3 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
+                Categorías <span class="w-8 h-1 bg-on-tertiary-container inline-block"></span>
+</h3>
+<div class="grid grid-cols-2 gap-3">
+<!-- Large Card -->
+<div class="col-span-2 relative h-48 rounded-lg overflow-hidden border border-outline-variant group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Close-up technical shot of heavy-duty industrial steel beams arranged in a rhythmic, geometric pattern. The scene is lit with bright, cold warehouse lighting, showing the fine grain of the metal surface. The aesthetic is clean, structural, and professional, utilizing a palette of steel blues and graphite greys." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADPLZ1vuL617-glL04oyNx8VFGHQMCgalDsq6giea62U1tjZJhURKSyIuyEdXdLuZIt57RPWc9B51WRGMVRXKFKtD3Kud51YK30WxM7QoczaSdBYsj_y-TGeNO8QFyv625HtRxn6_Xp9Kw4NVrt0DpgxopVD80gpkp0Kuhz42SXUX2s65FktvqqQKBv39tFu8UWN3_6WtWe3_k4u0krzJP6by0LfYTTKgIkkv9Q8Oyaq50hMw_R4L_')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="font-headline-md text-white">Vigas</p>
+<p class="text-on-primary-container font-label-md text-[12px]">Perfil estructural IPE/H</p>
+</div>
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-white">arrow_forward</span>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="relative h-40 rounded-lg overflow-hidden border border-outline-variant">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Precision stacks of cold-rolled steel plates with clean edges. The lighting is crisp, highlighting the flat, industrial surfaces and silver-grey tones. The composition is minimalist and structural, focusing on the high-quality industrial material and durability without any human presence." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBr0nJvIeIP_rBHFDb4ANbsnsb8OI8KIYrPIzbkKs2JqOjVZljmUUudFsv2MIs0r4rX96TgV56CxlmbFILOcQaZBHVGLtlpQ1T-hgwwSXe-JvWL595w0FhgXjJo_5IMoZKfkeyoVdtk4Ne_46LB2qw6JBHfzyGkRXhnDIYAcEaMsoZDBKt2wYCPU0XjSOO9BrkPuuLLVx3lBDSl4dwskG-By14QLK9CzcsnoNaG_aIyE5XBrHeuoQWD')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="font-label-md text-white">Placas</p>
+<p class="text-on-primary-container font-mono-data text-[10px]">Grado A36 / 50</p>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="relative h-40 rounded-lg overflow-hidden border border-outline-variant">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A sequence of large diameter industrial steel pipes diminishing into the distance, creating a strong sense of perspective and depth. The metal reflects soft industrial lighting with highlights of bright steel and deep shadows. The look is architectural and precise, emphasizing the engineering and logistical scale." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0EY-OCOFhVHaTLyyItk9RvaAPD3Ch7Wh2rARDXx7w7iA0nL-wfklZeX7Rk9-7cRJQ5pn9ZPw35gJ3UtjUWvul3vaQiKEWjploblPefMdGV0oOwzIGkFDBrICilpjpzbrDLIWBB6xScckOLWvOrOK4KapJIT7vVfuTfc-oqC6BlfTWKsmy662fyPd_KO5juG76bWz2qIekmEFCQgzkHSHK9TeKs9Wg0MIRSQThwpC6jDpe3uP2VnPc')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="font-label-md text-white">Tubería</p>
+<p class="text-on-primary-container font-mono-data text-[10px]">Cédula 40 / 80</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Spec Snapshot -->
+<section class="mt-12 px-margin-mobile">
+<div class="bg-primary p-6">
+<h4 class="text-white font-headline-md text-headline-md mb-4">Stock en Tiempo Real</h4>
+<div class="overflow-hidden border border-outline">
+<table class="w-full text-left">
+<thead class="bg-on-secondary-fixed-variant">
+<tr>
+<th class="p-3 text-white font-label-md text-[12px]">Material</th>
+<th class="p-3 text-white font-label-md text-[12px]">Stock</th>
+<th class="p-3 text-white font-label-md text-[12px]">Entrega</th>
+</tr>
+</thead>
+<tbody class="text-on-primary-container font-mono-data text-[12px]">
+<tr class="border-b border-outline/30">
+<td class="p-3">H-Beam 12"</td>
+<td class="p-3 text-on-tertiary-container">240 TN</td>
+<td class="p-3">24h</td>
+</tr>
+<tr class="bg-white/5 border-b border-outline/30">
+<td class="p-3">Plate 1/2"</td>
+<td class="p-3 text-on-tertiary-container">115 TN</td>
+<td class="p-3">Inmed.</td>
+</tr>
+<tr>
+<td class="p-3">Pipe 6" Sch40</td>
+<td class="p-3 text-on-tertiary-container">850 m</td>
+<td class="p-3">48h</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface pb-safe z-50 h-20 shadow-lg border-t border-surface-container-highest">
+<div class="flex flex-col items-center justify-center bg-tertiary-container text-on-tertiary-container rounded-xl px-3 py-1 scale-95 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-[11px]">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary scale-95 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-[11px]">Catálogo</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary scale-95 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-[11px]">Pedidos</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary scale-95 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[11px]">Perfil</span>
+</div>
+</nav>
+<!-- Simple Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button, div[class*="cursor-pointer"]').forEach(el => {
+            el.addEventListener('click', () => {
+                el.style.opacity = '0.7';
+                setTimeout(() => el.style.opacity = '1', 100);
+            });
+        });
+    </script>
+</body></html>

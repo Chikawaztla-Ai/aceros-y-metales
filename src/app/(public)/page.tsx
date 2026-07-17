@@ -145,34 +145,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BUSCADOR FLOTANTE (stitch) */}
-      <section className="relative -mt-10 z-20 px-10">
+      {/* BUSCADOR FLOTANTE (stitch) — en móvil se apila para no cortar el texto */}
+      <section className="relative -mt-10 z-20 px-4 md:px-10">
         <form
           action="/catalogo"
-          className="max-w-4xl mx-auto bg-surface p-2 shadow-2xl border border-outline-variant flex items-center gap-2"
+          className="max-w-4xl mx-auto bg-surface p-2 shadow-2xl border border-outline-variant flex flex-col sm:flex-row sm:items-center gap-2"
         >
-          <div className="flex-grow flex items-center px-4 gap-3 border-r border-outline-variant">
+          <div className="flex-grow flex items-center px-4 gap-3 sm:border-r sm:border-outline-variant">
             <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">search</span>
             <input
               type="text"
               name="q"
-              placeholder="Busca por material, medida, calibre o categoría"
+              placeholder="Busca por material, medida o categoría"
               className="w-full py-4 bg-transparent border-none focus:ring-0 outline-none text-sm text-primary placeholder:text-on-surface-variant/60"
             />
           </div>
           <button
             type="submit"
-            className="bg-primary text-white text-sm font-bold uppercase px-8 py-4 flex items-center gap-2 hover:bg-primary-container transition-colors"
+            className="bg-primary text-white text-sm font-bold uppercase px-8 py-4 flex items-center justify-center gap-2 hover:bg-primary-container transition-colors"
           >
             <span className="material-symbols-outlined text-[24px]">filter_list</span>
-            <span className="hidden sm:inline">Explorar Materiales</span>
+            Explorar Materiales
           </button>
         </form>
       </section>
 
       {/* CATEGORÍAS DESTACADAS (stitch) */}
-      <section className="py-24 px-10 max-w-container mx-auto">
-        <div className="flex justify-between items-end mb-12">
+      <section className="py-16 md:py-24 px-4 md:px-10 max-w-container mx-auto">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-8 md:mb-12">
           <div>
             <span className="text-on-tertiary-container font-bold uppercase tracking-widest text-sm block mb-2">
               Catálogo Industrial
