@@ -40,7 +40,16 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${montserrat.variable} ${inter.variable}`}>
       <head>
-        {/* Material Symbols Outlined — íconos del design system oficial */}
+        {/* Material Symbols Outlined — íconos del design system.
+            OJO: esta hoja de Google viene SIN capa (@layer) y trae
+            `.material-symbols-outlined { font-size:24px; display:inline-block }`.
+            En CSS lo no-capado le gana a TODO lo capado, así que estas dos
+            propiedades vencen a las utilidades de Tailwind. Consecuencias:
+              · el tamaño NO se controla con text-[Npx] -> usar style={{fontSize}}
+              · hidden/md:hidden NO funcionan sobre el ícono -> ponerlos en un
+                elemento contenedor, no en el <span> del ícono.
+            (Se intentó @import ... layer(base) en globals.css, pero Turbopack
+            descarta ese import y la fuente deja de cargar.) */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"

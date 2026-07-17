@@ -36,12 +36,12 @@ export default function CarritoPage() {
   const totals = computeTotals(subtotal, { shipping: 0 });
 
   if (!mounted) {
-    return <div className="max-w-container mx-auto px-10 py-16 min-h-[50vh]" />;
+    return <div className="max-w-container mx-auto px-4 md:px-10 py-16 min-h-[50vh]" />;
   }
 
   if (items.length === 0) {
     return (
-      <div className="max-w-container mx-auto px-10 py-20 text-center min-h-[50vh]">
+      <div className="max-w-container mx-auto px-4 md:px-10 py-20 text-center min-h-[50vh]">
         <span className="material-symbols-outlined text-on-surface-variant/30 mb-4" style={{ fontSize: 56 }}>
           shopping_cart
         </span>
@@ -62,7 +62,7 @@ export default function CarritoPage() {
   }
 
   return (
-    <div className="max-w-container mx-auto px-10 py-10">
+    <div className="max-w-container mx-auto px-4 md:px-10 py-10">
       {/* Breadcrumb (stitch) */}
       <nav className="flex items-center gap-2 mb-8 text-sm font-medium text-on-surface-variant">
         <Link href="/" className="hover:text-primary transition-colors">Inicio</Link>

@@ -54,6 +54,8 @@ function CatalogoContent() {
   const [selectedShape, setSelectedShape] = useState('');
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [view, setView] = useState<'list' | 'grid'>('list');
+  // Panel de filtros en móvil: cerrado por defecto para no tapar los productos.
+  const [filtrosAbiertos, setFiltrosAbiertos] = useState(false);
 
   const toggleCat = (cat: string) => {
     setSelectedCats((prev) =>
@@ -87,10 +89,101 @@ function CatalogoContent() {
   });
 
   return (
-    <div className="max-w-container mx-auto px-10 py-8">
+    <div className="max-w-container mx-auto px-4 md:px-10 py-4 md:py-8">
+      {/* BARRA DE FILTROS MÓVIL (stitch mobile): sticky bajo el header, con los
+          filtros COLAPSADOS para que los productos se vean de inmediato.
+          En escritorio manda el sidebar de la izquierda. */}
+      <div className="lg:hidden sticky top-[60px] z-30 -mx-4 px-4 py-3 bg-surface-low border-b border-outline-variant shadow-sm">
+        <div className="flex flex-col gap-3">
+          <div className="relative w-full">
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">
+              search
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Buscar material o SKU..."
+              className="w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-lg text-sm focus:border-primary outline-none transition-all"
+            />
+          </div>
+          <button
+            onClick={() => setFiltrosAbiertos((v) => !v)}
+            className="flex items-center justify-between w-full px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold uppercase tracking-wider"
+          >
+            <span className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-[20px]">filter_list</span>
+              Filtros de Catálogo
+            </span>
+            <span
+              className={clsx(
+                'material-symbols-outlined text-[20px] transition-transform duration-300',
+                filtrosAbiertos && 'rotate-180'
+              )}
+            >
+              expand_more
+            </span>
+          </button>
+        </div>
+
+        {filtrosAbiertos && (
+          <div className="flex flex-col gap-4 mt-4">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="flex flex-col gap-1">
+                <label className="text-[10px] font-bold text-on-surface-variant uppercase px-1">Categoría</label>
+                <select
+                  value={selectedCats[0] ?? ''}
+                  onChange={(e) => setSelectedCats(e.target.value ? [e.target.value] : [])}
+                  className="bg-white border border-outline-variant rounded-lg text-sm py-2 px-2"
+                >
+                  <option value="">Todas</option>
+                  {allCategories.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="text-[10px] font-bold text-on-surface-variant uppercase px-1">Grado</label>
+                <select
+                  value={selectedGrade}
+                  onChange={(e) => setSelectedGrade(e.target.value)}
+                  className="bg-white border border-outline-variant rounded-lg text-sm py-2 px-2"
+                >
+                  <option value="">Todos</option>
+                  {allGrades.map((g) => (
+                    <option key={g} value={g}>{g}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase px-1">Forma / Perfil</label>
+              <select
+                value={selectedShape}
+                onChange={(e) => setSelectedShape(e.target.value)}
+                className="bg-white border border-outline-variant rounded-lg text-sm py-2 px-2"
+              >
+                <option value="">Todas</option>
+                {shapes.map((s) => (
+                  <option key={s.value} value={s.value}>{s.label}</option>
+                ))}
+              </select>
+            </div>
+            {hasFilters && (
+              <button
+                onClick={clearFilters}
+                className="text-sm font-semibold text-on-tertiary-container underline self-start"
+              >
+                Limpiar filtros
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 mt-4">
-        {/* SIDEBAR FILTROS (stitch) */}
-        <aside className="bg-surface-low h-fit rounded-lg border border-outline-variant/40 lg:sticky lg:top-24">
+        {/* SIDEBAR FILTROS — solo escritorio (en móvil manda la barra de arriba) */}
+        <aside className="hidden lg:block bg-surface-low h-fit rounded-lg border border-outline-variant/40 lg:sticky lg:top-24">
           <div className="flex flex-col p-6">
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-2">
@@ -386,7 +479,7 @@ function CatalogoContent() {
 
 export default function CatalogoPage() {
   return (
-    <Suspense fallback={<div className="max-w-container mx-auto px-10 py-20 text-on-surface-variant">Cargando catálogo…</div>}>
+    <Suspense fallback={<div className="max-w-container mx-auto px-4 md:px-10 py-20 text-on-surface-variant">Cargando catálogo…</div>}>
       <CatalogoContent />
     </Suspense>
   );

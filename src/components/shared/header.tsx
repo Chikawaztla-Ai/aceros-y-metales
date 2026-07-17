@@ -31,13 +31,17 @@ export function Header() {
     >
       <div className="max-w-container mx-auto px-4 md:px-10 py-3 md:py-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-10">
-          {/* Hamburguesa — solo móvil (en escritorio el nav está visible) */}
+          {/* Hamburguesa — solo móvil (en escritorio el nav está visible).
+              md:hidden va en el <button>, NO en el ícono: la hoja de Google
+              (sin capa) fija display:inline-block y le ganaría a md:hidden. */}
           <button
             onClick={() => setMenuAbierto(true)}
             aria-label="Abrir menú"
-            className="md:hidden material-symbols-outlined text-on-primary text-[28px] shrink-0"
+            className="md:hidden shrink-0 text-on-primary"
           >
-            menu
+            <span className="material-symbols-outlined" style={{ fontSize: 28 }}>
+              menu
+            </span>
           </button>
 
           <Link href="/" className="flex items-center gap-3 shrink-0">
@@ -81,12 +85,13 @@ export function Header() {
             />
           </div>
 
+          {/* hidden/sm:inline en el <Link>, no en el ícono (ver nota en layout.tsx) */}
           <Link
             href="/#calculadora"
             aria-label="Calculadora de peso"
-            className="hidden sm:inline material-symbols-outlined text-on-primary-container/80 hover:text-on-tertiary-container transition-colors text-[24px]"
+            className="hidden sm:inline text-on-primary-container/80 hover:text-on-tertiary-container transition-colors"
           >
-            calculate
+            <span className="material-symbols-outlined">calculate</span>
           </Link>
 
           <CartBadge />

@@ -117,7 +117,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
         </div>
-        <div className="relative z-10 w-full px-10 max-w-container mx-auto">
+        <div className="relative z-10 w-full px-4 md:px-10 max-w-container mx-auto">
           <div className="max-w-2xl">
             <h1 className="font-montserrat font-bold text-4xl md:text-[48px] md:leading-[56px] text-white tracking-[-0.02em] mb-6">
               Aceros, Aluminio y Metales Industriales con Entrega Rápida
@@ -130,13 +130,13 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/catalogo"
-                className="bg-on-tertiary-container text-white text-sm font-bold uppercase px-10 py-4 hover:scale-105 transition-transform shadow-lg"
+                className="bg-on-tertiary-container text-white text-sm font-bold uppercase px-8 md:px-10 py-4 hover:scale-105 transition-transform shadow-lg"
               >
                 Comprar Ahora
               </Link>
               <Link
                 href="/cotizacion"
-                className="border-2 border-white text-white text-sm font-bold uppercase px-10 py-4 hover:bg-white hover:text-primary transition-all"
+                className="border-2 border-white text-white text-sm font-bold uppercase px-8 md:px-10 py-4 hover:bg-white hover:text-primary transition-all"
               >
                 Solicitar Cotización
               </Link>
@@ -216,7 +216,7 @@ export default function HomePage() {
 
       {/* PRODUCTOS EN EXISTENCIA (stitch) */}
       <section className="bg-surface-low py-24 industrial-grid">
-        <div className="px-10 max-w-container mx-auto">
+        <div className="px-4 md:px-10 max-w-container mx-auto">
           <div className="mb-12">
             <h2 className="font-montserrat font-bold text-[32px] leading-10 text-primary mb-4">
               Productos en Existencia
@@ -279,7 +279,7 @@ export default function HomePage() {
       </section>
 
       {/* CALCULADORA DE PESO (stitch) */}
-      <section id="calculadora" className="py-24 px-10 scroll-mt-20">
+      <section id="calculadora" className="py-24 px-4 md:px-10 scroll-mt-20">
         <div className="max-w-container mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <Reveal className="w-full lg:w-1/2">
           <div>
@@ -323,7 +323,7 @@ export default function HomePage() {
 
       {/* COMPRAS EMPRESARIALES (stitch) */}
       <section className="bg-primary py-24">
-        <div className="px-10 max-w-container mx-auto overflow-hidden">
+        <div className="px-4 md:px-10 max-w-container mx-auto overflow-hidden">
           <Reveal>
           <div className="bg-primary-container border border-outline p-12 lg:p-20 relative">
             <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
@@ -378,7 +378,7 @@ export default function HomePage() {
       </section>
 
       {/* CONFIANZA (stitch) */}
-      <section className="py-24 bg-surface px-10">
+      <section className="py-24 bg-surface px-4 md:px-10">
         <div className="max-w-container mx-auto">
           <div className="grid md:grid-cols-3 gap-16">
             {trustItems.map((item, i) => (

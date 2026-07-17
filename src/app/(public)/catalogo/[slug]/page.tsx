@@ -42,7 +42,7 @@ const product = {
 
 export default function ProductoPage() {
   return (
-    <div className="max-w-container mx-auto px-10 py-10">
+    <div className="max-w-container mx-auto px-4 md:px-10 py-10">
       {/* Breadcrumb (stitch) */}
       <nav className="flex items-center gap-2 mb-8 text-[13px] font-medium text-on-surface-variant">
         <Link href="/" className="hover:text-primary-container transition-colors">Inicio</Link>

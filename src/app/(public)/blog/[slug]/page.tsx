@@ -37,7 +37,7 @@ export default async function ArticuloPage({ params }: { params: Promise<{ slug:
   const related = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
 
   return (
-    <main className="py-16 max-w-container mx-auto px-10">
+    <main className="py-16 max-w-container mx-auto px-4 md:px-10">
       {/* Breadcrumb */}
       <nav className="mb-8 flex items-center gap-2 text-sm font-medium text-on-surface-variant">
         <Link href="/" className="hover:text-primary">Inicio</Link>

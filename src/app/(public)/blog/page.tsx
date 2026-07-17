@@ -15,7 +15,7 @@ export default function BlogPage() {
     <>
       {/* Hero editorial (stitch) */}
       <header className="bg-surface-low py-16 md:py-24">
-        <div className="max-w-container mx-auto px-10 text-center">
+        <div className="max-w-container mx-auto px-4 md:px-10 text-center">
           <p className="text-on-tertiary-container text-sm font-semibold uppercase tracking-wide mb-4">
             Centro de Recursos
           </p>
@@ -40,7 +40,7 @@ export default function BlogPage() {
       </header>
 
       {/* Layout principal */}
-      <main className="max-w-container mx-auto px-10 py-16 flex flex-col md:flex-row gap-6">
+      <main className="max-w-container mx-auto px-4 md:px-10 py-16 flex flex-col md:flex-row gap-6">
         {/* Grid de artículos (2/3) */}
         <div className="w-full md:w-2/3">
           {/* Artículo destacado */}

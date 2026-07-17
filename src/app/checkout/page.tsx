@@ -104,7 +104,7 @@ function CheckoutInner() {
 
   if (mounted && items.length === 0) {
     return (
-      <div className="max-w-container mx-auto px-10 py-20 text-center min-h-[50vh]">
+      <div className="max-w-container mx-auto px-4 md:px-10 py-20 text-center min-h-[50vh]">
         <p className="text-lg text-on-surface-variant mb-4">Tu carrito está vacío.</p>
         <Link href="/catalogo" className="text-on-tertiary-container hover:underline">
           Ir al catálogo →
@@ -177,16 +177,16 @@ function CheckoutInner() {
   }
 
   return (
-    <main className="max-w-container mx-auto px-10 py-12 min-h-screen relative">
+    <main className="max-w-container mx-auto px-4 md:px-10 py-8 md:py-12 min-h-screen relative">
       {/* Decoración de fondo (stitch) */}
       <div className="absolute inset-0 industrial-grid opacity-50 pointer-events-none" />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
+        className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start"
       >
         {/* IZQUIERDA — formularios (7 cols, stitch) */}
-        <div className="lg:col-span-7 flex flex-col gap-10">
+        <div className="lg:col-span-7 flex flex-col gap-6 md:gap-10">
           {/* 1. FACTURACIÓN */}
           <section className="bg-white border border-outline-variant p-8 relative">
             <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
@@ -441,7 +441,7 @@ function CheckoutInner() {
 
 export default function CheckoutPage() {
   return (
-    <Suspense fallback={<div className="max-w-container mx-auto px-10 py-16 min-h-[50vh]" />}>
+    <Suspense fallback={<div className="max-w-container mx-auto px-4 md:px-10 py-16 min-h-[50vh]" />}>
       <CheckoutInner />
     </Suspense>
   );

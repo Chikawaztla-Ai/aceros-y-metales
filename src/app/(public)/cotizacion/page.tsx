@@ -86,7 +86,7 @@ export default function CotizacionPage() {
       <div className="absolute inset-0 industrial-grid -z-10 pointer-events-none" />
 
       {/* Hero */}
-      <section className="max-w-container mx-auto px-10 pt-16 pb-8">
+      <section className="max-w-container mx-auto px-4 md:px-10 pt-16 pb-8">
         <h1 className="font-montserrat font-bold text-4xl md:text-[48px] md:leading-[56px] tracking-[-0.02em] text-primary mb-4">
           Solicita tu Cotización Industrial
         </h1>
@@ -97,7 +97,7 @@ export default function CotizacionPage() {
       </section>
 
       {/* Grid principal */}
-      <section className="max-w-container mx-auto px-10 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <section className="max-w-container mx-auto px-4 md:px-10 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* IZQUIERDA — formulario (7 cols) */}
         <div className="lg:col-span-7 bg-white p-8 border border-outline-variant shadow-sm rounded-lg">
           {sent ? (
@@ -256,7 +256,7 @@ export default function CotizacionPage() {
 
       {/* Tabla de especificaciones (stitch) */}
       <section className="bg-surface-low py-20 border-y border-outline-variant">
-        <div className="max-w-container mx-auto px-10">
+        <div className="max-w-container mx-auto px-4 md:px-10">
           <div className="mb-12">
             <h2 className="font-montserrat font-bold text-[32px] leading-10 text-primary">
               Tabla de Especificaciones Técnicas

@@ -63,7 +63,7 @@ export default function NosotrosPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-transparent" />
         </div>
-        <div className="relative z-10 max-w-container mx-auto px-10 w-full">
+        <div className="relative z-10 max-w-container mx-auto px-4 md:px-10 w-full">
           <div className="max-w-2xl">
             <span className="text-on-tertiary-container text-sm font-semibold uppercase tracking-widest block mb-4">
               Trayectoria Industrial
@@ -94,7 +94,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Historia */}
-      <section className="py-24 px-10 max-w-container mx-auto">
+      <section className="py-24 px-4 md:px-10 max-w-container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-7 space-y-6">
             <span className="text-on-tertiary-container text-sm font-semibold uppercase tracking-widest block">
@@ -153,7 +153,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Valores */}
-      <section className="py-24 bg-surface-low px-10">
+      <section className="py-24 bg-surface-low px-4 md:px-10">
         <div className="max-w-container mx-auto">
           <div className="text-center mb-16">
             <span className="text-on-tertiary-container text-sm font-semibold uppercase tracking-widest block mb-2">
@@ -197,7 +197,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Infraestructura */}
-      <section id="infraestructura" className="py-24 px-10 bg-primary text-white overflow-hidden scroll-mt-20">
+      <section id="infraestructura" className="py-24 px-4 md:px-10 bg-primary text-white overflow-hidden scroll-mt-20">
         <div className="max-w-container mx-auto flex flex-col md:flex-row gap-12 items-center">
           <div className="w-full md:w-1/2">
             <span className="text-on-tertiary-container text-sm font-semibold uppercase tracking-widest block mb-2">
@@ -236,7 +236,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Certificaciones */}
-      <section className="py-12 px-10 bg-surface-low border-y border-outline-variant">
+      <section className="py-12 px-4 md:px-10 bg-surface-low border-y border-outline-variant">
         <div className="max-w-container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-4">
             <span className="material-symbols-outlined text-primary" style={{ fontSize: 40 }}>verified_user</span>

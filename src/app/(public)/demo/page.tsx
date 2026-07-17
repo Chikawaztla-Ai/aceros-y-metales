@@ -93,7 +93,7 @@ export default function DemoIndexPage() {
     <div className="bg-surface-low min-h-screen">
       {/* Encabezado */}
       <div className="bg-primary text-white">
-        <div className="max-w-container mx-auto px-10 py-16">
+        <div className="max-w-container mx-auto px-4 md:px-10 py-16">
           <p className="text-[10px] font-semibold uppercase tracking-[4px] text-on-tertiary-container mb-4">
             Recorrido para revisión
           </p>
@@ -105,7 +105,7 @@ export default function DemoIndexPage() {
         </div>
       </div>
 
-      <div className="max-w-container mx-auto px-10 py-16 space-y-16">
+      <div className="max-w-container mx-auto px-4 md:px-10 py-16 space-y-16">
         <section>
           <SectionTitle icon="public" title="Sitio Público" subtitle="Lo que ve cualquier visitante y comprador." />
           <Grid items={publico} />
