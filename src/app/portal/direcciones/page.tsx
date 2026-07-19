@@ -88,7 +88,7 @@ export default function MisDireccionesPage() {
           onClick={() => setModalOpen(true)}
           className="bg-primary text-white text-sm font-semibold uppercase px-6 py-2.5 rounded-[6px] transition-all active:scale-95 flex items-center gap-2 whitespace-nowrap"
         >
-          <span className="material-symbols-outlined text-[18px]">add</span>
+          <span className="material-symbols-outlined text-[18px]!">add</span>
           Nueva Dirección
         </button>
       </div>
@@ -113,7 +113,7 @@ export default function MisDireccionesPage() {
                   addr.isDefault ? 'bg-primary/10' : 'bg-on-surface-variant/5'
                 }`}
               >
-                <span className={`material-symbols-outlined ${addr.isDefault ? 'text-primary' : 'text-on-surface-variant'} text-[24px]`}>
+                <span className={`material-symbols-outlined ${addr.isDefault ? 'text-primary' : 'text-on-surface-variant'} text-[24px]!`}>
                   {addr.icon}
                 </span>
               </div>
@@ -129,18 +129,18 @@ export default function MisDireccionesPage() {
             </div>
             <div className="mt-auto pt-4 border-t border-outline-variant flex items-center justify-between">
               <span className="text-xs font-medium text-on-surface-variant flex items-center gap-1">
-                <span className="material-symbols-outlined text-[16px]">person</span> {addr.contact}
+                <span className="material-symbols-outlined text-[16px]!">person</span> {addr.contact}
               </span>
               <div className="flex gap-1">
                 <button className="p-1 hover:text-primary transition-colors" aria-label="Editar">
-                  <span className="material-symbols-outlined text-[20px]">edit</span>
+                  <span className="material-symbols-outlined text-[20px]!">edit</span>
                 </button>
                 <button
                   onClick={() => handleDelete(addr.id)}
                   className="p-1 hover:text-error transition-colors"
                   aria-label="Eliminar"
                 >
-                  <span className="material-symbols-outlined text-[20px]">delete</span>
+                  <span className="material-symbols-outlined text-[20px]!">delete</span>
                 </button>
               </div>
             </div>
@@ -195,7 +195,7 @@ export default function MisDireccionesPage() {
                 className="text-white hover:text-on-tertiary-container transition-colors"
                 aria-label="Cerrar"
               >
-                <span className="material-symbols-outlined text-[24px]">close</span>
+                <span className="material-symbols-outlined text-[24px]!">close</span>
               </button>
             </div>
             <form onSubmit={handleCreate} className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">

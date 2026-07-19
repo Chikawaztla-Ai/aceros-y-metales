@@ -18,7 +18,7 @@ export default function PortalPrecios() {
           <p className="text-on-surface-variant mt-2">Precios preferenciales de tu nivel <span className="font-bold text-on-tertiary-container">Oro</span> (−12%).</p>
         </div>
         <button className="border-2 border-primary text-primary text-sm font-semibold uppercase px-6 py-2.5 rounded-lg hover:bg-primary hover:text-white transition-all flex items-center gap-2 whitespace-nowrap">
-          <span className="material-symbols-outlined text-[18px]">download</span>
+          <span className="material-symbols-outlined text-[18px]!">download</span>
           Descargar PDF
         </button>
       </header>
@@ -44,7 +44,7 @@ export default function PortalPrecios() {
                   <td className="px-6 py-4 text-right text-sm font-bold text-on-tertiary-container">${p.yours}.00 <span className="text-xs font-normal text-on-surface-variant">/{p.unit}</span></td>
                   <td className="px-6 py-4 text-center">
                     <Link href="/catalogo" className="inline-flex text-primary hover:text-on-tertiary-container transition-colors" title="Ver en catálogo">
-                      <span className="material-symbols-outlined text-[20px]">open_in_new</span>
+                      <span className="material-symbols-outlined text-[20px]!">open_in_new</span>
                     </Link>
                   </td>
                 </tr>

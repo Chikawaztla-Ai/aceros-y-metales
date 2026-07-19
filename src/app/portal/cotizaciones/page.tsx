@@ -28,7 +28,7 @@ export default function PortalCotizaciones() {
           href="/cotizacion"
           className="bg-on-tertiary-container text-white text-sm font-semibold uppercase px-6 py-2.5 rounded-lg hover:brightness-110 transition-all active:scale-95 flex items-center gap-2 whitespace-nowrap"
         >
-          <span className="material-symbols-outlined text-[18px]">add</span>
+          <span className="material-symbols-outlined text-[18px]!">add</span>
           Nueva Cotización
         </Link>
       </header>
@@ -64,10 +64,10 @@ export default function PortalCotizaciones() {
                   <td className="px-6 py-5">
                     <div className="flex justify-center gap-4">
                       <button className="text-on-surface hover:text-on-tertiary-container transition-colors" title="Ver / descargar PDF">
-                        <span className="material-symbols-outlined text-[20px]">download</span>
+                        <span className="material-symbols-outlined text-[20px]!">download</span>
                       </button>
                       <Link href="/carrito" className="text-on-surface hover:text-on-tertiary-container transition-colors" title="Convertir en pedido">
-                        <span className="material-symbols-outlined text-[20px]">shopping_cart</span>
+                        <span className="material-symbols-outlined text-[20px]!">shopping_cart</span>
                       </Link>
                     </div>
                   </td>

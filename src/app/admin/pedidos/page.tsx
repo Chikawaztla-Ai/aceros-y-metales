@@ -69,14 +69,14 @@ export default function AdminPedidos() {
                   <td className="px-6 py-4">
                     <div className="flex justify-center gap-2">
                       <button className="p-2 hover:bg-surface-container text-primary transition-colors" title="Ver detalle">
-                        <span className="material-symbols-outlined text-[20px]">visibility</span>
+                        <span className="material-symbols-outlined text-[20px]!">visibility</span>
                       </button>
                       <button
                         className={`p-2 transition-colors ${o.status === 'Cancelado' ? 'opacity-30 cursor-not-allowed' : 'hover:bg-surface-container text-on-tertiary-container'}`}
                         title="Facturar"
                         disabled={o.status === 'Cancelado'}
                       >
-                        <span className="material-symbols-outlined text-[20px]">receipt_long</span>
+                        <span className="material-symbols-outlined text-[20px]!">receipt_long</span>
                       </button>
                     </div>
                   </td>

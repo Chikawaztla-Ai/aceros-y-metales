@@ -23,7 +23,7 @@ export default function AdminConfig() {
         {/* Tasas de cambio y crédito */}
         <section className="bg-white border border-outline-variant p-8 shadow-sm">
           <h2 className="font-montserrat font-semibold text-xl text-primary uppercase mb-6 flex items-center gap-2">
-            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">payments</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">payments</span>
             Tasas de Cambio y Crédito
           </h2>
           <div className="space-y-5">
@@ -49,7 +49,7 @@ export default function AdminConfig() {
         {/* Seguridad y acceso */}
         <section className="bg-white border border-outline-variant p-8 shadow-sm">
           <h2 className="font-montserrat font-semibold text-xl text-primary uppercase mb-6 flex items-center gap-2">
-            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">shield</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">shield</span>
             Seguridad y Acceso
           </h2>
           <div className="space-y-5">
@@ -71,7 +71,7 @@ export default function AdminConfig() {
             </div>
             <a href="#" className="inline-flex items-center gap-1 text-sm font-semibold text-on-tertiary-container hover:underline">
               Ver Documentación
-              <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+              <span className="material-symbols-outlined text-[18px]!">open_in_new</span>
             </a>
           </div>
         </section>
@@ -81,11 +81,11 @@ export default function AdminConfig() {
       <section className="bg-white border border-outline-variant shadow-sm mt-6 overflow-hidden">
         <div className="p-6 border-b border-outline-variant flex items-center justify-between">
           <h2 className="font-montserrat font-semibold text-xl text-primary uppercase flex items-center gap-2">
-            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">local_shipping</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">local_shipping</span>
             Tarifario de Despacho por Zona
           </h2>
           <button className="flex items-center gap-2 bg-on-tertiary-container text-white px-4 py-2 text-sm font-bold uppercase hover:brightness-110 transition-all rounded">
-            <span className="material-symbols-outlined text-[20px]">add</span>
+            <span className="material-symbols-outlined text-[20px]!">add</span>
             Agregar Zona
           </button>
         </div>
@@ -112,7 +112,7 @@ export default function AdminConfig() {
                   </td>
                   <td className="px-6 py-4">
                     <button className="p-2 hover:bg-surface-container text-primary transition-colors" title="Editar">
-                      <span className="material-symbols-outlined text-[20px]">edit</span>
+                      <span className="material-symbols-outlined text-[20px]!">edit</span>
                     </button>
                   </td>
                 </tr>

@@ -177,7 +177,7 @@ export default function NosotrosPage() {
                   }`}
                 >
                   <span
-                    className={`material-symbols-outlined ${v.dark ? 'text-white' : 'text-primary-container group-hover:text-white'} text-[24px]`}
+                    className={`material-symbols-outlined ${v.dark ? 'text-white' : 'text-primary-container group-hover:text-white'} text-[24px]!`}
                     style={{ fontVariationSettings: "'FILL' 1" }}
                   >
                     {v.icon}
@@ -209,7 +209,7 @@ export default function NosotrosPage() {
             <ul className="space-y-6">
               {infraestructura.map((item) => (
                 <li key={item.title} className="flex items-start gap-4">
-                  <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">check_circle</span>
+                  <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">check_circle</span>
                   <div>
                     <h4 className="font-bold uppercase text-sm">{item.title}</h4>
                     <p className="text-on-primary-container mt-1">{item.desc}</p>

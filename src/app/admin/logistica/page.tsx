@@ -96,7 +96,7 @@ export default function AdminLogistica() {
             </div>
             {/* Placeholder de mapa con rejilla */}
             <div className="relative h-48 industrial-grid bg-primary-container flex items-center justify-center">
-              <span className="material-symbols-outlined text-on-tertiary-container text-[64px]">location_on</span>
+              <span className="material-symbols-outlined text-on-tertiary-container text-[64px]!">location_on</span>
               <span className="absolute bottom-3 right-4 text-[11px] text-on-primary-container">MTY → Saltillo · 42 km restantes</span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5">
@@ -113,7 +113,7 @@ export default function AdminLogistica() {
             {/* Alertas */}
             <div className="bg-white border border-outline-variant p-5 shadow-sm">
               <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-error text-[20px]">warning</span>
+                <span className="material-symbols-outlined text-error text-[20px]!">warning</span>
                 Alertas de Mantenimiento
               </h3>
               <div className="space-y-3">
@@ -131,19 +131,19 @@ export default function AdminLogistica() {
             {/* Documentación */}
             <div className="bg-white border border-outline-variant p-5 shadow-sm">
               <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-on-tertiary-container text-[20px]">description</span>
+                <span className="material-symbols-outlined text-on-tertiary-container text-[20px]!">description</span>
                 Documentación de Entrega
               </h3>
               <div className="space-y-3">
                 {docs.map((d) => (
                   <div key={d.name} className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-on-surface-variant text-[20px]">picture_as_pdf</span>
+                    <span className="material-symbols-outlined text-on-surface-variant text-[20px]!">picture_as_pdf</span>
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-bold truncate">{d.name}</p>
                       <p className="text-[10px] text-on-surface-variant">{d.size}</p>
                     </div>
                     <button className="text-on-surface-variant hover:text-primary transition-colors">
-                      <span className="material-symbols-outlined text-[20px]">download</span>
+                      <span className="material-symbols-outlined text-[20px]!">download</span>
                     </button>
                   </div>
                 ))}

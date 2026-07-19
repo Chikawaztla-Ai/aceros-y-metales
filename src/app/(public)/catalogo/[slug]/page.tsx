@@ -46,13 +46,13 @@ export default function ProductoPage() {
       {/* Breadcrumb (stitch) */}
       <nav className="flex items-center gap-2 mb-8 text-[13px] font-medium text-on-surface-variant">
         <Link href="/" className="hover:text-primary-container transition-colors">Inicio</Link>
-        <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+        <span className="material-symbols-outlined text-[14px]!">chevron_right</span>
         <Link href="/catalogo" className="hover:text-primary-container transition-colors">Catálogo</Link>
-        <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+        <span className="material-symbols-outlined text-[14px]!">chevron_right</span>
         <Link href={`/catalogo?cat=${product.categorySlug}`} className="hover:text-primary-container transition-colors">
           {product.category}
         </Link>
-        <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+        <span className="material-symbols-outlined text-[14px]!">chevron_right</span>
         <span className="font-bold text-on-surface">4140 Barra Redonda</span>
       </nav>
 
@@ -100,11 +100,11 @@ export default function ProductoPage() {
               <p className="text-on-surface-variant mb-6">{product.subtitle}</p>
               <div className="space-y-4">
                 <button className="w-full border-2 border-primary-container text-primary-container py-3 text-sm font-semibold uppercase rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container hover:text-white transition-all">
-                  <span className="material-symbols-outlined text-[24px]">download</span>
+                  <span className="material-symbols-outlined text-[24px]!">download</span>
                   Ficha Técnica PDF
                 </button>
                 <button className="w-full border-2 border-outline text-on-surface-variant py-3 text-sm font-semibold uppercase rounded-lg flex items-center justify-center gap-2 hover:border-primary-container hover:text-primary-container transition-all">
-                  <span className="material-symbols-outlined text-[24px]">architecture</span>
+                  <span className="material-symbols-outlined text-[24px]!">architecture</span>
                   Plano DWG
                 </button>
               </div>
@@ -200,15 +200,15 @@ export default function ProductoPage() {
             {/* Beneficios (stitch) */}
             <div className="pt-4 space-y-3 border-t border-outline-variant">
               <div className="flex items-center gap-3 text-on-surface-variant">
-                <span className="material-symbols-outlined text-[20px] text-primary-container">local_shipping</span>
+                <span className="material-symbols-outlined text-[20px]! text-primary-container">local_shipping</span>
                 <span className="text-sm">Entrega Urgente 24/48 hrs</span>
               </div>
               <div className="flex items-center gap-3 text-on-surface-variant">
-                <span className="material-symbols-outlined text-[20px] text-primary-container">verified</span>
+                <span className="material-symbols-outlined text-[20px]! text-primary-container">verified</span>
                 <span className="text-sm">Material Certificado (Mill Test)</span>
               </div>
               <div className="flex items-center gap-3 text-on-surface-variant">
-                <span className="material-symbols-outlined text-[20px] text-primary-container">cut</span>
+                <span className="material-symbols-outlined text-[20px]! text-primary-container">cut</span>
                 <span className="text-sm">Corte a Medida disponible</span>
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function ProductoPage() {
               <h4 className="font-montserrat font-semibold text-[18px] text-primary-container mb-2">{rel.name}</h4>
               <div className="flex justify-between items-center">
                 <span className="text-on-tertiary-container font-bold text-sm">${rel.price.toFixed(2)}/kg</span>
-                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-on-tertiary-container transition-colors text-[24px]">
+                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-on-tertiary-container transition-colors text-[24px]!">
                   add_shopping_cart
                 </span>
               </div>

@@ -96,7 +96,7 @@ function CatalogoContent() {
       <div className="lg:hidden sticky top-[60px] z-30 -mx-4 px-4 py-3 bg-surface-low border-b border-outline-variant shadow-sm">
         <div className="flex flex-col gap-3">
           <div className="relative w-full">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]!">
               search
             </span>
             <input
@@ -112,12 +112,12 @@ function CatalogoContent() {
             className="flex items-center justify-between w-full px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold uppercase tracking-wider"
           >
             <span className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-[20px]">filter_list</span>
+              <span className="material-symbols-outlined text-[20px]!">filter_list</span>
               Filtros de Catálogo
             </span>
             <span
               className={clsx(
-                'material-symbols-outlined text-[20px] transition-transform duration-300',
+                'material-symbols-outlined text-[20px]! transition-transform duration-300',
                 filtrosAbiertos && 'rotate-180'
               )}
             >
@@ -187,7 +187,7 @@ function CatalogoContent() {
           <div className="flex flex-col p-6">
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-2">
-                <span className="material-symbols-outlined text-primary text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <span className="material-symbols-outlined text-primary text-[24px]!" style={{ fontVariationSettings: "'FILL' 1" }}>
                   filter_list
                 </span>
                 <h2 className="font-montserrat font-semibold text-xl text-primary">Filtros</h2>
@@ -213,7 +213,7 @@ function CatalogoContent() {
                             : 'text-on-surface-variant hover:bg-surface-high'
                         )}
                       >
-                        <span className="material-symbols-outlined text-[20px]">category</span>
+                        <span className="material-symbols-outlined text-[20px]!">category</span>
                         <span>{cat}</span>
                       </button>
                     );
@@ -253,7 +253,7 @@ function CatalogoContent() {
                             : 'border-outline-variant/40 text-on-surface-variant hover:bg-surface-high'
                         )}
                       >
-                        <span className="material-symbols-outlined text-[24px]">{shape.icon}</span>
+                        <span className="material-symbols-outlined text-[24px]!">{shape.icon}</span>
                         <span>{shape.label}</span>
                       </button>
                     );
@@ -304,7 +304,7 @@ function CatalogoContent() {
                   view === 'grid' ? 'border-primary bg-primary text-white' : 'border-outline-variant bg-white text-primary'
                 )}
               >
-                <span className="material-symbols-outlined text-[24px]">grid_view</span>
+                <span className="material-symbols-outlined text-[24px]!">grid_view</span>
               </button>
               <button
                 onClick={() => setView('list')}
@@ -314,7 +314,7 @@ function CatalogoContent() {
                   view === 'list' ? 'border-primary bg-primary text-white' : 'border-outline-variant bg-white text-primary'
                 )}
               >
-                <span className="material-symbols-outlined text-[24px]">list</span>
+                <span className="material-symbols-outlined text-[24px]!">list</span>
               </button>
             </div>
           </div>
@@ -366,14 +366,14 @@ function CatalogoContent() {
                       <div className="text-right">
                         {product.inStock ? (
                           <span className="text-sm font-semibold text-green-700 flex items-center justify-end gap-1">
-                            <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                            <span className="material-symbols-outlined text-[18px]!" style={{ fontVariationSettings: "'FILL' 1" }}>
                               check_circle
                             </span>
                             En Stock
                           </span>
                         ) : (
                           <span className="text-sm font-semibold text-error flex items-center justify-end gap-1">
-                            <span className="material-symbols-outlined text-[18px]">schedule</span>
+                            <span className="material-symbols-outlined text-[18px]!">schedule</span>
                             Bajo pedido
                           </span>
                         )}
@@ -459,7 +459,7 @@ function CatalogoContent() {
                 className="p-2 border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-40"
                 disabled
               >
-                <span className="material-symbols-outlined text-[24px]">chevron_left</span>
+                <span className="material-symbols-outlined text-[24px]!">chevron_left</span>
               </button>
               <button className="w-10 h-10 border border-primary bg-primary text-white font-bold">1</button>
               <button
@@ -467,7 +467,7 @@ function CatalogoContent() {
                 className="p-2 border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-40"
                 disabled
               >
-                <span className="material-symbols-outlined text-[24px]">chevron_right</span>
+                <span className="material-symbols-outlined text-[24px]!">chevron_right</span>
               </button>
             </div>
           )}

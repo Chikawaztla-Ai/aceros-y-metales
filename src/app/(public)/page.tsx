@@ -152,7 +152,7 @@ export default function HomePage() {
           className="max-w-4xl mx-auto bg-surface p-2 shadow-2xl border border-outline-variant flex flex-col sm:flex-row sm:items-center gap-2"
         >
           <div className="flex-grow flex items-center px-4 gap-3 sm:border-r sm:border-outline-variant">
-            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">search</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">search</span>
             <input
               type="text"
               name="q"
@@ -164,7 +164,7 @@ export default function HomePage() {
             type="submit"
             className="bg-primary text-white text-sm font-bold uppercase px-8 py-4 flex items-center justify-center gap-2 hover:bg-primary-container transition-colors"
           >
-            <span className="material-symbols-outlined text-[24px]">filter_list</span>
+            <span className="material-symbols-outlined text-[24px]!">filter_list</span>
             Explorar Materiales
           </button>
         </form>
@@ -205,7 +205,7 @@ export default function HomePage() {
                 <p className="text-on-primary-container text-xs font-medium mb-4">{cat.subtitle}</p>
                 <span className="inline-flex items-center text-white font-bold text-sm group-hover:translate-x-2 transition-transform">
                   Explorar
-                  <span className="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+                  <span className="material-symbols-outlined ml-2 text-[18px]!">arrow_forward</span>
                 </span>
               </div>
             </Link>
@@ -267,7 +267,7 @@ export default function HomePage() {
                     href={`/catalogo/${product.slug}`}
                     className="w-full bg-primary text-white text-sm font-bold uppercase py-3 flex items-center justify-center gap-2 hover:bg-on-tertiary-container transition-colors"
                   >
-                    <span className="material-symbols-outlined text-[18px]">shopping_cart</span>
+                    <span className="material-symbols-outlined text-[18px]!">shopping_cart</span>
                     Agregar al Carrito
                   </Link>
                 </div>
@@ -296,7 +296,7 @@ export default function HomePage() {
             <div className="space-y-4">
               <div className="flex items-start gap-4">
                 <div className="bg-primary text-white p-2 rounded-lg">
-                  <span className="material-symbols-outlined text-[24px]">precision_manufacturing</span>
+                  <span className="material-symbols-outlined text-[24px]!">precision_manufacturing</span>
                 </div>
                 <div>
                   <h4 className="font-bold text-primary">Precisión Milimétrica</h4>
@@ -305,7 +305,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-start gap-4">
                 <div className="bg-primary text-white p-2 rounded-lg">
-                  <span className="material-symbols-outlined text-[24px]">history</span>
+                  <span className="material-symbols-outlined text-[24px]!">history</span>
                 </div>
                 <div>
                   <h4 className="font-bold text-primary">Historial de Cálculos</h4>
@@ -327,7 +327,7 @@ export default function HomePage() {
           <Reveal>
           <div className="bg-primary-container border border-outline p-12 lg:p-20 relative">
             <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
-              <span className="material-symbols-outlined text-[200px] text-white">corporate_fare</span>
+              <span className="material-symbols-outlined text-[200px]! text-white">corporate_fare</span>
             </div>
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -341,7 +341,7 @@ export default function HomePage() {
                 <div className="grid grid-cols-2 gap-6 mb-10">
                   {b2bBenefits.map((benefit) => (
                     <div key={benefit} className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">check_circle</span>
+                      <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">check_circle</span>
                       <span className="text-white font-medium">{benefit}</span>
                     </div>
                   ))}

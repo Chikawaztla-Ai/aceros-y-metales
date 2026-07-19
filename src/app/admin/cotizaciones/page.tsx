@@ -51,13 +51,13 @@ export default function AdminCotizaciones() {
                   <td className="px-6 py-4">
                     <div className="flex gap-2">
                       <button className="p-2 hover:bg-surface-container text-primary transition-colors" title="Responder cotización">
-                        <span className="material-symbols-outlined text-[20px]">reply</span>
+                        <span className="material-symbols-outlined text-[20px]!">reply</span>
                       </button>
                       <button className="p-2 hover:bg-surface-container text-green-700 transition-colors" title="Aprobar">
-                        <span className="material-symbols-outlined text-[20px]">check_circle</span>
+                        <span className="material-symbols-outlined text-[20px]!">check_circle</span>
                       </button>
                       <button className="p-2 hover:bg-surface-container text-error transition-colors" title="Descartar">
-                        <span className="material-symbols-outlined text-[20px]">cancel</span>
+                        <span className="material-symbols-outlined text-[20px]!">cancel</span>
                       </button>
                     </div>
                   </td>

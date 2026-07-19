@@ -237,7 +237,7 @@ function CheckoutInner() {
                 <label key={opt.value} className="block cursor-pointer">
                   <input type="radio" value={opt.value} {...register('shippingType')} className="peer sr-only" />
                   <div className="border border-outline-variant p-6 flex items-center gap-4 transition-all peer-checked:border-primary peer-checked:bg-surface-low">
-                    <span className="material-symbols-outlined text-primary text-[28px]">{opt.icon}</span>
+                    <span className="material-symbols-outlined text-primary text-[28px]!">{opt.icon}</span>
                     <div>
                       <p className="font-montserrat font-semibold text-primary text-sm uppercase">{opt.title}</p>
                       <p className="text-sm text-on-surface-variant">{opt.desc}</p>
@@ -324,7 +324,7 @@ function CheckoutInner() {
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-white border border-outline-variant rounded flex items-center justify-center">
-                          <span className="material-symbols-outlined text-primary text-[24px]">{opt.icon}</span>
+                          <span className="material-symbols-outlined text-primary text-[24px]!">{opt.icon}</span>
                         </div>
                         <div>
                           <p className="font-montserrat font-semibold text-primary text-sm uppercase">{opt.title}</p>
@@ -417,15 +417,15 @@ function CheckoutInner() {
 
             <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-8 opacity-60">
               <div className="flex flex-col items-center gap-2 text-[10px] uppercase font-bold text-center">
-                <span className="material-symbols-outlined text-white text-[24px]">verified</span>
+                <span className="material-symbols-outlined text-white text-[24px]!">verified</span>
                 <span>Garantía de Calidad</span>
               </div>
               <div className="flex flex-col items-center gap-2 text-[10px] uppercase font-bold text-center">
-                <span className="material-symbols-outlined text-white text-[24px]">bolt</span>
+                <span className="material-symbols-outlined text-white text-[24px]!">bolt</span>
                 <span>Entrega Urgente</span>
               </div>
               <div className="flex flex-col items-center gap-2 text-[10px] uppercase font-bold text-center">
-                <span className="material-symbols-outlined text-white text-[24px]">support_agent</span>
+                <span className="material-symbols-outlined text-white text-[24px]!">support_agent</span>
                 <span>Soporte Técnico</span>
               </div>
             </div>

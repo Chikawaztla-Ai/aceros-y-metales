@@ -44,15 +44,15 @@ export function Footer() {
           </h4>
           <div className="flex flex-col gap-3 text-sm text-on-primary-container/70">
             <span className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-[20px] text-on-tertiary-container">location_on</span>
+              <span className="material-symbols-outlined text-[20px]! text-on-tertiary-container">location_on</span>
               [Dirección del cliente]
             </span>
             <span className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-[20px] text-on-tertiary-container">phone</span>
+              <span className="material-symbols-outlined text-[20px]! text-on-tertiary-container">phone</span>
               [Teléfono]
             </span>
             <span className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-[20px] text-on-tertiary-container">mail</span>
+              <span className="material-symbols-outlined text-[20px]! text-on-tertiary-container">mail</span>
               [Email]
             </span>
           </div>

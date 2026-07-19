@@ -159,7 +159,7 @@ export default function NotFound() {
                 className="text-white transition-all px-8 py-4 rounded-[6px] text-[13px] font-bold uppercase flex items-center justify-center gap-2 active:scale-95 hover:brightness-95"
                 style={{ backgroundColor: GOLD }}
               >
-                <span className="material-symbols-outlined text-[20px]">inventory_2</span>
+                <span className="material-symbols-outlined text-[20px]!">inventory_2</span>
                 Volver al Catálogo
               </Link>
               <Link
@@ -167,7 +167,7 @@ export default function NotFound() {
                 className="border-2 transition-all px-8 py-4 rounded-[6px] text-[13px] font-bold uppercase flex items-center justify-center gap-2 active:scale-95 hover:bg-[#151c27] hover:text-white"
                 style={{ borderColor: INK, color: INK }}
               >
-                <span className="material-symbols-outlined text-[20px]">home</span>
+                <span className="material-symbols-outlined text-[20px]!">home</span>
                 Ir al Inicio
               </Link>
             </div>

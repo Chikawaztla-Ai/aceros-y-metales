@@ -25,9 +25,9 @@ export default async function ClientePerfil({ params }: { params: Promise<{ id: 
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-on-surface-variant">
         <Link href="/admin/clientes" className="hover:text-primary flex items-center gap-1">
-          <span className="material-symbols-outlined text-[18px]">arrow_back</span> Clientes
+          <span className="material-symbols-outlined text-[18px]!">arrow_back</span> Clientes
         </Link>
-        <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+        <span className="material-symbols-outlined text-[16px]!">chevron_right</span>
         <span className="text-primary font-bold">{id}</span>
       </nav>
 
@@ -54,7 +54,7 @@ export default async function ClientePerfil({ params }: { params: Promise<{ id: 
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white border border-outline-variant p-6 shadow-sm">
             <h3 className="font-montserrat font-semibold text-lg text-primary border-b border-outline-variant pb-3 mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-[24px]">info</span>
+              <span className="material-symbols-outlined text-primary text-[24px]!">info</span>
               Metadatos del Cliente
             </h3>
             <div className="space-y-4">
@@ -65,7 +65,7 @@ export default async function ClientePerfil({ params }: { params: Promise<{ id: 
               <div>
                 <p className="text-xs text-on-surface-variant uppercase mb-1">Contacto Principal</p>
                 <p className="text-primary font-semibold flex items-center gap-2">
-                  <span className="material-symbols-outlined text-[18px] text-secondary">person</span>
+                  <span className="material-symbols-outlined text-[18px]! text-secondary">person</span>
                   Ing. Ricardo Alarcón
                 </p>
               </div>
@@ -86,7 +86,7 @@ export default async function ClientePerfil({ params }: { params: Promise<{ id: 
           <div className="bg-primary-container text-white p-6 shadow-md border-l-4 border-on-tertiary-container">
             <h3 className="font-montserrat font-semibold text-lg text-on-primary-container mb-6 flex items-center justify-between">
               Salud Financiera
-              <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">payments</span>
+              <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">payments</span>
             </h3>
             <div className="space-y-6">
               <div>
@@ -121,7 +121,7 @@ export default async function ClientePerfil({ params }: { params: Promise<{ id: 
           <div className="bg-white border border-outline-variant p-8 shadow-sm h-full">
             <div className="flex justify-between items-center mb-8">
               <h3 className="font-montserrat font-semibold text-lg text-primary flex items-center gap-3">
-                <span className="material-symbols-outlined text-[24px]">history</span>
+                <span className="material-symbols-outlined text-[24px]!">history</span>
                 Registro de Actividad
               </h3>
               <button className="text-primary hover:underline text-sm font-medium">Ver auditoría completa</button>
@@ -130,7 +130,7 @@ export default async function ClientePerfil({ params }: { params: Promise<{ id: 
               {timeline.map((t, i) => (
                 <div key={i} className="relative pl-12">
                   <div className="absolute left-0 top-0 w-8 h-8 bg-secondary-fixed rounded-full border-4 border-white z-10 flex items-center justify-center">
-                    <span className="material-symbols-outlined text-[16px] text-primary">{t.icon}</span>
+                    <span className="material-symbols-outlined text-[16px]! text-primary">{t.icon}</span>
                   </div>
                   <p className="text-xs text-on-surface-variant">{t.time}</p>
                   <h4 className="font-bold text-primary">{t.title}</h4>
@@ -145,16 +145,16 @@ export default async function ClientePerfil({ params }: { params: Promise<{ id: 
         <div className="lg:col-span-3 space-y-6">
           <div className="bg-white border border-outline-variant p-6 shadow-sm">
             <h3 className="font-montserrat font-semibold text-lg text-primary mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-[24px]">folder</span>
+              <span className="material-symbols-outlined text-primary text-[24px]!">folder</span>
               Documentos
             </h3>
             <div className="space-y-3">
               {documents.map((d) => (
                 <div key={d} className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+                  <span className="material-symbols-outlined text-error text-[20px]!">picture_as_pdf</span>
                   <p className="text-sm font-medium truncate flex-1">{d}</p>
                   <button className="text-on-surface-variant hover:text-primary transition-colors">
-                    <span className="material-symbols-outlined text-[20px]">download</span>
+                    <span className="material-symbols-outlined text-[20px]!">download</span>
                   </button>
                 </div>
               ))}

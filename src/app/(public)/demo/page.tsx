@@ -57,7 +57,7 @@ function Grid({ items }: { items: Screen[] }) {
           className="group bg-white border border-outline-variant rounded-lg p-5 flex items-start gap-4 hover:shadow-lg hover:border-primary-container transition-all"
         >
           <div className="w-11 h-11 rounded-lg bg-primary-container/10 flex items-center justify-center shrink-0 group-hover:bg-primary-container transition-colors">
-            <span className="material-symbols-outlined text-primary-container group-hover:text-white text-[24px]">
+            <span className="material-symbols-outlined text-primary-container group-hover:text-white text-[24px]!">
               {s.icon}
             </span>
           </div>
@@ -77,7 +77,7 @@ function Grid({ items }: { items: Screen[] }) {
 function SectionTitle({ icon, title, subtitle }: { icon: string; title: string; subtitle: string }) {
   return (
     <div className="flex items-center gap-3 mb-6">
-      <span className="material-symbols-outlined text-on-tertiary-container text-[28px]">{icon}</span>
+      <span className="material-symbols-outlined text-on-tertiary-container text-[28px]!">{icon}</span>
       <div>
         <h2 className="font-montserrat font-bold text-2xl text-primary-container uppercase tracking-tight leading-none">
           {title}

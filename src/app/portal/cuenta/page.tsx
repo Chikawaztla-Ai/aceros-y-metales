@@ -43,7 +43,7 @@ export default function MiPerfilPage() {
       <div className="bg-white border border-outline-variant p-8">
         <div className="flex items-center justify-between mb-8 border-b border-outline-variant pb-4">
           <h2 className="font-montserrat font-semibold text-xl text-on-background uppercase flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary text-[24px]">edit_square</span>
+            <span className="material-symbols-outlined text-primary text-[24px]!">edit_square</span>
             Información Personal
           </h2>
           <span className="text-xs font-semibold text-primary uppercase">Actualización Requerida</span>
@@ -71,8 +71,8 @@ export default function MiPerfilPage() {
               disabled={savingProfile}
               className="bg-primary text-white text-sm font-semibold px-8 py-3 uppercase tracking-wider hover:bg-primary-container transition-all shadow-sm disabled:opacity-60 flex items-center gap-2"
             >
-              {savingProfile && <span className="material-symbols-outlined animate-spin text-[18px]">sync</span>}
-              {profileSaved && <span className="material-symbols-outlined text-[18px]">check_circle</span>}
+              {savingProfile && <span className="material-symbols-outlined animate-spin text-[18px]!">sync</span>}
+              {profileSaved && <span className="material-symbols-outlined text-[18px]!">check_circle</span>}
               {savingProfile ? 'Procesando…' : profileSaved ? 'Actualizado' : 'Guardar Cambios de Perfil'}
             </button>
           </div>
@@ -83,7 +83,7 @@ export default function MiPerfilPage() {
       <div className="bg-primary text-white p-8 border-l-4 border-on-tertiary-container">
         <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
           <h2 className="font-montserrat font-semibold text-xl uppercase flex items-center gap-2">
-            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">lock_reset</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">lock_reset</span>
             Gestión de Seguridad
           </h2>
         </div>
@@ -125,8 +125,8 @@ export default function MiPerfilPage() {
               disabled={savingSecurity}
               className="border-2 border-on-tertiary-container text-on-tertiary-container text-sm font-semibold px-8 py-3 uppercase tracking-wider hover:bg-on-tertiary-container hover:text-white transition-all shrink-0 disabled:opacity-60 flex items-center gap-2"
             >
-              {savingSecurity && <span className="material-symbols-outlined animate-spin text-[18px]">sync</span>}
-              {securitySaved && <span className="material-symbols-outlined text-[18px]">check_circle</span>}
+              {savingSecurity && <span className="material-symbols-outlined animate-spin text-[18px]!">sync</span>}
+              {securitySaved && <span className="material-symbols-outlined text-[18px]!">check_circle</span>}
               {savingSecurity ? 'Procesando…' : securitySaved ? 'Actualizado' : 'Actualizar Credenciales'}
             </button>
           </div>

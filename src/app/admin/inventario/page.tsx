@@ -34,7 +34,7 @@ export default function AdminInventario() {
           <div className="flex gap-3">
             <AdminExportButton />
             <button className="flex items-center gap-2 bg-on-tertiary-container text-white px-4 py-2 text-sm font-bold uppercase hover:brightness-110 transition-all rounded">
-              <span className="material-symbols-outlined text-[20px]">add</span>
+              <span className="material-symbols-outlined text-[20px]!">add</span>
               Nuevo SKU
             </button>
           </div>
@@ -78,10 +78,10 @@ export default function AdminInventario() {
                     <td className="px-6 py-4">
                       <div className="flex gap-2">
                         <button className="p-2 hover:bg-surface-container text-primary transition-colors" title="Editar">
-                          <span className="material-symbols-outlined text-[20px]">edit</span>
+                          <span className="material-symbols-outlined text-[20px]!">edit</span>
                         </button>
                         <button className="p-2 hover:bg-surface-container text-on-tertiary-container transition-colors" title="Reabastecer">
-                          <span className="material-symbols-outlined text-[20px]">add_box</span>
+                          <span className="material-symbols-outlined text-[20px]!">add_box</span>
                         </button>
                       </div>
                     </td>

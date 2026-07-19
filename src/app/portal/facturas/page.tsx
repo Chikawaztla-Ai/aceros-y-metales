@@ -63,10 +63,10 @@ export default function PortalFacturas() {
                   <td className="px-6 py-5">
                     <div className="flex justify-center gap-3">
                       <button className="text-on-surface hover:text-error transition-colors" title="Descargar PDF">
-                        <span className="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                        <span className="material-symbols-outlined text-[20px]!">picture_as_pdf</span>
                       </button>
                       <button className="text-on-surface hover:text-primary transition-colors" title="Descargar XML">
-                        <span className="material-symbols-outlined text-[20px]">code</span>
+                        <span className="material-symbols-outlined text-[20px]!">code</span>
                       </button>
                     </div>
                   </td>

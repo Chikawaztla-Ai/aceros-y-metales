@@ -69,7 +69,7 @@ export function Header() {
         <div className="flex items-center gap-3 md:gap-5">
           {/* Buscador pill — estilo stitch */}
           <div className="relative hidden lg:block">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-on-primary-container/70 pointer-events-none">
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px]! text-on-primary-container/70 pointer-events-none">
               search
             </span>
             <input
@@ -99,7 +99,7 @@ export function Header() {
           <Link
             href="/login"
             aria-label="Mi cuenta"
-            className="material-symbols-outlined text-on-primary-container/80 hover:text-on-tertiary-container transition-colors text-[24px]"
+            className="material-symbols-outlined text-on-primary-container/80 hover:text-on-tertiary-container transition-colors text-[24px]!"
           >
             account_circle
           </Link>
@@ -128,7 +128,7 @@ export function Header() {
               <button
                 onClick={() => setMenuAbierto(false)}
                 aria-label="Cerrar menú"
-                className="material-symbols-outlined text-on-primary text-[24px]"
+                className="material-symbols-outlined text-on-primary text-[24px]!"
               >
                 close
               </button>
@@ -149,7 +149,7 @@ export function Header() {
                         : 'text-on-primary-container hover:bg-white/5'
                     )}
                   >
-                    <span className="material-symbols-outlined text-[24px]">{link.icon}</span>
+                    <span className="material-symbols-outlined text-[24px]!">{link.icon}</span>
                     <span className="text-sm">{link.label}</span>
                   </Link>
                 );
@@ -159,7 +159,7 @@ export function Header() {
                 onClick={() => setMenuAbierto(false)}
                 className="flex items-center gap-4 px-4 py-3 rounded-lg text-on-primary-container hover:bg-white/5 transition-colors"
               >
-                <span className="material-symbols-outlined text-[24px]">calculate</span>
+                <span className="material-symbols-outlined text-[24px]!">calculate</span>
                 <span className="text-sm">Calculadora de peso</span>
               </Link>
             </nav>

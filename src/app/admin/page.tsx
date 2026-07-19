@@ -96,7 +96,7 @@ export default function AdminDashboard() {
         <h1 className="font-montserrat font-semibold text-2xl text-on-surface uppercase">Dashboard</h1>
         <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center bg-surface-low px-4 py-2 rounded border border-outline-variant">
-            <span className="material-symbols-outlined text-on-surface-variant mr-2 text-[24px]">search</span>
+            <span className="material-symbols-outlined text-on-surface-variant mr-2 text-[24px]!">search</span>
             <input
               type="text"
               placeholder="Buscar pedido o material..."
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
             />
           </div>
           <Link href="/admin/pedidos" className="bg-on-tertiary-container text-white px-6 py-2.5 rounded text-sm font-semibold uppercase hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 shadow-sm">
-            <span className="material-symbols-outlined text-[18px]">add_circle</span>
+            <span className="material-symbols-outlined text-[18px]!">add_circle</span>
             Nuevo Pedido
           </Link>
         </div>
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
                   kpi.variant === 'dark' ? 'text-on-primary-container' : 'text-on-surface-variant'
                 }`}
               >
-                <span className="material-symbols-outlined text-[16px] mr-1">{kpi.noteIcon}</span>
+                <span className="material-symbols-outlined text-[16px]! mr-1">{kpi.noteIcon}</span>
                 {kpi.note}
               </div>
             </Link>
@@ -197,7 +197,7 @@ export default function AdminDashboard() {
             <div className="bg-white p-6 rounded border border-outline-variant">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-montserrat font-semibold text-[20px] text-on-surface uppercase">Stock Bajo</h3>
-                <span className="material-symbols-outlined text-error text-[24px]">warning</span>
+                <span className="material-symbols-outlined text-error text-[24px]!">warning</span>
               </div>
               <div className="space-y-5">
                 {lowStock.map((item) => (

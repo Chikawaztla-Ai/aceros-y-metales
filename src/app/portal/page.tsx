@@ -60,7 +60,7 @@ export default function PortalPedidos() {
             />
           </div>
           <button className="flex items-center gap-2 px-6 py-2 bg-secondary text-on-secondary text-sm font-semibold rounded-lg hover:opacity-90 transition-all active:scale-95 whitespace-nowrap">
-            <span className="material-symbols-outlined text-[18px]">download</span>
+            <span className="material-symbols-outlined text-[18px]!">download</span>
             Exportar
           </button>
         </div>
@@ -126,10 +126,10 @@ export default function PortalPedidos() {
                       <td className="px-6 py-5">
                         <div className="flex justify-center gap-4">
                           <button className="text-on-surface hover:text-on-tertiary-container transition-colors" title="Ver detalle">
-                            <span className="material-symbols-outlined text-[24px]">visibility</span>
+                            <span className="material-symbols-outlined text-[24px]!">visibility</span>
                           </button>
                           <button className="text-on-surface hover:text-on-tertiary-container transition-colors" title="Repetir pedido">
-                            <span className="material-symbols-outlined text-[24px]">replay</span>
+                            <span className="material-symbols-outlined text-[24px]!">replay</span>
                           </button>
                         </div>
                       </td>
@@ -143,12 +143,12 @@ export default function PortalPedidos() {
               <span className="text-xs text-on-surface-variant">Mostrando {orders.length} de 128 pedidos</span>
               <div className="flex gap-2">
                 <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-all disabled:opacity-40" disabled>
-                  <span className="material-symbols-outlined text-[18px]">chevron_left</span>
+                  <span className="material-symbols-outlined text-[18px]!">chevron_left</span>
                 </button>
                 <button className="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary text-sm font-semibold">1</button>
                 <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-all text-sm font-semibold">2</button>
                 <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-all">
-                  <span className="material-symbols-outlined text-[18px]">chevron_right</span>
+                  <span className="material-symbols-outlined text-[18px]!">chevron_right</span>
                 </button>
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function PortalPedidos() {
 
             {/* Asesor */}
             <div className="p-4 border border-dashed border-outline rounded-lg flex items-start gap-4">
-              <span className="material-symbols-outlined text-secondary text-[24px]">support_agent</span>
+              <span className="material-symbols-outlined text-secondary text-[24px]!">support_agent</span>
               <div>
                 <p className="text-xs font-semibold text-on-surface">Asesor Asignado:</p>
                 <p className="text-sm font-bold text-primary">Ing. Ricardo Mendoza</p>

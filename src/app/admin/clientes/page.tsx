@@ -63,7 +63,7 @@ export default function AdminClientes() {
                   </td>
                   <td className="px-6 py-4">
                     <Link href={`/admin/clientes/${c.id}`} className="p-2 inline-flex hover:bg-surface-container text-primary transition-colors" title="Ver perfil">
-                      <span className="material-symbols-outlined text-[20px]">visibility</span>
+                      <span className="material-symbols-outlined text-[20px]!">visibility</span>
                     </Link>
                   </td>
                 </tr>

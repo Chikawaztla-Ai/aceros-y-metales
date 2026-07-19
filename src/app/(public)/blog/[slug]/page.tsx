@@ -41,9 +41,9 @@ export default async function ArticuloPage({ params }: { params: Promise<{ slug:
       {/* Breadcrumb */}
       <nav className="mb-8 flex items-center gap-2 text-sm font-medium text-on-surface-variant">
         <Link href="/" className="hover:text-primary">Inicio</Link>
-        <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+        <span className="material-symbols-outlined text-[16px]!">chevron_right</span>
         <Link href="/blog" className="hover:text-primary">Blog</Link>
-        <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+        <span className="material-symbols-outlined text-[16px]!">chevron_right</span>
         <span className="text-primary font-bold">{article.category}</span>
       </nav>
 

@@ -59,7 +59,7 @@ export default function AdminCRM() {
           <div key={m.label} className="bg-white p-6 border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start mb-4">
               <div className="p-2 bg-primary-container text-white rounded">
-                <span className="material-symbols-outlined text-[24px]">{m.icon}</span>
+                <span className="material-symbols-outlined text-[24px]!">{m.icon}</span>
               </div>
               <span className={`text-xs font-medium ${m.deltaColor}`}>{m.delta}</span>
             </div>
@@ -76,7 +76,7 @@ export default function AdminCRM() {
       <section className="bg-white p-8 border border-outline-variant">
         <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
           <h3 className="font-montserrat font-semibold text-2xl text-primary uppercase flex items-center gap-3">
-            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">timeline</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">timeline</span>
             Pipeline de Ventas
           </h3>
           <select className="bg-surface-low border border-outline-variant text-xs uppercase font-bold px-4 py-2 rounded outline-none">
@@ -109,13 +109,13 @@ export default function AdminCRM() {
         <section className="lg:col-span-1 bg-white p-6 border border-outline-variant">
           <h3 className="font-montserrat font-semibold text-2xl text-primary uppercase mb-6 flex items-center justify-between">
             Interacciones
-            <span className="material-symbols-outlined text-outline text-[24px]">history</span>
+            <span className="material-symbols-outlined text-outline text-[24px]!">history</span>
           </h3>
           <div className="space-y-6 relative before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/40">
             {activity.map((a, i) => (
               <div key={i} className="relative pl-8 group">
                 <div className="absolute left-0 top-1 w-6 h-6 bg-secondary-fixed rounded-full border-4 border-white z-10 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[12px] text-primary">{a.icon}</span>
+                  <span className="material-symbols-outlined text-[12px]! text-primary">{a.icon}</span>
                 </div>
                 <p className="text-xs text-on-surface-variant">{a.time}</p>
                 <h4 className="font-bold text-primary text-sm leading-tight group-hover:text-on-tertiary-container transition-colors">
@@ -130,7 +130,7 @@ export default function AdminCRM() {
         {/* Top agentes */}
         <section className="lg:col-span-2 bg-white p-6 border border-outline-variant overflow-hidden">
           <h3 className="font-montserrat font-semibold text-2xl text-primary uppercase mb-6 flex items-center gap-3">
-            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]">stars</span>
+            <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">stars</span>
             Top Agentes de Ventas
           </h3>
           <div className="overflow-x-auto">
