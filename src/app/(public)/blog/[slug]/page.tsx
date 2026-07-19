@@ -54,7 +54,7 @@ export default async function ArticuloPage({ params }: { params: Promise<{ slug:
             <span className="inline-block bg-tertiary-fixed text-on-tertiary-container px-3 py-1 rounded-sm text-sm font-semibold mb-4 uppercase tracking-widest">
               {article.category}
             </span>
-            <h1 className="font-montserrat font-bold text-[40px] leading-tight text-primary mb-6">
+            <h1 className="font-montserrat font-bold text-3xl md:text-[40px] leading-tight text-primary mb-6">
               {article.title}
             </h1>
             <div className="flex items-center gap-4 border-b border-outline-variant pb-6">
@@ -128,7 +128,7 @@ export default async function ArticuloPage({ params }: { params: Promise<{ slug:
                 Cotizar Ahora
               </Link>
               <div className="absolute right-[-20px] bottom-[-20px] opacity-10">
-                <span className="material-symbols-outlined text-[200px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <span className="material-symbols-outlined text-[200px]!" style={{ fontVariationSettings: "'FILL' 1" }}>
                   precision_manufacturing
                 </span>
               </div>
