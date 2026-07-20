@@ -34,6 +34,7 @@ const admin: Screen[] = [
   { href: '/admin/cotizaciones', label: 'Cotizaciones', desc: 'Bandeja de solicitudes por responder.', icon: 'request_quote' },
   { href: '/admin/crm', label: 'CRM / Ventas', desc: 'Pipeline, interacciones y top agentes.', icon: 'insights' },
   { href: '/admin/reportes', label: 'Reportes Analíticos', desc: 'KPIs de gerencia: rentabilidad, tonelaje y ventas.', icon: 'analytics' },
+  { href: '/admin/analiticas', label: 'Analíticas', desc: 'Dashboard de rendimiento: ventas, logística diaria y top categorías.', icon: 'monitoring' },
   { href: '/admin/clientes', label: 'Clientes', desc: 'Cartera con niveles y crédito.', icon: 'group' },
   { href: '/admin/clientes/CLI-0012', label: 'Perfil de Cliente', desc: 'Detalle: finanzas, actividad y documentos.', icon: 'badge' },
   { href: '/admin/logistica', label: 'Logística / Flota', desc: 'Monitoreo de unidades en vivo y alertas.', icon: 'local_shipping' },

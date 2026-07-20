@@ -13,6 +13,7 @@ const adminNav = [
   { href: '/admin/cotizaciones', label: 'Cotizaciones', icon: 'request_quote' },
   { href: '/admin/crm', label: 'CRM / Ventas', icon: 'insights' },
   { href: '/admin/reportes', label: 'Reportes', icon: 'analytics' },
+  { href: '/admin/analiticas', label: 'Analíticas', icon: 'monitoring' },
   { href: '/admin/clientes', label: 'Clientes', icon: 'group' },
   { href: '/admin/logistica', label: 'Logística', icon: 'local_shipping' },
   { href: '/admin/rutas', label: 'Rutas y Operadores', icon: 'route' },
