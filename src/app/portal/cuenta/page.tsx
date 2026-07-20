@@ -40,13 +40,13 @@ export default function MiPerfilPage() {
       </header>
 
       {/* Información personal */}
-      <div className="bg-white border border-outline-variant p-8">
-        <div className="flex items-center justify-between mb-8 border-b border-outline-variant pb-4">
+      <div className="bg-white border border-outline-variant p-5 md:p-8">
+        <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-8 border-b border-outline-variant pb-4">
           <h2 className="font-montserrat font-semibold text-xl text-on-background uppercase flex items-center gap-2">
             <span className="material-symbols-outlined text-primary text-[24px]!">edit_square</span>
             Información Personal
           </h2>
-          <span className="text-xs font-semibold text-primary uppercase">Actualización Requerida</span>
+          <span className="text-xs font-semibold text-primary uppercase shrink-0">Actualización Requerida</span>
         </div>
         <form onSubmit={handleSaveProfile} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
@@ -80,7 +80,7 @@ export default function MiPerfilPage() {
       </div>
 
       {/* Seguridad */}
-      <div className="bg-primary text-white p-8 border-l-4 border-on-tertiary-container">
+      <div className="bg-primary text-white p-5 md:p-8 border-l-4 border-on-tertiary-container">
         <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
           <h2 className="font-montserrat font-semibold text-xl uppercase flex items-center gap-2">
             <span className="material-symbols-outlined text-on-tertiary-container text-[24px]!">lock_reset</span>
@@ -134,8 +134,8 @@ export default function MiPerfilPage() {
       </div>
 
       {/* Imágenes de contexto industrial */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-64">
-        <div className="relative overflow-hidden group border border-outline-variant">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:h-64">
+        <div className="relative overflow-hidden group border border-outline-variant h-48 md:h-full">
           <div
             className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
             style={{ backgroundImage: "url('/images/portal/perfil-materiales.jpg')" }}
@@ -144,7 +144,7 @@ export default function MiPerfilPage() {
             <p className="text-white text-sm font-semibold uppercase">Materiales de Grado Industrial</p>
           </div>
         </div>
-        <div className="relative overflow-hidden group border border-outline-variant">
+        <div className="relative overflow-hidden group border border-outline-variant h-48 md:h-full">
           <div
             className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
             style={{ backgroundImage: "url('/images/portal/perfil-precision.jpg')" }}

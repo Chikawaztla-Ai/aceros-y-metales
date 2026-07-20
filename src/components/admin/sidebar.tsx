@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import { clsx } from 'clsx';
 
 const adminNav = [
@@ -16,11 +17,12 @@ const adminNav = [
   { href: '/admin/config', label: 'Ajustes', icon: 'settings' },
 ];
 
-export function AdminSidebar() {
+/** Contenido interno del sidebar, compartido entre el fijo (escritorio) y el drawer (móvil). */
+function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed inset-y-0 left-0 w-[260px] bg-primary flex flex-col">
+    <>
       <div className="p-6 border-b border-white/10">
         <span className="font-montserrat font-bold text-on-primary text-[20px] uppercase tracking-tight leading-none block">
           Aceros y Metales
@@ -38,6 +40,7 @@ export function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onNavigate}
               className={clsx(
                 'flex items-center gap-4 px-4 py-3 rounded transition-colors group',
                 active
@@ -70,6 +73,58 @@ export function AdminSidebar() {
           <span className="material-symbols-outlined text-on-primary-container ml-auto text-[24px]!">more_vert</span>
         </div>
       </div>
-    </aside>
+    </>
+  );
+}
+
+export function AdminSidebar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      {/* Barra superior — solo móvil (en escritorio el sidebar fijo ya está visible). */}
+      <div className="md:hidden sticky top-0 z-40 flex items-center gap-3 bg-primary px-4 py-3 border-b border-white/10">
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Abrir menú"
+          className="text-on-primary shrink-0"
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: 28 }}>
+            menu
+          </span>
+        </button>
+        <span className="font-montserrat font-bold text-on-primary text-base uppercase tracking-tight leading-none">
+          Aceros y Metales{' '}
+          <span className="text-on-tertiary-container">· Admin</span>
+        </span>
+      </div>
+
+      {/* Drawer móvil */}
+      {open && (
+        <div
+          className="md:hidden fixed inset-0 z-50 bg-black/50"
+          onClick={() => setOpen(false)}
+        >
+          <aside
+            className="absolute inset-y-0 left-0 w-[260px] max-w-[85%] bg-primary flex flex-col shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Cerrar menú"
+              className="absolute top-4 right-3 text-on-primary-container z-10"
+            >
+              <span className="material-symbols-outlined text-[24px]!">close</span>
+            </button>
+            <SidebarBody onNavigate={() => setOpen(false)} />
+          </aside>
+        </div>
+      )}
+
+      {/* Sidebar fijo — solo escritorio. */}
+      <aside className="hidden md:flex fixed inset-y-0 left-0 w-[260px] bg-primary flex-col">
+        <SidebarBody />
+      </aside>
+    </>
   );
 }

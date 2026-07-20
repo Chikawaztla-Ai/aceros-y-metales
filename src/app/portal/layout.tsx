@@ -1,5 +1,5 @@
 import { Header } from '@/components/shared/header';
-import { PortalSidebar } from '@/components/portal/sidebar';
+import { PortalSidebar, PortalMobileNav } from '@/components/portal/sidebar';
 
 export default function PortalLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,7 +7,10 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
       <Header />
       <div className="min-h-screen bg-surface">
         <PortalSidebar />
-        <main className="ml-64 px-10 py-12">{children}</main>
+        <main className="px-4 py-6 md:ml-64 md:px-10 md:py-12">
+          <PortalMobileNav />
+          {children}
+        </main>
       </div>
     </>
   );

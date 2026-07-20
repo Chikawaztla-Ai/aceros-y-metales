@@ -17,7 +17,7 @@ export function PortalSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed inset-y-0 left-0 w-64 bg-surface border-r border-outline-variant flex flex-col p-4 pt-24 h-screen overflow-y-auto">
+    <aside className="hidden md:flex fixed inset-y-0 left-0 w-64 bg-surface border-r border-outline-variant flex-col p-4 pt-24 h-screen overflow-y-auto">
       <div className="mb-8 px-2">
         <h2 className="font-montserrat font-semibold text-lg text-primary">Portal Industrial</h2>
         <p className="text-sm text-on-surface-variant">Centro de Distribución</p>
@@ -63,5 +63,38 @@ export function PortalSidebar() {
         </div>
       </div>
     </aside>
+  );
+}
+
+/**
+ * Navegación del portal para móvil: barra horizontal de píldoras con scroll.
+ * El <aside> vertical se oculta con `hidden md:flex`, así que en celular esta
+ * barra (`md:hidden`) es la que da acceso a las secciones del portal.
+ */
+export function PortalMobileNav() {
+  const pathname = usePathname();
+
+  return (
+    <nav className="md:hidden -mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {portalNav.map((item) => {
+        const active =
+          item.href === '/portal' ? pathname === '/portal' : pathname.startsWith(item.href);
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={clsx(
+              'flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm transition-colors',
+              active
+                ? 'bg-secondary-fixed font-bold text-on-secondary-fixed'
+                : 'bg-surface-high text-on-surface-variant'
+            )}
+          >
+            <span className="material-symbols-outlined text-[18px]!">{item.icon}</span>
+            {item.label}
+          </Link>
+        );
+      })}
+    </nav>
   );
 }
