@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { AdminModuleHeader, AdminStat, AdminExportButton } from '@/components/admin/module-header';
 
 const stats = [
@@ -33,10 +34,13 @@ export default function AdminInventario() {
         actions={
           <div className="flex gap-3">
             <AdminExportButton />
-            <button className="flex items-center gap-2 bg-on-tertiary-container text-white px-4 py-2 text-sm font-bold uppercase hover:brightness-110 transition-all rounded">
+            <Link
+              href="/admin/inventario/editar"
+              className="flex items-center gap-2 bg-on-tertiary-container text-white px-4 py-2 text-sm font-bold uppercase hover:brightness-110 transition-all rounded whitespace-nowrap"
+            >
               <span className="material-symbols-outlined text-[20px]!">add</span>
               Nuevo SKU
-            </button>
+            </Link>
           </div>
         }
       />
