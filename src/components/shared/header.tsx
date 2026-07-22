@@ -87,7 +87,7 @@ export function Header() {
 
           {/* hidden/sm:inline en el <Link>, no en el ícono (ver nota en layout.tsx) */}
           <Link
-            href="/#calculadora"
+            href="/calculadora"
             aria-label="Calculadora de peso"
             className="hidden sm:inline text-on-primary-container/80 hover:text-on-tertiary-container transition-colors"
           >
@@ -155,7 +155,7 @@ export function Header() {
                 );
               })}
               <Link
-                href="/#calculadora"
+                href="/calculadora"
                 onClick={() => setMenuAbierto(false)}
                 className="flex items-center gap-4 px-4 py-3 rounded-lg text-on-primary-container hover:bg-white/5 transition-colors"
               >

@@ -6,20 +6,49 @@ import { useState } from 'react';
 import { clsx } from 'clsx';
 
 const adminNav = [
-  { href: '/admin', label: 'Dashboard', icon: 'dashboard' },
-  { href: '/admin/pedidos', label: 'Pedidos', icon: 'receipt_long' },
-  { href: '/admin/inventario', label: 'Inventario', icon: 'inventory_2' },
-  { href: '/admin/categorias', label: 'Categorías y Precios', icon: 'category' },
-  { href: '/admin/cotizaciones', label: 'Cotizaciones', icon: 'request_quote' },
-  { href: '/admin/crm', label: 'CRM / Ventas', icon: 'insights' },
-  { href: '/admin/reportes', label: 'Reportes', icon: 'analytics' },
-  { href: '/admin/analiticas', label: 'Analíticas', icon: 'monitoring' },
-  { href: '/admin/clientes', label: 'Clientes', icon: 'group' },
-  { href: '/admin/logistica', label: 'Logística', icon: 'local_shipping' },
-  { href: '/admin/rutas', label: 'Rutas y Operadores', icon: 'route' },
-  { href: '/admin/pod', label: 'POD y Pesajes', icon: 'fact_check' },
-  { href: '/admin/maquinaria', label: 'Maquinaria', icon: 'precision_manufacturing' },
-  { href: '/admin/config', label: 'Ajustes', icon: 'settings' },
+  {
+    section: 'Operación',
+    items: [
+      { href: '/admin', label: 'Dashboard', icon: 'dashboard' },
+      { href: '/admin/pedidos', label: 'Pedidos', icon: 'receipt_long' },
+      { href: '/admin/cotizaciones', label: 'Cotizaciones', icon: 'request_quote' },
+    ],
+  },
+  {
+    section: 'Catálogo',
+    items: [
+      { href: '/admin/inventario', label: 'Inventario', icon: 'inventory_2' },
+      { href: '/admin/categorias', label: 'Categorías y Precios', icon: 'category' },
+    ],
+  },
+  {
+    section: 'Clientes',
+    items: [
+      { href: '/admin/crm', label: 'CRM / Ventas', icon: 'insights' },
+      { href: '/admin/clientes', label: 'Clientes', icon: 'group' },
+    ],
+  },
+  {
+    section: 'Logística',
+    items: [
+      { href: '/admin/logistica', label: 'Flota', icon: 'local_shipping' },
+      { href: '/admin/rutas', label: 'Rutas y Operadores', icon: 'route' },
+      { href: '/admin/mantenimiento', label: 'Mantenimiento', icon: 'build' },
+      { href: '/admin/pod', label: 'POD y Pesajes', icon: 'fact_check' },
+      { href: '/admin/maquinaria', label: 'Maquinaria', icon: 'precision_manufacturing' },
+    ],
+  },
+  {
+    section: 'Analítica',
+    items: [
+      { href: '/admin/reportes', label: 'Reportes', icon: 'analytics' },
+      { href: '/admin/analiticas', label: 'Analíticas', icon: 'monitoring' },
+    ],
+  },
+  {
+    section: 'Sistema',
+    items: [{ href: '/admin/config', label: 'Ajustes', icon: 'settings' }],
+  },
 ];
 
 /** Contenido interno del sidebar, compartido entre el fijo (escritorio) y el drawer (móvil). */
@@ -37,32 +66,41 @@ function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
         </span>
       </div>
 
-      <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
-        {adminNav.map((item) => {
-          const active =
-            pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onNavigate}
-              className={clsx(
-                'flex items-center gap-4 px-4 py-3 rounded transition-colors group',
-                active
-                  ? 'text-on-tertiary-container bg-white/10 border-l-4 border-on-tertiary-container'
-                  : 'text-on-primary-container hover:bg-white/5'
-              )}
-            >
-              <span
-                className="material-symbols-outlined group-hover:text-on-tertiary-container text-[24px]!"
-                style={active ? { fontVariationSettings: "'FILL' 1" } : undefined}
-              >
-                {item.icon}
-              </span>
-              <span className={clsx('text-sm', active && 'font-bold')}>{item.label}</span>
-            </Link>
-          );
-        })}
+      <nav className="flex-1 px-3 py-4 overflow-y-auto">
+        {adminNav.map((group) => (
+          <div key={group.section} className="pt-4 first:pt-0">
+            <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-[0.15em] text-on-primary-container/50">
+              {group.section}
+            </p>
+            <div className="space-y-1">
+              {group.items.map((item) => {
+                const active =
+                  pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onNavigate}
+                    className={clsx(
+                      'flex items-center gap-4 px-4 py-2.5 rounded transition-colors group',
+                      active
+                        ? 'text-on-tertiary-container bg-white/10 border-l-4 border-on-tertiary-container'
+                        : 'text-on-primary-container hover:bg-white/5'
+                    )}
+                  >
+                    <span
+                      className="material-symbols-outlined group-hover:text-on-tertiary-container text-[24px]!"
+                      style={active ? { fontVariationSettings: "'FILL' 1" } : undefined}
+                    >
+                      {item.icon}
+                    </span>
+                    <span className={clsx('text-sm', active && 'font-bold')}>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </nav>
 
       {/* Perfil */}

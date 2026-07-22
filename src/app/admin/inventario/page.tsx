@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { AdminModuleHeader, AdminStat, AdminExportButton } from '@/components/admin/module-header';
+import { AdminModuleHeader, AdminStat } from '@/components/admin/module-header';
 
 const stats = [
   { label: 'SKUs Activos', value: '512' },
@@ -33,7 +33,13 @@ export default function AdminInventario() {
         searchPlaceholder="Buscar SKU o material..."
         actions={
           <div className="flex gap-3">
-            <AdminExportButton />
+            <Link
+              href="/admin/inventario/abc"
+              className="flex items-center gap-2 border-2 border-primary text-primary px-4 py-2 text-sm font-bold uppercase hover:bg-primary hover:text-white transition-all rounded whitespace-nowrap"
+            >
+              <span className="material-symbols-outlined text-[20px]!">analytics</span>
+              Vista Detallada
+            </Link>
             <Link
               href="/admin/inventario/editar"
               className="flex items-center gap-2 bg-on-tertiary-container text-white px-4 py-2 text-sm font-bold uppercase hover:brightness-110 transition-all rounded whitespace-nowrap"

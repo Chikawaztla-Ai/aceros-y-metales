@@ -133,7 +133,7 @@ export function WeightCalculator() {
         </div>
 
         <Link
-          href="/catalogo"
+          href="/calculadora"
           className="block w-full border-2 border-primary text-primary text-center font-bold uppercase py-4 text-sm hover:bg-primary hover:text-white transition-all"
         >
           Usar Calculadora Completa
